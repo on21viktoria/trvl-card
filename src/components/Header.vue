@@ -1,5 +1,5 @@
 <template>
-  <header class="headertext">
+  <header class="header">
     <div class="container-fluid">
       <div
         class="
@@ -117,7 +117,7 @@ export default defineComponent({
 }
 
 .container-fluid {
-    padding: 20px;
+    padding: 20px 40px;
 }
 
 </style>
