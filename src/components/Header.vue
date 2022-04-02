@@ -21,8 +21,8 @@
           <img
             alt="trvl card Logo"
             src="./../assets/logo_trvl.png"
-            width="40"
-            height="40"
+            width="60"
+            height="60"
           />
         </a>
 
@@ -30,7 +30,7 @@
           class="
             nav
             col-12 col-lg-auto
-            me-lg-auto
+            ms-lg-auto
             mb-2
             justify-content-center
             mb-md-0
@@ -55,6 +55,7 @@
             Login
           </button>
           <button type="button" class="btn btn-signup">Registrieren</button>
+          <i class="bi bi-cart-fill"></i>
         </div>
       </div>
     </div>
@@ -64,7 +65,8 @@
 <script lang="ts">
 /* eslint-disable */
 import { defineComponent } from "vue";
-import { BootstrapVue } from "bootstrap-vue";
+import { BootstrapVue, BootstrapVueIcons } from "bootstrap-vue";
+
 export default defineComponent({
   name: "Header",
 });
@@ -113,5 +115,10 @@ export default defineComponent({
 .dropdown-toggle {
   outline: 0;
 }
+
+.container-fluid {
+    padding: 20px;
+}
+
 </style>
 
