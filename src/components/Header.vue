@@ -1,6 +1,6 @@
 <template>
   <header class="headertext">
-    <div class="container">
+    <div class="container-fluid">
       <div
         class="
           d-flex
