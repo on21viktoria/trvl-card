@@ -1,13 +1,15 @@
 <!-- EditorComponent -->
 <template>
-<ToolbarComponent></ToolbarComponent>
+    <ToolbarComponent></ToolbarComponent>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import ToolbarComponent from './components/Toolbar.vue';
+import ToolbarComponent from './ToolbarComponent.vue';
+
 
 export default defineComponent({
+  components: { ToolbarComponent },
     name: 'EditorComponent',
     }) </script>
 

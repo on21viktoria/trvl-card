@@ -1,37 +1,70 @@
 <template>
+<div id="headerContainer">
+</div>  
+
 <div class="container">
   <div id="postkartenContainer">
     <img alt="trvl Card Logo" src="./logo_trvl.png">
     <img alt="Logo" src="./logo.png">
   </div>
   <div id="toolbarContainer">
-    <p> Hier steht hoffentlich ein Container! </p>
+    <h1> Toolbar </h1>
+    <div class="toolComponent"> </div>
+    <div class="toolComponent"> </div>
+    <div class="toolComponent"> </div>
+    <div class="toolComponent"> </div>
+    <div class="toolComponent"> </div>
+    <div class="toolComponent"> </div>        
   </div>
-</div>
+</div>  
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { SidebarPlugin } from 'bootstrap-vue';
+import {  defineComponent } from 'vue';
+
+ export default defineComponent({
+    name: "ToolbarComponent",
+    });
+</script>
 
 
-export default defineComponent({
-    name: 'ToolbarComponent',
-    }) </script>
 
+<style scoped>
 
+#headerContainer{
+  background-color: cadetblue;
+  max-width: 100%;
+  height: 100px;
+}
 
-    <style>
-      
-    #postkartenContainer {
-        background-color: black;
-        width: 600px%;
-      }
+.container {
+    max-width: 100%;
+    height: 100%;
+  }
 
-    #toolbarContainer {
-        background-color: darkBlue;
-        width: 200px%;
-    }
+  #postkartenContainer {
+      position: relative;
+      background-color: black;
+      width: 70%;
+      height: 100%;
+      float: right;
+  }
+
+  #toolbarContainer {
+      position: relative;
+      background-color: darkBlue;
+      width: 15%;
+      height: 100vh;
+      float:left;
+      margin: 0;
+  }
+
+  #toolbarContainer #toolComponent {
+      background-color: aqua;
+      width: 100%;
+      height: (100vh/6);
+      float: left;
+  }
 
     
-    </style>
+</style>
