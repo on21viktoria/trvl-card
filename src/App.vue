@@ -1,16 +1,21 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
+  
   <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <EditorComponent></EditorComponent>
+
+
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import EditorComponent from './components/EditorComponent.vue';
+import ToolbarComponent from './components/ToolbarComponent.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld
+    EditorComponent,
+
   }
 });
 </script>
