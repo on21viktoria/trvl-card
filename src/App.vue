@@ -1,11 +1,14 @@
 <template>
   <div>
+    <v-icon>{{ svgPath }}</v-icon>
     <Editor> </Editor>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { mdiAccount } from '@mdi/js';
 import Editor from './components/Editor.vue';
 
 export default Vue.extend({
@@ -14,7 +17,7 @@ export default Vue.extend({
     Editor,
   },
   data: () => ({
-    //
+    svgPath: mdiAccount,
   }),
 });
 </script>

@@ -3,7 +3,7 @@
       <v-app>
         <v-app-bar app clipped-left id="app-bar">
           <div >
-          <h1>Hier muss der Header eingefügt werden</h1>
+          <h1>trvl card</h1>
           </div>
         </v-app-bar>
 
@@ -26,7 +26,7 @@
           <v-list dense>
               <v-list-item v-for="item in items" :key="item.title" link>
                 <v-list-item-icon>
-                    <v-icon>{{ item.icon }}</v-icon>
+                    <v-icon>{{ svgPath }}</v-icon>
                 </v-list-item-icon>
 
                 <v-list-item-content>
@@ -42,8 +42,6 @@
           <!-- Provides the application the proper gutter -->
           <v-container fluid>
 
-            <!-- If using vue-router -->
-            <router-view></router-view>
           </v-container>
         </v-main>
 
@@ -58,20 +56,22 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'Toolbar',
-  components: {
-  },
   data: () => ({
     return: {
       drawer: true,
       items: [
-        { title: 'Home', icon: 'mdi-home-city' },
-        { title: 'My Account', icon: 'mdi-account' },
-        { title: 'Users', icon: 'mdi-account-group-outline' },
+        { title: 'Home' },
+        /* { title: 'My Account', icon: 'mdiAccount' }, */
+        /* { title: 'Users', icon: 'mdi-account-group-outline' }, */
       ],
+      mini: true,
     },
     //
   }),
+  name: 'Toolbar',
+  components: {
+  },
+
 });
 </script>
 
