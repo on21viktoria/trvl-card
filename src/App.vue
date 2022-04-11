@@ -1,14 +1,25 @@
 <template>
+<<<<<<< HEAD
   <EditorComponent></EditorComponent>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import EditorComponent from './components/EditorComponent.vue';
+=======
+  <h1>trvl card</h1>
+</template>
 
-export default defineComponent({
+<script lang="ts">
+>>>>>>> origin/master
+
+import Vue from 'vue';
+
+export default Vue.extend({
   name: 'App',
+
   components: {
+<<<<<<< HEAD
     EditorComponent,
 
   }
@@ -25,3 +36,12 @@ export default defineComponent({
   /*margin-top: 60px;*/
 }
 </style>
+=======
+  },
+
+  data: () => ({
+    //
+  }),
+});
+</script>
+>>>>>>> origin/master
