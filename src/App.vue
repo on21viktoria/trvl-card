@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>trvl card</h1>
     <Editor> </Editor>
   </div>
 </template>
