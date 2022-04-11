@@ -1,28 +1,22 @@
 <template>
-<<<<<<< HEAD
-  <EditorComponent></EditorComponent>
+  <div>
+    <h1>trvl card</h1>
+    <Editor> </Editor>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import EditorComponent from './components/EditorComponent.vue';
-=======
-  <h1>trvl card</h1>
-</template>
-
-<script lang="ts">
->>>>>>> origin/master
-
 import Vue from 'vue';
+import Editor from './components/Editor.vue';
 
 export default Vue.extend({
   name: 'App',
-
   components: {
-<<<<<<< HEAD
-    EditorComponent,
-
-  }
+    Editor,
+  },
+  data: () => ({
+    //
+  }),
 });
 </script>
 
@@ -36,12 +30,3 @@ export default Vue.extend({
   /*margin-top: 60px;*/
 }
 </style>
-=======
-  },
-
-  data: () => ({
-    //
-  }),
-});
-</script>
->>>>>>> origin/master
