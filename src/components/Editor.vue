@@ -8,11 +8,10 @@
 
     <v-main>
       <v-container fluid id="editor-container">
-        <div class="editor-grid">
+        <div class="editor-grid sidebar-hidden">
           <div id="toolbar">
             <Toolbar></Toolbar>
           </div>
-          <div id="sidebar"></div>
           <div id="postcard"></div>
         </div>
       </v-container>
@@ -45,11 +44,17 @@ h1 {
   text-align: center;
 }
 
-.editor-grid {
+.editor-grid.sidebar-hidden {
+  display: grid;
+  grid-template-columns: 15% 85%;
+  grid-gap: 10px;
+}
+
+.editor-grid.siedebar-shown {
   display: grid;
   grid-template-columns: 15% 15% 70%;
   grid-gap: 10px;
-}
+} 
 
 #toolbar {
   background-color: aquamarine;
@@ -58,6 +63,7 @@ h1 {
 #sidebar {
   background-color: burlywood;
   height: 100%
+  hidden;
 }
 
 #postcard {
