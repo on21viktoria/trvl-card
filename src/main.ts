@@ -1,6 +1,5 @@
 import Vue from 'vue';
 
-import 'vue-material-design-icons/styles.css';
 import vuetify from './plugins/vuetify';
 import App from './App.vue';
 

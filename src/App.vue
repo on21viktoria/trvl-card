@@ -1,13 +1,12 @@
 <template>
-  <div>
+  <v-app>
     <v-icon>{{ svgPath }}</v-icon>
     <Editor> </Editor>
-  </div>
+  </v-app>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { mdiAccount } from '@mdi/js';
 import Editor from './components/Editor.vue';
 
