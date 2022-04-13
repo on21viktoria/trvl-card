@@ -50,7 +50,7 @@ h1 {
   grid-gap: 10px;
 }
 
-.editor-grid.siedebar-shown {
+.editor-grid.sidebar-shown {
   display: grid;
   grid-template-columns: 15% 15% 70%;
   grid-gap: 10px;

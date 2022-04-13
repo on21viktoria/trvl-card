@@ -1,15 +1,15 @@
 <template>
   <v-card>
-    <v-navigation-drawer id="navigation-drawer"
+    <v-navigation-drawer
+      id="navigation-drawer"
       v-model="drawer"
       :mini-variant.sync="mini"
       permanent
       clipped
     >
       <v-list-item class="px-2">
-        
         <v-list-item-avatar>
-          <v-icon large>mdi-tooltip-edit-outline</v-icon>  
+          <v-icon large>mdi-tooltip-edit-outline</v-icon>
         </v-list-item-avatar>
 
         <v-list-item-title>Werkzeuge</v-list-item-title>
@@ -21,10 +21,10 @@
 
       <v-divider></v-divider>
 
-      <v-list >
+      <v-list>
         <v-list-item v-for="item in items" :key="item.title" link>
           <v-list-item-icon large>
-            <v-icon  class= "toolbar-icon" large>{{ item.icon }}</v-icon>
+            <v-icon class="toolbar-icon" large>{{ item.icon }}</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
@@ -60,6 +60,4 @@ export default Vue.extend({
 });
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
