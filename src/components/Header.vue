@@ -32,9 +32,9 @@
         </form>
 
         <div>
-          <button type="button" class="btn-login">
+          <button type="button" class="btn-login" style='color: #707070'>
             Login</button>
-          <button type="button" class="btn-signup">Registrieren</button>
+          <button type="button" class="btn-signup" style='color: #fff'>Registrieren</button>
           <v-icon class="carticon">mdi-cart</v-icon>
         </div>
       </div>
