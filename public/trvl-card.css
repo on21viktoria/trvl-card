@@ -134,3 +134,22 @@
    -ms-transform: scale(1.1, 1.1);
   }
 
+ .designchoice {
+     display: flex;
+ }
+
+.choice {
+      border: 1px solid black;
+      width: 50%;
+      height: 400px;
+      padding: 20px;
+      margin: 20px;
+  }
+
+ .outputfield {
+     margin-top: 20px;
+     display: flex;
+     justify-content: center;
+     font-style: bold;
+     font-size: 30px;
+ }
