@@ -1,13 +1,11 @@
 <template>
   <v-app>
-    <v-icon>{{ svgPath }}</v-icon>
     <Editor> </Editor>
   </v-app>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import { mdiAccount } from '@mdi/js';
 import Editor from './components/Editor.vue';
 
 export default Vue.extend({
@@ -16,7 +14,6 @@ export default Vue.extend({
     Editor,
   },
   data: () => ({
-    svgPath: mdiAccount,
   }),
 });
 </script>
