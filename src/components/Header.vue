@@ -4,7 +4,7 @@
       <div class="wrapper">
         <a
           href="/"
-          class="logocontainer"
+          class="logocontainer hovereffect"
         >
           <img
             alt="trvl card Logo"
@@ -31,10 +31,10 @@
             aria-label="Suche"
           />
         </form>
-          <button type="button" class="btn-login" style='color: #707070'>
+          <button type="button" class="btn-login hovereffect" style='color: #707070'>
             Login</button>
-          <button type="button" class="btn-signup" style='color: #fff'>Registrieren</button>
-          <v-icon class="carticon">mdi-cart</v-icon>
+          <button type="button" class="btn-signup hovereffect" style='color: #fff'>Registrieren</button>
+          <v-icon class="carticon hovereffect">mdi-cart</v-icon>
           <Help></Help>     
         </div>
       </div>
