@@ -1,8 +1,9 @@
+
 <template>
   <div>
     <v-app-bar app clipped-left id="app-bar">
       <div>
-        <h1>trvl card</h1>
+        <h1>trvl-card</h1>
       </div>
     </v-app-bar>
 
@@ -10,13 +11,17 @@
       <v-container fluid id="editor-container">
         <div class="editor-grid sidebar-hidden">
           <div id="toolbar">
-            <Toolbar></Toolbar>
+            <Toolbar @showSideBar="showSideBar">
+            </Toolbar>
+          </div>
+          <div v-if="sidebar">
+            <Sidebar></Sidebar>
           </div>
           <div id="postcard"></div>
         </div>
       </v-container>
     </v-main>
-
+  
     <v-footer app padless id="footer">
       <p>Hier muss der Footer eingefügt werden</p>
     </v-footer>
@@ -26,15 +31,24 @@
 <script lang="ts">
 import Vue from "vue";
 import Toolbar from "./Toolbar.vue";
+import Sidebar from './Sidebar.vue';
+import Child from './Child.vue'
 
 export default Vue.extend({
-  name: "Editor",
+  name: "Editor", 
   components: {
     Toolbar,
+    Sidebar,
+    Child
   },
   data: () => ({
-    //
+      sidebar: false
   }),
+  methods: {
+    showSideBar() {
+      this.sidebar = !this.sidebar;
+    },
+  }
 });
 </script>
 

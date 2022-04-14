@@ -22,7 +22,7 @@
       <v-divider></v-divider>
 
       <v-list>
-        <v-list-item v-for="item in items" :key="item.title" link>
+        <v-list-item v-for="item in items" :key="item.title" link @click="onClick">
           <v-list-item-icon large>
             <v-icon class="toolbar-icon" large>{{ item.icon }}</v-icon>
           </v-list-item-icon>
@@ -56,7 +56,13 @@ export default Vue.extend({
   },
   name: "Toolbar",
   components: {},
-  //
+  props: {
+  },
+  methods: {
+    onClick(){
+     this.$emit('showSideBar')
+    }
+  }
 });
 </script>
 
