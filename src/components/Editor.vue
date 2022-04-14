@@ -32,14 +32,12 @@
 import Vue from "vue";
 import Toolbar from "./Toolbar.vue";
 import Sidebar from './Sidebar.vue';
-import Child from './Child.vue'
 
 export default Vue.extend({
   name: "Editor", 
   components: {
     Toolbar,
     Sidebar,
-    Child
   },
   data: () => ({
       sidebar: false
