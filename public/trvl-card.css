@@ -2,18 +2,24 @@
     font-family: Montserrat, Verdana, Geneva 
   }
 
+  
   .body {
     min-height: 100%;
   }
 
 .firstcontainer {
-  background: rgba(255, 255, 255, 0.9);
-    position: fixed;
+  background-color: #fff;
     columns: 12;
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     padding: 20px 40px;
+    z-index: 100;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .card {
@@ -182,5 +188,19 @@
    font-weight: 500;
    opacity: 50%;
  }
- 
+
+ .welcome {
+   padding: 20px;
+ }
+
+ h1 {
+  font-size: 30px;
+}
+
+.headline {
+  padding-left: 450px;
+ display: block;
+  width: 800px;
+}
+
  

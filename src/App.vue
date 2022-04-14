@@ -5,6 +5,7 @@
     <p id="instanthelp">{{ helpText }}</p>
     </div>
     <div class="body">
+    <Welcome></Welcome>
     <DesignChoice></DesignChoice>
     </div>
     <Footer></Footer>
@@ -18,6 +19,7 @@ import Header from './components/Header.vue';
 import DesignChoice from './components/DesignChoice.vue';
 import Footer from './components/Footer.vue';
 import Help from './components/Help.vue';
+import Welcome from './components/Welcome.vue';
 
 export default Vue.extend({
   name: 'App',
@@ -27,6 +29,7 @@ export default Vue.extend({
     DesignChoice,
     Help,
     Footer,
+    Welcome,
   },
   data: () => ({ helpText: ''
   }),

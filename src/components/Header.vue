@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <div class="firstcontainer">
+    <div class="firstcontainer sticky">
       <div class="wrapper">
         <a
           href="/"
