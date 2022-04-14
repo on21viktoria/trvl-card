@@ -3,30 +3,28 @@
     <div class="designchoice">
         <div class="card" style="width: 30rem">
           <img
-            src="./../assets/images-trvl-card/Ampel_Philippe-Oursel.jpg"
+            src="./../assets/images-trvl-card/Fernsehturm_Camilla-Bundgaard.jpg"
             class="card-img-top"
             alt="..."
           />
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
+            <h5 class="card-title">Blanko-Postkarte</h5>
             <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+              Starte ohne Vorlage mit einer Blanko-Postkarte.
             </p>
             <button href="#" class="btn-signup" @click="onClick('blankoDesign')">Jetzt gestalten</button>
           </div>
         </div>
         <div class="card" style="width: 30rem">
           <img
-            src="./../assets/images-trvl-card/Ampel_Philippe-Oursel.jpg"
+            src="./../assets/images-trvl-card/Berliner-Mauer_Mateo-Krossler.jpg"
             class="card-img-top"
             alt="..."
           />
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
+            <h5 class="card-title">Large-Letter-Design</h5>
             <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+              Starte mit dem Large-Letter-Design.
             </p>
             <button href="#" class="btn-signup" @click="onClick('largeLetter')">Jetzt gestalten</button>
           </div>

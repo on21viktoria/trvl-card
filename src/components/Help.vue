@@ -3,8 +3,8 @@
       <div class="help">
       <button type="button" class="helpbutton" @click="offerHelp()">
           <v-icon class="helpicon">mdi-help-circle-outline</v-icon>
-          </button>
-        <p>{{ helpText }}</p>
+          </button>   
+        <p class="textanimation">{{ helpText }}</p>
       </div>
   </div>
 </template>

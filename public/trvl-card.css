@@ -2,7 +2,6 @@
     font-family: Montserrat, Verdana, Geneva 
   }
 
-  
   .body {
     min-height: 100%;
   }
@@ -83,7 +82,7 @@
 
   .buttons {
     display: flex;
-    flex-wrap: flex;
+    flex-wrap: wrap;
     width: 60%;
     justify-content: flex-end;
   }
@@ -101,7 +100,7 @@
 
   .btn-signup {
     background: #ff4e00;
-    color: #fff;
+    color: #fff !important;
     padding: 10px;
     border-radius: 4px;
     font-weight: 500;
@@ -182,19 +181,16 @@
  .help {
   display: flex;
   justify-content: flex-end;
-  margin: 20px;
+  position: fixed;
 }
 
- #instanthelp {
-   background-color: #707070;
-   color: white;
-   padding: 20px;
-   font-weight: 500;
-   opacity: 50%;
- }
+.helpbutton {
+  margin: 18px;
+}
 
  .welcome {
    padding: 20px;
+   margin-top: 100px;
  }
 
  h1 {
@@ -204,7 +200,20 @@
 .headline {
   padding-left: 450px;
  display: block;
-  width: 800px;
+ width: 75%;
 }
 
+.textanimation {
+  font-size: 15px; 
+  margin-left: 15px;
+  margin-top: 20px;
+  animation-name: helpslider;
+  animation-duration: 8s;
+  animation-iteration-count: 1;
+}
+
+@keyframes helpslider {
+  from { opacity: 0% }
+  to { opacity: 100% }
+}
  
