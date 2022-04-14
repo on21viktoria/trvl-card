@@ -9,15 +9,26 @@
 
     <v-main>
       <v-container fluid id="editor-container">
-        <div class="editor-grid sidebar-hidden">
+        <div v-if="!sidebar" class="editor-grid sidebar-hidden">
           <div id="toolbar">
             <Toolbar @showSideBar="showSideBar">
             </Toolbar>
           </div>
-          <div v-if="sidebar">
-            <Sidebar></Sidebar>
-          </div>
           <div id="postcard"></div>
+        </div>
+        <div v-if="sidebar" class="editor-grid sidebar-shown">
+          <div id="toolbar">
+            <Toolbar  @showSideBar="showSideBar">
+            </Toolbar>
+          </div>
+          <!-- <div id="sidebar">
+          </div> -->
+          <div>
+            <Sidebar @hideSideBar="showSideBar"></Sidebar>
+          </div>
+          <div id="postcard">
+          
+          </div>
         </div>
       </v-container>
     </v-main>
@@ -40,12 +51,15 @@ export default Vue.extend({
     Sidebar,
   },
   data: () => ({
-      sidebar: false
+      sidebar: false,
   }),
   methods: {
     showSideBar() {
       this.sidebar = !this.sidebar;
     },
+    hideSideBar() {
+      this.sidebar = !this.sidebar;
+    }
   }
 });
 </script>
@@ -59,28 +73,30 @@ h1 {
 .editor-grid.sidebar-hidden {
   display: grid;
   grid-template-columns: 15% 85%;
-  grid-gap: 10px;
+  /*grid-gap: 10px;*/
 }
 
 .editor-grid.sidebar-shown {
   display: grid;
-  grid-template-columns: 15% 15% 70%;
-  grid-gap: 10px;
+  grid-template-columns: auto 25% 75%;
+  /* grid-gap: 10px; */
 } 
 
 #toolbar {
   background-color: aquamarine;
   height: 100%
 }
+
 #sidebar {
-  background-color: burlywood;
-  height: 100%
-  hidden;
+  background-color: mediumpurple;
+  height: 100%;
+  width: 100%;
 }
 
 #postcard {
   background-color: burlywood;
-  height: 100%
+  height: 100%;
+  margin-left: 10px;
 }
 
 #app-bar {
@@ -90,6 +106,7 @@ h1 {
 #editor-container {
   background-color: lightpink;
   height: 800px;
+  max-width: 100%;
 }
 
 #footer > p {

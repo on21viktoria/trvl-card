@@ -7,12 +7,12 @@
       permanent
       clipped
     >
-      <v-list-item class="px-2">
+      <v-list-item class="px-2 py-2">
         <v-list-item-avatar>
           <v-icon large>mdi-tooltip-edit-outline</v-icon>
         </v-list-item-avatar>
 
-        <v-list-item-title>Werkzeuge</v-list-item-title>
+        <v-list-item-title style= "font-size:16px">Werkzeuge</v-list-item-title>
 
         <v-btn icon @click.stop="mini = !mini">
           <v-icon>mdi-chevron-left</v-icon>
@@ -22,7 +22,7 @@
       <v-divider></v-divider>
 
       <v-list>
-        <v-list-item v-for="item in items" :key="item.title" link @click="onClick">
+        <v-list-item v-for="item in items" :key="item.title" link @click="onClick" @click.stop="mini = !mini">
           <v-list-item-icon large>
             <v-icon class="toolbar-icon" large>{{ item.icon }}</v-icon>
           </v-list-item-icon>
@@ -60,10 +60,14 @@ export default Vue.extend({
   },
   methods: {
     onClick(){
-     this.$emit('showSideBar')
+     this.$emit('showSideBar');
+     
     }
   }
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+#navigation-drawer {
+  border-right: solid rgba(112, 112, 112, 0.4) 1px;
+}</style>
