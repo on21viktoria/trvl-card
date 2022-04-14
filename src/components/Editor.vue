@@ -11,14 +11,14 @@
       <v-container fluid id="editor-container">
         <div v-if="!sidebar" class="editor-grid sidebar-hidden">
           <div id="toolbar">
-            <Toolbar @showSideBar="showSideBar">
+            <Toolbar @showSideBar="showSideBar" class="toolbar">
             </Toolbar>
           </div>
           <div id="postcard"></div>
         </div>
         <div v-if="sidebar" class="editor-grid sidebar-shown">
           <div id="toolbar">
-            <Toolbar  @showSideBar="showSideBar">
+            <Toolbar  @showSideBar="showSideBar" class="toolbar">
             </Toolbar>
           </div>
           <!-- <div id="sidebar">
@@ -70,6 +70,10 @@ h1 {
   text-align: center;
 }
 
+.toolbar {
+  height: 100%;
+}
+
 .editor-grid.sidebar-hidden {
   display: grid;
   grid-template-columns: 15% 85%;
@@ -83,18 +87,21 @@ h1 {
 } 
 
 #toolbar {
-  background-color: aquamarine;
-  height: 100%
+  border: solid #707070 1px;
+  /* background-color: aquamarine; */
+  height: 100%;
 }
 
 #sidebar {
-  background-color: mediumpurple;
+  border: solid #707070 1px;
+  /* background-color: mediumpurple; */
   height: 100%;
   width: 100%;
 }
 
 #postcard {
-  background-color: burlywood;
+  border: solid #707070 1px;
+  background-color: rgba(112, 112, 112, 0.1);
   height: 100%;
   margin-left: 10px;
 }
@@ -104,7 +111,8 @@ h1 {
 }
 
 #editor-container {
-  background-color: lightpink;
+  border: solid #707070 1px;
+  background-color: white;
   height: 800px;
   max-width: 100%;
 }

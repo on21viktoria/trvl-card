@@ -7,7 +7,7 @@
       permanent
       clipped
     >
-      <v-list-item class="px-2 py-2">
+      <v-list-item class="px-2 py-1">
         <v-list-item-avatar>
           <v-icon large>mdi-tooltip-edit-outline</v-icon>
         </v-list-item-avatar>
