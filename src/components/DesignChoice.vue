@@ -1,10 +1,9 @@
 <template>
   <div>
     <div class="designchoice">
-      <div>
-        <div class="card" style="width: 18rem">
+        <div class="card" style="width: 30rem">
           <img
-            src="./src/assets/images-trvl-card/Ampel_Philippe-Oursel.jpg"
+            src="./../assets/images-trvl-card/Ampel_Philippe-Oursel.jpg"
             class="card-img-top"
             alt="..."
           />
@@ -14,43 +13,25 @@
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <button href="#" class="btn-signup" @click="onClick('blankoDesign')">Jetzt gestalten</button>
           </div>
         </div>
-        <!-- <b-card
-    title="Large-Letter-Design"
-    src="src/assets/images-trvl-card/Ampel_Philippe-Oursel.jpg"
-    img-alt="Image"
-    img-top
-    tag="article"
-    style="max-width: 40rem;"
-    class="mb-2"
-  >
-    <b-card-text>
-      Gestalte deine Postkarte auf Grundlage von einem Blanko-Design. 
-    </b-card-text>
-
-    <button href="#" class="btn-signup" @click="onClick('blankoDesign')">Jetzt gestalten</button>
-  </b-card>
-    </div>
-    <div>
-      <b-card
-    title="Blanko-Postkarte"
-    img-src="src/assets/images-trvl-card/Berliner-Mauer_Mateo-Krossler.jpg"
-    img-alt="Image"
-    img-top
-    tag="article"
-    style="max-width: 40rem;"
-    class="mb-2"
-  >
-    <b-card-text>
-      Some quick example text to build on the card title and make up the bulk of the card's content.
-    </b-card-text>
-
-    <button href="#" class="btn-signup" @click="onClick('largeLetterDesign')">Jetzt gestalten</button>
-  </b-card> -->
+        <div class="card" style="width: 30rem">
+          <img
+            src="./../assets/images-trvl-card/Ampel_Philippe-Oursel.jpg"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+            <button href="#" class="btn-signup" @click="onClick('largeLetter')">Jetzt gestalten</button>
+          </div>
+        </div>
       </div>
-    </div>
     <div class="outputfield">
       <p>{{ text }}</p>
     </div>
