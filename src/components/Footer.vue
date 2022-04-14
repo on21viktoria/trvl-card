@@ -53,11 +53,9 @@
         <div class="col-4 offset-1">
           <form>
             <h5>Verpasse keine Neuigkeiten!</h5>
-            <p>Melde dich zu unserem Newsletter an und erhalte 10% auf deine erste Postkarten-Bestellung bei trvl card.</p>
+            <p>Melde dich zum Newsletter an und erhalte 10% auf deine erste Bestellung.</p>
             <div class="d-flex w-100 gap-2">
-              <label for="newsletter1" class="visually-hidden"
-                >Email-Adresse</label
-              >
+              <label for="newsletter1" class="visually-hidden">Email-Adresse</label>
               <input
                 id="newsletter1"
                 type="text"
@@ -75,19 +73,19 @@
         <ul class="list-unstyled d-flex">
           <li class="ms-3">
             <a class="link-dark" href="#"
-              ><svg class="bi" width="24" height="24">
+              >Text<svg class="bi" width="24" height="24">
                 <use xlink:href="#twitter" /></svg
             ></a>
           </li>
           <li class="ms-3">
             <a class="link-dark" href="#"
-              ><svg class="bi" width="24" height="24">
+              >Text<svg class="bi" width="24" height="24">
                 <use xlink:href="#instagram" /></svg
             ></a>
           </li>
           <li class="ms-3">
             <a class="link-dark" href="#"
-              ><svg class="bi" width="24" height="24">
+              >Text<svg class="bi" width="24" height="24">
                 <use xlink:href="#facebook" /></svg
             ></a>
           </li>
@@ -99,9 +97,14 @@
 
 <script lang="ts">
 /* eslint-disable */
-import { defineComponent } from "vue";
+import Vue from 'vue';
+import BootstrapVue from 'bootstrap-vue';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
 
-export default defineComponent({
+Vue.use(BootstrapVue);
+
+export default Vue.extend({
   name: "Footer",
 });
 </script>
@@ -119,7 +122,7 @@ export default defineComponent({
         color: #fff;
         border: none;
     }
-
+‚
     .btn-primary:hover {
         background-color:#ff4e00;
         color: black;

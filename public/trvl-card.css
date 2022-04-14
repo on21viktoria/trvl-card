@@ -3,6 +3,9 @@
   }
 
 .firstcontainer {
+    columns: 12;
+    display: flex;
+    flex-wrap: wrap;
     width: 100%;
     padding: 20px 40px;
 }
@@ -12,9 +15,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center; 
-    justify-content: space-around;
-    align-self: flex-start;
-  
+    justify-content: flex-start;
   }
 
 .logocontainer {
@@ -42,20 +43,30 @@
   }
 
   .nav {
-    columns: 9;
     margin-bottom: .5rem;
-    justify-content: center;
+    justify-content: flex-start;
     list-style: none;
   }
   
-  .nav-link {
+  .item {
       background-color: #fff;
       color: #707070;
       font-weight: 600;   
-      padding: .5rem;
+      padding: 30px;
       text-decoration: none;
   }
 
+  .item:hover {
+    color: #707070
+  }
+
+  .buttons {
+    display: flex;
+    flex-wrap: flex;
+    width: 60%;
+    justify-content: flex-end;
+  }
+  
   .searchbar {
     border: 0.1px solid #707070;
     width: 400px;

@@ -17,12 +17,13 @@
         <ul
           class="nav"
         >
-          <li><a href="#" class="nav-link">HOME</a></li>
-          <li><a href="#" class="nav-link">SHOP</a></li>
-          <li><a href="#" class="nav-link">KONTAKT</a></li>
+          <li><a href="#" class="item">HOME</a></li>
+          <li><a href="#" class="item">SHOP</a></li>
+          <li><a href="#" class="item">KONTAKT</a></li>
         </ul>
 
-        <form class="searchbar">
+        <div class="buttons">
+          <form class="searchbar">
           <input
             type="search"
             class="inputfield"
@@ -30,8 +31,6 @@
             aria-label="Suche"
           />
         </form>
-
-        <div>
           <button type="button" class="btn-login" style='color: #707070'>
             Login</button>
           <button type="button" class="btn-signup" style='color: #fff'>Registrieren</button>
