@@ -164,3 +164,17 @@
      font-style: bold;
      font-size: 30px;
  }
+
+ .help {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+}
+
+ #instanthelp {
+   background-color: #707070;
+   color: white;
+   padding: 20px;
+   font-weight: 500;
+   opacity: 50%;
+ }
