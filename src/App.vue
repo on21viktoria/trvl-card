@@ -1,9 +1,6 @@
 <template>
   <div>
     <Header></Header>
-    <div class="help">
-    <p id="instanthelp">{{ helpText }}</p>
-    </div>
     <div class="body">
     <Welcome></Welcome>
     <DesignChoice></DesignChoice>
@@ -30,17 +27,5 @@ export default Vue.extend({
     Help,
     Footer,
     Welcome,
-  },
-  data: () => ({ helpText: ''
-  }),
-  methods: {
-    offerInstantHelp() {
-      this.helpText = 'Brauchst du Hilfe?'
-    }
-    },
-    beforeMount() {
-  this.offerInstantHelp() 
-  } 
-  } 
-  );
+  }});
 </script>

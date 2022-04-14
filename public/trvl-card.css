@@ -7,6 +7,10 @@
     min-height: 100%;
   }
 
+.socialmedia {
+  margin: 5px;
+}
+
 .firstcontainer {
   background-color: #fff;
     columns: 12;

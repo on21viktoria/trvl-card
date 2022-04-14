@@ -6,8 +6,10 @@
           <h5>Über uns</h5>
           <p>Wir sind das Team der Kniffeligen Gruppe vom Studiengang ON21!</p>
           <h5>Folge uns!</h5>
-        </div>
-
+          <v-icon class="socialmedia">mdi-facebook</v-icon>        
+          <v-icon class="socialmedia">mdi-instagram</v-icon>
+          <v-icon class="socialmedia">mdi-twitter</v-icon>
+          </div>
         <div class="col-2">
           <h5>Information</h5>
           <ul class="nav flex-column">
@@ -62,7 +64,7 @@
                 class="form-control"
                 placeholder="E-Mail-Adresse"
               />
-              <button class="btn btn-primary" type="button">Abonnieren</button>
+              <button class="btn-signup" type="button">Abonnieren</button>
             </div>
           </form>
         </div>
@@ -122,7 +124,7 @@ export default Vue.extend({
         color: #fff;
         border: none;
     }
-‚
+
     .btn-primary:hover {
         background-color:#ff4e00;
         color: black;
