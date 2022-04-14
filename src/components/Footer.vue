@@ -14,40 +14,40 @@
           <h5>Information</h5>
           <ul class="nav flex-column">
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-muted">Profile</a>
+              <a href="#" class="nav-link p-0 text-muted">Bestellung</a>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-muted">Über uns</a>
+              <a href="#" class="nav-link p-0 text-muted">Versand</a>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-muted">Kontakt</a>
+              <a href="#" class="nav-link p-0 text-muted">Rückgabe</a>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-muted">Deine Adressen</a>
+              <a href="#" class="nav-link p-0 text-muted">FAQ</a>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-muted">Umtausch</a>
+              <a href="#" class="nav-link p-0 text-muted">Impressum</a>
             </li>
           </ul>
         </div>
 
         <div class="col-2">
-          <h5>Rückgabe</h5>
+          <h5>Inspiration</h5>
           <ul class="nav flex-column">
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-muted">FAQs</a>
+              <a href="#" class="nav-link p-0 text-muted">Unsere Mission</a>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-muted">Größen</a>
+              <a href="#" class="nav-link p-0 text-muted">Nachhaltigkeit</a>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-muted">Kontakt</a>
+              <a href="#" class="nav-link p-0 text-muted">Galerie</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a href="#" class="nav-link p-0 text-muted">Blog</a>
             </li>
             <li class="nav-item mb-2">
               <a href="#" class="nav-link p-0 text-muted">Karriere</a>
-            </li>
-            <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-muted">Impressum</a>
             </li>
           </ul>
         </div>
