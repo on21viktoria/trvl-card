@@ -2,7 +2,13 @@
     font-family: Montserrat, Verdana, Geneva 
   }
 
+  .body {
+    min-height: 100%;
+  }
+
 .firstcontainer {
+  background: rgba(255, 255, 255, 0.9);
+    position: fixed;
     columns: 12;
     display: flex;
     flex-wrap: wrap;
@@ -147,15 +153,8 @@
 
  .designchoice {
      display: flex;
+     justify-content: center;
  }
-
-.choice {
-      border: 1px solid black;
-      width: 50%;
-      height: 400px;
-      padding: 20px;
-      margin: 20px;
-  }
 
  .outputfield {
      margin-top: 20px;
@@ -178,3 +177,5 @@
    font-weight: 500;
    opacity: 50%;
  }
+ 
+ 

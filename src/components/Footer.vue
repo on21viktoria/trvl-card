@@ -73,19 +73,19 @@
         <ul class="list-unstyled d-flex">
           <li class="ms-3">
             <a class="link-dark" href="#"
-              >Text<svg class="bi" width="24" height="24">
+              ><svg class="bi" width="24" height="24">
                 <use xlink:href="#twitter" /></svg
             ></a>
           </li>
           <li class="ms-3">
             <a class="link-dark" href="#"
-              >Text<svg class="bi" width="24" height="24">
+              ><svg class="bi" width="24" height="24">
                 <use xlink:href="#instagram" /></svg
             ></a>
           </li>
           <li class="ms-3">
             <a class="link-dark" href="#"
-              >Text<svg class="bi" width="24" height="24">
+              ><svg class="bi" width="24" height="24">
                 <use xlink:href="#facebook" /></svg
             ></a>
           </li>
@@ -111,7 +111,7 @@ export default Vue.extend({
 
 <style scoped>
     .container-fluid {
-        position: absolute;
+        margin-bottom: -310px;
         padding: 20px 40px 0 40px;
         bottom: 0;
         width: 100%;

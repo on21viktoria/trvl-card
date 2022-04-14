@@ -34,7 +34,8 @@
           <button type="button" class="btn-login" style='color: #707070'>
             Login</button>
           <button type="button" class="btn-signup" style='color: #fff'>Registrieren</button>
-          <v-icon class="carticon">mdi-cart</v-icon>        
+          <v-icon class="carticon">mdi-cart</v-icon>
+          <Help></Help>     
         </div>
       </div>
     </div>
@@ -44,8 +45,10 @@
 <script lang="ts">
 /* eslint-disable */
 import Vue from 'vue';
+import Help from './Help.vue';
 
 export default Vue.extend({
   name: 'Header',
+  components: { Help }
 });
 </script>

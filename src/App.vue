@@ -1,11 +1,12 @@
 <template>
   <div>
     <Header></Header>
-    <Help></Help>
     <div class="help">
     <p id="instanthelp">{{ helpText }}</p>
     </div>
+    <div class="body">
     <DesignChoice></DesignChoice>
+    </div>
     <Footer></Footer>
   </div>
 </template>
