@@ -3,7 +3,7 @@
     <v-form v-model="valid">
       <v-container>
         <v-col cols="12" md="4">
-          <v-text-field
+          <v-text-field class="textfield"
             v-model="firstname"
             :rules="firstNameRules"
             label="Vorname"
@@ -30,36 +30,27 @@
         </v-col>
 
         <v-col cols="12" md="4"> 
-            <Dropdown
-    :options="[{ id: 1, name: 'Option 1'}, { id: 2, name: 'Option 2'}]"
-    v-on:selected="validateSelection"
-    v-on:filter="getDropdownValues"
-    :disabled="false"
-    name="zipcode"
-    :maxItem="10"
-    placeholder="Please select an option">
-</Dropdown>
-          <!-- <v-text-field
-            v-model="address"
-            :rules="addressRules"
+          <v-text-field
+            v-model="country"
+            :rules="countryRules"
             label="Land"
             required
-          ></v-text-field> -->
+          ></v-text-field>
         </v-col>
 
           <v-row>
             <v-col cols="12" md="4">
               <v-text-field
-                v-model="address"
-                :rules="addressRules"
+                v-model="postalcode"
+                :rules="postalcodeRules"
                 label="Postleitzahl"
                 required
               ></v-text-field>
             </v-col>
             <v-col cols="12" md="4">
               <v-text-field
-                v-model="address"
-                :rules="addressRules"
+                v-model="city"
+                :rules="cityRules"
                 label="Stadt"
                 required
               ></v-text-field>
@@ -68,16 +59,16 @@
         <v-row>
           <v-col cols="12" md="4">
             <v-text-field
-              v-model="address"
-              :rules="addressRules"
+              v-model="street"
+              :rules="streetRules"
               label="Straße"
               required
             ></v-text-field>
           </v-col>
           <v-col cols="12" md="4">
             <v-text-field
-              v-model="address"
-              :rules="addressRules"
+              v-model="housenumber"
+              :rules="housenumberRules"
               label="Hausnummer"
               required
             ></v-text-field>
@@ -88,24 +79,18 @@
   </div>
 </template>
 
-<script type="text/javascript" src="node_modules/vuejs/dist/vue.min.js"></script>
-<script type="text/javascript" src="node_modules/vue-simple-search-dropdown/dist/vue-simple-search-dropdown.min.js"></script>
-
 <script lang="ts">
 import Vue from "vue";
-import Dropdown from "vue-simple-search-dropdown";
-
-Vue.use(Dropdown);
 
 export default Vue.extend({
   name: "Contactform",
   data: () => ({
     valid: false,
     firstname: "",
-    lastname: "",
     firstNameRules: [
       (v: string) => !!v || "Bitte gib deinen Vornamen ein.",
     ],
+    lastname: "",
     lastNameRules: [
       (v: string) => !!v || "Bitte gib deinen Nachnamen ein.",
     ],
@@ -114,6 +99,29 @@ export default Vue.extend({
       (v: string) => !!v || "Bitte gib eine E-Mail-Adresse ein.",
       (v: string) => /.+@.+/.test(v) || "E-mail must be valid",
     ],
+    country: "",
+    countryRules: [(v: string) => !!v || "Bitte gib ein Land ein.",
+    ],
+    postalcode: "",
+    postalcodeRules: [
+    (v: string) => !!v || "Bitte gib eine Postleitzahl ein.",
+    ],
+    city: "",
+    cityRules: [(v: string) => !!v || "Bitte gib eine Stadt ein.",
+    ],
+    street: "",
+    streetRules: [(v: string) => !!v || "Bitte gib eine Straße ein.",
+    ],
+    housenumber: "",
+    housenumberRules: [
+    (v: string) => !!v || "Bitte gib eine Hausnummer ein.",
+    ]
   }),
 });
 </script>
+
+<style scoped>
+.textfield:focus {
+    color: #ff4e00;
+}
+</style>
