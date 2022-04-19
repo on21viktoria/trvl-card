@@ -1,9 +1,14 @@
 <template>
-  <div>
+<div>
+    <h1>CHECKOUT</h1>
+  <div class="checkout-body">
+    <div class="address">
+    <h2>Empfängeradresse eingeben</h2>
     <v-form v-model="valid">
-      <v-container>
-        <v-col cols="12" md="4">
-          <v-text-field class="textfield"
+      <v-container class="formcontainer">
+        <v-col class="columns" cols="12" md="6">
+          <v-text-field 
+            class="textfield"
             v-model="firstname"
             :rules="firstNameRules"
             label="Vorname"
@@ -11,7 +16,7 @@
           ></v-text-field>
         </v-col>
 
-        <v-col cols="12" md="4">
+        <v-col class="columns" cols="12" md="6">
           <v-text-field
             v-model="lastname"
             :rules="lastNameRules"
@@ -20,7 +25,7 @@
           ></v-text-field>
         </v-col>
 
-        <v-col cols="12" md="4">
+        <v-col class="columns" cols="12" md="6">
           <v-text-field
             v-model="email"
             :rules="emailRules"
@@ -29,17 +34,20 @@
           ></v-text-field>
         </v-col>
 
-        <v-col cols="12" md="4"> 
-          <v-text-field
-            v-model="country"
-            :rules="countryRules"
-            label="Land"
-            required
-          ></v-text-field>
+        <v-col class="columns" cols="12" md="6"> 
+          <v-select
+          v-model="country"
+          :items="states"
+          :menu-props="{ maxHeight: '400' }"
+          label="Land"
+          single
+        :rules="countryRules"
+        required
+          ></v-select>
         </v-col>
 
           <v-row>
-            <v-col cols="12" md="4">
+            <v-col cols="12" md="5">
               <v-text-field
                 v-model="postalcode"
                 :rules="postalcodeRules"
@@ -47,7 +55,7 @@
                 required
               ></v-text-field>
             </v-col>
-            <v-col cols="12" md="4">
+            <v-col cols="12" md="5">
               <v-text-field
                 v-model="city"
                 :rules="cityRules"
@@ -57,7 +65,7 @@
             </v-col>
           </v-row>
         <v-row>
-          <v-col cols="12" md="4">
+          <v-col cols="12" md="5">
             <v-text-field
               v-model="street"
               :rules="streetRules"
@@ -65,7 +73,7 @@
               required
             ></v-text-field>
           </v-col>
-          <v-col cols="12" md="4">
+          <v-col cols="12" md="5">
             <v-text-field
               v-model="housenumber"
               :rules="housenumberRules"
@@ -76,7 +84,41 @@
         </v-row>
       </v-container>
     </v-form>
-  </div>
+    <div class="saveaddress">
+    <input type="checkbox" name="Addresse speichern" value="saveaddress" class="checkbox">
+    <label for="saveaddress">Addresse speichern</label>
+    </div>
+    <div class="checkoutbuttons">
+        <button type="button" id="save">SICHERN & ZURÜCK</button>
+        <button type="button" id="pay">ZUR ZAHLUNG</button>    
+    </div>
+    </div>
+    <div class="order">
+        <h2>Deine Bestellung</h2>
+        <div class="orderwrapper">
+        <div class="imgcontainer">
+        <img src="./../assets/logo_trvl.png" width=50px height=50px/>
+        </div>
+        <ul class="ordersumup">
+        <li class="ordertext">Postkarte Big Letter Design "California"</li>
+        <li class="price">3,50€</li>
+        </ul>
+        </div>
+        <div class="costwrapper">
+        <ul class="costs" id="costtext">
+            <li>Kosten</li>
+            <li>Porto</li> 
+            <li id="sum">Gesamt</li>       
+        </ul>
+        <ul class="costs">
+            <li>3,50€</li>
+            <li>0,80€</li>
+            <li id="totalprice">4,30€</li>
+        </ul>
+        </div>
+        </div>
+        </div>
+    </div>
 </template>
 
 <script lang="ts">
@@ -99,9 +141,10 @@ export default Vue.extend({
       (v: string) => !!v || "Bitte gib eine E-Mail-Adresse ein.",
       (v: string) => /.+@.+/.test(v) || "E-mail must be valid",
     ],
-    country: "",
+    country: [],
     countryRules: [(v: string) => !!v || "Bitte gib ein Land ein.",
     ],
+    states: ['Deutschland', 'Österreich', 'Schweiz'],
     postalcode: "",
     postalcodeRules: [
     (v: string) => !!v || "Bitte gib eine Postleitzahl ein.",
@@ -114,14 +157,139 @@ export default Vue.extend({
     ],
     housenumber: "",
     housenumberRules: [
-    (v: string) => !!v || "Bitte gib eine Hausnummer ein.",
+    (v: string) => !!v || "Bitte gib eine Hausnummer ein.", 
     ]
   }),
 });
 </script>
 
 <style scoped>
-.textfield:focus {
+* {
+    font-family: Montserrat;
+}
+
+.checkout-body {
+    display: flex;
+    margin: 20px;
+}
+
+.address {
+    width: 70%;
+    border-right: 0.5px solid #f1f1f1;
+}
+
+.order {
+    width: 30%;
+}
+
+h1 {
+    text-align: left;
+    margin: 50px 0px 10px 40px;
+}
+
+h2 {
+    text-align: left;
+    margin: 10px 10px 10px 15px;
+    padding: 20px;
+    font-size: 25px;
+    background-color: #f1f1f1;
+}
+
+.columns {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.formcontainer {
+    padding: 20px;
+}
+
+.orderwrapper {
+    display: flex;
+    align-content: left;
+    width: 100%;
+    height: 30%;
+    margin-top: 30px;
+    border-bottom: 0.5px solid #f1f1f1;
+}
+
+.imgcontainer {
+    display: flex;
+    width: 100px;
+    height: 100px; 
+    background-color: #f1f1f1;
+    padding: 20px;
+    margin: 15px; 
+}
+
+.ordersumup {
+    list-style: none;
+    text-align: left; 
+    margin-top: 25px; 
+}
+
+.ordersumup > li {
+    margin: 10px; 
+}
+
+.price {
     color: #ff4e00;
+    font-weight: 500;
+}
+
+.costs {
+    text-align: left;
+    list-style: none;
+    margin-top: 60px;
+}
+
+#costtext {
+    margin-right: 350px; 
+}
+
+.costwrapper {
+    display: flex;
+}
+
+#sum {
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+#totalprice {
+    font-weight: 700;
+    color: #ff4e00;
+    margin-top: 20px; 
+}
+
+.saveaddress, .checkoutbuttons {
+    display: flex;
+    align-content: left;
+    margin: 20px;
+    }
+
+.checkoutbuttons > button {
+    margin: 20px 80px 0 0;
+    padding: 15px 30px 15px 30px;
+    font-weight: 700;
+    border-radius: 4px;
+}    
+
+#save {
+   border: 1px solid black; 
+}
+
+#pay {
+    background-color: black;
+    color: #fff;
+}
+
+.checkbox {
+    margin: 4px 10px 4px 0px;
+}
+
+.v-text-field__slot::after {
+    color: #1da2a9 !important; 
+
 }
 </style>
