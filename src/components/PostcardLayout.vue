@@ -22,6 +22,10 @@
         </div> 
         <div class="address-field">
           <p>Dieser Platz muss frei bleiben.</p>
+          <hr class="address-separator"/>
+          <hr class="address-separator"/>
+          <hr class="address-separator"/>
+          <hr class="address-separator"/>
         </div>
         </v-container> 
         <div class="codierzone">
@@ -48,9 +52,7 @@ export default Vue.extend({
 </script>
 
 <style>
-/* *{
-  font-family: Montserrat;
-} */
+
 .postcard {
   position: relative;
   background-color: white;
@@ -99,14 +101,23 @@ export default Vue.extend({
 }
 
 .frankierzone {
-  background-color: darkturquoise;
+  background-color: rgba(0, 206, 209, 0.1);
   height: 166px;
   width: 100%;
 }
 .address-field {
-  background-color: rgb(255,78,0) ;
+  background-color: rgba(255,78,0,0.1) ;
   height: 210px;
   width: 100%;
+  padding-top: 25px;
+}
+
+.address-separator {
+  max-width: 100%;
+  text-align: center;
+  height: 1px;
+  border-color: rgb(112,112,112);
+  margin: 30px 15px;
 }
 
 #rückseite {
