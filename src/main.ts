@@ -5,7 +5,6 @@ import vuetify from './plugins/vuetify';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import VueRouter from 'vue-router';
-import HelloWorld from './components/HelloWorld.vue';
 
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
