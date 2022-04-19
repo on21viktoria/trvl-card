@@ -18,10 +18,9 @@
         </v-container>
         <v-container fluid id="container-rückseite-rechts">
         <div class="frankierzone">
-          <p>Dieser Platz muss frei bleiben.</p>
+          <img class="briefmarke" src="../assets/Briefmarke.png" alt="trvl-card Briefmarke">
         </div> 
         <div class="address-field">
-          <p>Dieser Platz muss frei bleiben.</p>
           <hr class="address-separator"/>
           <hr class="address-separator"/>
           <hr class="address-separator"/>
@@ -52,7 +51,9 @@ export default Vue.extend({
 </script>
 
 <style>
-
+*{
+  font-family: Montserrat;
+}
 .postcard {
   position: relative;
   background-color: white;
@@ -96,17 +97,27 @@ export default Vue.extend({
 
 .codierzone {
   width: 100%;
-  background-color: rgba(112,112,112, 0.2);
-  background-image: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(112,112,112,0.5) 5px, rgba(112,112,112,0.5) 10px);
+  background-color: rgba(112,112,112, 0.1);
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(112,112,112,0.1) 4px, rgba(112,112,112,0.1) 5px);
 }
 
 .frankierzone {
-  background-color: rgba(0, 206, 209, 0.1);
+  /* background-color: rgba(0, 206, 209, 0.1); */
   height: 166px;
   width: 100%;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+.briefmarke {
+  width: 65px;
+  /* position: absolute; */
+  right: 0;
+  top: 0;
+  float: right;
 }
 .address-field {
-  background-color: rgba(255,78,0,0.1) ;
+  /* background-color: rgba(255,78,0,0.1) ; */
   height: 210px;
   width: 100%;
   padding-top: 25px;
