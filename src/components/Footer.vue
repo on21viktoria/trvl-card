@@ -6,10 +6,10 @@
           <h5>Über uns</h5>
           <p>Wir sind das Team der Kniffeligen Gruppe vom Studiengang ON21!</p>
           <h5>Folge uns!</h5>
-          <v-icon class="socialmedia">mdi-facebook</v-icon>        
+          <v-icon class="socialmedia">mdi-facebook</v-icon>
           <v-icon class="socialmedia">mdi-instagram</v-icon>
           <v-icon class="socialmedia">mdi-twitter</v-icon>
-          </div>
+        </div>
         <div class="col-2">
           <h5>Information</h5>
           <ul class="nav flex-column">
@@ -55,16 +55,21 @@
         <div class="col-4 offset-1">
           <form>
             <h5>Verpasse keine Neuigkeiten!</h5>
-            <p>Melde dich zum Newsletter an und erhalte 10% auf deine erste Bestellung.</p>
+            <p>
+              Melde dich zum Newsletter an und erhalte 10% auf deine erste
+              Bestellung.
+            </p>
             <div class="d-flex w-100 gap-2">
-              <label for="newsletter1" class="visually-hidden">Email-Adresse</label>
+              <label for="newsletter1" class="visually-hidden"
+                >Email-Adresse</label
+              >
               <input
                 id="newsletter1"
                 type="text"
                 class="form-control"
                 placeholder="E-Mail-Adresse"
               />
-              <button class="btn-signup" type="button">Abonnieren</button>
+              <button class="button-signup" type="button">Abonnieren</button>
             </div>
           </form>
         </div>
@@ -99,10 +104,10 @@
 
 <script lang="ts">
 /* eslint-disable */
-import Vue from 'vue';
-import BootstrapVue from 'bootstrap-vue';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-vue/dist/bootstrap-vue.css';
+import Vue from "vue";
+import BootstrapVue from "bootstrap-vue";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
 
 Vue.use(BootstrapVue);
 
@@ -112,25 +117,25 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-    .container-fluid {
-        margin-bottom: -310px;
-        padding: 20px 40px 0 40px;
-        bottom: 0;
-        width: 100%;
-    }
+.container-fluid {
+  margin-bottom: -310px;
+  padding: 20px 40px 0 40px;
+  bottom: 0;
+  width: 100%;
+}
 
-    .btn-primary {
-        background-color: #ff4e00;
-        color: #fff;
-        border: none;
-    }
+.btn-primary {
+  background-color: #ff4e00;
+  color: #fff;
+  border: none;
+}
 
-    .btn-primary:hover {
-        background-color:#ff4e00;
-        color: black;
-    }
+.btn-primary:hover {
+  background-color: #ff4e00;
+  color: black;
+}
 
-    .col-2 {
-        text-align: left;
-    }
+.col-2 {
+  text-align: left;
+}
 </style>

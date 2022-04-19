@@ -5,14 +5,16 @@ import vuetify from './plugins/vuetify';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import VueRouter from 'vue-router';
-import HelloWorld from './components/HelloWorld.vue';
+import Home from './views/Home.vue';
+import Editor from './views/Editor.vue';
 
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/helloworld', component: HelloWorld },
+  { path: '/', component: Home },
+  { path: '/editor', component: Editor}
 ]
 const router = new VueRouter({
   routes

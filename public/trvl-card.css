@@ -95,6 +95,7 @@
     padding: 10px;
     border-radius: 4px;
     font-weight: 500;
+    text-decoration-line: none;
 }
 
 .button-login {
@@ -188,4 +189,9 @@
   -webkit-transform: scale(1.1, 1.1);
   -o-transform: scale(1.1, 1.1);
   -ms-transform: scale(1.1, 1.1);
+}
+
+.editor-page {
+  padding: 20px;
+  margin-top: 100px;
 }
