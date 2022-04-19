@@ -38,7 +38,7 @@ row-gap: 10px;
 padding: 10px;
 ;} 
 
-.Photogrid:hover {
+img:hover {
     opacity: 30%;
 }
 
