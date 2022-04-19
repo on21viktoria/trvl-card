@@ -26,11 +26,13 @@
 <script lang="ts">
 import Vue from "vue";
 import Toolbar from "./Toolbar.vue";
+import Contactform from "./Contactform.vue";
 
 export default Vue.extend({
   name: "Editor",
   components: {
     Toolbar,
+    Contactform,
   },
   data: () => ({
     //

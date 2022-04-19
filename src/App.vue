@@ -1,17 +1,20 @@
 <template>
   <v-app>
-    <Editor> </Editor>
+    <!-- <Editor></Editor> -->
+    <Test></Test>
   </v-app>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import Editor from './components/Editor.vue';
+import Test from './components/Test.vue';
 
 export default Vue.extend({
   name: 'App',
   components: {
     Editor,
+    Test,
   },
   data: () => ({
   }),
