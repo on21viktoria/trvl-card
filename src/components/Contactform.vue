@@ -288,8 +288,4 @@ h2 {
     margin: 4px 10px 4px 0px;
 }
 
-.v-text-field__slot::after {
-    color: #1da2a9 !important; 
-
-}
 </style>
