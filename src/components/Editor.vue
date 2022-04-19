@@ -22,7 +22,7 @@
             </Toolbar>
           </div>
           <div>
-            <Sidebar @hideSideBar="showSideBar"></Sidebar>
+            <photos @hideSideBar="showSideBar"></photos>
           </div>
           <div id="postcard">
           
@@ -41,12 +41,14 @@
 import Vue from "vue";
 import Toolbar from "./Toolbar.vue";
 import Sidebar from './Sidebar.vue';
+import Photos from './Photos.vue';
 
 export default Vue.extend({
   name: "Editor", 
   components: {
     Toolbar,
     Sidebar,
+    Photos,
   },
   data: () => ({
       sidebar: false,
