@@ -1,8 +1,21 @@
 <template>
     <div>
-    <div v-for="item in items" :key="item.text">
+    <div>
       <div class="postcard">
-        <h3>Ich bin die {{ item.text }} der Postkarte.</h3>
+        <h3>Ich bin die Vorderseite der Postkarte.</h3>
+      </div>
+      <div class="postcard">
+        <h3>Ich bin die Rückseite der Postkarte.</h3>
+        <v-container fluid>
+          <v-textarea 
+          solo
+          counter
+          name="Nachrichten-Textfeld"
+          label="Schreibe deinen Liebsten eine persönliche Nachricht..."
+          :rules = "rules"
+          :value = "values">
+          </v-textarea>
+        </v-container>  
       </div>
     </div>
     </div>
@@ -15,15 +28,12 @@ export default Vue.extend({
   name: 'PostcardLayout',
   components: {
   },
-
-  data() {
-    return {
-      items: [
-        { text: "Vorderseite" },
-        { text: "Rückseite" },
-      ] }
-  },
+  data: () => ({
+    rules: [(v: string|any[]) => v.length <= 500 || 'Maximal 500 characters'],
+    value: 'Hello!',
+  }),
 })
+
 </script>
 
 <style>
@@ -34,6 +44,14 @@ export default Vue.extend({
   width: 650px;
   height: 430px;
   margin: 40px;
+}
+
+.container {
+  padding: 0 !important;
+}
+
+.v-textarea textarea {
+  height: 430px !important;
 }
 
 </style>
