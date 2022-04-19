@@ -13,16 +13,14 @@
             height="60"
           />
         </a>
-
-        <ul
+        <div class="buttons">
+          <ul
           class="nav"
         >
           <li><a href="#" class="item">HOME</a></li>
           <li><a href="#" class="item">SHOP</a></li>
           <li><a href="#" class="item">KONTAKT</a></li>
         </ul>
-
-        <div class="buttons">
           <form class="searchbar">
           <input
             type="search"
@@ -31,11 +29,11 @@
             aria-label="Suche"
           />
         </form>
-          <button type="button" class="button-login hovereffect" style='color: #707070'>
+          <button type="button" class=" button button-login hovereffect" style='color: #707070'>
             Login</button>
-          <button type="button" class="button-signup hovereffect" style='color: #fff'>Registrieren</button>
+          <button type="button" class="button button-signup hovereffect" style='color: #fff'>Registrieren</button>
           <v-icon class="carticon hovereffect">mdi-cart</v-icon>
-          <Help></Help>     
+          <v-icon class="helpicon hovereffect">mdi-help-circle-outline</v-icon>  
         </div>
       </div>
     </div>
@@ -45,10 +43,8 @@
 <script lang="ts">
 /* eslint-disable */
 import Vue from 'vue';
-import Help from './Help.vue';
 
 export default Vue.extend({
-  name: 'Header',
-  components: { Help }
+  name: 'Header'
 });
 </script>
