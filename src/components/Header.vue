@@ -31,9 +31,9 @@
             aria-label="Suche"
           />
         </form>
-          <button type="button" class="btn-login hovereffect" style='color: #707070'>
+          <button type="button" class="button-login hovereffect" style='color: #707070'>
             Login</button>
-          <button type="button" class="btn-signup hovereffect" style='color: #fff'>Registrieren</button>
+          <button type="button" class="button-signup hovereffect" style='color: #fff'>Registrieren</button>
           <v-icon class="carticon hovereffect">mdi-cart</v-icon>
           <Help></Help>     
         </div>

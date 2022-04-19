@@ -89,7 +89,7 @@
     outline: 0;
   }
 
-  .btn-signup {
+  .button-signup {
     background: #ff4e00;
     color: #fff !important;
     padding: 10px;
@@ -97,7 +97,7 @@
     font-weight: 500;
 }
 
-.btn-login {
+.button-login {
     border: none;
     background-color: transparent;
     color: #707070;
@@ -106,7 +106,7 @@
     margin-left: 15px;
 }
 
-.btn-login:hover {
+.button-login:hover {
   cursor: pointer;
   border: 0.5px solid #ff4e00;
   border-radius: 4px;
