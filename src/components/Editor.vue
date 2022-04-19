@@ -21,8 +21,6 @@
             <Toolbar  @showSideBar="showSideBar" class="toolbar">
             </Toolbar>
           </div>
-          <!-- <div id="sidebar">
-          </div> -->
           <div>
             <Sidebar @hideSideBar="showSideBar"></Sidebar>
           </div>
@@ -54,7 +52,7 @@ export default Vue.extend({
       sidebar: false,
   }),
   methods: {
-    showSideBar() {
+    showSideBar(id: string) {
       this.sidebar = !this.sidebar;
     },
     hideSideBar() {

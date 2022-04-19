@@ -22,13 +22,63 @@
       <v-divider></v-divider>
 
       <v-list>
-        <v-list-item v-for="item in items" :key="item.title" link @click="onClick" @click.stop="mini = !mini">
+        <v-list-item link @click="onClick" @click.stop="mini">
           <v-list-item-icon large>
-            <v-icon class="toolbar-icon" large>{{ item.icon }}</v-icon>
+            <v-icon class="toolbar-icon" large>mdi-view-dashboard-edit-outline</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <v-list-item-title>Vorlagen</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item link @click="onClick" @click.stop="mini">
+          <v-list-item-icon large>
+            <v-icon class="toolbar-icon" large>mdi-image-edit</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>Fotos</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item link @click="onClick" @click.stop="mini">
+          <v-list-item-icon large>
+            <v-icon class="toolbar-icon" large>mdi-upload</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>Upload</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item link @click="onClick" @click.stop="mini">
+          <v-list-item-icon large>
+            <v-icon class="toolbar-icon" large>mdi-format-text</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>Text</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item link @click="onClick" @click.stop="mini">
+          <v-list-item-icon large>
+            <v-icon class="toolbar-icon" large>mdi-rectangle</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>Hintergrund</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item link @click="onClick" @click.stop="mini">
+          <v-list-item-icon large>
+            <v-icon class="toolbar-icon" large>mdi-sticker-emoji</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>Sticker</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -43,14 +93,14 @@ export default Vue.extend({
   data() {
     return {
       drawer: true,
-      items: [
-        { title: "Vorlagen", icon: "mdi-view-dashboard-edit-outline" },
-        { title: "Fotos", icon: "mdi-image-edit" },
-        { title: "Upload", icon: "mdi-upload" },
-        { title: "Text", icon: "mdi-format-text" },
-        { title: "Hintergrund", icon: "mdi-rectangle" },
-        { title: "Sticker", icon: "mdi-sticker-emoji" },
-      ],
+      // items: [
+      //   { title: "Vorlagen", icon: "mdi-view-dashboard-edit-outline" },
+      //   { title: "Fotos", icon: "mdi-image-edit" },
+      //   { title: "Upload", icon: "mdi-upload" },
+      //   { title: "Text", icon: "mdi-format-text" },
+      //   { title: "Hintergrund", icon: "mdi-rectangle" },
+      //   { title: "Sticker", icon: "mdi-sticker-emoji" },
+      // ],
       mini: true,
     };
   },
@@ -59,9 +109,9 @@ export default Vue.extend({
   props: {
   },
   methods: {
-    onClick(){
+    onClick(id: string) {
      this.$emit('showSideBar');
-     
+    //  return this.items;
     }
   }
 });
