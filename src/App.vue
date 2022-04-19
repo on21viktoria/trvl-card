@@ -6,6 +6,8 @@
     <DesignChoice></DesignChoice>
     </div>
     <Footer></Footer>
+  <h1>trvl card</h1>
+  <router-view></router-view>
   </div>
 </template>
 
