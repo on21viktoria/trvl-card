@@ -6,6 +6,18 @@
     <h2>Empfängeradresse eingeben</h2>
     <v-form v-model="valid">
       <v-container class="formcontainer">
+
+      <v-col class="columns" cols="12" md="6"> 
+          <v-select
+          v-model="formOfAddress"
+          :items="formsOfAddress"
+          :menu-props="{ maxHeight: '400' }"
+          label="Anrede"
+          single
+        :rules="addressRules"
+        required
+          ></v-select>
+        </v-col>    
         <v-col class="columns" cols="12" md="6">
           <v-text-field 
             class="textfield"
@@ -128,6 +140,10 @@ export default Vue.extend({
   name: "Contactform",
   data: () => ({
     valid: false,
+    formOfAddress: [],
+    addressRules: [(v: string) => !!v || "Bitte gib eine Anrede an.",
+    ],
+    formsOfAddress: ['Frau', 'Herr', 'keine Angabe'],
     firstname: "",
     firstNameRules: [
       (v: string) => !!v || "Bitte gib deinen Vornamen ein.",
