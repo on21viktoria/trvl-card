@@ -69,7 +69,7 @@
                 class="form-control"
                 placeholder="E-Mail-Adresse"
               />
-              <button class="button-signup" type="button">Abonnieren</button>
+              <button class="button button-signup" type="button">Abonnieren</button>
             </div>
           </form>
         </div>
