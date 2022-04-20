@@ -6,18 +6,16 @@
       </v-btn>
     </v-list-item>
 
-    <!-- <v-list> -->
-      <div v-for="item in items" :key="item.toolChoice" link>
-        <div v-if="item.toolChoice === idSidebar">
+    <div v-for="item in items" :key="item.toolChoice" link>
+      <div v-if="item.toolChoice === idSidebar">
         <v-list-item-content v-for="tool in item.tools" :key="tool.title">
           <v-list-item-title class="tool-title">
             {{ tool.title }}
           </v-list-item-title>
-          <p>{{tool.text}}</p>
+          <p>{{ tool.text }}</p>
         </v-list-item-content>
-        </div>
       </div>
-    <!-- </v-list> -->
+    </div>
     <p>
       Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus
       ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur

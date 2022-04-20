@@ -12,7 +12,7 @@
           <v-icon large>mdi-tooltip-edit-outline</v-icon>
         </v-list-item-avatar>
 
-        <v-list-item-title style= "font-size:16px">Werkzeuge</v-list-item-title>
+        <v-list-item-title style="font-size: 16px">Werkzeuge</v-list-item-title>
 
         <v-btn icon @click.stop="mini = !mini">
           <v-icon>mdi-chevron-left</v-icon>
@@ -22,63 +22,106 @@
       <v-divider></v-divider>
 
       <v-list>
-        <v-list-item link @click="onClick('Vorlagen'); setId()">
+        <v-list-item
+          class="tool-selected"
+          link
+          @click="
+            onClick('Vorlagen');
+            setId(true, 'Vorlagen');
+          "
+        >
           <v-list-item-icon large>
-            <v-icon class="toolbar-icon" large>mdi-view-dashboard-edit-outline</v-icon>
+            <v-icon class="toolbar-icon Vorlagen" large
+              >mdi-view-dashboard-edit-outline</v-icon
+            >
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title class="toolbar-title">Vorlagen</v-list-item-title>
+            <v-list-item-title class="toolbar-title Vorlagen"
+              >Vorlagen</v-list-item-title
+            >
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link @click="onClick('Fotos')">
+        <v-list-item
+          link
+          @click="
+            onClick('Fotos');
+            setId(true, 'Fotos');
+          "
+        >
           <v-list-item-icon large>
-            <v-icon class="toolbar-icon" large>mdi-image-edit</v-icon>
+            <v-icon class="toolbar-icon Fotos" large>mdi-image-edit</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>Fotos</v-list-item-title>
+            <v-list-item-title class="toolbar-title Fotos"
+              >Fotos</v-list-item-title
+            >
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link @click="onClick('Upload')">
+        <v-list-item
+          link
+          @click="
+            onClick('Upload');
+            setId(true, 'Upload');
+          "
+        >
           <v-list-item-icon large>
-            <v-icon class="toolbar-icon" large>mdi-upload</v-icon>
+            <v-icon class="toolbar-icon Upload" large>mdi-upload</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>Upload</v-list-item-title>
+            <v-list-item-title class="toolbar-title Upload">Upload</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link @click="onClick('Text')">
+        <v-list-item
+          link
+          @click="
+            onClick('Text');
+            setId(true, 'Text');
+          "
+        >
           <v-list-item-icon large>
-            <v-icon class="toolbar-icon" large>mdi-format-text</v-icon>
+            <v-icon class="toolbar-icon Text" large>mdi-format-text</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>Text</v-list-item-title>
+            <v-list-item-title class="toolbar-title Text" >Text</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link @click="onClick('Hintergrund')">
+        <v-list-item
+          link
+          @click="
+            onClick('Hintergrund');
+            setId(true, 'Hintergrund');
+          "
+        >
           <v-list-item-icon large>
-            <v-icon class="toolbar-icon" large>mdi-rectangle</v-icon>
+            <v-icon class="toolbar-icon Hintergrund" large>mdi-rectangle</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>Hintergrund</v-list-item-title>
+            <v-list-item-title class="toolbar-title Hintergrund">Hintergrund</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link @click="onClick('Sticker')">
+        <v-list-item
+          link
+          @click="
+            onClick('Sticker');
+            setId(true, 'Sticker');
+          "
+        >
           <v-list-item-icon large>
-            <v-icon class="toolbar-icon" large>mdi-sticker-emoji</v-icon>
+            <v-icon class="toolbar-icon Sticker" large>mdi-sticker-emoji</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>Sticker</v-list-item-title>
+            <v-list-item-title class="toolbar-title Sticker">Sticker</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -93,38 +136,65 @@ export default Vue.extend({
   data() {
     return {
       drawer: true,
-      // items: [
-      //   { title: "Vorlagen", icon: "mdi-view-dashboard-edit-outline" },
-      //   { title: "Fotos", icon: "mdi-image-edit" },
-      //   { title: "Upload", icon: "mdi-upload" },
-      //   { title: "Text", icon: "mdi-format-text" },
-      //   { title: "Hintergrund", icon: "mdi-rectangle" },
-      //   { title: "Sticker", icon: "mdi-sticker-emoji" },
-      // ],
       mini: true,
-      idSidebar: '',
+      idSidebar: "",
       selected: false,
     };
-    
-    
   },
   name: "Toolbar",
   components: {},
-  props: {
-  },
+  props: {},
   methods: {
-    onClick(id: string, selected: boolean) {
-     this.idSidebar = id;
-     
-     this.$emit('showSideBar', this.idSidebar, this.selected);
-    },
-    setId(selected: boolean) {
-      this.selected = true;
-      const currentTool = document.querySelector('.toolbar-title');
-      currentTool?.classList.add('active');
-    }
+    onClick(id: string) {
+      this.idSidebar = id;
 
-  }
+      this.$emit("showSideBar", this.idSidebar);
+    },
+    setId(selected: boolean, id: string) {
+      this.selected = selected;
+      let selectedId = id;
+      let currentToolIcon;
+      let currentToolTitle;
+      switch (selectedId) {
+        case "Vorlagen":
+          currentToolIcon = document.querySelector('.toolbar-icon' + '.Vorlagen');
+          currentToolTitle = document.querySelector('.toolbar-title' + '.Vorlagen');
+          currentToolIcon?.classList.add('active');
+          currentToolTitle?.classList.add('active');
+        break;
+        case "Fotos":
+          currentToolIcon = document.querySelector('.toolbar-icon' +'.Fotos');
+          currentToolTitle = document.querySelector('.toolbar-title' +'.Fotos');
+          currentToolIcon?.classList.add("active");
+          currentToolTitle?.classList.add("active");
+          break;
+        case "Upload":
+          currentToolIcon = document.querySelector('.toolbar-icon' + '.Upload');
+          currentToolTitle = document.querySelector('.toolbar-title' + '.Upload');
+          currentToolIcon?.classList.add('active');
+          currentToolTitle?.classList.add('active');
+        break;
+        case "Text":
+          currentToolIcon = document.querySelector('.toolbar-icon' + '.Text');
+          currentToolTitle = document.querySelector('.toolbar-title' + '.Text');
+          currentToolIcon?.classList.add('active');
+          currentToolTitle?.classList.add('active');
+        break;
+        case "Hintergrund":
+          currentToolIcon = document.querySelector('.toolbar-icon' + '.Hintergrund');
+          currentToolTitle = document.querySelector('.toolbar-title' + '.Hintergrund');
+          currentToolIcon?.classList.add('active');
+          currentToolTitle?.classList.add('active');
+        break;
+        case "Sticker":
+          currentToolIcon = document.querySelector('.toolbar-icon' + '.Sticker');
+          currentToolTitle = document.querySelector('.toolbar-title' + '.Sticker');
+          currentToolIcon?.classList.add('active');
+          currentToolTitle?.classList.add('active');
+        break;
+      }
+    },
+  },
 });
 </script>
 
@@ -134,7 +204,8 @@ export default Vue.extend({
 }
 
 .active {
-  color: rgb(29, 162, 169);
-  font-weight: bold;
+  /* color: rgb(29, 162, 169) !important; */
+  color: rgb(255, 78, 0) !important;
+  font-weight: bold !important;
 }
 </style>
