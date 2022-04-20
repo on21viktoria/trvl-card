@@ -12,7 +12,7 @@
           <v-list-item-title class="tool-title">
             {{ tool.title }}
           </v-list-item-title>
-          <p>{{ tool.text }}</p>
+          <p class="tool-text">{{ tool.text }}</p>
         </v-list-item-content>
       </div>
     </div>
@@ -115,6 +115,8 @@ div {
 .tool-title {
   font-weight: bold;
   color: #ff4e00;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
+
+
 </style>

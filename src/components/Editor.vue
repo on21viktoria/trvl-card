@@ -76,13 +76,13 @@ h1 {
 
 .editor-grid.sidebar-hidden {
   display: grid;
-  grid-template-columns: 15% 85%;
+  grid-template-columns: 13% 87%;
   /*grid-gap: 10px;*/
 }
 
 .editor-grid.sidebar-shown {
   display: grid;
-  grid-template-columns: auto 25% 75%;
+  grid-template-columns: 13% 25% 62%;
   /* grid-gap: 10px; */
 } 
 
@@ -93,11 +93,12 @@ h1 {
 }
 
 .sidebar {
-  padding-left: 10px;
+  padding: 0px 10px;
   /* border: solid #707070 1px; */
   /* background-color: mediumpurple; */
   height: 100%;
   width: 100%;
+  font-size: 14px !important;
 }
 
 #postcard {
