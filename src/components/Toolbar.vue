@@ -139,61 +139,110 @@ export default Vue.extend({
       mini: true,
       idSidebar: "",
       selected: false,
+      currentToolIcon: undefined as any,
+      currentToolTitle: undefined as any,
     };
   },
   name: "Toolbar",
-  components: {},
+  components: {
+  },
   props: {},
   methods: {
     onClick(id: string) {
       this.idSidebar = id;
-
-      this.$emit("showSideBar", this.idSidebar);
+      this.$emit("showSideBar", this.idSidebar, this.clearSelected);
     },
     setId(selected: boolean, id: string) {
-      this.selected = selected;
       let selectedId = id;
-      let currentToolIcon;
-      let currentToolTitle;
-      switch (selectedId) {
+      // this.clearSelected();
+      if(this.currentToolIcon != undefined && this.currentToolTitle != undefined) {
+        this.clearSelected();
+        switch (selectedId) {
         case "Vorlagen":
-          currentToolIcon = document.querySelector('.toolbar-icon' + '.Vorlagen');
-          currentToolTitle = document.querySelector('.toolbar-title' + '.Vorlagen');
-          currentToolIcon?.classList.add('active');
-          currentToolTitle?.classList.add('active');
+          this.currentToolIcon = document.querySelector('.toolbar-icon' + '.Vorlagen');
+          this.currentToolTitle = document.querySelector('.toolbar-title' + '.Vorlagen');
+          this.currentToolIcon?.classList.add('active');
+          this.currentToolTitle?.classList.add('active');
         break;
         case "Fotos":
-          currentToolIcon = document.querySelector('.toolbar-icon' +'.Fotos');
-          currentToolTitle = document.querySelector('.toolbar-title' +'.Fotos');
-          currentToolIcon?.classList.add("active");
-          currentToolTitle?.classList.add("active");
-          break;
+          this.currentToolIcon = document.querySelector('.toolbar-icon' +'.Fotos');
+          this.currentToolTitle = document.querySelector('.toolbar-title' +'.Fotos');
+          this.currentToolIcon?.classList.add("active");
+          this.currentToolTitle?.classList.add("active");
+        break;
         case "Upload":
-          currentToolIcon = document.querySelector('.toolbar-icon' + '.Upload');
-          currentToolTitle = document.querySelector('.toolbar-title' + '.Upload');
-          currentToolIcon?.classList.add('active');
-          currentToolTitle?.classList.add('active');
+          this.currentToolIcon = document.querySelector('.toolbar-icon' + '.Upload');
+          this.currentToolTitle = document.querySelector('.toolbar-title' + '.Upload');
+          this.currentToolIcon?.classList.add('active');
+          this.currentToolTitle?.classList.add('active');
         break;
         case "Text":
-          currentToolIcon = document.querySelector('.toolbar-icon' + '.Text');
-          currentToolTitle = document.querySelector('.toolbar-title' + '.Text');
-          currentToolIcon?.classList.add('active');
-          currentToolTitle?.classList.add('active');
+          this.currentToolIcon = document.querySelector('.toolbar-icon' + '.Text');
+          this.currentToolTitle = document.querySelector('.toolbar-title' + '.Text');
+          this.currentToolIcon?.classList.add('active');
+          this.currentToolTitle?.classList.add('active');
         break;
         case "Hintergrund":
-          currentToolIcon = document.querySelector('.toolbar-icon' + '.Hintergrund');
-          currentToolTitle = document.querySelector('.toolbar-title' + '.Hintergrund');
-          currentToolIcon?.classList.add('active');
-          currentToolTitle?.classList.add('active');
+          this.currentToolIcon = document.querySelector('.toolbar-icon' + '.Hintergrund');
+          this.currentToolTitle = document.querySelector('.toolbar-title' + '.Hintergrund');
+          this.currentToolIcon?.classList.add('active');
+          this.currentToolTitle?.classList.add('active');
         break;
         case "Sticker":
-          currentToolIcon = document.querySelector('.toolbar-icon' + '.Sticker');
-          currentToolTitle = document.querySelector('.toolbar-title' + '.Sticker');
-          currentToolIcon?.classList.add('active');
-          currentToolTitle?.classList.add('active');
+          this.currentToolIcon = document.querySelector('.toolbar-icon' + '.Sticker');
+          this.currentToolTitle = document.querySelector('.toolbar-title' + '.Sticker');
+          this.currentToolIcon?.classList.add('active');
+          this.currentToolTitle?.classList.add('active');
+        break;
+        }
+      } else {
+      switch (selectedId) {
+        case "Vorlagen":
+          this.currentToolIcon = document.querySelector('.toolbar-icon' + '.Vorlagen');
+          this.currentToolTitle = document.querySelector('.toolbar-title' + '.Vorlagen');
+          this.currentToolIcon?.classList.add('active');
+          this.currentToolTitle?.classList.add('active');
+        break;
+        case "Fotos":
+          this.currentToolIcon = document.querySelector('.toolbar-icon' +'.Fotos');
+          this.currentToolTitle = document.querySelector('.toolbar-title' +'.Fotos');
+          this.currentToolIcon?.classList.add("active");
+          this.currentToolTitle?.classList.add("active");
+        break;
+        case "Upload":
+          this.currentToolIcon = document.querySelector('.toolbar-icon' + '.Upload');
+          this.currentToolTitle = document.querySelector('.toolbar-title' + '.Upload');
+          this.currentToolIcon?.classList.add('active');
+          this.currentToolTitle?.classList.add('active');
+        break;
+        case "Text":
+          this.currentToolIcon = document.querySelector('.toolbar-icon' + '.Text');
+          this.currentToolTitle = document.querySelector('.toolbar-title' + '.Text');
+          this.currentToolIcon?.classList.add('active');
+          this.currentToolTitle?.classList.add('active');
+        break;
+        case "Hintergrund":
+          this.currentToolIcon = document.querySelector('.toolbar-icon' + '.Hintergrund');
+          this.currentToolTitle = document.querySelector('.toolbar-title' + '.Hintergrund');
+          this.currentToolIcon?.classList.add('active');
+          this.currentToolTitle?.classList.add('active');
+        break;
+        case "Sticker":
+          this.currentToolIcon = document.querySelector('.toolbar-icon' + '.Sticker');
+          this.currentToolTitle = document.querySelector('.toolbar-title' + '.Sticker');
+          this.currentToolIcon?.classList.add('active');
+          this.currentToolTitle?.classList.add('active');
         break;
       }
+      }
     },
+
+    clearSelected() {
+      this.currentToolIcon.classList.remove('active');
+      this.currentToolIcon = undefined;
+      this.currentToolTitle.classList.remove('active');
+      this.currentToolTitle = undefined;
+    }
   },
 });
 </script>
