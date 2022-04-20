@@ -22,7 +22,7 @@
             </Toolbar>
           </div>
           <div>
-            <Sidebar :idSidebar="sidebarContent" @hideSideBar="showSideBar"></Sidebar>
+            <Sidebar class="sidebar" :idSidebar="sidebarContent" @hideSideBar="hideSideBar();"></Sidebar>
           </div>
           <div id="postcard">
           
@@ -53,13 +53,13 @@ export default Vue.extend({
       sidebarContent: '',
   }),
   methods: {
-    showSideBar(idSidebar: string) {
-      this.sidebar = !this.sidebar;
+    showSideBar(idSidebar: string,) {
+      this.sidebar = true;
       this.sidebarContent = idSidebar;
     },
     hideSideBar() {
       this.sidebar = !this.sidebar;
-    }
+    },
   }
 });
 </script>
@@ -92,8 +92,9 @@ h1 {
   height: 100%;
 }
 
-#sidebar {
-  border: solid #707070 1px;
+.sidebar {
+  padding-left: 10px;
+  /* border: solid #707070 1px; */
   /* background-color: mediumpurple; */
   height: 100%;
   width: 100%;
