@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-list-item style="justify-content: flex-end" class="px-2 py-1">
-      <v-btn icon @click.stop="mini = !mini">
-        <v-icon @click="onClick">mdi-close</v-icon>
+      <v-btn icon >
+        <v-icon @click="onClick();">mdi-close</v-icon>
       </v-btn>
     </v-list-item>
 
@@ -109,11 +109,12 @@ export default Vue.extend({
 
 <style scoped>
 div {
-  width: 300px;
+  width: 100%;
 }
 
 .tool-title {
   font-weight: bold;
   color: #ff4e00;
+  margin-bottom: 5px;
 }
 </style>
