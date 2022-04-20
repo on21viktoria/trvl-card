@@ -22,17 +22,17 @@
       <v-divider></v-divider>
 
       <v-list>
-        <v-list-item link @click="onClick" @click.stop="mini">
+        <v-list-item link @click="onClick('Vorlagen'); setId()">
           <v-list-item-icon large>
             <v-icon class="toolbar-icon" large>mdi-view-dashboard-edit-outline</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>Vorlagen</v-list-item-title>
+            <v-list-item-title class="toolbar-title">Vorlagen</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link @click="onClick" @click.stop="mini">
+        <v-list-item link @click="onClick('Fotos')">
           <v-list-item-icon large>
             <v-icon class="toolbar-icon" large>mdi-image-edit</v-icon>
           </v-list-item-icon>
@@ -42,7 +42,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link @click="onClick" @click.stop="mini">
+        <v-list-item link @click="onClick('Upload')">
           <v-list-item-icon large>
             <v-icon class="toolbar-icon" large>mdi-upload</v-icon>
           </v-list-item-icon>
@@ -52,7 +52,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link @click="onClick" @click.stop="mini">
+        <v-list-item link @click="onClick('Text')">
           <v-list-item-icon large>
             <v-icon class="toolbar-icon" large>mdi-format-text</v-icon>
           </v-list-item-icon>
@@ -62,7 +62,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link @click="onClick" @click.stop="mini">
+        <v-list-item link @click="onClick('Hintergrund')">
           <v-list-item-icon large>
             <v-icon class="toolbar-icon" large>mdi-rectangle</v-icon>
           </v-list-item-icon>
@@ -72,7 +72,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link @click="onClick" @click.stop="mini">
+        <v-list-item link @click="onClick('Sticker')">
           <v-list-item-icon large>
             <v-icon class="toolbar-icon" large>mdi-sticker-emoji</v-icon>
           </v-list-item-icon>
@@ -102,17 +102,28 @@ export default Vue.extend({
       //   { title: "Sticker", icon: "mdi-sticker-emoji" },
       // ],
       mini: true,
+      idSidebar: '',
+      selected: false,
     };
+    
+    
   },
   name: "Toolbar",
   components: {},
   props: {
   },
   methods: {
-    onClick(id: string) {
-     this.$emit('showSideBar');
-    //  return this.items;
+    onClick(id: string, selected: boolean) {
+     this.idSidebar = id;
+     
+     this.$emit('showSideBar', this.idSidebar, this.selected);
+    },
+    setId(selected: boolean) {
+      this.selected = true;
+      const currentTool = document.querySelector('.toolbar-title');
+      currentTool?.classList.add('active');
     }
+
   }
 });
 </script>
@@ -120,4 +131,10 @@ export default Vue.extend({
 <style scoped>
 #navigation-drawer {
   border-right: solid rgba(112, 112, 112, 0.4) 1px;
-}</style>
+}
+
+.active {
+  color: rgb(29, 162, 169);
+  font-weight: bold;
+}
+</style>

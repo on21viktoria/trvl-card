@@ -6,17 +6,18 @@
       </v-btn>
     </v-list-item>
 
-    <v-divider></v-divider>
-    <v-list>
-      <v-list-item v-for="tool in tools" :key="tool.title" link>
-        <v-list-item-content>
-          <v-list-item-title class="tool-title">{{ tool.title }}</v-list-item-title>
-          <p>
-            Hier kann etwas getan werden.
-          </p>
+    <!-- <v-list> -->
+      <div v-for="item in items" :key="item.toolChoice" link>
+        <div v-if="item.toolChoice === idSidebar">
+        <v-list-item-content v-for="tool in item.tools" :key="tool.title">
+          <v-list-item-title class="tool-title">
+            {{ tool.title }}
+          </v-list-item-title>
+          <p>{{tool.text}}</p>
         </v-list-item-content>
-      </v-list-item>
-    </v-list>
+        </div>
+      </div>
+    <!-- </v-list> -->
     <p>
       Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus
       ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur
@@ -36,15 +37,70 @@ import Vue from "vue";
 export default Vue.extend({
   data() {
     return {
-      tools: [
-        { title: "Schriftart", icon: "mdi-view-dashboard-edit-outline" },
-        { title: "Schriftgröße", icon: "mdi-image-edit" },
-        { title: "Schriftfarbe", icon: "mdi-upload" },
+      items: [
+        {
+          toolChoice: "Vorlagen",
+          tools: [{ title: "Vorlage", text: "Wähle hier deine Vorlage." }],
+        },
+        {
+          toolChoice: "Fotos",
+          tools: [
+            { title: "Suche", text: "Suche nach einem Ort." },
+            { title: "Bildauswahl", text: "Hier ensteht die Bildauswahl." },
+          ],
+        },
+        {
+          toolChoice: "Upload",
+          tools: [
+            {
+              title: "Upload",
+              text: "Hier kannst du deine eigenen Bilder hochladen.",
+            },
+          ],
+        },
+        {
+          toolChoice: "Text",
+          tools: [
+            {
+              title: "Schriftart",
+              text: "Hier kannst du eine Schriftart wählen.",
+            },
+            {
+              title: "Schriftgröße",
+              text: "Hier kannst du die Schriftgröße ändern.",
+            },
+            {
+              title: "Schriftfarbe",
+              text: "Hier kannst du die Schriftfarbe anpassen.",
+            },
+          ],
+        },
+        {
+          toolChoice: "Hintergrund",
+          tools: [
+            {
+              title: "Hintergrundfarbe",
+              text: "Hier kannst du die Hintergrundfarbe wählen.",
+            },
+          ],
+        },
+        {
+          toolChoice: "Sticker",
+          tools: [
+            {
+              title: "Sticker",
+              text: "Hier kannst du aus verschiedenen Stickern aussuchen.",
+            },
+          ],
+        },
       ],
     };
   },
   name: "Sidebar",
   components: {},
+  props: {
+    idSidebar: String,
+  },
   methods: {
     onClick() {
       this.$emit("hideSideBar");

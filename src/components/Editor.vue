@@ -22,7 +22,7 @@
             </Toolbar>
           </div>
           <div>
-            <Sidebar @hideSideBar="showSideBar"></Sidebar>
+            <Sidebar :idSidebar="sidebarContent" @hideSideBar="showSideBar"></Sidebar>
           </div>
           <div id="postcard">
           
@@ -50,10 +50,12 @@ export default Vue.extend({
   },
   data: () => ({
       sidebar: false,
+      sidebarContent: '',
   }),
   methods: {
-    showSideBar(id: string) {
+    showSideBar(idSidebar: string) {
       this.sidebar = !this.sidebar;
+      this.sidebarContent = idSidebar;
     },
     hideSideBar() {
       this.sidebar = !this.sidebar;
