@@ -1,22 +1,22 @@
 <template>
   <div>
-  <h1>trvl card</h1>
-  <router-view></router-view>
+    <Header></Header>
+    <router-view></router-view>
+    <Footer></Footer>
   </div>
 </template>
 
 <script lang="ts">
-
-import Vue from 'vue';
+import Vue from "vue";
+import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
 
 export default Vue.extend({
-  name: 'App',
+  name: "App",
 
   components: {
+    Header,
+    Footer,
   },
-
-  data: () => ({
-    //
-  }),
 });
 </script>
