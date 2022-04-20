@@ -131,6 +131,7 @@
 
 <script lang="ts">
 import Vue from "vue";
+import { EventBus } from '../main';
 
 export default Vue.extend({
   data() {
@@ -147,6 +148,11 @@ export default Vue.extend({
   components: {
   },
   props: {},
+  created () {
+    EventBus.$on('closeSideBar', () => {
+      this.clearSelected();
+    })
+  },
   methods: {
     onClick(id: string) {
       this.idSidebar = id;

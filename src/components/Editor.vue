@@ -39,6 +39,7 @@
 
 <script lang="ts">
 import Vue from "vue";
+import { EventBus } from '../main';
 import Toolbar from "./Toolbar.vue";
 import Sidebar from './Sidebar.vue';
 
@@ -51,6 +52,7 @@ export default Vue.extend({
   data: () => ({
       sidebar: false,
       sidebarContent: '',
+      resetSelectedTool: false,
   }),
   methods: {
     showSideBar(idSidebar: string,) {
@@ -59,6 +61,8 @@ export default Vue.extend({
     },
     hideSideBar() {
       this.sidebar = !this.sidebar;
+      this.resetSelectedTool = true;
+      EventBus.$emit('closeSideBar', this.resetSelectedTool)
     },
   }
 });
