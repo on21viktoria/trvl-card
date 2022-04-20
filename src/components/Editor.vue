@@ -12,7 +12,9 @@
           <div id="toolbar">
             <Toolbar></Toolbar>
           </div>
-          <div id="postcard"></div>
+          <div id="postcard">
+            <PostcardLayout></PostcardLayout>
+            </div>
         </div>
       </v-container>
     </v-main>
@@ -26,11 +28,13 @@
 <script lang="ts">
 import Vue from "vue";
 import Toolbar from "./Toolbar.vue";
+import PostcardLayout from "./PostcardLayout.vue";
 
 export default Vue.extend({
   name: "Editor",
   components: {
     Toolbar,
+    PostcardLayout,
   },
   data: () => ({
     //
@@ -68,7 +72,8 @@ h1 {
 
 #postcard {
   background-color: burlywood;
-  height: 100%
+  height: 100%;
+  padding: 5% 20%;
 }
 
 #app-bar {
