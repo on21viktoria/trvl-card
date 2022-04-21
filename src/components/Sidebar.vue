@@ -31,23 +31,23 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue';
 
 export default Vue.extend({
   data() {
     return {
       tools: [
-        { title: "Schriftart", icon: "mdi-view-dashboard-edit-outline" },
-        { title: "Schriftgröße", icon: "mdi-image-edit" },
-        { title: "Schriftfarbe", icon: "mdi-upload" },
+        { title: 'Schriftart', icon: 'mdi-view-dashboard-edit-outline' },
+        { title: 'Schriftgröße', icon: 'mdi-image-edit' },
+        { title: 'Schriftfarbe', icon: 'mdi-upload' },
       ],
     };
   },
-  name: "Sidebar",
+  name: 'Sidebar',
   components: {},
   methods: {
     onClick() {
-      this.$emit("hideSideBar");
+      this.$emit('hideSideBar');
     },
   },
 });
