@@ -28,7 +28,9 @@
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title style="font-size: 13px">{{ item.title }}</v-list-item-title>
+            <v-list-item-title style="font-size: 13px">{{
+              item.title
+            }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -56,9 +58,7 @@ export default Vue.extend({
   },
   name: "Toolbar",
   components: {},
-  //
 });
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -5,7 +5,6 @@
         <h3>Ich bin die Vorderseite der Postkarte.</h3>
       </div>
       <div class="postcard" id="rückseite">
-        <!-- <h3>Ich bin die Rückseite der Postkarte.</h3> -->
         <v-container fluid id="container-rückseite-links">
           <v-textarea 
           solo
@@ -36,7 +35,7 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue';
 
 export default Vue.extend({
   name: 'PostcardLayout',
