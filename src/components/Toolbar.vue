@@ -137,7 +137,7 @@ export default Vue.extend({
   data() {
     return {
       drawer: true,
-      mini: true,
+      mini: false,
       idSidebar: "",
       selected: false,
       currentToolIcon: undefined as any,
