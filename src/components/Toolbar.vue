@@ -37,26 +37,25 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue';
 
 export default Vue.extend({
   data() {
     return {
       drawer: true,
       items: [
-        { title: "Vorlagen", icon: "mdi-view-dashboard-edit-outline" },
-        { title: "Fotos", icon: "mdi-image-edit" },
-        { title: "Upload", icon: "mdi-upload" },
-        { title: "Text", icon: "mdi-format-text" },
-        { title: "Hintergrund", icon: "mdi-rectangle" },
-        { title: "Sticker", icon: "mdi-sticker-emoji" },
+        { title: 'Vorlagen', icon: 'mdi-view-dashboard-edit-outline' },
+        { title: 'Fotos', icon: 'mdi-image-edit' },
+        { title: 'Upload', icon: 'mdi-upload' },
+        { title: 'Text', icon: 'mdi-format-text' },
+        { title: 'Hintergrund', icon: 'mdi-rectangle' },
+        { title: 'Sticker', icon: 'mdi-sticker-emoji' },
       ],
       mini: true,
     };
   },
-  name: "Toolbar",
+  name: 'Toolbar',
   components: {},
-  //
 });
 </script>
 

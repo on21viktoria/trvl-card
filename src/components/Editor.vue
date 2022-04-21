@@ -24,11 +24,11 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import Toolbar from "./Toolbar.vue";
+import Vue from 'vue';
+import Toolbar from './Toolbar.vue';
 
 export default Vue.extend({
-  name: "Editor",
+  name: 'Editor',
   components: {
     Toolbar,
   },
