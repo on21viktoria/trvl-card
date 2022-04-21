@@ -30,78 +30,78 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue';
 
 export default Vue.extend({
   data() {
     return {
       items: [
         {
-          toolChoice: "Vorlagen",
-          tools: [{ title: "Vorlage", text: "Wähle hier deine Vorlage." }],
+          toolChoice: 'Vorlagen',
+          tools: [{ title: 'Vorlage', text: 'Wähle hier deine Vorlage.' }],
         },
         {
-          toolChoice: "Fotos",
+          toolChoice: 'Fotos',
           tools: [
-            { title: "Suche", text: "Suche nach einem Ort." },
-            { title: "Bildauswahl", text: "Hier ensteht die Bildauswahl." },
+            { title: 'Suche', text: 'Suche nach einem Ort.' },
+            { title: 'Bildauswahl', text: 'Hier ensteht die Bildauswahl.' },
           ],
         },
         {
-          toolChoice: "Upload",
+          toolChoice: 'Upload',
           tools: [
             {
-              title: "Upload",
-              text: "Hier kannst du deine eigenen Bilder hochladen.",
-            },
-          ],
-        },
-        {
-          toolChoice: "Text",
-          tools: [
-            {
-              title: "Schriftart",
-              text: "Hier kannst du eine Schriftart wählen.",
-            },
-            {
-              title: "Schriftgröße",
-              text: "Hier kannst du die Schriftgröße ändern.",
-            },
-            {
-              title: "Schriftfarbe",
-              text: "Hier kannst du die Schriftfarbe anpassen.",
+              title: 'Upload',
+              text: 'Hier kannst du deine eigenen Bilder hochladen.',
             },
           ],
         },
         {
-          toolChoice: "Hintergrund",
+          toolChoice: 'Text',
           tools: [
             {
-              title: "Hintergrundfarbe",
-              text: "Hier kannst du die Hintergrundfarbe wählen.",
+              title: 'Schriftart',
+              text: 'Hier kannst du eine Schriftart wählen.',
+            },
+            {
+              title: 'Schriftgröße',
+              text: 'Hier kannst du die Schriftgröße ändern.',
+            },
+            {
+              title: 'Schriftfarbe',
+              text: 'Hier kannst du die Schriftfarbe anpassen.',
             },
           ],
         },
         {
-          toolChoice: "Sticker",
+          toolChoice: 'Hintergrund',
           tools: [
             {
-              title: "Sticker",
-              text: "Hier kannst du aus verschiedenen Stickern aussuchen.",
+              title: 'Hintergrundfarbe',
+              text: 'Hier kannst du die Hintergrundfarbe wählen.',
+            },
+          ],
+        },
+        {
+          toolChoice: 'Sticker',
+          tools: [
+            {
+              title: 'Sticker',
+              text: 'Hier kannst du aus verschiedenen Stickern aussuchen.',
             },
           ],
         },
       ],
     };
   },
-  name: "Sidebar",
+  name: 'Sidebar',
   components: {},
   props: {
     idSidebar: String,
   },
   methods: {
     onClick() {
-      this.$emit("hideSideBar");
+      this.$emit('hideSideBar');
     },
   },
 });
