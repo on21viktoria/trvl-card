@@ -73,7 +73,9 @@
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title class="toolbar-title Upload">Upload</v-list-item-title>
+            <v-list-item-title class="toolbar-title Upload"
+              >Upload</v-list-item-title
+            >
           </v-list-item-content>
         </v-list-item>
 
@@ -89,7 +91,9 @@
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title class="toolbar-title Text" >Text</v-list-item-title>
+            <v-list-item-title class="toolbar-title Text"
+              >Text</v-list-item-title
+            >
           </v-list-item-content>
         </v-list-item>
 
@@ -101,11 +105,15 @@
           "
         >
           <v-list-item-icon large>
-            <v-icon class="toolbar-icon Hintergrund" large>mdi-rectangle</v-icon>
+            <v-icon class="toolbar-icon Hintergrund" large
+              >mdi-rectangle</v-icon
+            >
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title class="toolbar-title Hintergrund">Hintergrund</v-list-item-title>
+            <v-list-item-title class="toolbar-title Hintergrund"
+              >Hintergrund</v-list-item-title
+            >
           </v-list-item-content>
         </v-list-item>
 
@@ -117,11 +125,15 @@
           "
         >
           <v-list-item-icon large>
-            <v-icon class="toolbar-icon Sticker" large>mdi-sticker-emoji</v-icon>
+            <v-icon class="toolbar-icon Sticker" large
+              >mdi-sticker-emoji</v-icon
+            >
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title class="toolbar-title Sticker">Sticker</v-list-item-title>
+            <v-list-item-title class="toolbar-title Sticker"
+              >Sticker</v-list-item-title
+            >
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -131,7 +143,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { EventBus } from '../main';
+import { EventBus } from "../main";
 
 export default Vue.extend({
   data() {
@@ -145,13 +157,12 @@ export default Vue.extend({
     };
   },
   name: "Toolbar",
-  components: {
-  },
+  components: {},
   props: {},
-  created () {
-    EventBus.$on('closeSideBar', () => {
+  created() {
+    EventBus.$on("closeSideBar", () => {
       this.clearSelected();
-    })
+    });
   },
   methods: {
     onClick(id: string) {
@@ -161,94 +172,145 @@ export default Vue.extend({
     setId(selected: boolean, id: string) {
       let selectedId = id;
       // this.clearSelected();
-      if(this.currentToolIcon != undefined && this.currentToolTitle != undefined) {
+      if (
+        this.currentToolIcon != undefined &&
+        this.currentToolTitle != undefined
+      ) {
         this.clearSelected();
         switch (selectedId) {
-        case "Vorlagen":
-          this.currentToolIcon = document.querySelector('.toolbar-icon' + '.Vorlagen');
-          this.currentToolTitle = document.querySelector('.toolbar-title' + '.Vorlagen');
-          this.currentToolIcon?.classList.add('active');
-          this.currentToolTitle?.classList.add('active');
-        break;
-        case "Fotos":
-          this.currentToolIcon = document.querySelector('.toolbar-icon' +'.Fotos');
-          this.currentToolTitle = document.querySelector('.toolbar-title' +'.Fotos');
-          this.currentToolIcon?.classList.add("active");
-          this.currentToolTitle?.classList.add("active");
-        break;
-        case "Upload":
-          this.currentToolIcon = document.querySelector('.toolbar-icon' + '.Upload');
-          this.currentToolTitle = document.querySelector('.toolbar-title' + '.Upload');
-          this.currentToolIcon?.classList.add('active');
-          this.currentToolTitle?.classList.add('active');
-        break;
-        case "Text":
-          this.currentToolIcon = document.querySelector('.toolbar-icon' + '.Text');
-          this.currentToolTitle = document.querySelector('.toolbar-title' + '.Text');
-          this.currentToolIcon?.classList.add('active');
-          this.currentToolTitle?.classList.add('active');
-        break;
-        case "Hintergrund":
-          this.currentToolIcon = document.querySelector('.toolbar-icon' + '.Hintergrund');
-          this.currentToolTitle = document.querySelector('.toolbar-title' + '.Hintergrund');
-          this.currentToolIcon?.classList.add('active');
-          this.currentToolTitle?.classList.add('active');
-        break;
-        case "Sticker":
-          this.currentToolIcon = document.querySelector('.toolbar-icon' + '.Sticker');
-          this.currentToolTitle = document.querySelector('.toolbar-title' + '.Sticker');
-          this.currentToolIcon?.classList.add('active');
-          this.currentToolTitle?.classList.add('active');
-        break;
+          case "Vorlagen":
+            this.currentToolIcon = document.querySelector(
+              ".toolbar-icon" + ".Vorlagen"
+            );
+            this.currentToolTitle = document.querySelector(
+              ".toolbar-title" + ".Vorlagen"
+            );
+            this.currentToolIcon?.classList.add("active");
+            this.currentToolTitle?.classList.add("active");
+            break;
+          case "Fotos":
+            this.currentToolIcon = document.querySelector(
+              ".toolbar-icon" + ".Fotos"
+            );
+            this.currentToolTitle = document.querySelector(
+              ".toolbar-title" + ".Fotos"
+            );
+            this.currentToolIcon?.classList.add("active");
+            this.currentToolTitle?.classList.add("active");
+            break;
+          case "Upload":
+            this.currentToolIcon = document.querySelector(
+              ".toolbar-icon" + ".Upload"
+            );
+            this.currentToolTitle = document.querySelector(
+              ".toolbar-title" + ".Upload"
+            );
+            this.currentToolIcon?.classList.add("active");
+            this.currentToolTitle?.classList.add("active");
+            break;
+          case "Text":
+            this.currentToolIcon = document.querySelector(
+              ".toolbar-icon" + ".Text"
+            );
+            this.currentToolTitle = document.querySelector(
+              ".toolbar-title" + ".Text"
+            );
+            this.currentToolIcon?.classList.add("active");
+            this.currentToolTitle?.classList.add("active");
+            break;
+          case "Hintergrund":
+            this.currentToolIcon = document.querySelector(
+              ".toolbar-icon" + ".Hintergrund"
+            );
+            this.currentToolTitle = document.querySelector(
+              ".toolbar-title" + ".Hintergrund"
+            );
+            this.currentToolIcon?.classList.add("active");
+            this.currentToolTitle?.classList.add("active");
+            break;
+          case "Sticker":
+            this.currentToolIcon = document.querySelector(
+              ".toolbar-icon" + ".Sticker"
+            );
+            this.currentToolTitle = document.querySelector(
+              ".toolbar-title" + ".Sticker"
+            );
+            this.currentToolIcon?.classList.add("active");
+            this.currentToolTitle?.classList.add("active");
+            break;
         }
       } else {
-      switch (selectedId) {
-        case "Vorlagen":
-          this.currentToolIcon = document.querySelector('.toolbar-icon' + '.Vorlagen');
-          this.currentToolTitle = document.querySelector('.toolbar-title' + '.Vorlagen');
-          this.currentToolIcon?.classList.add('active');
-          this.currentToolTitle?.classList.add('active');
-        break;
-        case "Fotos":
-          this.currentToolIcon = document.querySelector('.toolbar-icon' +'.Fotos');
-          this.currentToolTitle = document.querySelector('.toolbar-title' +'.Fotos');
-          this.currentToolIcon?.classList.add("active");
-          this.currentToolTitle?.classList.add("active");
-        break;
-        case "Upload":
-          this.currentToolIcon = document.querySelector('.toolbar-icon' + '.Upload');
-          this.currentToolTitle = document.querySelector('.toolbar-title' + '.Upload');
-          this.currentToolIcon?.classList.add('active');
-          this.currentToolTitle?.classList.add('active');
-        break;
-        case "Text":
-          this.currentToolIcon = document.querySelector('.toolbar-icon' + '.Text');
-          this.currentToolTitle = document.querySelector('.toolbar-title' + '.Text');
-          this.currentToolIcon?.classList.add('active');
-          this.currentToolTitle?.classList.add('active');
-        break;
-        case "Hintergrund":
-          this.currentToolIcon = document.querySelector('.toolbar-icon' + '.Hintergrund');
-          this.currentToolTitle = document.querySelector('.toolbar-title' + '.Hintergrund');
-          this.currentToolIcon?.classList.add('active');
-          this.currentToolTitle?.classList.add('active');
-        break;
-        case "Sticker":
-          this.currentToolIcon = document.querySelector('.toolbar-icon' + '.Sticker');
-          this.currentToolTitle = document.querySelector('.toolbar-title' + '.Sticker');
-          this.currentToolIcon?.classList.add('active');
-          this.currentToolTitle?.classList.add('active');
-        break;
-      }
+        switch (selectedId) {
+          case "Vorlagen":
+            this.currentToolIcon = document.querySelector(
+              ".toolbar-icon" + ".Vorlagen"
+            );
+            this.currentToolTitle = document.querySelector(
+              ".toolbar-title" + ".Vorlagen"
+            );
+            this.currentToolIcon?.classList.add("active");
+            this.currentToolTitle?.classList.add("active");
+            break;
+          case "Fotos":
+            this.currentToolIcon = document.querySelector(
+              ".toolbar-icon" + ".Fotos"
+            );
+            this.currentToolTitle = document.querySelector(
+              ".toolbar-title" + ".Fotos"
+            );
+            this.currentToolIcon?.classList.add("active");
+            this.currentToolTitle?.classList.add("active");
+            break;
+          case "Upload":
+            this.currentToolIcon = document.querySelector(
+              ".toolbar-icon" + ".Upload"
+            );
+            this.currentToolTitle = document.querySelector(
+              ".toolbar-title" + ".Upload"
+            );
+            this.currentToolIcon?.classList.add("active");
+            this.currentToolTitle?.classList.add("active");
+            break;
+          case "Text":
+            this.currentToolIcon = document.querySelector(
+              ".toolbar-icon" + ".Text"
+            );
+            this.currentToolTitle = document.querySelector(
+              ".toolbar-title" + ".Text"
+            );
+            this.currentToolIcon?.classList.add("active");
+            this.currentToolTitle?.classList.add("active");
+            break;
+          case "Hintergrund":
+            this.currentToolIcon = document.querySelector(
+              ".toolbar-icon" + ".Hintergrund"
+            );
+            this.currentToolTitle = document.querySelector(
+              ".toolbar-title" + ".Hintergrund"
+            );
+            this.currentToolIcon?.classList.add("active");
+            this.currentToolTitle?.classList.add("active");
+            break;
+          case "Sticker":
+            this.currentToolIcon = document.querySelector(
+              ".toolbar-icon" + ".Sticker"
+            );
+            this.currentToolTitle = document.querySelector(
+              ".toolbar-title" + ".Sticker"
+            );
+            this.currentToolIcon?.classList.add("active");
+            this.currentToolTitle?.classList.add("active");
+            break;
+        }
       }
     },
 
     clearSelected() {
-      this.currentToolIcon.classList.remove('active');
+      this.currentToolIcon.classList.remove("active");
       this.currentToolIcon = undefined;
-      this.currentToolTitle.classList.remove('active');
+      this.currentToolTitle.classList.remove("active");
       this.currentToolTitle = undefined;
-    }
+    },
   },
 });
 </script>

@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-list-item style="justify-content: flex-end" class="px-2 py-1">
-      <v-btn icon >
-        <v-icon @click="onClick();">mdi-close</v-icon>
+      <v-btn icon>
+        <v-icon @click="onClick()">mdi-close</v-icon>
       </v-btn>
     </v-list-item>
 
@@ -117,6 +117,4 @@ div {
   color: #ff4e00;
   margin-bottom: 8px;
 }
-
-
 </style>

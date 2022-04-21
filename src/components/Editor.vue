@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <v-app-bar app clipped-left id="app-bar">
@@ -11,26 +10,26 @@
       <v-container fluid id="editor-container">
         <div v-if="!sidebar" class="editor-grid sidebar-hidden">
           <div id="toolbar">
-            <Toolbar @showSideBar="showSideBar" class="toolbar">
-            </Toolbar>
+            <Toolbar @showSideBar="showSideBar" class="toolbar"> </Toolbar>
           </div>
           <div id="postcard"></div>
         </div>
         <div v-if="sidebar" class="editor-grid sidebar-shown">
           <div id="toolbar">
-            <Toolbar  @showSideBar="showSideBar" class="toolbar">
-            </Toolbar>
+            <Toolbar @showSideBar="showSideBar" class="toolbar"> </Toolbar>
           </div>
           <div>
-            <Sidebar class="sidebar" :idSidebar="sidebarContent" @hideSideBar="hideSideBar();"></Sidebar>
+            <Sidebar
+              class="sidebar"
+              :idSidebar="sidebarContent"
+              @hideSideBar="hideSideBar()"
+            ></Sidebar>
           </div>
-          <div id="postcard">
-          
-          </div>
+          <div id="postcard"></div>
         </div>
       </v-container>
     </v-main>
-  
+
     <v-footer app padless id="footer">
       <p>Hier muss der Footer eingefügt werden</p>
     </v-footer>
@@ -39,32 +38,32 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { EventBus } from '../main';
+import { EventBus } from "../main";
 import Toolbar from "./Toolbar.vue";
-import Sidebar from './Sidebar.vue';
+import Sidebar from "./Sidebar.vue";
 
 export default Vue.extend({
-  name: "Editor", 
+  name: "Editor",
   components: {
     Toolbar,
     Sidebar,
   },
   data: () => ({
-      sidebar: false,
-      sidebarContent: '',
-      resetSelectedTool: false,
+    sidebar: false,
+    sidebarContent: "",
+    resetSelectedTool: false,
   }),
   methods: {
-    showSideBar(idSidebar: string,) {
+    showSideBar(idSidebar: string) {
       this.sidebar = true;
       this.sidebarContent = idSidebar;
     },
     hideSideBar() {
       this.sidebar = !this.sidebar;
       this.resetSelectedTool = true;
-      EventBus.$emit('closeSideBar', this.resetSelectedTool)
+      EventBus.$emit("closeSideBar", this.resetSelectedTool);
     },
-  }
+  },
 });
 </script>
 
@@ -88,7 +87,7 @@ h1 {
   display: grid;
   grid-template-columns: 13% 25% 62%;
   /* grid-gap: 10px; */
-} 
+}
 
 #toolbar {
   border: solid #707070 1px;
