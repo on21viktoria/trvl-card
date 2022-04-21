@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <v-app-bar app clipped-left id="app-bar">
@@ -11,26 +10,22 @@
       <v-container fluid id="editor-container">
         <div v-if="!sidebar" class="editor-grid sidebar-hidden">
           <div id="toolbar">
-            <Toolbar @showSideBar="showSideBar" class="toolbar">
-            </Toolbar>
+            <Toolbar @showSideBar="showSideBar" class="toolbar"> </Toolbar>
           </div>
           <div id="postcard"></div>
         </div>
         <div v-if="sidebar" class="editor-grid sidebar-shown">
           <div id="toolbar">
-            <Toolbar  @showSideBar="showSideBar" class="toolbar">
-            </Toolbar>
+            <Toolbar @showSideBar="showSideBar" class="toolbar"> </Toolbar>
           </div>
           <div>
             <photos @hideSideBar="showSideBar"></photos>
           </div>
-          <div id="postcard">
-          
-          </div>
+          <div id="postcard"></div>
         </div>
       </v-container>
     </v-main>
-  
+
     <v-footer app padless id="footer">
       <p>Hier muss der Footer eingefügt werden</p>
     </v-footer>
@@ -38,20 +33,20 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import Toolbar from "./Toolbar.vue";
+import Vue from 'vue';
+import Toolbar from './Toolbar.vue';
 import Sidebar from './Sidebar.vue';
 import Photos from './Photos.vue';
 
 export default Vue.extend({
-  name: "Editor", 
+  name: 'Editor',
   components: {
     Toolbar,
     Sidebar,
     Photos,
   },
   data: () => ({
-      sidebar: false,
+    sidebar: false,
   }),
   methods: {
     showSideBar(id: string) {
@@ -59,8 +54,8 @@ export default Vue.extend({
     },
     hideSideBar() {
       this.sidebar = !this.sidebar;
-    }
-  }
+    },
+  },
 });
 </script>
 
@@ -84,7 +79,7 @@ h1 {
   display: grid;
   grid-template-columns: auto 25% 75%;
   /* grid-gap: 10px; */
-} 
+}
 
 #toolbar {
   border: solid #707070 1px;

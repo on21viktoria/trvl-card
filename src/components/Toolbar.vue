@@ -12,7 +12,7 @@
           <v-icon large>mdi-tooltip-edit-outline</v-icon>
         </v-list-item-avatar>
 
-        <v-list-item-title style= "font-size:16px">Werkzeuge</v-list-item-title>
+        <v-list-item-title style="font-size: 16px">Werkzeuge</v-list-item-title>
 
         <v-btn icon @click.stop="mini = !mini">
           <v-icon>mdi-chevron-left</v-icon>
@@ -24,7 +24,9 @@
       <v-list>
         <v-list-item link @click="onClick" @click.stop="mini">
           <v-list-item-icon large>
-            <v-icon class="toolbar-icon" large>mdi-view-dashboard-edit-outline</v-icon>
+            <v-icon class="toolbar-icon" large
+              >mdi-view-dashboard-edit-outline</v-icon
+            >
           </v-list-item-icon>
 
           <v-list-item-content>
@@ -104,20 +106,20 @@ export default Vue.extend({
       mini: true,
     };
   },
-  name: "Toolbar",
+  name: 'Toolbar',
   components: {},
-  props: {
-  },
+  props: {},
   methods: {
     onClick(id: string) {
-     this.$emit('showSideBar');
-    //  return this.items;
-    }
-  }
+      this.$emit('showSideBar');
+      //  return this.items;
+    },
+  },
 });
 </script>
 
 <style scoped>
 #navigation-drawer {
   border-right: solid rgba(112, 112, 112, 0.4) 1px;
-}</style>
+}
+</style>
