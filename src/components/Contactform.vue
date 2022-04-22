@@ -180,7 +180,7 @@ export default Vue.extend({
 
 <style scoped>
 * {
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
 }
 
 .checkout-body {
