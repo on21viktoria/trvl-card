@@ -132,47 +132,47 @@
     </div>
 </template>
 
-<script lang="ts">
-import Vue from "vue";
+<script lang='ts'>
+import Vue from 'vue';
 
 export default Vue.extend({
-  name: "Contactform",
+  name: 'Contactform',
   data: () => ({
     valid: false,
     formOfAddress: [],
-    addressRules: [(v: string) => !!v || "Bitte gib eine Anrede an.",
+    addressRules: [(v: string) => !!v || 'Bitte gib eine Anrede an.',
     ],
     formsOfAddress: ['Frau', 'Herr', 'keine Angabe'],
-    firstname: "",
+    firstname: '',
     firstNameRules: [
-      (v: string) => !!v || "Bitte gib deinen Vornamen ein.",
+      (v: string) => !!v || 'Bitte gib deinen Vornamen ein.',
     ],
-    lastname: "",
+    lastname: '',
     lastNameRules: [
-      (v: string) => !!v || "Bitte gib deinen Nachnamen ein.",
+      (v: string) => !!v || 'Bitte gib deinen Nachnamen ein.',
     ],
-    email: "",
+    email: '',
     emailRules: [
-      (v: string) => !!v || "Bitte gib eine E-Mail-Adresse ein.",
-      (v: string) => /.+@.+/.test(v) || "E-mail must be valid",
+      (v: string) => !!v || 'Bitte gib eine E-Mail-Adresse ein.',
+      (v: string) => /.+@.+/.test(v) || 'E-mail must be valid',
     ],
     country: [],
-    countryRules: [(v: string) => !!v || "Bitte gib ein Land ein.",
+    countryRules: [(v: string) => !!v || 'Bitte gib ein Land ein.',
     ],
     states: ['Deutschland', 'Österreich', 'Schweiz'],
-    postalcode: "",
+    postalcode: '',
     postalcodeRules: [
-    (v: string) => !!v || "Bitte gib eine Postleitzahl ein.",
+    (v: string) => !!v || 'Bitte gib eine Postleitzahl ein.',
     ],
-    city: "",
-    cityRules: [(v: string) => !!v || "Bitte gib eine Stadt ein.",
+    city: '',
+    cityRules: [(v: string) => !!v || 'Bitte gib eine Stadt ein.',
     ],
-    street: "",
-    streetRules: [(v: string) => !!v || "Bitte gib eine Straße ein.",
+    street: '',
+    streetRules: [(v: string) => !!v || 'Bitte gib eine Straße ein.',
     ],
-    housenumber: "",
+    housenumber: '',
     housenumberRules: [
-    (v: string) => !!v || "Bitte gib eine Hausnummer ein.", 
+    (v: string) => !!v || 'Bitte gib eine Hausnummer ein.', 
     ]
   }),
 });
