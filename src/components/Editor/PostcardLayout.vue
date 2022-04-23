@@ -1,6 +1,5 @@
 <template>
-    <div>
-    <div>
+    <div class="postcard-layout">
       <div class="postcard-side" id="front">
         <h3>Ich bin die Vorderseite der Postkarte.</h3>
       </div>
@@ -31,7 +30,6 @@
         </div>  
       </div>
     </div>
-    </div>
 </template>
 
 <script lang="ts">
@@ -53,27 +51,14 @@ export default Vue.extend({
 *{
   font-family: Montserrat;
 }
+
 .postcard-side {
   position: relative;
   background-color: white;
   border: solid rgba(112,112,112,0.5) 1px; 
   width: 622px;
   height: 442px;
-  margin: 40px;
-}
-
-#container-rückseite-links {
-  padding: 0 !important;
-  max-width: 53% !important;
-  margin-right: 0;
-  margin-left: 0;
-}
-
-#container-rückseite-rechts {
-  padding: 0 !important;
-  max-width: 47% !important;
-  margin-right: 0;
-  margin-left: 0;
+  margin: 40px auto;
 }
 
 .v-input__slot {
@@ -131,6 +116,20 @@ export default Vue.extend({
   height: 1px;
   border: solid rgb(112,112,112) 1px;
   margin: 30px 15px;
+}
+
+#container-rückseite-links {
+  padding: 0 !important;
+  max-width: 53% !important;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+#container-rückseite-rechts {
+  padding: 0 !important;
+  max-width: 47% !important;
+  margin-right: 0;
+  margin-left: 0;
 }
 
 #back {
