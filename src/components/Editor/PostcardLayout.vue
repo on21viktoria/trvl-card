@@ -56,9 +56,9 @@ export default Vue.extend({
 .postcard-side {
   position: relative;
   background-color: white;
-  /* border: solid rgba(112,112,112,1) 1px; */
-  width: 620px;
-  height: 440px;
+  border: solid rgba(112,112,112,0.5) 1px; 
+  width: 622px;
+  height: 442px;
   margin: 40px;
 }
 
@@ -100,6 +100,7 @@ export default Vue.extend({
   width: 100%;
   background-color: rgba(112,112,112, 0.1);
   background-image: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(112,112,112,0.1) 4px, rgba(112,112,112,0.1) 5px);
+  align-content: center;
 }
 
 .frankierzone {
