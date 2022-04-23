@@ -11,7 +11,9 @@
         <div class="editor-grid sidebar-hidden">
           <div id="toolbar">
           </div>
-          <div id="postcard"></div>
+          <div id="postcard">
+            <PostcardLayout></PostcardLayout>
+            </div>
         </div>
       </v-container>
     </v-main>
@@ -63,7 +65,8 @@ h1 {
 
 #postcard {
   background-color: burlywood;
-  height: 100%
+  height: 100%;
+  padding: 5% 20%;
 }
 
 #app-bar {
