@@ -9,6 +9,7 @@ import Home from './views/Home.vue';
 import Editor from './views/Editor.vue';
 
 Vue.config.productionTip = false;
+export const EventBus = new Vue();
 Vue.use(BootstrapVue);
 Vue.use(VueRouter);
 

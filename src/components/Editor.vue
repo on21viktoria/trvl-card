@@ -2,14 +2,28 @@
   <div>
     <v-app-bar app clipped-left id="app-bar">
       <div>
-        <h1>trvl card</h1>
+        <h1>trvl-card</h1>
       </div>
     </v-app-bar>
 
     <v-main>
       <v-container fluid id="editor-container">
-        <div class="editor-grid sidebar-hidden">
+        <div v-if="!sidebar" class="editor-grid sidebar-hidden">
           <div id="toolbar">
+            <Toolbar @showSideBar="showSideBar" class="toolbar"> </Toolbar>
+          </div>
+          <div id="postcard"></div>
+        </div>
+        <div v-if="sidebar" class="editor-grid sidebar-shown">
+          <div id="toolbar">
+            <Toolbar @showSideBar="showSideBar" class="toolbar"> </Toolbar>
+          </div>
+          <div>
+            <Sidebar
+              class="sidebar"
+              :idSidebar="sidebarContent"
+              @hideSideBar="hideSideBar()"
+            ></Sidebar>
           </div>
           <div id="postcard">
             <PostcardLayout></PostcardLayout>
@@ -25,13 +39,33 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue';
+import { EventBus } from '../main';
+import Toolbar from './Toolbar.vue';
+import Sidebar from './Sidebar.vue';
 
 export default Vue.extend({
-  name: "Editor",
+  name: 'Editor',
+  components: {
+    Toolbar,
+    Sidebar,
+  },
   data: () => ({
-    //
+    sidebar: false,
+    sidebarContent: '',
+    resetSelectedTool: false,
   }),
+  methods: {
+    showSideBar(idSidebar: string) {
+      this.sidebar = true;
+      this.sidebarContent = idSidebar;
+    },
+    hideSideBar() {
+      this.sidebar = !this.sidebar;
+      this.resetSelectedTool = true;
+      EventBus.$emit('closeSideBar', this.resetSelectedTool);
+    },
+  },
 });
 </script>
 
@@ -41,32 +75,42 @@ h1 {
   text-align: center;
 }
 
+.toolbar {
+  height: 100%;
+}
+
 .editor-grid.sidebar-hidden {
   display: grid;
-  grid-template-columns: 15% 85%;
-  grid-gap: 10px;
+  grid-template-columns: 13% 87%;
+  /*grid-gap: 10px;*/
 }
 
 .editor-grid.sidebar-shown {
   display: grid;
-  grid-template-columns: 15% 15% 70%;
-  grid-gap: 10px;
-} 
+  grid-template-columns: 13% 25% 62%;
+  /* grid-gap: 10px; */
+}
 
 #toolbar {
-  background-color: aquamarine;
-  height: 100%
+  border: solid #707070 1px;
+  /* background-color: aquamarine; */
+  height: 100%;
 }
-#sidebar {
-  background-color: burlywood;
-  height: 100%
-  hidden;
+
+.sidebar {
+  padding: 0px 10px;
+  /* border: solid #707070 1px; */
+  /* background-color: mediumpurple; */
+  height: 100%;
+  width: 100%;
+  font-size: 14px !important;
 }
 
 #postcard {
-  background-color: burlywood;
+  border: solid #707070 1px;
+  background-color: rgba(112, 112, 112, 0.1);
   height: 100%;
-  padding: 5% 20%;
+  margin-left: 10px;
 }
 
 #app-bar {
@@ -74,8 +118,10 @@ h1 {
 }
 
 #editor-container {
-  background-color: lightpink;
+  border: solid #707070 1px;
+  background-color: white;
   height: 800px;
+  max-width: 100%;
 }
 
 #footer > p {
