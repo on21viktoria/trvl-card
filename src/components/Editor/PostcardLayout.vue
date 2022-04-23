@@ -56,7 +56,7 @@ export default Vue.extend({
 .postcard-side {
   position: relative;
   background-color: white;
-  border: solid rgba(112,112,112,1) 1px;
+  /* border: solid rgba(112,112,112,1) 1px; */
   width: 620px;
   height: 440px;
   margin: 40px;
@@ -79,6 +79,7 @@ export default Vue.extend({
 .v-input__slot {
   width: 100% !important;
   margin-bottom: 1px !important;
+  padding: 0 0 0 12px !important;
 }
 
 .v-textarea textarea {
@@ -127,7 +128,7 @@ export default Vue.extend({
   max-width: 100%;
   text-align: center;
   height: 1px;
-  border-color: rgb(112,112,112);
+  border: solid rgb(112,112,112) 1px;
   margin: 30px 15px;
 }
 
