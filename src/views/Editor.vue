@@ -86,7 +86,7 @@ h1 {
 }
 
 #toolbar {
-  border: solid #707070 1px;
+  /* border: solid #707070 1px; */
   /* background-color: aquamarine; */
   height: 100%;
 }
@@ -101,10 +101,10 @@ h1 {
 }
 
 #postcard {
-  border: solid #707070 1px;
+  border: solid rgba(112, 112, 112, 0.5) 1px;
   background-color: rgba(112, 112, 112, 0.1);
   height: 100%;
-  margin-left: 10px;
+  /* margin-left: 10px; */
 }
 
 #app-bar {
@@ -112,9 +112,9 @@ h1 {
 }
 
 #editor-container {
-  border: solid #707070 1px;
+  /* border: solid #707070 1px; */
   background-color: white;
-  height: 800px;
+  align-self: stretch;
   max-width: 100%;
 }
 </style>

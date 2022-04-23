@@ -1,10 +1,10 @@
 <template>
     <div>
     <div>
-      <div class="postcard">
+      <div class="postcard-side" id="front">
         <h3>Ich bin die Vorderseite der Postkarte.</h3>
       </div>
-      <div class="postcard" id="rückseite">
+      <div class="postcard-side" id="back">
         <v-container fluid id="container-rückseite-links">
           <v-textarea 
           solo
@@ -53,9 +53,10 @@ export default Vue.extend({
 *{
   font-family: Montserrat;
 }
-.postcard {
+.postcard-side {
   position: relative;
   background-color: white;
+  border: solid rgba(112,112,112,1) 1px;
   width: 620px;
   height: 440px;
   margin: 40px;
@@ -130,7 +131,7 @@ export default Vue.extend({
   margin: 30px 15px;
 }
 
-#rückseite {
+#back {
   display: flex;
   flex-wrap: wrap;
   padding: 5px;
