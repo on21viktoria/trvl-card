@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <!-- <v-card id="toolbar"> -->
     <v-navigation-drawer
       id="navigation-drawer"
       v-model="drawer"
@@ -138,7 +138,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-  </v-card>
+  <!-- </v-card> -->
 </template>
 
 <script lang="ts">
@@ -318,6 +318,11 @@ export default Vue.extend({
 <style scoped>
 #navigation-drawer {
   border-right: solid rgba(112, 112, 112, 0.4) 1px;
+}
+#toolbar {
+  /* border: solid #707070 1px; */
+  /* background-color: aquamarine; */
+  height: 100%;
 }
 
 .active {

@@ -11,17 +11,17 @@
           </div>
         </div>
         <div v-if="sidebar" class="editor-grid sidebar-shown">
-          <div id="toolbar">
+          <div id="toolbar-with-sidebar">
             <Toolbar @showSideBar="showSideBar" class="toolbar"> </Toolbar>
           </div>
-          <div>
+          <div id="sidebar-with-sidebar">
             <Sidebar
               class="sidebar"
               :idSidebar="sidebarContent"
               @hideSideBar="hideSideBar()"
             ></Sidebar>
           </div>
-          <div id="postcard">
+          <div id="postcard-with-sidebar">
             <PostcardLayout></PostcardLayout>
             </div>
         </div>
@@ -75,36 +75,46 @@ h1 {
 
 .editor-grid.sidebar-hidden {
   display: grid;
-  grid-template-columns: 13% 87%;
-  /*grid-gap: 10px;*/
-}
-
-.editor-grid.sidebar-shown {
-  display: grid;
-  grid-template-columns: 13% 25% 62%;
-  /* grid-gap: 10px; */
+  grid-auto-columns: auto 1fr;
+  justify-content: start;
 }
 
 #toolbar {
-  /* border: solid #707070 1px; */
-  /* background-color: aquamarine; */
   height: 100%;
-}
-
-.sidebar {
-  padding: 0px 10px;
-  /* border: solid #707070 1px; */
-  /* background-color: mediumpurple; */
-  height: 100%;
-  width: 100%;
-  font-size: 14px !important;
+  grid-column: 1;
 }
 
 #postcard {
   border: solid rgba(112, 112, 112, 0.5) 1px;
   background-color: rgba(112, 112, 112, 0.1);
   height: 100%;
-  /* margin-left: 10px; */
+  grid-column: 2;
+}
+
+.editor-grid.sidebar-shown {
+  display: grid;
+  grid-auto-columns: auto auto 70%;
+  justify-content: start;
+}
+
+#toolbar-with-sidebar {
+  height: 100%;
+  grid-column: 1;
+}
+
+.sidebar {
+  padding: 0px 10px;
+  height: 100%;
+  width: 100%;
+  font-size: 14px !important;
+  grid-column: 2;
+}
+
+#postcard-with-sidebar {
+  border: solid rgba(112, 112, 112, 0.5) 1px;
+  background-color: rgba(112, 112, 112, 0.1);
+  height: 100%;
+  grid-column: 3;
 }
 
 #app-bar {
@@ -112,9 +122,7 @@ h1 {
 }
 
 #editor-container {
-  /* border: solid #707070 1px; */
   background-color: white;
   align-self: stretch;
-  max-width: 100%;
 }
 </style>
