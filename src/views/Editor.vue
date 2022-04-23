@@ -80,8 +80,10 @@ h1 {
 }
 
 #toolbar {
+  max-width: 200px;
   height: 100%;
   grid-column: 1;
+  box-shadow: 4px 3px 8px 1px rgba(112,112,112, 0.5);
 }
 
 #postcard {
@@ -93,11 +95,12 @@ h1 {
 
 .editor-grid.sidebar-shown {
   display: grid;
-  grid-auto-columns: auto auto 70%;
+  grid-auto-columns: auto auto 60%;
   justify-content: start;
 }
 
 #toolbar-with-sidebar {
+  max-width: 200px;
   height: 100%;
   grid-column: 1;
 }
@@ -108,6 +111,7 @@ h1 {
   width: 100%;
   font-size: 14px !important;
   grid-column: 2;
+  box-shadow: 4px 3px 8px 1px rgba(112,112,112, 0.5)
 }
 
 #postcard-with-sidebar {

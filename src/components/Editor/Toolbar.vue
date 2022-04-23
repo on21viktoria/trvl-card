@@ -319,15 +319,14 @@ export default Vue.extend({
 #navigation-drawer {
   border-right: solid rgba(112, 112, 112, 0.4) 1px;
 }
-#toolbar {
-  /* border: solid #707070 1px; */
-  /* background-color: aquamarine; */
-  height: 100%;
-}
 
 .active {
   /* color: rgb(29, 162, 169) !important; */
   color: rgb(255, 78, 0) !important;
   font-weight: bold !important;
+}
+
+.v-list-item__title {
+  text-align: center;
 }
 </style>
