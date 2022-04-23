@@ -17,7 +17,7 @@
         </v-container>
         <v-container fluid id="container-rückseite-rechts">
         <div class="frankierzone">
-          <img class="briefmarke" src="../assets/Briefmarke.png" alt="trvl-card Briefmarke">
+          <img class="briefmarke" src="./../../assets/Briefmarke.png" alt="trvl-card Briefmarke">
         </div> 
         <div class="address-field">
           <hr class="address-separator"/>
