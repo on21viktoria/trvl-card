@@ -6,7 +6,9 @@
           <div id="toolbar">
             <Toolbar @showSideBar="showSideBar" class="toolbar"> </Toolbar>
           </div>
-          <div id="postcard"></div>
+          <div id="postcard">
+            <PostcardLayout></PostcardLayout>
+          </div>
         </div>
         <div v-if="sidebar" class="editor-grid sidebar-shown">
           <div id="toolbar">
