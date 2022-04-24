@@ -116,5 +116,6 @@ div {
   font-weight: bold;
   color: #ff4e00;
   margin-bottom: 8px;
+  text-align: center;
 }
 </style>
