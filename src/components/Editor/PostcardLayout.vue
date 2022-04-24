@@ -1,7 +1,7 @@
 <template>
     <div class="postcard-layout">
       <div class="postcard-side" id="front">
-        <h3>Ich bin die Vorderseite der Postkarte.</h3>
+        <img src="./../../assets/images-trvl-card/Ampel_Philippe-Oursel.jpg" class="image-front">
       </div>
       <div class="postcard-side" id="back">
         <v-container fluid id="container-rückseite-links">
@@ -54,11 +54,19 @@ export default Vue.extend({
 
 .postcard-side {
   position: relative;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   border: solid rgba(112,112,112,0.5) 1px; 
   width: 622px;
   height: 442px;
   margin: 40px auto;
+}
+
+.image-front {
+  width: 600px;
+  height: 420px;
+  border: solid 1px rgb(112,112,112);
+  display: block;
+  margin: 10px auto;
 }
 
 .v-input__slot {
@@ -89,7 +97,6 @@ export default Vue.extend({
 }
 
 .frankierzone {
-  /* background-color: rgba(0, 206, 209, 0.1); */
   height: 166px;
   width: 100%;
   padding-top: 10px;
@@ -98,13 +105,11 @@ export default Vue.extend({
 
 .briefmarke {
   width: 65px;
-  /* position: absolute; */
   right: 0;
   top: 0;
   float: right;
 }
 .address-field {
-  /* background-color: rgba(255,78,0,0.1) ; */
   height: 210px;
   width: 100%;
   padding-top: 25px;
