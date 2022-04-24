@@ -79,6 +79,8 @@ export default Vue.extend({
   max-width: 100% !important;
   height: 366px !important;
   border-right: solid rgb(112,112,112) 3px;
+  font-size: 14px;
+  line-height: 1.25 !important;
 }
 
 .v-text-field__details {
@@ -87,6 +89,10 @@ export default Vue.extend({
 
 .v-text-field.v-text-field--enclosed .v-text-field__details {
   margin-bottom: 0px !important;
+}
+
+.theme--light.v-messages {
+  color: rgb(255, 0, 0) !important;
 }
 
 .codierzone {
