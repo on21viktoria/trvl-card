@@ -48,9 +48,6 @@ export default Vue.extend({
 </script>
 
 <style>
-*{
-  font-family: Montserrat;
-}
 
 .postcard-side {
   position: relative;
