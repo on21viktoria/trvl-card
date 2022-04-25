@@ -16,7 +16,7 @@ Vue.use(VueRouter);
 
 const routes = [
   { path: '/', component: Home },
-  { path: '/editor/:id', component: Editor}
+  { path: '/editor/:id', component: Editor},
   { path: '/checkout', component: Contactform}
 ]
 const router = new VueRouter({
