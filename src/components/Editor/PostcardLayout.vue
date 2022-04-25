@@ -37,13 +37,8 @@
         <p>Dieser Platz muss frei bleiben.</p>
       </div>
     </div>
-    <button
-      type="button"
-      class="button button-signup hovereffect checkout"
-      style="color: #fff"
-    >
-      Speichern & Zum Warenkorb
-    </button>
+    <router-link to="/" class="button button-signup hovereffect checkout" style="color: #fff"
+        >Speichern & Zum Warenkorb</router-link>
   </div>
 </template>
 
