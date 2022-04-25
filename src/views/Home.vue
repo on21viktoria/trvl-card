@@ -11,8 +11,8 @@
 
 <script lang="ts">
 import Vue from "vue";
-import DesignChoice from "../components/DesignChoice.vue";
-import Welcome from "../components/Welcome.vue";
+import DesignChoice from "../components/HomePage/DesignChoice.vue";
+import Welcome from "../components/HomePage/Welcome.vue";
 
 export default Vue.extend({
   name: "Home",

@@ -10,12 +10,13 @@ import Editor from './views/Editor.vue';
 import Contactform from './views/Contactform.vue';
 
 Vue.config.productionTip = false;
+export const EventBus = new Vue();
 Vue.use(BootstrapVue);
 Vue.use(VueRouter);
 
 const routes = [
   { path: '/', component: Home },
-  { path: '/editor', component: Editor},
+  { path: '/editor/:id', component: Editor}
   { path: '/checkout', component: Contactform}
 ]
 const router = new VueRouter({
