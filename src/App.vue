@@ -1,22 +1,23 @@
 <template>
-  <v-app>
-    <Contactform></Contactform>
-  </v-app>
+  <div>
+    <Header></Header>
+    <router-view></router-view>
+    <Footer></Footer>
+  </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import Contactform from './components/Contactform.vue';
-import Editor from './components/Editor.vue';
+import Vue from "vue";
+import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
 
 export default Vue.extend({
-  name: 'App',
+  name: "App",
+
   components: {
-    Editor,
-    Contactform,
+    Header,
+    Footer,
   },
-  data: () => ({
-  }),
 });
 </script>
 
