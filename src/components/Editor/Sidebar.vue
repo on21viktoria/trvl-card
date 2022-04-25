@@ -8,12 +8,7 @@
 
     <div v-for="item in items" :key="item.toolChoice" link>
       <div v-if="item.toolChoice === idSidebar">
-        <v-list-item-content v-for="tool in item.tools" :key="tool.title">
-          <v-list-item-title class="tool-title">
-            {{ tool.title }}
-          </v-list-item-title>
-          <p class="tool-text">{{ tool.text }}</p>
-        </v-list-item-content>
+        <component :is="dynamicComponent"></component>
       </div>
     </div>
     <p>
@@ -30,78 +25,60 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue from "vue";
+import Photos from "./../Sidebar/Photos.vue";
+import Vorlagen from "./../Sidebar/Vorlagen.vue";
 
 export default Vue.extend({
   data() {
     return {
       items: [
         {
-          toolChoice: 'Vorlagen',
-          tools: [{ title: 'Vorlage', text: 'Wähle hier deine Vorlage.' }],
+          toolChoice: "Vorlagen",
         },
         {
-          toolChoice: 'Fotos',
-          tools: [
-            { title: 'Suche', text: 'Suche nach einem Ort.' },
-            { title: 'Bildauswahl', text: 'Hier ensteht die Bildauswahl.' },
-          ],
+          toolChoice: "Fotos",
         },
         {
-          toolChoice: 'Upload',
-          tools: [
-            {
-              title: 'Upload',
-              text: 'Hier kannst du deine eigenen Bilder hochladen.',
-            },
-          ],
+          toolChoice: "Upload",
         },
         {
-          toolChoice: 'Text',
-          tools: [
-            {
-              title: 'Schriftart',
-              text: 'Hier kannst du eine Schriftart wählen.',
-            },
-            {
-              title: 'Schriftgröße',
-              text: 'Hier kannst du die Schriftgröße ändern.',
-            },
-            {
-              title: 'Schriftfarbe',
-              text: 'Hier kannst du die Schriftfarbe anpassen.',
-            },
-          ],
+          toolChoice: "Text",
         },
         {
-          toolChoice: 'Hintergrund',
-          tools: [
-            {
-              title: 'Hintergrundfarbe',
-              text: 'Hier kannst du die Hintergrundfarbe wählen.',
-            },
-          ],
+          toolChoice: "Hintergrund",
         },
         {
-          toolChoice: 'Sticker',
-          tools: [
-            {
-              title: 'Sticker',
-              text: 'Hier kannst du aus verschiedenen Stickern aussuchen.',
-            },
-          ],
+          toolChoice: "Sticker",
         },
       ],
     };
   },
-  name: 'Sidebar',
-  components: {},
+  name: "Sidebar",
+  components: {
+    Vorlagen,
+    Photos,
+  },
   props: {
     idSidebar: String,
   },
+  computed: {
+  dynamicComponent() {
+    switch(this.idSidebar) {
+      case 'Vorlagen': {
+        return Vorlagen;
+        break;
+      }
+      case 'Fotos': {
+        return Photos;
+        break;
+      }
+    }
+  }
+  },
   methods: {
     onClick() {
-      this.$emit('hideSideBar');
+      this.$emit("hideSideBar");
     },
   },
 });
