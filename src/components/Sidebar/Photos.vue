@@ -1,39 +1,40 @@
 <template>
   <div>
-    <p class="tool-title">Suche</p>
+    <p class="tool-title">Fotos</p>
+    <!-- <p class="tool-title subtitle">Suche</p>
     <v-text-field
       label="Suche"
       solo
       prepend-inner-icon="mdi-magnify"
-    ></v-text-field>
-    <p class="tool-title">Bildauswahl</p>
+    ></v-text-field> -->
+    <p class="tool-title subtitle">Bildauswahl</p>
     <div class="Photogrid">
-      <img src="C:\Users\PC302114\Isabel Köcher\DHBW\1. Studienjahr\2. Semester\P1_Projektmanagement cont\Gruppe 5\trvl-card\src\assets\images-trvl-card\Ampel_Philippe-Oursel.jpg" width="100%" />
+      <img src="./../../assets/images-trvl-card/Ampel_Philippe-Oursel.jpg" width="100%" />
       <img
-        src="C:\Users\PC302114\Isabel Köcher\DHBW\1. Studienjahr\2. Semester\P1_Projektmanagement cont\Gruppe 5\trvl-card\src\assets\images-trvl-card\Berliner-Mauer_Mateo-Krossler.jpg"
-        width="100%"
-      />
-      <!-- <img
-        src="./../../assets/images-trvl-card/Berlin/Brandenburger-Tor_Hakon-Sataoen.jpg"
+        src="./../../assets/images-trvl-card/Berliner-Mauer_Mateo-Krossler.jpg"
         width="100%"
       />
       <img
-        src="./../../assets/images-trvl-card/Berlin/Checkpoint-Charlie_Santiago-flores.jpg"
+        src="./../../assets/images-trvl-card/Brandenburger-Tor_Hakon-Sataoen.jpg"
         width="100%"
       />
       <img
-        src="./../../assets/images-trvl-card/Berlin/Fernsehturm_Camilla-Bundgaard.jpg"
+        src="./../../assets/images-trvl-card/Checkpoint-Charlie_Santiago-flores.jpg"
         width="100%"
       />
       <img
-        src="./../../assets/images-trvl-card/Berlin/Museumsinsel_Christian-Ladewig.jpg"
+        src="./../../assets/images-trvl-card/Fernsehturm_Camilla-Bundgaard.jpg"
         width="100%"
       />
-      <img src="./../../assets/images-trvl-card/Berlin/Olympiastadion_Samuel-Svec.jpg" width="100%" />
-      <img src="./../../assets/images-trvl-card/Berlin/Reichstag_Fionn-Grosseh.jpg" width="100%" />
-      <img src="./../../assets/images-trvl-card/Berlin/Stadtansicht_Florian-Wehde.jpg" width="100%" />
-      <img src="./../../assets/images-trvl-card/Berlin/Stadtansicht2_Stefan-Widua.jpg" width="100%" />
-      <img src="./../../assets/images-trvl-card/Berlin/U-Bahn_Soroush-Karimi.jpg" width="100%" /> -->
+      <img
+        src="./../../assets/images-trvl-card/Museumsinsel_Christian-Ladewig.jpg"
+        width="100%"
+      />
+      <img src="./../../assets/images-trvl-card/Olympiastadion_Samuel-Svec.jpg" width="100%" />
+      <img src="./../../assets/images-trvl-card/Reichstag_Fionn-Grosseh.jpg" width="100%" />
+      <img src="./../../assets/images-trvl-card/Stadtansicht_Florian-Wehde.jpg" width="100%" />
+      <img src="./../../assets/images-trvl-card/Stadtansicht2_Stefan-Widua.jpg" width="100%" />
+      <img src="./../../assets/images-trvl-card/U-Bahn_Soroush-Karimi.jpg" width="100%" />
     </div>
   </div>
 </template>
@@ -68,5 +69,8 @@ img:hover {
   color: #ff4e00;
   margin-bottom: 8px;
   text-align: center;
+}
+.tool-title.subtitle {
+  font-size: 16px;
 }
 </style>

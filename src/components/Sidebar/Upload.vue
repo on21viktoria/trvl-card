@@ -1,0 +1,32 @@
+<template>
+    <div>
+    <p class="tool-title">Upload</p>
+    <p class="tool-title subtitle">Suche</p>
+    <v-text-field label="Suche" solo prepend-inner-icon="mdi-magnify"></v-text-field>
+    </div>
+</template>
+
+<script lang="ts">
+import Vue from "vue";
+
+export default Vue.extend({
+  name: "Upload",
+  components: {},
+  props: {
+  },
+  methods: {},
+});
+</script>
+
+<style scoped>
+.tool-title {
+  font-weight: bold;
+  font-size: 18px;
+  color: #ff4e00;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.tool-title.subtitle {
+  font-size: 16px;
+}
+</style>

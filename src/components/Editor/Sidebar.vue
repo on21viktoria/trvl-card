@@ -11,7 +11,7 @@
         <component :is="dynamicComponent"></component>
       </div>
     </div>
-    <p>
+    <!-- <p>
       Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus
       ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur
       ac, vestibulum at eros.
@@ -20,14 +20,18 @@
       src="https://picsum.photos/500/500/?image=54"
       fluid
       thumbnail
-    ></b-img>
+    ></b-img> -->
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import Templates from "../Sidebar/Templates.vue";
 import Photos from "./../Sidebar/Photos.vue";
-import Vorlagen from "./../Sidebar/Vorlagen.vue";
+import Upload from "./../Sidebar/Upload.vue";
+import Text from "./../Sidebar/Text.vue";
+import Background from "../Sidebar/Background.vue";
+import Sticker from "./../Sidebar/Sticker.vue";
 
 export default Vue.extend({
   data() {
@@ -56,8 +60,12 @@ export default Vue.extend({
   },
   name: "Sidebar",
   components: {
-    Vorlagen,
+    Templates,
     Photos,
+    Upload,
+    Text,
+    Background,
+    Sticker
   },
   props: {
     idSidebar: String,
@@ -66,11 +74,27 @@ export default Vue.extend({
   dynamicComponent() {
     switch(this.idSidebar) {
       case 'Vorlagen': {
-        return Vorlagen;
+        return Templates;
         break;
       }
       case 'Fotos': {
         return Photos;
+        break;
+      }
+      case 'Upload': {
+        return Upload;
+        break;
+      }
+      case 'Text': {
+        return Text;
+        break;
+      }
+      case 'Hintergrund': {
+        return Background;
+        break;
+      }
+      case 'Sticker': {
+        return Sticker;
         break;
       }
     }
