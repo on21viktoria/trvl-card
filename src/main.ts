@@ -15,7 +15,7 @@ Vue.use(VueRouter);
 
 const routes = [
   { path: '/', component: Home },
-  { path: '/editor', component: Editor}
+  { path: '/editor/:id', component: Editor}
 ]
 const router = new VueRouter({
   routes
