@@ -7,6 +7,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 import VueRouter from 'vue-router';
 import Home from './views/Home.vue';
 import Editor from './views/Editor.vue';
+import Contactform from './views/Contactform.vue';
 
 Vue.config.productionTip = false;
 export const EventBus = new Vue();
@@ -16,6 +17,7 @@ Vue.use(VueRouter);
 const routes = [
   { path: '/', component: Home },
   { path: '/editor/:id', component: Editor}
+  { path: '/checkout', component: Contactform}
 ]
 const router = new VueRouter({
   routes
