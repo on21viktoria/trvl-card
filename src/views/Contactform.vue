@@ -11,7 +11,7 @@
           <v-select
           v-model="formOfAddress"
           :items="formsOfAddress"
-          :menu-props="{ maxHeight: 400 }"
+          :menu-props="{ maxHeight: '400' }"
           label="Anrede"
           single
         :rules="addressRules"
@@ -45,38 +45,7 @@
             required
           ></v-text-field>
         </v-col>
-
-        <v-col class="columns" cols="12" md="6"> 
-          <v-select
-          v-model="country"
-          :items="states"
-          :menu-props="{ maxHeight: 400 }"
-          label="Land"
-          single
-        :rules="countryRules"
-        required
-          ></v-select>
-        </v-col>
-
-          <v-row>
-            <v-col cols="12" md="5">
-              <v-text-field
-                v-model="postalcode"
-                :rules="postalcodeRules"
-                label="Postleitzahl"
-                required
-              ></v-text-field>
-            </v-col>
-            <v-col cols="12" md="5">
-              <v-text-field
-                v-model="city"
-                :rules="cityRules"
-                label="Stadt"
-                required
-              ></v-text-field>
-            </v-col>
-          </v-row>
-        <v-row>
+<v-row>
           <v-col cols="12" md="5">
             <v-text-field
               v-model="street"
@@ -94,6 +63,36 @@
             ></v-text-field>
           </v-col>
         </v-row>
+        <v-row>
+            <v-col cols="12" md="5">
+              <v-text-field
+                v-model="postalcode"
+                :rules="postalcodeRules"
+                label="Postleitzahl"
+                required
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" md="5">
+              <v-text-field
+                v-model="city"
+                :rules="cityRules"
+                label="Stadt"
+                required
+              ></v-text-field>
+            </v-col>
+          </v-row>
+        
+        <v-col class="columns" cols="12" md="6"> 
+          <v-select
+          v-model="country"
+          :items="states"
+          :menu-props="{ maxHeight: '400' }"
+          label="Land"
+          single
+        :rules="countryRules"
+        required
+          ></v-select>
+        </v-col>
       </v-container>
     </v-form>
     <div class="saveaddress">
@@ -133,11 +132,11 @@
     </div>
 </template>
 
-<script lang="ts">
-import Vue from "vue";
+<script lang='ts'>
+import Vue from 'vue';
 
 export default Vue.extend({
-  name: "Contactform",
+  name: 'Contactform',
   data: () => ({
     valid: false,
     formOfAddress: [],
@@ -181,7 +180,7 @@ export default Vue.extend({
 
 <style scoped>
 * {
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
 }
 
 .checkout-body {
@@ -231,8 +230,8 @@ h2 {
 
 .imgcontainer {
     display: flex;
-    width: 100px;
-    height: 100px; 
+    width: 181.9px;
+    height: 131.1px; 
     background-color: #f1f1f1;
     padding: 20px;
     margin: 15px; 
@@ -260,7 +259,7 @@ h2 {
 }
 
 #costtext {
-    margin-right: 350px; 
+    margin-right: auto;
 }
 
 .costwrapper {
