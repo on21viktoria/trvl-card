@@ -26,12 +26,12 @@
 
 <script lang="ts">
 import Vue from "vue";
-import Templates from "../Sidebar/Templates.vue";
-import Photos from "./../Sidebar/Photos.vue";
-import Upload from "./../Sidebar/Upload.vue";
-import Text from "./../Sidebar/Text.vue";
-import Background from "../Sidebar/Background.vue";
-import Sticker from "./../Sidebar/Sticker.vue";
+import Templates from "./Sidebar/Templates.vue";
+import Photos from "./Sidebar/Photos.vue";
+import Upload from "./Sidebar/Upload.vue";
+import Text from "./Sidebar/Text.vue";
+import Background from "./Sidebar/Background.vue";
+import Sticker from "./Sidebar/Sticker.vue";
 
 export default Vue.extend({
   data() {

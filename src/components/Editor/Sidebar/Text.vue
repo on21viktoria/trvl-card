@@ -1,7 +1,17 @@
 <template>
   <div>
     <p class="tool-title">Text</p>
-    <p class="tool-title subtitle">Schriftart</p>
+    <p>
+      Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus
+      ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur
+      ac, vestibulum at eros.
+    </p>
+    <b-img
+      src="https://picsum.photos/500/500/?image=54"
+      fluid
+      thumbnail
+    ></b-img>
+    <!-- <p class="tool-title subtitle">Schriftart</p>
     <v-select :items="items" filled label="Schrift wählen"></v-select>
     <p class="tool-title subtitle">Schriftgröße</p>
     <v-card flat color="transparent">
@@ -29,7 +39,7 @@
           </v-col>
         </v-row>
       </v-card-text>
-    </v-card>
+    </v-card> -->
   </div>
 </template>
 
