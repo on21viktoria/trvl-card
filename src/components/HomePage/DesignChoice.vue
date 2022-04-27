@@ -4,7 +4,7 @@
     <div class="card-body">
       <h5 class="card-title">{{ title }}</h5>
       <p class="card-text">{{ text }}</p>
-      <router-link to="/editor" class="button button-signup"
+      <router-link :to="`/editor/${id}`" class="button button-signup"
         >Jetzt gestalten</router-link
       >
     </div>
@@ -21,6 +21,6 @@ export default Vue.extend({
     text: String,
     image: String,
     id: String,
-  },
+  }
 });
 </script>

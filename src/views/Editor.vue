@@ -7,7 +7,7 @@
             <Toolbar @showSideBar="showSideBar" class="toolbar"> </Toolbar>
           </div>
           <div id="postcard">
-            <PostcardLayout></PostcardLayout>
+            <PostcardLayout :ImageId="$route.params.id"></PostcardLayout>
           </div>
         </div>
         <div v-if="sidebar" class="editor-grid sidebar-shown">
@@ -22,7 +22,7 @@
             ></Sidebar>
           </div>
           <div id="postcard-with-sidebar">
-            <PostcardLayout></PostcardLayout>
+            <PostcardLayout :ImageId="$route.params.id"></PostcardLayout>
             </div>
         </div>
       </v-container>
@@ -44,6 +44,9 @@ export default Vue.extend({
     Sidebar,
     PostcardLayout,
   },
+  props: {
+    id: String
+  },
   data: () => ({
     sidebar: false,
     sidebarContent: '',
@@ -53,6 +56,7 @@ export default Vue.extend({
     showSideBar(idSidebar: string) {
       this.sidebar = true;
       this.sidebarContent = idSidebar;
+      console.log(this.id);
     },
     hideSideBar() {
       this.sidebar = !this.sidebar;
