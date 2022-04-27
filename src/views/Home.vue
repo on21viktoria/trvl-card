@@ -23,7 +23,7 @@ export default Vue.extend({
         id: "blanko",
         title: "Blanko-Postkarte",
         text: "Starte ohne Vorlage mit einer Blanko-Postkarte.",
-        image: "Fernsehturm_Camilla-Bundgaard"
+        image: "BlankoPostkarte"
     },
     {
         id: "large-letter",

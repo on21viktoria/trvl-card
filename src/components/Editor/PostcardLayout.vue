@@ -3,13 +3,13 @@
     <div class="postcard-side" id="front">
       <div v-if="ImageId === 'blanko'">
         <img
-        src="./../../assets/images-trvl-card/Fernsehturm_Camilla-Bundgaard.jpg"
+        src="./../../assets/images-trvl-card/BlankoPostkarte.jpg"
         class="image-front"
       />
       </div>
       <div v-if="ImageId ==='large-letter'">
         <img
-        src="./../../assets/images-trvl-card/Berliner-Mauer_Mateo-Krossler.jpg"
+        src="./../../assets/images-trvl-card/LargeLetterDesign_Berlin.jpg"
         class="image-front"
       />
       </div>
