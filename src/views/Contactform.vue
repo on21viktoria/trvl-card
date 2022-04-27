@@ -108,7 +108,7 @@
         <h2>Deine Bestellung</h2>
         <div class="orderwrapper">
         <div class="imgcontainer">
-        <img src="./../assets/logo_trvl.png" width=50px height=50px/>
+        <img src="./../assets/images-trvl-card/LargeLetterDesign_Berlin.jpg" width=150px/>
         </div>
         <ul class="ordersumup">
         <li class="ordertext">Postkarte Big Letter Design "California"</li>

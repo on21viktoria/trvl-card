@@ -3,13 +3,13 @@
     <div class="postcard-side" id="front">
       <div v-if="ImageId === 'blanko'">
         <img
-        src="./../../assets/images-trvl-card/Fernsehturm_Camilla-Bundgaard.jpg"
+        src="./../../assets/images-trvl-card/BlankoPostkarte.jpg"
         class="image-front"
       />
       </div>
       <div v-if="ImageId ==='large-letter'">
         <img
-        src="./../../assets/images-trvl-card/Berliner-Mauer_Mateo-Krossler.jpg"
+        src="./../../assets/images-trvl-card/LargeLetterDesign_Berlin.jpg"
         class="image-front"
       />
       </div>
@@ -45,6 +45,8 @@
         <p>Dieser Platz muss frei bleiben.</p>
       </div>
     </div>
+    <router-link to="/checkout" class="button button-signup hovereffect checkout" style="color: #fff"
+        >Speichern & Zum Warenkorb</router-link>
   </div>
 </template>
 
@@ -146,6 +148,13 @@ export default Vue.extend({
   height: 1px;
   border: solid rgb(112, 112, 112) 1px;
   margin: 30px 15px;
+}
+
+.checkout {
+  align-self: flex-end;
+  float: right;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }
 
 #container-rückseite-links {
