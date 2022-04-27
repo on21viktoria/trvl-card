@@ -1,10 +1,18 @@
 <template>
   <div class="postcard-layout">
     <div class="postcard-side" id="front">
-      <img
-        src="./../../assets/images-trvl-card/Ampel_Philippe-Oursel.jpg"
+      <div v-if="ImageId === 'blanko'">
+        <img
+        src="./../../assets/images-trvl-card/BlankoPostkarte.jpg"
         class="image-front"
       />
+      </div>
+      <div v-if="ImageId ==='large-letter'">
+        <img
+        src="./../../assets/images-trvl-card/LargeLetterDesign_Berlin.jpg"
+        class="image-front"
+      />
+      </div>
     </div>
     <div class="postcard-side" id="back">
       <v-container fluid id="container-rückseite-links">
@@ -50,8 +58,11 @@ export default Vue.extend({
   components: {},
   data: () => ({
     rules: [(v: string | any[]) => v.length <= 500 || "Maximal 500 characters"],
-    value: "Hello!",
+    value: "Hello!"
   }),
+  props: {
+    ImageId: String
+  }
 });
 </script>
 
