@@ -29,7 +29,7 @@ export default Vue.extend({
         id: "large-letter",
         title: "Large-Letter-Design",
         text: "Starte mit dem Large-Letter-Design.",
-        image: "BigLetterMotiv_Berlin"
+        image: "LargeLetterDesign_Berlin"
     }
     ]
   })
