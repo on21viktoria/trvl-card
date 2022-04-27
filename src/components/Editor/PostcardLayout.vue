@@ -45,6 +45,8 @@
         <p>Dieser Platz muss frei bleiben.</p>
       </div>
     </div>
+    <router-link to="/" class="button button-signup hovereffect checkout" style="color: #fff"
+        >Speichern & Zum Warenkorb</router-link>
   </div>
 </template>
 
@@ -146,6 +148,13 @@ export default Vue.extend({
   height: 1px;
   border: solid rgb(112, 112, 112) 1px;
   margin: 30px 15px;
+}
+
+.checkout {
+  align-self: flex-end;
+  float: right;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }
 
 #container-rückseite-links {

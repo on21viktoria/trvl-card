@@ -95,6 +95,9 @@ h1 {
   background-color: rgba(112, 112, 112, 0.1);
   height: 100%;
   grid-column: 2;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column-reverse;
 }
 
 .editor-grid.sidebar-shown {
@@ -123,6 +126,9 @@ h1 {
   background-color: rgba(112, 112, 112, 0.1);
   height: 100%;
   grid-column: 3;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column-reverse;
 }
 
 #app-bar {
