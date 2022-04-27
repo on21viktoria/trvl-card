@@ -100,8 +100,8 @@
     <label for="saveaddress">Addresse speichern</label>
     </div>
     <div class="checkoutbuttons">
-        <button type="button" id="save">SICHERN & ZURÜCK</button>
-        <button type="button" id="pay">ZUR ZAHLUNG</button>    
+        <button type="button" class="hovereffect" id="save">SICHERN & ZURÜCK</button>
+        <button type="button" class="hovereffect" id="pay">ZUR ZAHLUNG</button>    
     </div>
     </div>
     <div class="order">
