@@ -29,7 +29,7 @@ export default Vue.extend({
         id: "large-letter",
         title: "Large-Letter-Design",
         text: "Starte mit dem Large-Letter-Design.",
-        image: "Berliner-Mauer_Mateo-Krossler"
+        image: "BigLetterMotiv_Berlin"
     }
     ]
   })
