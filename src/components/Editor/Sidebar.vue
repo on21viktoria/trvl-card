@@ -8,15 +8,10 @@
 
     <div v-for="item in items" :key="item.toolChoice" link>
       <div v-if="item.toolChoice === idSidebar">
-        <v-list-item-content v-for="tool in item.tools" :key="tool.title">
-          <v-list-item-title class="tool-title">
-            {{ tool.title }}
-          </v-list-item-title>
-          <p class="tool-text">{{ tool.text }}</p>
-        </v-list-item-content>
+        <component :is="dynamicComponent"></component>
       </div>
     </div>
-    <p>
+    <!-- <p>
       Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus
       ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur
       ac, vestibulum at eros.
@@ -25,83 +20,89 @@
       src="https://picsum.photos/500/500/?image=54"
       fluid
       thumbnail
-    ></b-img>
+    ></b-img> -->
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue from "vue";
+import Templates from "./Sidebar/Templates.vue";
+import Photos from "./Sidebar/Photos.vue";
+import Upload from "./Sidebar/Upload.vue";
+import Text from "./Sidebar/Text.vue";
+import Background from "./Sidebar/Background.vue";
+import Sticker from "./Sidebar/Sticker.vue";
 
 export default Vue.extend({
   data() {
     return {
       items: [
         {
-          toolChoice: 'Vorlagen',
-          tools: [{ title: 'Vorlage', text: 'Wähle hier deine Vorlage.' }],
+          toolChoice: "Vorlagen",
         },
         {
-          toolChoice: 'Fotos',
-          tools: [
-            { title: 'Suche', text: 'Suche nach einem Ort.' },
-            { title: 'Bildauswahl', text: 'Hier ensteht die Bildauswahl.' },
-          ],
+          toolChoice: "Fotos",
         },
         {
-          toolChoice: 'Upload',
-          tools: [
-            {
-              title: 'Upload',
-              text: 'Hier kannst du deine eigenen Bilder hochladen.',
-            },
-          ],
+          toolChoice: "Upload",
         },
         {
-          toolChoice: 'Text',
-          tools: [
-            {
-              title: 'Schriftart',
-              text: 'Hier kannst du eine Schriftart wählen.',
-            },
-            {
-              title: 'Schriftgröße',
-              text: 'Hier kannst du die Schriftgröße ändern.',
-            },
-            {
-              title: 'Schriftfarbe',
-              text: 'Hier kannst du die Schriftfarbe anpassen.',
-            },
-          ],
+          toolChoice: "Text",
         },
         {
-          toolChoice: 'Hintergrund',
-          tools: [
-            {
-              title: 'Hintergrundfarbe',
-              text: 'Hier kannst du die Hintergrundfarbe wählen.',
-            },
-          ],
+          toolChoice: "Hintergrund",
         },
         {
-          toolChoice: 'Sticker',
-          tools: [
-            {
-              title: 'Sticker',
-              text: 'Hier kannst du aus verschiedenen Stickern aussuchen.',
-            },
-          ],
+          toolChoice: "Sticker",
         },
       ],
     };
   },
-  name: 'Sidebar',
-  components: {},
+  name: "Sidebar",
+  components: {
+    Templates,
+    Photos,
+    Upload,
+    Text,
+    Background,
+    Sticker
+  },
   props: {
     idSidebar: String,
   },
+  computed: {
+  dynamicComponent() {
+    switch(this.idSidebar) {
+      case 'Vorlagen': {
+        return Templates;
+        break;
+      }
+      case 'Fotos': {
+        return Photos;
+        break;
+      }
+      case 'Upload': {
+        return Upload;
+        break;
+      }
+      case 'Text': {
+        return Text;
+        break;
+      }
+      case 'Hintergrund': {
+        return Background;
+        break;
+      }
+      case 'Sticker': {
+        return Sticker;
+        break;
+      }
+    }
+  }
+  },
   methods: {
     onClick() {
-      this.$emit('hideSideBar');
+      this.$emit("hideSideBar");
     },
   },
 });
