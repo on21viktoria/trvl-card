@@ -2,9 +2,10 @@
   <div class="container-fluid">
     <footer class="py-2">
       <div class="row">
-        <div class="col-2">
+        <div class="col-3">
           <h5>Über uns</h5>
-          <p>Wir sind das Team der Kniffeligen Gruppe vom Studiengang ON21!</p>
+          <p>Wir von trvl card haben die Vision, dass wieder mehr liebevoll 
+            gestaltete Postkarten postalisch versendet werden.</p>
           <h5>Folge uns!</h5>
           <v-icon class="socialmedia">mdi-facebook</v-icon>
           <v-icon class="socialmedia">mdi-instagram</v-icon>
@@ -14,21 +15,24 @@
           <h5>Das Team</h5>
           <ul class="nav flex-column">
             <li class="nav-item mb-2">
-              <p class="nav-link p-0 text-muted">Marie Bauer</p>
+              <p class="nav-link p-0 text-muted">Marie Bauer - Product Ownerin</p>
             </li>
             <li class="nav-item mb-2">
-              <p class="nav-link p-0 text-muted">Isabel Köcher</p>
+              <p class="nav-link p-0 text-muted">Isabel Köcher - Scrum Masterin</p>
             </li>
             <li class="nav-item mb-2">
-              <p class="nav-link p-0 text-muted">Viktoria Seubert</p>
+              <p class="nav-link p-0 text-muted">Viktoria Seubert - Developerin</p>
             </li>
             <li class="nav-item mb-2">
-              <p class="nav-link p-0 text-muted">Robin Kauffeld</p>
+              <p class="nav-link p-0 text-muted">Robin Kauffeld - Developer</p>
             </li>
             <li class="nav-item mb-2">
-              <p class="nav-link p-0 text-muted">Katharina Boni</p>
+              <p class="nav-link p-0 text-muted">Katharina Boni - Developerin</p>
             </li>
           </ul>
+        </div>
+        <div class="col-2">
+          <img src="../assets/Postkarte.jpg" width=75%/>
         </div>
         <div class="col-4 offset-1">
           <form>
@@ -95,6 +99,10 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+* {
+  font-size: 12px;
+}
+
 .container-fluid {
   margin-bottom: -310px;
   padding: 20px 40px 0 40px;
@@ -119,5 +127,9 @@ export default Vue.extend({
 
 .nav-link {
   margin: 0;
+}
+
+.roles {
+  margin-top: 32px;
 }
 </style>
