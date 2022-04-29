@@ -11,47 +11,25 @@
           <v-icon class="socialmedia">mdi-twitter</v-icon>
         </div>
         <div class="col-2">
-          <h5>Information</h5>
+          <h5>Das Team</h5>
           <ul class="nav flex-column">
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-muted">Bestellung</a>
+              <p class="nav-link p-0 text-muted">Marie Bauer</p>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-muted">Versand</a>
+              <p class="nav-link p-0 text-muted">Isabel Köcher</p>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-muted">Rückgabe</a>
+              <p class="nav-link p-0 text-muted">Viktoria Seubert</p>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-muted">FAQ</a>
+              <p class="nav-link p-0 text-muted">Robin Kauffeld</p>
             </li>
             <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-muted">Impressum</a>
+              <p class="nav-link p-0 text-muted">Katharina Boni</p>
             </li>
           </ul>
         </div>
-
-        <div class="col-2">
-          <h5>Inspiration</h5>
-          <ul class="nav flex-column">
-            <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-muted">Unsere Mission</a>
-            </li>
-            <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-muted">Nachhaltigkeit</a>
-            </li>
-            <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-muted">Galerie</a>
-            </li>
-            <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-muted">Blog</a>
-            </li>
-            <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-muted">Karriere</a>
-            </li>
-          </ul>
-        </div>
-
         <div class="col-4 offset-1">
           <form>
             <h5>Verpasse keine Neuigkeiten!</h5>
@@ -137,5 +115,9 @@ export default Vue.extend({
 
 .col-2 {
   text-align: left;
+}
+
+.nav-link {
+  margin: 0;
 }
 </style>
