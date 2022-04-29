@@ -32,7 +32,7 @@
           </ul>
         </div>
         <div class="col-2">
-          <img src="../assets/Postkarte.jpg" width=80%/>
+          <img src="../assets/Postkarte.jpg" width=70%/>
         </div>
         <div class="col-4 offset-1">
           <form>
