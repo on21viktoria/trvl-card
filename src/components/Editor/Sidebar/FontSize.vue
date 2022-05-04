@@ -7,6 +7,7 @@
 
 <script lang="ts">
 import Vue from "vue";
+import {EventBus} from "@/main";
 
 export default Vue.extend({
   name: "FontSize",
@@ -21,7 +22,16 @@ export default Vue.extend({
           { value: 'd', text: '14px' },
           { value: 'e', text: '16px' },
           { value: 'f', text: '18px' },
-        ]
+        ],
+        sizeId: '',
+        }
+    },
+    methods: {
+    changeFontSize() {
+    this.sizeId = `${this.selected}`;
+    console.log("Color has been selected", this.sizeId, this.selected);
+    EventBus.$emit('changeFontColor', this.sizeId);
+    },
       }
     }
 });
