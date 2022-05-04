@@ -17,6 +17,7 @@
     <div class="postcard-side" id="back">
       <v-container fluid id="container-rückseite-links">
         <v-textarea
+          id="fontcolor"
           solo
           counter
           name="Nachrichten-Textfeld"
@@ -51,6 +52,7 @@
 </template>
 
 <script lang="ts">
+import { EventBus } from "@/main";
 import Vue from "vue";
 
 export default Vue.extend({
@@ -60,6 +62,13 @@ export default Vue.extend({
     rules: [(v: string | any[]) => v.length <= 500 || "Maximal 500 characters"],
     value: "Hello!"
   }),
+  created() {
+  EventBus.$on('changeFontColor', (colorId: string) => {
+    const textarea = document.querySelector('#fontcolor') as HTMLElement;
+    textarea.style.color =`${colorId}`;
+    console.log("In PostcardLayout", colorId)
+  })
+  },
   props: {
     ImageId: String
   }
@@ -97,6 +106,11 @@ export default Vue.extend({
   font-size: 14px;
   line-height: 1.25 !important;
 }
+
+/* .v-textarea.v-text-field--solo .v-input__control textarea {
+    /* caret-color: rgb(112, 112, 112); */
+    /* color: red;
+} */ 
 
 .v-text-field__details {
   max-width: 100% !important;

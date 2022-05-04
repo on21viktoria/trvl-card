@@ -1,59 +1,26 @@
 <template>
   <div>
     <p class="tool-title">Text</p>
-    <p>
-      Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus
-      ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur
-      ac, vestibulum at eros.
-    </p>
-    <b-img
-      src="https://picsum.photos/500/500/?image=54"
-      fluid
-      thumbnail
-    ></b-img>
-    <!-- <p class="tool-title subtitle">Schriftart</p>
-    <v-select :items="items" filled label="Schrift wählen"></v-select>
-    <p class="tool-title subtitle">Schriftgröße</p>
-    <v-card flat color="transparent">
-      <v-card-text>
-        <v-row>
-          <v-col class="pr-4">
-            <v-slider
-              v-model="slider"
-              class="align-center"
-              :max="18"
-              :min="0"
-              hide-details
-            >
-              <template v-slot:append>
-                <v-text-field
-                  v-model="slider"
-                  class="mt-0 pt-0"
-                  hide-details
-                  single-line
-                  type="number"
-                  style="width: 60px"
-                ></v-text-field>
-              </template>
-            </v-slider>
-          </v-col>
-        </v-row>
-      </v-card-text>
-    </v-card> -->
+    <fontcolor></fontcolor>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import Fontcolor from "./Fontcolor.vue";
 
 export default Vue.extend({
-  data: () => ({
-    items: ["Foo", "Bar", "Fizz", "Buzz"],
-  }),
+  data() {
+    return {
+    };
+  },
   name: "Text",
-  components: {},
+  components: {
+    Fontcolor,
+  },
   props: {},
-  methods: {},
+  methods: {
+  },
 });
 </script>
 
