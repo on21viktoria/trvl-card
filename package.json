@@ -23,7 +23,8 @@
     "vue-material-design-icons": "^5.0.0",
     "vue-router": "^3.5.2",
     "vue-simple-search-dropdown": "^1.0.1",
-    "vuetify": "^2.6.0"
+    "vuetify": "^2.6.0",
+    "vuex": "^3.6.0"
   },
   "devDependencies": {
     "@mdi/js": "^6.6.96",

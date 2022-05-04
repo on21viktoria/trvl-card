@@ -9,7 +9,7 @@
       </div>
       <div v-if="ImageId ==='large-letter'">
         <img
-        src="./../../assets/images-trvl-card/LargeLetterDesign_Berlin.jpg"
+         :src="require(`./../../assets/images-trvl-card-72dpi/${currentPicture}`)"
         class="image-front"
       />
       </div>
@@ -45,24 +45,30 @@
         <p>Dieser Platz muss frei bleiben.</p>
       </div>
     </div>
-    <router-link to="/checkout" class="button button-signup hovereffect checkout" style="color: #fff"
-        >Speichern & Zum Warenkorb</router-link>
+    <router-link
+      to="/checkout"
+      class="button button-signup hovereffect checkout"
+      style="color: #fff"
+      >Speichern & Zum Warenkorb</router-link
+    >
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import { mapState } from "vuex";
 
 export default Vue.extend({
   name: "PostcardLayout",
   components: {},
   data: () => ({
     rules: [(v: string | any[]) => v.length <= 500 || "Maximal 500 characters"],
-    value: "Hello!"
+    values: "Hello!",
   }),
   props: {
-    ImageId: String
-  }
+    ImageId: String,
+  },
+  computed: mapState(["currentPicture"]),
 });
 </script>
 

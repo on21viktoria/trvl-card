@@ -1,19 +1,60 @@
 <template>
-    <div>
+  <div>
     <p class="tool-title">Hintergrund</p>
     <p>
-      Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus
-      ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur
-      ac, vestibulum at eros.
+      Ihr könnt hier entweder zwischen einem Hintergrundbild oder einer Farbe
+      wählen.
     </p>
-    <b-img
-      src="https://picsum.photos/500/500/?image=54"
-      fluid
-      thumbnail
-    ></b-img>
     <!-- <p class="tool-title">Suche</p>
     <v-text-field label="Suche" solo prepend-inner-icon="mdi-magnify"></v-text-field> -->
+    <p class="tool-title subtitle">Bildauswahl</p>
+    <div class="Photogrid">
+      <img @click="changeBackgroundPicture('Ampel_Philippe-Oursel_72dpi.jpg')"
+        src="./../../../assets/images-trvl-card-72dpi/Ampel_Philippe-Oursel_72dpi.jpg"
+        width="100%"
+      />
+      <img @click="changeBackgroundPicture('Berliner-Mauer_Mateo-Krossler_72dpi.jpg')"
+        src="./../../../assets/images-trvl-card-72dpi/Berliner-Mauer_Mateo-Krossler_72dpi.jpg"
+        width="100%"
+      />
+      <img @click="changeBackgroundPicture('Brandenburger-Tor_Hakon-Sataoen_72dpi.jpg')"
+        src="./../../../assets/images-trvl-card-72dpi/Brandenburger-Tor_Hakon-Sataoen_72dpi.jpg"
+        width="100%"
+      />
+      <img @click="changeBackgroundPicture('Checkpoint-Charlie_Santiago-flores_72dpi.jpg')"
+        src="./../../../assets/images-trvl-card-72dpi/Checkpoint-Charlie_Santiago-flores_72dpi.jpg"
+        width="100%"
+      />
+      <img @click="changeBackgroundPicture('Fernsehturm_Camilla-Bundgaard_72dpi.jpg')"
+        src="./../../../assets/images-trvl-card-72dpi/Fernsehturm_Camilla-Bundgaard_72dpi.jpg"
+        width="100%"
+      />
+      <img @click="changeBackgroundPicture('Museumsinsel_Christian-Ladewig_72dpi.jpg')"
+        src="./../../../assets/images-trvl-card-72dpi/Museumsinsel_Christian-Ladewig_72dpi.jpg"
+        width="100%"
+      />
+      <img @click="changeBackgroundPicture('Olympiastadion_Samuel-Svec_72dpi.jpg')"
+        src="./../../../assets/images-trvl-card-72dpi/Olympiastadion_Samuel-Svec_72dpi.jpg"
+        width="100%"
+      />
+      <img @click="changeBackgroundPicture('Reichstag_Fionn-Grosseh_72dpi.jpg')"
+        src="./../../../assets/images-trvl-card-72dpi/Reichstag_Fionn-Grosseh_72dpi.jpg"
+        width="100%"
+      />
+      <img @click="changeBackgroundPicture('Stadtansicht2_Stefan-Widua_72dpi.jpg')"
+        src="./../../../assets/images-trvl-card-72dpi/Stadtansicht2_Stefan-Widua_72dpi.jpg"
+        width="100%"
+      />
+      <img @click="changeBackgroundPicture('Stadtansicht_Florian-Wehde_72dpi.jpg')"
+        src="./../../../assets/images-trvl-card-72dpi/Stadtansicht_Florian-Wehde_72dpi.jpg"
+        width="100%"
+      />
+      <img @click="changeBackgroundPicture('U-Bahn_Soroush-Karimi_72dpi.jpg')"
+        src="./../../../assets/images-trvl-card-72dpi/U-Bahn_Soroush-Karimi_72dpi.jpg"
+        width="100%"
+      />
     </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -21,14 +62,28 @@ import Vue from "vue";
 
 export default Vue.extend({
   name: "Background",
-  components: {},
-  props: {
+  methods: {
+     changeBackgroundPicture(picture: string){
+      this.$store.dispatch('setPicture', picture);
+    }
   },
-  methods: {},
 });
 </script>
 
 <style scoped>
+.Photogrid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+  column-gap: 10px;
+  row-gap: 10px;
+  padding: 10px;
+}
+
+img:hover {
+  opacity: 30%;
+}
+
 .tool-title {
   font-weight: bold;
   font-size: 18px;
@@ -39,4 +94,5 @@ export default Vue.extend({
 .tool-title.subtitle {
   font-size: 16px;
 }
+</style>
 </style>
