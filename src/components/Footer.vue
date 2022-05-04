@@ -42,16 +42,15 @@
               Bestellung.
             </p>
             <div class="d-flex w-100 gap-2">
-              <label for="newsletter1" class="visually-hidden"
-                >Email-Adresse</label
-              >
               <input
                 id="newsletter1"
                 type="text"
                 class="form-control"
                 placeholder="E-Mail-Adresse"
               />
-              <button class="button button-signup" type="button">Abonnieren</button>
+              <button class="button button-signup hovereffect" @click="makeToast(message = 'Hier wirst du bald die Möglichkeit haben, dich für den Newsletter anzumelden. Bitte hab noch ein bisschen Geduld.', options = {
+          title: 'Hier entsteht ein neues Feature!',
+          autoHideDelay: 5000, appendToast: append})" type="button">Abonnieren</button>
             </div>
           </form>
         </div>
@@ -95,19 +94,27 @@ Vue.use(BootstrapVue);
 
 export default Vue.extend({
   name: "Footer",
+  data() {
+    return {
+      message: '',
+      options: {}
+    }
+  },
+  methods: {
+      makeToast() {
+        this.$bvToast.toast(this.message, this.options)
+      }
+    }
 });
 </script>
 
 <style scoped>
-* {
-  font-size: 12px;
-}
-
 .container-fluid {
   margin-bottom: -310px;
   padding: 20px 40px 0 40px;
   bottom: 0;
   width: 100%;
+  font-size: 12px;
 }
 
 .btn-primary {
@@ -132,4 +139,9 @@ export default Vue.extend({
 .roles {
   margin-top: 32px;
 }
+
+#newsletter1 {
+  margin-right: 10px;
+}
+
 </style>

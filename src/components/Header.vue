@@ -14,13 +14,6 @@
           />
         </a>
         <div class="buttons">
-          <ul
-          class="nav"
-        >
-          <li><a href="#" class="item">HOME</a></li>
-          <li><a href="#" class="item">SHOP</a></li>
-          <li><a href="#" class="item">KONTAKT</a></li>
-        </ul>
           <form class="searchbar">
           <input
             type="search"
@@ -31,14 +24,14 @@
         </form>
           <button @click="makeToast(message = 'Hier wirst du bald die Möglichkeit haben, dich einzuloggen. Bitte hab noch ein bisschen Geduld.', options = {
           title: 'Hier entsteht ein neues Feature!',
-          autoHideDelay: 50000, appendToast: append})" type="button" class=" button button-login hovereffect" style='color: #707070'>
+          autoHideDelay: 5000, appendToast: append})" type="button" class=" button button-login hovereffect" style='color: #707070'>
             Login</button>
           <button @click="makeToast(message = 'Hier wirst du bald die Möglichkeit haben, dich zu registrieren. Bitte hab noch ein bisschen Geduld.', options = {
           title: 'Hier entsteht ein neues Feature!',
-          autoHideDelay: 50000, appendToast: append})" type="button" class="button button-signup hovereffect" style='color: #fff'>Registrieren</button>
+          autoHideDelay: 5000, appendToast: append})" type="button" class="button button-signup hovereffect" style='color: #fff'>Registrieren</button>
           <v-icon class="carticon hovereffect" @click="makeToast(message = 'Hier geht es bald zum Warenkorb. Bitte hab noch ein bisschen Geduld.', options = {
           title: 'Hier entsteht ein neues Feature!',
-          autoHideDelay: 50000, appendToast: append})" >mdi-cart</v-icon>
+          autoHideDelay: 5000, appendToast: append})" >mdi-cart</v-icon>
           <a class="helpanchor hovereffect" href="https://docs.google.com/document/d/1wn9SLNurX8Eh4nTQ9y6VwFonR0hPe_QoJ0DXVWa6SGs/edit"><v-icon>mdi-help-circle-outline</v-icon></a> 
         </div>
       </div>

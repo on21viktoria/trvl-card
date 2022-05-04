@@ -106,7 +106,7 @@
     color: #fff !important;
     border-radius: 4px;
     font-weight: 500;
-    text-decoration-line: none;
+    text-decoration: none !important;
 }
 
 .button-login {
@@ -207,14 +207,14 @@
 }
 
 .toast-body {
-  background-color: rgba(255, 255, 255, 1);
-  font-size: 15px;
+  background-color: rgba(255, 255, 255, 1) !important;
+  font-size: 15px !important;
 }
 
 .toast-header {
   background-color: rgba(255, 255, 255, 1) !important;
   color: #ff4e00 !important;
-  font-size: 15px;
+  font-size: 15px !important;
 }
 
 .helpanchor:hover {
