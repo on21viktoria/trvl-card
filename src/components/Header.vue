@@ -29,9 +29,13 @@
             aria-label="Suche"
           />
         </form>
-          <button type="button" class=" button button-login hovereffect" style='color: #707070'>
+          <button @click="makeToast(message = 'Hier wirst du bald die Möglichkeit haben, dich einzuloggen. Bitte hab noch ein bisschen Geduld.', options = {
+          title: 'Hier entsteht ein neues Feature!',
+          autoHideDelay: 50000, appendToast: append})" type="button" class=" button button-login hovereffect" style='color: #707070'>
             Login</button>
-          <button type="button" class="button button-signup hovereffect" style='color: #fff'>Registrieren</button>
+          <button @click="makeToast(message = 'Hier wirst du bald die Möglichkeit haben, dich zu registrieren. Bitte hab noch ein bisschen Geduld.', options = {
+          title: 'Hier entsteht ein neues Feature!',
+          autoHideDelay: 50000, appendToast: append})" type="button" class="button button-signup hovereffect" style='color: #fff'>Registrieren</button>
           <v-icon class="carticon hovereffect">mdi-cart</v-icon>
           <v-icon class="helpicon hovereffect">mdi-help-circle-outline</v-icon>  
         </div>
@@ -45,6 +49,17 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'Header'
+  name: 'Header',
+  data() {
+    return {
+      message: '',
+      options: {}
+    }
+  },
+  methods: {
+      makeToast() {
+        this.$bvToast.toast(this.message, this.options)
+      }
+    }
 });
 </script>

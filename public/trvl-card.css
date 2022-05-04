@@ -90,6 +90,13 @@
     height:39px;
     padding: 10px;
   }
+
+
+.button:focus {
+  outline: 0.1px solid #ff4e00 !important;
+}
+  
+
   .inputfield:focus {
     outline: 0;
   }
@@ -116,7 +123,6 @@
   border: 0.5px solid #ff4e00;
   border-radius: 4px;
 }
-  
 
 .carticon {
     padding: 20px;
@@ -198,4 +204,15 @@
 .editor-page {
   padding: 20px;
   margin-top: 100px;
+}
+
+.toast-body {
+  background-color: rgba(255, 255, 255, 1);
+  font-size: 15px;
+}
+
+.toast-header {
+  background-color: rgba(255, 255, 255, 1) !important;
+  color: #ff4e00 !important;
+  font-size: 15px;
 }
