@@ -30,9 +30,9 @@ export default Vue.extend({
     changeFontSize() {
     this.sizeId = `${this.selected}`;
     console.log("Color has been selected", this.sizeId, this.selected);
-    EventBus.$emit('changeFontColor', this.sizeId);
+    EventBus.$emit('changeFontSize', this.sizeId);
     },
       }
     }
-});
+);
 </script>
