@@ -52,6 +52,7 @@
 
 <script lang="ts">
 import Vue from "vue";
+import { EventBus} from 
 
 export default Vue.extend({
   name: "PostcardLayout",
@@ -60,6 +61,13 @@ export default Vue.extend({
     rules: [(v: string | any[]) => v.length <= 500 || "Maximal 500 characters"],
     value: "Hello!"
   }),
+  created() {
+  EventBus.$on('changeFontColor', (colorId: string) => {
+    const textarea = document.querySelector('#fontcolor') as HTMLElement;
+    textarea.style.color =`${colorId}`;
+    console.log("In PostcardLayout", colorId)
+  })
+  },
   props: {
     ImageId: String
   }
