@@ -59,14 +59,14 @@ export default Vue.extend({
   name: "PostcardLayout",
   components: {},
   data: () => ({
-    rules: [(v: string | any[]) => v.length <= 500 || "Maximal 500 characters"],
+    rules: [
+      (v: string | any[]) => v.length <= 500 || "Maximal 500 characters"],
     value: "Hello!"
   }),
   created() {
   EventBus.$on('changeFontSize', (sizeId: string) => {
     const textarea = document.querySelector('#fontcolor') as HTMLElement;
     textarea.style.fontSize =`${sizeId}`;
-    console.log("In PostcardLayout", sizeId)
   })
   },
   props: {
