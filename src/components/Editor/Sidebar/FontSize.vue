@@ -1,6 +1,6 @@
 <template>
 <div id="fontsize">
-<b-form-select v-model="selected" :options="options" @change="changeFont">
+<b-form-select v-model="selected" :options="options" @change="changeFontSize">
 </b-form-select>
 </div>
 </template>
@@ -15,12 +15,12 @@ export default Vue.extend({
         selected: null,
         options: [
           { value: null, text: 'Bitte wähle eine Schriftgröße.' },
-          { value: 'a', text: '8pt.' },
-          { value: 'b', text: '10pt.' },
-          { value: 'c', text: '12pt.' },
-          { value: 'd', text: '14pt.' },
-          { value: 'e', text: '16pt.' },
-          { value: 'f', text: '18pt.' },
+          { value: 'a', text: '8px' },
+          { value: 'b', text: '10px' },
+          { value: 'c', text: '12px' },
+          { value: 'd', text: '14px' },
+          { value: 'e', text: '16px' },
+          { value: 'f', text: '18px' },
         ]
       }
     }

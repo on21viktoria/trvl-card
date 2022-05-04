@@ -63,7 +63,7 @@ export default Vue.extend({
   }),
   created() {
   EventBus.$on('changeFontSize', (sizeId: string) => {
-    const textarea = document.querySelector('#fontsize') as HTMLElement;
+    const textarea = document.querySelector('#fontcolor') as HTMLElement;
     textarea.style.fontSize =`${sizeId}`;
     console.log("In PostcardLayout", sizeId)
   })
