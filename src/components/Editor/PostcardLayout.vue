@@ -52,7 +52,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { EventBus} from 
+import { EventBus } from "@/main";
 
 export default Vue.extend({
   name: "PostcardLayout",
@@ -62,10 +62,10 @@ export default Vue.extend({
     value: "Hello!"
   }),
   created() {
-  EventBus.$on('changeFontColor', (colorId: string) => {
-    const textarea = document.querySelector('#fontcolor') as HTMLElement;
-    textarea.style.color =`${colorId}`;
-    console.log("In PostcardLayout", colorId)
+  EventBus.$on('changeFontSize', (sizeId: string) => {
+    const textarea = document.querySelector('#fontsize') as HTMLElement;
+    textarea.style.fontSize =`${sizeId}`;
+    console.log("In PostcardLayout", sizeId)
   })
   },
   props: {

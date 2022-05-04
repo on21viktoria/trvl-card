@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="fontsize">
 <b-form-select v-model="selected" :options="options" @change="changeFont">
 </b-form-select>
 </div>
