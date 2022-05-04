@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="tool-title">Text</p>
+    <!--<p class="tool-title">Text</p>
     <p>
       Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus
       ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur
@@ -11,7 +11,7 @@
       fluid
       thumbnail
     ></b-img>
-    <!-- <p class="tool-title subtitle">Schriftart</p>
+     <p class="tool-title subtitle">Schriftart</p>
     <v-select :items="items" filled label="Schrift wählen"></v-select>
     <p class="tool-title subtitle">Schriftgröße</p>
     <v-card flat color="transparent">
@@ -40,18 +40,20 @@
         </v-row>
       </v-card-text>
     </v-card> -->
+    <font-choice></font-choice>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import FontChoice from "./FontChoice.vue";
 
 export default Vue.extend({
   data: () => ({
     items: ["Foo", "Bar", "Fizz", "Buzz"],
   }),
   name: "Text",
-  components: {},
+  components: {FontChoice},
   props: {},
   methods: {},
 });
