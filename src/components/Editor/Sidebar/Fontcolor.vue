@@ -16,11 +16,11 @@ export default Vue.extend ({
             selected: null,
             options: [
                 {value: null, text: "Schriftfarbe wählen"},
-                {value: 'black', text: "Schwarz"},
-                {value: 'blue', text: "Dunkelblau"},
-                {value: 'green', text: "Hellblau"},
-                {value: 'red', text: "Grau"},
-                {value: 'orange', text: "Orange"},
+                {value: '#000000', text: "Schwarz"},
+                {value: '#707070', text: "Grau"},
+                {value: '#0f0f96', text: "Dunkelblau"},
+                {value: '#1da2a9', text: "Türkis"},
+                {value: '#ff4e00', text: "Orange"},
             ],
             colorId: '',
         }
@@ -38,14 +38,17 @@ export default Vue.extend ({
 
 <style scoped>
 .fontcolor-selection.container {
-    display: flex;
-    min-width: 300px;
+    display: grid;
+    padding: 10px;
+    grid-template-columns: 100%;
+    max-width: 100%;
     background-color: rgba(112, 112, 112, 0.1)!important;
     border-radius: 5px !important;
     margin-bottom: 20px !important;
     box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%) !important;
     cursor: pointer !important;
     transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1) !important;
+    color: #0f0f96;
 }
 
 .fontcolor-selection {

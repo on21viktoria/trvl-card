@@ -17,7 +17,7 @@
     <div class="postcard-side" id="back">
       <v-container fluid id="container-rückseite-links">
         <v-textarea
-          id="fontcolor"
+          id="changed-text"
           solo
           counter
           name="Nachrichten-Textfeld"
@@ -64,7 +64,7 @@ export default Vue.extend({
   }),
   created() {
   EventBus.$on('changeFontColor', (colorId: string) => {
-    const textarea = document.querySelector('#fontcolor') as HTMLElement;
+    const textarea = document.querySelector('#changed-text') as HTMLElement;
     textarea.style.color =`${colorId}`;
     console.log("In PostcardLayout", colorId)
   })
