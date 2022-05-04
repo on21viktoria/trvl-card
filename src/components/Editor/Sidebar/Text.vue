@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <!-- <div>
     <p class="tool-title">Text</p>
     <p>
       Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus
@@ -10,7 +10,7 @@
       src="https://picsum.photos/500/500/?image=54"
       fluid
       thumbnail
-    ></b-img>
+    ></b-img> -->
     <!-- <p class="tool-title subtitle">Schriftart</p>
     <v-select :items="items" filled label="Schrift wählen"></v-select>
     <p class="tool-title subtitle">Schriftgröße</p>
@@ -39,19 +39,21 @@
           </v-col>
         </v-row>
       </v-card-text>
-    </v-card> -->
-  </div>
+    </v-card>
+    </div> -->
+    <FontSize></FontSize>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import FontSize from "./FontSize.vue";
 
 export default Vue.extend({
   data: () => ({
     items: ["Foo", "Bar", "Fizz", "Buzz"],
   }),
   name: "Text",
-  components: {},
+  components: {FontSize},
   props: {},
   methods: {},
 });
