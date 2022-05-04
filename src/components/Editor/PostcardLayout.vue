@@ -17,6 +17,7 @@
     <div class="postcard-side" id="back">
       <v-container fluid id="container-rückseite-links">
         <v-textarea
+          id="fontcolor"
           solo
           counter
           name="Nachrichten-Textfeld"
