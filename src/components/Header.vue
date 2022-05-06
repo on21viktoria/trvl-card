@@ -14,13 +14,6 @@
           />
         </a>
         <div class="buttons">
-          <ul
-          class="nav"
-        >
-          <li><a href="#" class="item">HOME</a></li>
-          <li><a href="#" class="item">SHOP</a></li>
-          <li><a href="#" class="item">KONTAKT</a></li>
-        </ul>
           <form class="searchbar">
           <input
             type="search"
