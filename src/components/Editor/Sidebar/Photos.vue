@@ -9,7 +9,6 @@
     ></v-text-field> -->
     <p class="tool-title subtitle">Bildauswahl</p>
 
-
     <div class="accordion" role="tablist">
       <b-card no-body class="mb-1">
         <b-card-header header-tag="header" class="p-1" role="tab">
@@ -29,7 +28,7 @@
               <img src="./../../../assets/images-berlin_72dpi/Stadtansicht_Florian-Wehde_72dpi.jpg" width="100%"/>
               <img src="./../../../assets/images-berlin_72dpi/U-Bahn_Soroush-Karimi_72dpi.jpg" width="100%"/>
           </b-card-body>
-      </b-collapse>
+        </b-collapse>
       </b-card>
 
       <b-card no-body class="mb-1">
@@ -45,7 +44,7 @@
               <img src="./../../../assets/images-hamburg_72dpi/Hamburg_152735034.jpeg" width="100%"/>
               <img src="./../../../assets/images-hamburg_72dpi/Hamburg_316956027.jpeg" width="100%"/>
           </b-card-body>
-      </b-collapse>
+        </b-collapse>
       </b-card>
 
       <b-card no-body class="mb-1">
@@ -59,7 +58,7 @@
               <img src="./../../../assets/images-heidelberg_72dpi/Heidelberg_287960169.jpeg" width="100%"/>
               <img src="./../../../assets/images-heidelberg_72dpi/Heidelberg_314522208.jpeg" width="100%"/>
           </b-card-body>
-      </b-collapse>
+        </b-collapse>
       </b-card>
 
       <b-card no-body class="mb-1">
@@ -74,7 +73,7 @@
               <img src="./../../../assets/images-karlsruhe_72dpi/Karlsruhe_395590535.jpeg" width="100%"/>
               <img src="./../../../assets/images-karlsruhe_72dpi/Karlsruhe_489449318.jpeg" width="100%"/>
           </b-card-body>
-      </b-collapse>
+        </b-collapse>
       </b-card>
 
       <b-card no-body class="mb-1">
@@ -89,7 +88,7 @@
               <img src="./../../../assets/images-koeln_72dpi/Koeln_170192054.jpeg" width="100%"/>
               <img src="./../../../assets/images-koeln_72dpi/Koeln_251826193.jpeg" width="100%"/>
           </b-card-body>
-      </b-collapse>
+        </b-collapse>
       </b-card>
 
       <b-card no-body class="mb-1">
@@ -103,7 +102,7 @@
               <img src="./../../../assets/images-mannheim_72dpi/Mannheim_280067788.jpeg" width="100%"/>
               <img src="./../../../assets/images-mannheim_72dpi/Mannheim_307933513.jpeg" width="100%"/>
           </b-card-body>
-      </b-collapse>
+        </b-collapse>
       </b-card>
 
       <b-card no-body class="mb-1">
@@ -116,7 +115,7 @@
               <img src="./../../../assets/images-mosbach_72dpi/Mosbach_315686175.jpeg" width="100%"/>
               <img src="./../../../assets/images-mosbach_72dpi/Mosbach_463480456.jpeg" width="100%"/>
           </b-card-body>
-      </b-collapse>
+        </b-collapse>
       </b-card>
 
       <b-card no-body class="mb-1">
@@ -132,7 +131,7 @@
               <img src="./../../../assets/images-muenchen_72dpi/Muenchen_215825149.jpeg" width="100%"/>
               <img src="./../../../assets/images-muenchen_72dpi/Muenchen_246832069.jpeg" width="100%"/>
           </b-card-body>
-      </b-collapse>
+        </b-collapse>
       </b-card>
 
       <b-card no-body class="mb-1">
@@ -147,7 +146,7 @@
               <img src="./../../../assets/images-stuttgart_72dpi/Stuttgart_304557577.jpeg" width="100%"/>
               <img src="./../../../assets/images-stuttgart_72dpi/Stuttgart_329362632.jpeg" width="100%"/>
           </b-card-body>
-      </b-collapse>
+        </b-collapse>
       </b-card>
 
       <b-card no-body class="mb-1">
@@ -160,12 +159,11 @@
               <img src="./../../../assets/images-wuerzburg_72dpi/Wuerzburg_170627925.jpeg" width="100%"/>
               <img src="./../../../assets/images-wuerzburg_72dpi/Wuerzburg_276622665.jpeg" width="100%"/>
           </b-card-body>
-      </b-collapse>
+        </b-collapse>
       </b-card>
 
 </div>
     </div>
-  </div>
 </template>
 
 <script lang="ts">
@@ -211,7 +209,7 @@ img:hover {
   color: black;
   font-weight: 600;
   border: none;
-  width: 510px;
+  width: 100%;
 }
 
 .btn:hover {
