@@ -13,7 +13,7 @@
     </div>
     <div class="postcard-side" id="back">
       <v-container fluid id="container-rückseite-links">
-        <v-textarea
+        <v-textarea id="changed-text"
           solo
           counter
           name="Nachrichten-Textfeld"
@@ -52,6 +52,7 @@
 </template>
 
 <script lang="ts">
+import { EventBus } from "@/main";
 import Vue from "vue";
 import { mapGetters, mapState } from "vuex";
 
@@ -59,9 +60,25 @@ export default Vue.extend({
   name: "PostcardLayout",
   components: {},
   data: () => ({
-    rules: [(v: string | any[]) => v.length <= 500 || "Maximal 500 characters"],
-    values: "Hello!",
+    rules: [
+      (v: string | any[]) => v.length <= 500 || "Maximal 500 characters"],
+    value: "Hello!"
   }),
+  created() {
+  EventBus.$on('changeFontColor', (colorId: string) => {
+    const textarea = document.querySelector('#changed-text') as HTMLElement;
+    textarea.style.color =`${colorId}`;
+    console.log("In PostcardLayout", colorId)
+  })
+  EventBus.$on('changeFontSize', (sizeId: string) => {
+    const textarea = document.querySelector('#changed-text') as HTMLElement;
+    textarea.style.fontSize =`${sizeId}`;
+  }),
+  EventBus.$on('changeFont', (fontId: string) => {
+    const textarea = document.querySelector('#changed-text') as HTMLElement;
+    textarea.style.fontFamily = `${fontId}`;
+  })
+},
   props: {
     ImageId: String,
   },
