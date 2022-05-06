@@ -16,8 +16,7 @@
     </div>
     <div class="postcard-side" id="back">
       <v-container fluid id="container-rückseite-links">
-        <v-textarea
-          id="changed-text"
+        <v-textarea id="changed-text"
           solo
           counter
           name="Nachrichten-Textfeld"
@@ -52,8 +51,8 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
 import { EventBus } from "@/main";
+import Vue from "vue";
 
 export default Vue.extend({
   name: "PostcardLayout",
@@ -67,8 +66,12 @@ export default Vue.extend({
   EventBus.$on('changeFontSize', (sizeId: string) => {
     const textarea = document.querySelector('#changed-text') as HTMLElement;
     textarea.style.fontSize =`${sizeId}`;
+  }),
+  EventBus.$on('changeFont', (fontId: string) => {
+    const textarea = document.querySelector('#changed-text') as HTMLElement;
+    textarea.style.fontFamily = `${fontId}`;
   })
-  },
+},
   props: {
     ImageId: String
   }
