@@ -13,7 +13,7 @@
 import Vue from "vue";
 import FontSize from "./FontSize.vue";
 import FontChoice from "./FontChoice.vue";
-import FontColor from './FontColor.vue';
+import FontColor from "./FontColor.vue";
 
 
 export default Vue.extend({
@@ -44,7 +44,7 @@ export default Vue.extend({
 }
 
 #divider-sidebar {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-top: 12px;
+  margin-bottom: 16px;
 }
 </style>
