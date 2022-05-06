@@ -28,7 +28,7 @@
             Login</button>
           <button @click="makeToast(message = 'Hier wirst du bald die Möglichkeit haben, dich zu registrieren. Bitte hab noch ein bisschen Geduld.', options = {
           title: 'Hier entsteht ein neues Feature!',
-          autoHideDelay: 5000, appendToast: append})" type="button" class="button button-signup hovereffect" style='color: #fff'>Registrieren</button>
+          autoHideDelay: 5000, appendToast: append})" type="button" class="button button-signup hovereffect" style='color: #fff'>{{ buttonText }}</button>
           <v-icon class="carticon hovereffect" @click="makeToast(message = 'Hier geht es bald zum Warenkorb. Bitte hab noch ein bisschen Geduld.', options = {
           title: 'Hier entsteht ein neues Feature!',
           autoHideDelay: 5000, appendToast: append})" >mdi-cart</v-icon>
@@ -48,12 +48,16 @@ export default Vue.extend({
   data() {
     return {
       message: '',
-      options: {}
+      options: {},
+      buttonText: '',
     }
   },
   methods: {
       makeToast() {
         this.$bvToast.toast(this.message, this.options)
+      },
+      changeButton(buttonText: string) {
+        this.buttonText = buttonText;
       }
     }
 });
