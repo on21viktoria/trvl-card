@@ -5,7 +5,7 @@
       >
         <img
           :src="
-            require(`./../../assets/images-trvl-card-72dpi/${currentPicture}`)
+            require(`./../../assets/images-berlin_72dpi/${currentPicture}`)
           "
           class="image-front"
         />

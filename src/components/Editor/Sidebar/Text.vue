@@ -13,7 +13,7 @@
 import Vue from "vue";
 import FontSize from "./FontSize.vue";
 import FontChoice from "./FontChoice.vue";
-import FontColor from "./FontColor.vue";
+import FontColor from "./temp.vue";
 
 
 export default Vue.extend({
