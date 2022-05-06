@@ -10,7 +10,7 @@
       type="color"
       id="selection-color"
       name="color-selection"
-      value="#ff0000"
+      value="#ffffff"
       @input="changeColor()"
     />
     <!-- <p class="tool-title">Suche</p>
