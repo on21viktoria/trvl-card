@@ -16,8 +16,7 @@
     </div>
     <div class="postcard-side" id="back">
       <v-container fluid id="container-rückseite-links">
-        <v-textarea
-          id="changed-text"
+        <v-textarea id="changed-text"
           solo
           counter
           name="Nachrichten-Textfeld"
@@ -59,7 +58,8 @@ export default Vue.extend({
   name: "PostcardLayout",
   components: {},
   data: () => ({
-    rules: [(v: string | any[]) => v.length <= 500 || "Maximal 500 characters"],
+    rules: [
+      (v: string | any[]) => v.length <= 500 || "Maximal 500 characters"],
     value: "Hello!"
   }),
   created() {
@@ -68,7 +68,15 @@ export default Vue.extend({
     textarea.style.color =`${colorId}`;
     console.log("In PostcardLayout", colorId)
   })
-  },
+  EventBus.$on('changeFontSize', (sizeId: string) => {
+    const textarea = document.querySelector('#changed-text') as HTMLElement;
+    textarea.style.fontSize =`${sizeId}`;
+  }),
+  EventBus.$on('changeFont', (fontId: string) => {
+    const textarea = document.querySelector('#changed-text') as HTMLElement;
+    textarea.style.fontFamily = `${fontId}`;
+  })
+},
   props: {
     ImageId: String
   }
@@ -106,11 +114,6 @@ export default Vue.extend({
   font-size: 14px;
   line-height: 1.25 !important;
 }
-
-/* .v-textarea.v-text-field--solo .v-input__control textarea {
-    /* caret-color: rgb(112, 112, 112); */
-    /* color: red;
-} */ 
 
 .v-text-field__details {
   max-width: 100% !important;

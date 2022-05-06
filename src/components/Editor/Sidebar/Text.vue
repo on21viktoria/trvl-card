@@ -3,23 +3,27 @@
     <p class="tool-title">Text</p>
     <p class="subtitle">Rückseite der Postkarte</p>
     <v-divider id="divider-sidebar"></v-divider>
-    <fontcolor></fontcolor>
+    <FontChoice></FontChoice>
+    <FontSize></FontSize>
+    <FontColor></FontColor>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import Fontcolor from "./Fontcolor.vue";
+import FontSize from "./FontSize.vue";
+import FontChoice from "./FontChoice.vue";
+import FontColor from "./FontColor.vue";
+
 
 export default Vue.extend({
-  data() {
-    return {
-    };
-  },
+  data: () => ({
+  }),
   name: "Text",
   components: {
-    Fontcolor,
-  },
+    FontSize,
+    FontChoice,
+    FontColor,},
   props: {},
   methods: {
   },
