@@ -12,7 +12,6 @@ import FontChoice from "./FontChoice.vue";
 
 export default Vue.extend({
   data: () => ({
-    items: ["Foo", "Bar", "Fizz", "Buzz"],
   }),
   name: "Text",
   components: {
