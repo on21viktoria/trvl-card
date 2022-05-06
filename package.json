@@ -13,7 +13,6 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "boostrap": "^2.0.0",
     "bootstrap": "^4.5.3",
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.8.3",
