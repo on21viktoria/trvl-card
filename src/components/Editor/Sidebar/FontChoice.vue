@@ -1,5 +1,5 @@
 <template>
-  <div class="fontcolor-selection container">
+  <div>
     <b-form-select
       v-model="selected"
       :options="options"
