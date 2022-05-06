@@ -140,7 +140,11 @@ export default Vue.extend({
     rgba(112, 112, 112, 0.1) 4px,
     rgba(112, 112, 112, 0.1) 5px
   );
-  align-content: center;
+}
+
+.codierzone>p{
+  margin: 10px 0 5px;
+  text-align: center;
 }
 
 .frankierzone {
