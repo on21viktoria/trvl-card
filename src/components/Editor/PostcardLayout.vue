@@ -1,7 +1,7 @@
 <template>
   <div class="postcard-layout">
     <div class="postcard-side" id="front" :style="`background-color:` + currentBackgroundColor">
-      <div
+      <div class="image-wrap"
       >
         <img
           :src="
@@ -9,6 +9,7 @@
           "
           class="image-front"
         />
+        <img v-if="currentSticker !==''" :src="require(`./../../assets/${currentSticker}`)" class="svg-image"/>
       </div>
     </div>
     <div class="postcard-side" id="back">
@@ -82,11 +83,22 @@ export default Vue.extend({
   props: {
     ImageId: String,
   },
-  computed: {...mapState(["currentPicture", "currentBackgroundColor"])
+  computed: {...mapState(["currentPicture", "currentBackgroundColor", "currentSticker"])
 }});
 </script>
 
 <style>
+
+.image-wrap{
+  position: relative;
+}
+
+.svg-image{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+}
 .postcard-side {
   position: relative;
   background-color: rgb(255, 255, 255);

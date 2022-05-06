@@ -15,8 +15,8 @@
         </b-card-header>
         <b-collapse id="accordion-stickerBerlin" role="tabpanel">
           <b-card-body>
-              <img src="./../../../assets/typo-city_01/Schriftzug_Berlin_01.svg" width="100%"/>
-              <img src="./../../../assets/typo-city_02/Schriftzug_Berlin_02.svg" width="100%"/>
+              <img src="./../../../assets/typo-city_01/Schriftzug_Berlin_01.svg" width="100%" @click="changeSticker('typo-city_01/Schriftzug_Berlin_01.svg')"/>
+              <img src="./../../../assets/typo-city_02/Schriftzug_Berlin_02.svg" width="100%" @click="changeSticker('typo-city_02/Schriftzug_Berlin_02.svg')"/>
           </b-card-body>
         </b-collapse>
       </b-card>
@@ -27,8 +27,8 @@
         </b-card-header>
         <b-collapse id="accordion-stickerHamburg" role="tabpanel">
           <b-card-body>
-              <img src="./../../../assets/typo-city_01/Schriftzug_Hamburg_01.svg" width="100%"/>
-              <img src="./../../../assets/typo-city_02/Schriftzug_Hamburg_02.svg" width="100%"/>
+              <img src="./../../../assets/typo-city_01/Schriftzug_Hamburg_01.svg" width="100%" @click="changeSticker('typo-city_01/Schriftzug_Hamburg_01.svg')"/>
+              <img src="./../../../assets/typo-city_02/Schriftzug_Hamburg_02.svg" width="100%" @click="changeSticker('typo-city_02/Schriftzug_Hamburg_02.svg')"/>
           </b-card-body>
         </b-collapse>
       </b-card>
@@ -39,8 +39,8 @@
         </b-card-header>
         <b-collapse id="accordion-stickerHeidelberg" role="tabpanel">
           <b-card-body>
-              <img src="./../../../assets/typo-city_01/Schriftzug_Heidelberg_01.svg" width="100%"/>
-              <img src="./../../../assets/typo-city_02/Schriftzug_Heidelberg_02.svg" width="100%"/>
+              <img src="./../../../assets/typo-city_01/Schriftzug_Heidelberg_01.svg" width="100%" @click="changeSticker('typo-city_01/Schriftzug_Heidelberg_01.svg')"/>
+              <img src="./../../../assets/typo-city_02/Schriftzug_Heidelberg_02.svg" width="100%" @click="changeSticker('typo-city_02/Schriftzug_Heidelberg_02.svg')"/>
           </b-card-body>
         </b-collapse>
       </b-card>
@@ -51,8 +51,8 @@
         </b-card-header>
         <b-collapse id="accordion-stickerKarlsruhe" role="tabpanel">
           <b-card-body>
-              <img src="./../../../assets/typo-city_01/Schriftzug_Karlsruhe_01.svg" width="100%"/>
-              <img src="./../../../assets/typo-city_02/Schriftzug_Karlsruhe_02.svg" width="100%"/>
+              <img src="./../../../assets/typo-city_01/Schriftzug_Karlsruhe_01.svg" width="100%" @click="changeSticker('typo-city_01/Schriftzug_Karlsruhe_01.svg')"/>
+              <img src="./../../../assets/typo-city_02/Schriftzug_Karlsruhe_02.svg" width="100%" @click="changeSticker('typo-city_02/Schriftzug_Karlsruhe_02.svg')"/>
           </b-card-body>
         </b-collapse>
       </b-card>
@@ -63,8 +63,8 @@
         </b-card-header>
         <b-collapse id="accordion-stickerKoeln" role="tabpanel">
           <b-card-body>
-              <img src="./../../../assets/typo-city_01/Schriftzug_Koeln_01.svg" width="100%"/>
-              <img src="./../../../assets/typo-city_02/Schriftzug_Koeln_02.svg" width="100%"/>
+              <img src="./../../../assets/typo-city_01/Schriftzug_Koeln_01.svg" width="100%" @click="changeSticker('typo-city_01/Schriftzug_Koeln_01.svg')"/>
+              <img src="./../../../assets/typo-city_02/Schriftzug_Koeln_02.svg" width="100%" @click="changeSticker('typo-city_02/Schriftzug_Koeln_02.svg')"/>
           </b-card-body>
         </b-collapse>
       </b-card>
@@ -75,8 +75,8 @@
         </b-card-header>
         <b-collapse id="accordion-stickerMannheim" role="tabpanel">
           <b-card-body>
-              <img src="./../../../assets/typo-city_02/Schriftzug_Mannheim_02.svg" width="100%"/>
-              <img src="./../../../assets/typo-city_01/Schriftzug_Mannheim_01.svg" width="100%"/>
+              <img src="./../../../assets/typo-city_02/Schriftzug_Mannheim_02.svg" width="100%" @click="changeSticker('typo-city_01/Schriftzug_Mannheim_01.svg')"/>
+              <img src="./../../../assets/typo-city_01/Schriftzug_Mannheim_01.svg" width="100%" @click="changeSticker('typo-city_02/Schriftzug_Mannheim_02.svg')"/>
           </b-card-body>
         </b-collapse>
       </b-card>
@@ -87,8 +87,8 @@
         </b-card-header>
         <b-collapse id="accordion-stickerMosbach" role="tabpanel">
           <b-card-body>
-              <img src="./../../../assets/typo-city_01/Schriftzug_Mosbach_01.svg" width="100%"/>
-              <img src="./../../../assets/typo-city_02/Schriftzug_Mosbach_02.svg" width="100%"/>
+              <img src="./../../../assets/typo-city_01/Schriftzug_Mosbach_01.svg" width="100%" @click="changeSticker('typo-city_01/Schriftzug_Mosbach_01.svg')"/>
+              <img src="./../../../assets/typo-city_02/Schriftzug_Mosbach_02.svg" width="100%" @click="changeSticker('typo-city_02/Schriftzug_Mosbach_02.svg')"/>
           </b-card-body>
         </b-collapse>
       </b-card>
@@ -99,8 +99,8 @@
         </b-card-header>
         <b-collapse id="accordion-stickerMuenchen" role="tabpanel">
           <b-card-body>
-              <img src="./../../../assets/typo-city_01/Schriftzug_Muenchen_01.svg" width="100%"/>
-              <img src="./../../../assets/typo-city_02/Schriftzug_Muenchen_02.svg" width="100%"/>
+              <img src="./../../../assets/typo-city_01/Schriftzug_Muenchen_01.svg" width="100%" @click="changeSticker('typo-city_01/Schriftzug_Muenchen_01.svg')"/>
+              <img src="./../../../assets/typo-city_02/Schriftzug_Muenchen_02.svg" width="100%" @click="changeSticker('typo-city_02/Schriftzug_Muenchen_02.svg')"/>
           </b-card-body>
         </b-collapse>
       </b-card>
@@ -111,8 +111,8 @@
         </b-card-header>
         <b-collapse id="accordion-stickerStuttgart" role="tabpanel">
           <b-card-body>
-              <img src="./../../../assets/typo-city_01/Schriftzug_Stuttgart_01.svg" width="100%"/>
-              <img src="./../../../assets/typo-city_02/Schriftzug_Stuttgart_02.svg" width="100%"/>
+              <img src="./../../../assets/typo-city_01/Schriftzug_Stuttgart_01.svg" width="100%" @click="changeSticker('typo-city_02/Schriftzug_Wuerzburg_02.svg')"/>
+              <img src="./../../../assets/typo-city_02/Schriftzug_Stuttgart_02.svg" width="100%" @click="changeSticker('typo-city_02/Schriftzug_Wuerzburg_02.svg')"/>
           </b-card-body>
         </b-collapse>
       </b-card>
@@ -123,8 +123,8 @@
         </b-card-header>
         <b-collapse id="accordion-stickerWuerzburg" role="tabpanel">
           <b-card-body>
-              <img src="./../../../assets/typo-city_01/Schriftzug_Wuerzburg_01.svg" width="100%"/>
-              <img src="./../../../assets/typo-city_02/Schriftzug_Wuerzburg_02.svg" width="100%"/>
+              <img src="./../../../assets/typo-city_01/Schriftzug_Wuerzburg_01.svg" width="100%" @click="changeSticker('typo-city_01/Schriftzug_Wuerzburg_01.svg')"/>
+              <img src="./../../../assets/typo-city_02/Schriftzug_Wuerzburg_02.svg" width="100%" @click="changeSticker('typo-city_02/Schriftzug_Wuerzburg_02.svg')"/>
           </b-card-body>
         </b-collapse>
       </b-card>
@@ -137,8 +137,11 @@ import Vue from "vue";
 
 export default Vue.extend({
   name: "Sticker",
-  components: {},
-  methods: {},
+  methods: {
+    changeSticker(sticker: string){
+      this.$store.dispatch("setSticker", sticker)
+    }
+  },
 });
 </script>
 
