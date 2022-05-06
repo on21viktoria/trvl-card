@@ -16,7 +16,7 @@
     </div>
     <div class="postcard-side" id="back">
       <v-container fluid id="container-rückseite-links">
-        <v-textarea
+        <v-textarea id="changed-text"
           solo
           counter
           name="Nachrichten-Textfeld"
@@ -51,6 +51,7 @@
 </template>
 
 <script lang="ts">
+import { EventBus } from "@/main";
 import Vue from "vue";
 
 export default Vue.extend({
@@ -60,6 +61,12 @@ export default Vue.extend({
     rules: [(v: string | any[]) => v.length <= 500 || "Maximal 500 characters"],
     value: "Hello!"
   }),
+  created() {
+  EventBus.$on('changeFont', (fontId: string) => {
+    const textarea = document.querySelector('#changed-text') as HTMLElement;
+    textarea.style.fontFamily = `${fontId}`;
+  })
+},
   props: {
     ImageId: String
   }
