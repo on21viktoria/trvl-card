@@ -60,10 +60,9 @@ export default Vue.extend({
     rules: [
       (v: string | any[]) => {
         if(v){
-        v.length <= 500  || "Maximal 500 characters"}
+        return (v.length <= 500  || "Maximal 500 characters")}
         else {console.log('error')}
-        }
-        ],
+        }],
   }),
   created() {
   EventBus.$on('changeFontColor', (colorId: string) => {
