@@ -3,7 +3,7 @@
     <Welcome></Welcome>
     <div class="designchoice">
       <div v-for="postcard in postcards" :key="postcard.id">
-        <DesignChoice :id="postcard.id" :title="postcard.title" :text="postcard.text" :image="require(`./../assets/images-trvl-card/${postcard.image}.jpg`)"></DesignChoice>
+        <DesignChoice :id="postcard.id" :title="postcard.title" :text="postcard.text" :image="require(`./../assets/images-trvl-card/${postcard.image}`)"></DesignChoice>
       </div>
     </div>
   </div>
@@ -23,13 +23,13 @@ export default Vue.extend({
         id: "blanko",
         title: "Blanko-Postkarte",
         text: "Starte ohne Vorlage mit einer Blanko-Postkarte.",
-        image: "BlankoPostkarte"
+        image: "BlankoPostkarte.jpg"
     },
     {
         id: "large-letter",
         title: "Large-Letter-Design",
         text: "Starte mit dem Large-Letter-Design.",
-        image: "LargeLetterDesign_Berlin"
+        image: "LargeLetterDesign_Berlin.jpg"
     }
     ]
   })

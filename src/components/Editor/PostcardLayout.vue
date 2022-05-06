@@ -1,17 +1,14 @@
 <template>
   <div class="postcard-layout">
-    <div class="postcard-side" id="front">
-      <div v-if="ImageId === 'blanko'">
+    <div class="postcard-side" id="front" :style="`background-color:` + currentBackgroundColor">
+      <div
+      >
         <img
-        src="./../../assets/images-trvl-card/BlankoPostkarte.jpg"
-        class="image-front"
-      />
-      </div>
-      <div v-if="ImageId ==='large-letter'">
-        <img
-         :src="require(`./../../assets/images-trvl-card-72dpi/${currentPicture}`)"
-        class="image-front"
-      />
+          :src="
+            require(`./../../assets/images-trvl-card-72dpi/${currentPicture}`)
+          "
+          class="image-front"
+        />
       </div>
     </div>
     <div class="postcard-side" id="back">
@@ -56,7 +53,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { mapState } from "vuex";
+import { mapGetters, mapState } from "vuex";
 
 export default Vue.extend({
   name: "PostcardLayout",
@@ -68,8 +65,8 @@ export default Vue.extend({
   props: {
     ImageId: String,
   },
-  computed: mapState(["currentPicture"]),
-});
+  computed: {...mapState(["currentPicture", "currentBackgroundColor"])
+}});
 </script>
 
 <style>
