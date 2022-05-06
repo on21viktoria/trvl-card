@@ -151,7 +151,7 @@ export default Vue.extend({
   grid-template-rows: auto !important;
   column-gap: 10px !important;
   row-gap: 10px !important;
-  padding: 25px 15px 25px 5px;
+  padding: 12px 15px 25px 5px;
 }
 
 img:hover {
