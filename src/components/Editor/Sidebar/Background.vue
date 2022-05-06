@@ -93,12 +93,6 @@ import Vue from "vue";
 
 export default Vue.extend({
   name: "Background",
-  data: () => ({}),
-  mounted() {
-    let colorselector = document.getElementById(
-      "color-selection"
-    ) as HTMLInputElement;
-  },
   methods: {
     changeBackgroundPicture(picture: string) {
       this.$store.dispatch("setPicture", picture);
@@ -107,7 +101,6 @@ export default Vue.extend({
       let colorselector = document.getElementById(
         "selection-color"
       ) as HTMLInputElement;
-      console.log(colorselector.value);
       this.$store.dispatch("setBackgroundColor", colorselector.value);
     },
   },

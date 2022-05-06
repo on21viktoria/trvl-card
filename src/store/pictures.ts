@@ -12,12 +12,10 @@ export default new Vuex.Store({
   mutations: {
     setCurrentPicture(state, payload) {
       state.currentPicture = payload;
-      console.log(state.currentPicture)
     },
 
     setCurrentBackgroundColor(state, payload) {
       state.currentBackgroundColor = payload;
-      console.log(state.currentBackgroundColor)
     }
   },
   actions: {
@@ -25,8 +23,6 @@ export default new Vuex.Store({
           state.commit('setCurrentPicture', picture);
       },
       async setBackgroundColor(state, color){
-        console.log(color);
-        console.log("Ich wurde aufgerufen");
         state.commit('setCurrentBackgroundColor', color);
     }
 
