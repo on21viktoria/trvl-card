@@ -1,17 +1,22 @@
 <template>
+<div>
+    <FontSize></FontSize>
 <FontChoice></FontChoice>
+</div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import FontSize from "./FontSize.vue";
 import FontChoice from "./FontChoice.vue";
 
 export default Vue.extend({
   data: () => ({
-    items: ["Foo", "Bar", "Fizz", "Buzz"],
   }),
   name: "Text",
-  components: {FontChoice},
+  components: {
+    FontSize, 
+    FontChoice},
   props: {},
   methods: {},
 });
