@@ -22,7 +22,6 @@
           name="Nachrichten-Textfeld"
           label="Deine persönliche Nachricht..."
           :rules="rules"
-          :value="values"
         >
         </v-textarea>
       </v-container>
@@ -60,7 +59,6 @@ export default Vue.extend({
   data: () => ({
     rules: [
       (v: string | any[]) => v.length <= 500 || "Maximal 500 characters"],
-    value: "Hello!"
   }),
   created() {
   EventBus.$on('changeFontColor', (colorId: string) => {
