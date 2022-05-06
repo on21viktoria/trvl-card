@@ -14,77 +14,7 @@
       @input="changeColor()"
     />
     <!-- <p class="tool-title">Suche</p>
-    <v-text-field label="Suche" solo prepend-inner-icon="mdi-magnify"></v-text-field> -->
-    <p class="tool-title subtitle">Bildauswahl</p>
-    <div class="Photogrid">
-      <img
-        @click="changeBackgroundPicture('Ampel_Philippe-Oursel_72dpi.jpg')"
-        src="./../../../assets/images-berlin_72dpi/Ampel_Philippe-Oursel_72dpi.jpg"
-        width="100%"
-      />
-      <img
-        @click="
-          changeBackgroundPicture('Berliner-Mauer_Mateo-Krossler_72dpi.jpg')
-        "
-        src="./../../../assets/images-berlin_72dpi/Berliner-Mauer_Mateo-Krossler_72dpi.jpg"
-        width="100%"
-      />
-      <img
-        @click="
-          changeBackgroundPicture('Brandenburger-Tor_Hakon-Sataoen_72dpi.jpg')
-        "
-        src="./../../../assets/images-berlin_72dpi/Brandenburger-Tor_Hakon-Sataoen_72dpi.jpg"
-        width="100%"
-      />
-      <img
-        @click="
-          changeBackgroundPicture(
-            'Checkpoint-Charlie_Santiago-flores_72dpi.jpg'
-          )
-        "
-        src="./../../../assets/images-berlin_72dpi/Checkpoint-Charlie_Santiago-flores_72dpi.jpg"
-        width="100%"
-      />
-      <img
-        @click="
-          changeBackgroundPicture('Fernsehturm_Camilla-Bundgaard_72dpi.jpg')
-        "
-        src="./../../../assets/images-berlin_72dpi/Fernsehturm_Camilla-Bundgaard_72dpi.jpg"
-        width="100%"
-      />
-      <img
-        @click="
-          changeBackgroundPicture('Museumsinsel_Christian-Ladewig_72dpi.jpg')
-        "
-        src="./../../../assets/images-berlin_72dpi/Museumsinsel_Christian-Ladewig_72dpi.jpg"
-        width="100%"
-      />
-      <img
-        @click="changeBackgroundPicture('Olympiastadion_Samuel-Svec_72dpi.jpg')"
-        src="./../../../assets/images-berlin_72dpi/Olympiastadion_Samuel-Svec_72dpi.jpg"
-        width="100%"
-      />
-      <img
-        @click="changeBackgroundPicture('Reichstag_Fionn-Grosseh_72dpi.jpg')"
-        src="./../../../assets/images-berlin_72dpi/Reichstag_Fionn-Grosseh_72dpi.jpg"
-        width="100%"
-      />
-      <img
-        @click="changeBackgroundPicture('Stadtansicht2_Stefan-Widua_72dpi.jpg')"
-        src="./../../../assets/images-berlin_72dpi/Stadtansicht2_Stefan-Widua_72dpi.jpg"
-        width="100%"
-      />
-      <img
-        @click="changeBackgroundPicture('Stadtansicht_Florian-Wehde_72dpi.jpg')"
-        src="./../../../assets/images-berlin_72dpi/Stadtansicht_Florian-Wehde_72dpi.jpg"
-        width="100%"
-      />
-      <img
-        @click="changeBackgroundPicture('U-Bahn_Soroush-Karimi_72dpi.jpg')"
-        src="./../../../assets/images-berlin_72dpi/U-Bahn_Soroush-Karimi_72dpi.jpg"
-        width="100%"
-      />
-    </div>
+    <v-text-field label="Suche" solo prepend-inner-icon="mdi-magnify"></v-text-field>-->
   </div>
 </template>
 
@@ -94,9 +24,6 @@ import Vue from "vue";
 export default Vue.extend({
   name: "Background",
   methods: {
-    changeBackgroundPicture(picture: string) {
-      this.$store.dispatch("setPicture", picture);
-    },
     changeColor() {
       let colorselector = document.getElementById(
         "selection-color"

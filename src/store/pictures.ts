@@ -6,7 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    currentPicture: "LargeLetterDesign_Berlin.jpg",
+    currentPicture: "images-trvl-card/LargeLetterDesign_Berlin.jpg",
     currentBackgroundColor: "#ffffff"
   },
   mutations: {
