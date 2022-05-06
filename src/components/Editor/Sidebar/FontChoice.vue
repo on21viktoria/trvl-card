@@ -6,24 +6,6 @@
       text="Schriftart wählen"
       @change="changeFont"
     >
-      <b-form-selected-option value="null"
-        >Schriftwart wählen</b-form-selected-option
-      >
-      <b-form-selected-option value="Montserrat"
-        >Montserrat</b-form-selected-option
-      >
-      <b-form-selected-option value="Lora"
-        >Lora</b-form-selected-option
-      >
-      <b-form-selected-option value="Dancing Script"
-        >Dancing Script</b-form-selected-option
-      >
-      <b-form-selected-option value="Klee One"
-        >Klee One</b-form-selected-option
-      >
-      <b-form-selected-option value="Indie Flower"
-        >Indie Flower</b-form-selected-option
-      >
     </b-form-select>
     <p id="show-font">Ausgewählte Schriftart: {{ selected }}</p>
   </div>
