@@ -10,7 +10,7 @@ import { EventBus } from "@/main";
 import Vue from "vue";
 
 export default Vue.extend ({
-    name: "FontColor",
+    name: "Fontcolor",
     data() {
         return {
             selected: null,

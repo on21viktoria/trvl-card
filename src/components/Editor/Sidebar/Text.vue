@@ -5,7 +5,7 @@
     <v-divider id="divider-sidebar"></v-divider>
     <FontChoice></FontChoice>
     <FontSize></FontSize>
-    <FontColor></FontColor> 
+    <Fontcolor></Fontcolor> 
   </div>
 </template>
 
@@ -13,7 +13,7 @@
 import Vue from "vue";
 import FontSize from "./FontSize.vue";
 import FontChoice from "./FontChoice.vue";
-import FontColor from "./FontColor.vue";
+import Fontcolor from "./Fontcolor.vue";
 
 
 export default Vue.extend({
@@ -22,7 +22,7 @@ export default Vue.extend({
   components: {
     FontSize,
     FontChoice,
-    FontColor
+    Fontcolor
   },
   props: {},
   methods: {},
