@@ -24,7 +24,7 @@
         </form>
           <button @click="makeToast(message = 'Hier wirst du bald die Möglichkeit haben, dich einzuloggen. Bitte hab noch ein bisschen Geduld.', options = {
           title: 'Hier entsteht ein neues Feature!',
-          autoHideDelay: 5000, appendToast: append})" type="button" class=" button button-login hovereffect" style='color: #707070'>
+          autoHideDelay: 5000, appendToast: append})" type="button" class=" button button-login hovereffect" id="login" style='color: #707070'>
             Login</button>
           <button @click="makeToast(message = 'Hier wirst du bald die Möglichkeit haben, dich zu registrieren. Bitte hab noch ein bisschen Geduld.', options = {
           title: 'Hier entsteht ein neues Feature!',
@@ -41,6 +41,7 @@
 
 <script lang="ts">
 /* eslint-disable */
+import { EventBus } from '@/main';
 import Vue from 'vue';
 
 export default Vue.extend({
@@ -49,16 +50,21 @@ export default Vue.extend({
     return {
       message: '',
       options: {},
-      buttonText: '',
+      buttonText: 'Registrieren',
     }
+  },
+  created() {
+    EventBus.$on('changeHeader', () => {
+     this.buttonText = 'Vorschau anzeigen';
+     const loginButton = document.getElementById('login') as HTMLElement;
+     loginButton.style.display = 'none';
+    })
   },
   methods: {
       makeToast() {
         this.$bvToast.toast(this.message, this.options)
       },
-      changeButton(buttonText: string) {
-        this.buttonText = buttonText;
-      }
+
     }
 });
 </script>

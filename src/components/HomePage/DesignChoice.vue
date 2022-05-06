@@ -4,14 +4,14 @@
     <div class="card-body">
       <h5 class="card-title">{{ title }}</h5>
       <p class="card-text">{{ text }}</p>
-      <router-link :to="`/editor/${id}`" class="button button-signup"
-        >Jetzt gestalten</router-link
-      >
+      <button class="hovereffect" @click="onClick"><router-link class="button button-signup hovereffect" :to="`/editor/${id}`" 
+        >Jetzt gestalten</router-link></button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import { EventBus } from "@/main";
 import Vue from "vue";
 
 export default Vue.extend({
@@ -21,6 +21,11 @@ export default Vue.extend({
     text: String,
     image: String,
     id: String,
+  }, 
+  methods: {
+    onClick() {
+      EventBus.$emit('changeHeader')
+    }
   }
 });
 </script>

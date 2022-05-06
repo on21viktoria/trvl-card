@@ -1,6 +1,4 @@
 <template>
-<div>
-<Header></Header>
   <div class="editor-page">
     <v-main>
       <v-container fluid id="editor-container">
@@ -29,7 +27,6 @@
         </div>
       </v-container>
     </v-main>
-  </div>
   </div>
 </template>
 
