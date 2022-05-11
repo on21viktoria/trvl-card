@@ -189,7 +189,7 @@
             <img
               src="./../../../assets/images-heidelberg_72dpi/Heidelberg_314522208.jpeg"
               @click="
-          changeBackgroundPicture('images-heidelberg_72dpi/Heidelberg_314522208.jp')
+          changeBackgroundPicture('images-heidelberg_72dpi/Heidelberg_314522208.jpeg')
         "
               width="100%"
             />
