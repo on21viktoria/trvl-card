@@ -101,7 +101,7 @@
     </div>
     <div class="checkoutbuttons">
         <button type="button" class="hovereffect" id="save">SICHERN & ZURÜCK</button>
-        <button type="button" class="hovereffect" id="pay">ZUR ZAHLUNG</button>    
+        <button type="button" class="hovereffect" id="pay" @click="order()">ZAHLUNGSPFLICHTIG BESTELLEN</button>    
     </div>
     </div>
     <div class="order">
@@ -133,10 +133,46 @@
 </template>
 
 <script lang='ts'>
+import { Order, Product } from '@/services/utils';
 import Vue from 'vue';
+import { placeOrder } from '../services/QuoteRequest';
+import { Recipient } from '../services/utils';
+
+const defaultOrder: Order = {
+    orderReferenceId: "string",
+    customerReferenceId: "string",
+    currenyIsoCode: "string"
+}
+
+const defaultRecipient: Recipient = {
+    countryIsoCode: "string",
+    companyName: "string",
+    firstName: "string",
+    lastName: "string",
+    addressLine1: "string",
+    addressLine2: "string",
+    stateCode: "string",
+    city: "string",
+    postcode: "string",
+    email: "string",
+    phone: "string"
+}
+
+const defaultProduct: Product = {
+    itemReferenceId: "string",
+    productUid: "string",
+    pdfUrl: "string",
+    quantity: 1
+}
 
 export default Vue.extend({
   name: 'Contactform',
+  methods: {
+  order(){
+    console.log("in order function")
+    placeOrder(defaultOrder, defaultRecipient, defaultProduct)
+  }
+  },
   data: () => ({
     valid: false,
     formOfAddress: [],

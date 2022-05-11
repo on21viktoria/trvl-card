@@ -8,11 +8,16 @@ import VueRouter from "vue-router";
 import Home from "./views/Home.vue";
 import Editor from "./views/Editor.vue";
 import Contactform from "./views/Contactform.vue";
+import VueAxios from "vue-axios";
+import axios from 'axios';
 
 Vue.config.productionTip = false;
 export const EventBus = new Vue();
 Vue.use(BootstrapVue);
 Vue.use(VueRouter);
+
+//TODO eventuell löschen
+Vue.use(VueAxios, axios);
 
 const routes = [
   { path: "/", component: Home },

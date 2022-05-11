@@ -13,7 +13,9 @@ import Footer from "./components/Footer.vue";
 
 export default Vue.extend({
   name: "App",
-
+  data: () => ({
+    loading: false,
+  }),
   components: {
     Header,
     Footer,
