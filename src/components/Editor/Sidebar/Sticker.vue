@@ -1,13 +1,6 @@
 <template>
   <div>
     <p class="tool-title">Sticker</p>
-    <!-- <p class="tool-title subtitle">Suche</p>
-    <v-text-field
-      label="Suche"
-      solo
-      prepend-inner-icon="mdi-magnify"
-    ></v-text-field> -->
-
     <div class="accordion" role="tablist">
       <b-card no-body class="mb-1">
         <b-card-header header-tag="header" class="p-1" role="tab">
@@ -146,8 +139,6 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-
-
 .card-body{
   display: grid !important;
   grid-template-columns: 50% 50% !important;
@@ -194,5 +185,4 @@ background-color: #e7e7e6;
   padding: 0;
   margin: 0;
 }
-
 </style>
