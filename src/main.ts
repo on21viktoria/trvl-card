@@ -25,6 +25,7 @@ const routes = [
   { path: "/checkout", component: Contactform },
 ];
 const router = new VueRouter({
+  mode: 'history',
   routes,
 });
 

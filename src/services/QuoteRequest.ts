@@ -6,7 +6,7 @@ export let axios = require('axios');
 
 // const apiKey = "2fa89bee-7e13-4be1-a7cc-ecf1359f4234-ed2828f6-8dc3-4cbd-9d59-332587696d7c:1e8d72b3-e967-4137-b5d7-25c41d95eba5"
 
-export function placeOrder(order: Order, recipient: Recipient, product: Product) {
+export async function placeOrder(order: Order, recipient: Recipient, product: Product) {
 // === Define headers ===
 let headers = {
     'Content-Type' : 'application/json',
@@ -14,7 +14,7 @@ let headers = {
 };
 
 // === Set-up quote request ===
-let quoteUrl = 'https://order.gelatoapis.com/v3/orders:quote';
+let quoteUrl = 'https://api.gelato.com/v2/quote';
 let quoteJson = {
 "order": {
     "orderReferenceId": order.orderReferenceId,
@@ -47,16 +47,16 @@ let quoteJson = {
 console.log(quoteJson)
 
 // === Send quote request ===
-try {
-    axios.post({
+   await axios.post({
     url:        quoteUrl,
     headers:    headers,
     body:       JSON.stringify(quoteJson)
 }, function(error: any, response: any, body: any){
     // === Set-up order create request ===
     let data = JSON.parse(body);
+    console.log('Data:' + data);
     let promiseUid = data.production.shipments[0].promiseUid;
-    let orderCreateUrl = 'https://order.gelatoapis.com/v3/orders';
+    let orderCreateUrl = 'https://api.gelato.com/v2/order/create';
     let orderCreateJson = {
         "promiseUid": "" + promiseUid + ""
     };
@@ -70,6 +70,4 @@ try {
         console.log(body);
     });
 }) 
-} catch(ExternalApiCallException) {
-    console.error}
-}
+} 
