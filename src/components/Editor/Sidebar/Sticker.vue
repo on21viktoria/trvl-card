@@ -195,6 +195,7 @@ background-color: #e7e7e6;
   padding: 20px 0;
   margin-right: 0;
   justify-items: center;
+  background-color: white;
 }
 
 </style>
