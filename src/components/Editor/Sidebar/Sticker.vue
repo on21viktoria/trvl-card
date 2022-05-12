@@ -1,6 +1,11 @@
 <template>
   <div>
     <p class="tool-title">Sticker</p>
+
+  <img id="emptyImage" src="./../../../assets/platzhalter/leer_mit_strich.png" width="30%"
+      @click="changeSticker('platzhalter/leer.png')"
+    />
+
     <div class="accordion" role="tablist">
       <b-card no-body class="mb-1">
         <b-card-header header-tag="header" class="p-1" role="tab">
@@ -104,8 +109,8 @@
         </b-card-header>
         <b-collapse id="accordion-stickerStuttgart" role="tabpanel">
           <b-card-body>
-              <img src="./../../../assets/typo-city_01/Schriftzug_Stuttgart_01.svg" width="100%" @click="changeSticker('typo-city_02/Schriftzug_Wuerzburg_02.svg')"/>
-              <img src="./../../../assets/typo-city_02/Schriftzug_Stuttgart_02.svg" width="100%" @click="changeSticker('typo-city_02/Schriftzug_Wuerzburg_02.svg')"/>
+              <img src="./../../../assets/typo-city_01/Schriftzug_Stuttgart_01.svg" width="100%" @click="changeSticker('typo-city_01/Schriftzug_Stuttgart_01.svg')"/>
+              <img src="./../../../assets/typo-city_02/Schriftzug_Stuttgart_02.svg" width="100%" @click="changeSticker('typo-city_02/Schriftzug_Stuttgart_02.svg')"/>
           </b-card-body>
         </b-collapse>
       </b-card>
@@ -185,4 +190,12 @@ background-color: #e7e7e6;
   padding: 0;
   margin: 0;
 }
+
+#emptyImage {
+  padding: 20px 0;
+  background-color: white;
+  display: flex;
+  margin: auto;
+}
+
 </style>
