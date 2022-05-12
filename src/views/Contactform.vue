@@ -112,7 +112,7 @@
     </div>
     <div class="checkoutbuttons">
         <button type="button" class="hovereffect" id="save">SICHERN & ZURÜCK</button>
-        <button type="button" class="hovereffect" id="pay" @click="order()">ZAHLUNGSPFLICHTIG BESTELLEN</button>    
+        <button type="button" class="hovereffect" id="pay" @click="order()">BESTELLUNG ABSENDEN</button>    
     </div>
     </div>
     <div class="order">
@@ -151,6 +151,11 @@ import { placeOrder } from '../services/QuoteRequest';
 export default Vue.extend({
   name: 'Contactform',
   methods: {
+  makeToast() {
+        this.$bvToast.toast(`This is toast number`, {
+          title: 'BootstrapVue Toast',
+          autoHideDelay: 5000,
+        })},
   order(){
   let inputFirstName = document.getElementById('first-name') as HTMLInputElement;
   let inputLastName = document.getElementById('last-name') as HTMLInputElement;
@@ -187,7 +192,7 @@ const defaultProduct: Product = {
     itemReferenceId: "postcard",
     productUid: "cards_pf_bx_pt_110-lb-cover-uncoated_cl_4-4_hor",
     pdfUrl: "default",
-    quantity: 1
+    quantity: 10
 }
 
   console.log(inputFirstName.value);

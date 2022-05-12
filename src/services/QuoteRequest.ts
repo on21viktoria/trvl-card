@@ -10,11 +10,11 @@ export function placeOrder(order: Order, recipient: Recipient, product: Product)
 // === Define headers ===
 let headers = {
     'Content-Type' : 'application/json',
-    'X-API-KEY' : '{{XXX}}'
+    'X-API-KEY' : '2fa89bee-7e13-4be1-a7cc-ecf1359f4234-ed2828f6-8dc3-4cbd-9d59-332587696d7c:1e8d72b3-e967-4137-b5d7-25c41d95eba5'
 };
 
 // === Set-up quote request ===
-let quoteUrl = 'https://api.gelato.com/v2/quote';
+let quoteUrl = 'https://order.gelatoapis.com/v3/orders:quote';
 let quoteJson = {
 "order": {
     "orderReferenceId": order.orderReferenceId,
@@ -45,9 +45,10 @@ let quoteJson = {
 } 
 
 console.log(quoteJson)
-/* 
+
 // === Send quote request ===
-axios.post({
+try {
+    axios.post({
     url:        quoteUrl,
     headers:    headers,
     body:       JSON.stringify(quoteJson)
@@ -55,7 +56,7 @@ axios.post({
     // === Set-up order create request ===
     let data = JSON.parse(body);
     let promiseUid = data.production.shipments[0].promiseUid;
-    let orderCreateUrl = 'https://api.gelato.com/v2/order/create';
+    let orderCreateUrl = 'https://order.gelatoapis.com/v3/orders';
     let orderCreateJson = {
         "promiseUid": "" + promiseUid + ""
     };
@@ -68,5 +69,7 @@ axios.post({
     }, function(error: any, response: any, body: any){
         console.log(body);
     });
-}); */
-} 
+}) 
+} catch(ExternalApiCallException) {
+    console.error}
+}
