@@ -19,10 +19,10 @@
       style="color: #fff"
       >Speichern & Zum Warenkorb</router-link
     >
-        <div class="buttons">
-          <button @click="makeToast(message = 'Hier wirst du bald die Möglichkeit haben, dich zu registrieren. Bitte hab noch ein bisschen Geduld.', options = {
+        <div>
+          <v-icon class="account hovereffect" @click="makeToast(message = 'Hier wirst du bald die Möglichkeit haben, in deinen Account zu gelangen. Bitte hab noch ein bisschen Geduld.', options = {
           title: 'Hier entsteht ein neues Feature!',
-          autoHideDelay: 5000, appendToast: append})" type="button" class="button-register button-signup hovereffect" style='color: #fff'>Registrieren</button>
+          autoHideDelay: 5000, appendToast: append})" >mdi-account-circle</v-icon>
           <v-icon class="carticon hovereffect" @click="makeToast(message = 'Hier geht es bald zum Warenkorb. Bitte hab noch ein bisschen Geduld.', options = {
           title: 'Hier entsteht ein neues Feature!',
           autoHideDelay: 5000, appendToast: append})" >mdi-cart</v-icon>
@@ -59,11 +59,5 @@ export default Vue.extend({
  position: relative;
  margin-right: 20px;
  margin-left: auto;
-}
-
-.button-register {
-    background-color: gray;
-    height: 39px;
-  padding: 10px;
 }
 </style>
