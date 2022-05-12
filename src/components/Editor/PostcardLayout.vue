@@ -85,7 +85,7 @@ export default Vue.extend({
   props: {
     ImageId: String,
   },
-  computed: {...mapState(["currentPicture", "currentBackgroundColor", "currentSticker"])
+  computed: {...mapState(["currentPicture", "currentBackgroundColor", "currentSticker", "currentTemplate"])
 }});
 </script>
 

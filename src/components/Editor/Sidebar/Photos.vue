@@ -1,13 +1,11 @@
 <template>
   <div>
     <p class="tool-title">Fotos</p>
-    <!-- <p class="tool-title subtitle">Suche</p>
-    <v-text-field
-      label="Suche"
-      solo
-      prepend-inner-icon="mdi-magnify"
-    ></v-text-field> -->
     <p class="tool-title subtitle">Bildauswahl</p>
+
+  <img id="emptyImage" src="./../../../assets/platzhalter/leer_mit_strich.png" width="30%"
+      @click="changeBackgroundPicture('platzhalter/leer.png')"
+    />
 
     <div class="accordion" role="tablist">
       <b-card no-body class="mb-1">
@@ -19,50 +17,28 @@
         <b-collapse id="accordion-berlin" role="tabpanel">
           <b-card-body>
             <img
-              src="./../../../assets/images-berlin_72dpi/Ampel_Philippe-Oursel_72dpi.jpg"
-              width="100%"
-              @click="
-                changeBackgroundPicture(
-                  'images-berlin_72dpi/Ampel_Philippe-Oursel_72dpi.jpg'
-                )
-              "
+              src="./../../../assets/images-berlin_72dpi/Ampel_Philippe-Oursel_72dpi.jpg" width="100%"
+              @click="changeBackgroundPicture('images-berlin_72dpi/Ampel_Philippe-Oursel_72dpi.jpg')"
             />
             <img
-              src="./../../../assets/images-berlin_72dpi/Berliner-Mauer_Mateo-Krossler_72dpi.jpg"
-              width="100%"
-              @click="
-                changeBackgroundPicture(
-                  'images-berlin_72dpi/Berliner-Mauer_Mateo-Krossler_72dpi.jpg'
-                )
-              "
+              src="./../../../assets/images-berlin_72dpi/Berliner-Mauer_Mateo-Krossler_72dpi.jpg" width="100%"
+              @click="changeBackgroundPicture('images-berlin_72dpi/Berliner-Mauer_Mateo-Krossler_72dpi.jpg')"
             />
             <img
               src="./../../../assets/images-berlin_72dpi/Brandenburger-Tor_Hakon-Sataoen_72dpi.jpg"
-              @click="
-          changeBackgroundPicture('images-berlin_72dpi/Brandenburger-Tor_Hakon-Sataoen_72dpi.jpg')
-        "
-              width="100%"
+              @click="changeBackgroundPicture('images-berlin_72dpi/Brandenburger-Tor_Hakon-Sataoen_72dpi.jpg')" width="100%"
             />
             <img
               src="./../../../assets/images-berlin_72dpi/Checkpoint-Charlie_Santiago-flores_72dpi.jpg"
-              @click="
-          changeBackgroundPicture('images-berlin_72dpi/Checkpoint-Charlie_Santiago-flores_72dpi.jpg')
-        "
-              width="100%"
+              @click="changeBackgroundPicture('images-berlin_72dpi/Checkpoint-Charlie_Santiago-flores_72dpi.jpg')" width="100%"
             />
             <img
               src="./../../../assets/images-berlin_72dpi/Fernsehturm_Camilla-Bundgaard_72dpi.jpg"
-              @click="
-          changeBackgroundPicture('images-berlin_72dpi/Fernsehturm_Camilla-Bundgaard_72dpi.jpg')
-        "
-              width="100%"
+              @click="changeBackgroundPicture('images-berlin_72dpi/Fernsehturm_Camilla-Bundgaard_72dpi.jpg')" width="100%"
             />
             <img
               src="./../../../assets/images-berlin_72dpi/Museumsinsel_Christian-Ladewig_72dpi.jpg"
-              @click="
-          changeBackgroundPicture('images-berlin_72dpi/Museumsinsel_Christian-Ladewig_72dpi.jpg')
-        "
-              width="100%"
+              @click="changeBackgroundPicture('images-berlin_72dpi/Museumsinsel_Christian-Ladewig_72dpi.jpg')" width="100%"
             />
             <img
               src="./../../../assets/images-berlin_72dpi/Olympiastadion_Samuel-Svec_72dpi.jpg"
@@ -557,4 +533,11 @@ img:hover {
   padding: 0;
   margin: 0;
 }
+
+#emptyImage {
+  padding: 20px 0;
+  display: flex;
+  margin: auto;
+}
+
 </style>
