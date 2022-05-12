@@ -80,6 +80,7 @@ h1 {
 #editor-container {
   background-color: lightpink;
   height: 800px;
+  padding: 0;
 }
 
 #footer > p {

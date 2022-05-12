@@ -1,17 +1,15 @@
 <template>
   <div class="postcard-layout">
-    <div class="postcard-side" id="front">
-      <div v-if="ImageId === 'blanko'">
+    <div class="postcard-side" id="front" :style="`background-color:` + currentBackgroundColor">
+      <div class="image-wrap"
+      >
         <img
-        src="./../../assets/images-trvl-card/BlankoPostkarte.jpg"
-        class="image-front"
-      />
-      </div>
-      <div v-if="ImageId ==='large-letter'">
-        <img
-        src="./../../assets/images-trvl-card/LargeLetterDesign_Berlin.jpg"
-        class="image-front"
-      />
+          :src="
+            require(`./../../assets/${currentPicture}`)
+          "
+          class="image-front"
+        />
+        <img v-if="currentSticker !==''" :src="require(`./../../assets/${currentSticker}`)" class="svg-image"/>
       </div>
     </div>
     <div class="postcard-side" id="back">
@@ -44,14 +42,19 @@
         <p>Dieser Platz muss frei bleiben.</p>
       </div>
     </div>
-    <router-link to="/checkout" class="button button-signup hovereffect checkout" style="color: #fff"
-        >Speichern & Zum Warenkorb</router-link>
+    <router-link
+      to="/checkout"
+      class="button button-signup hovereffect checkout"
+      style="color: #fff"
+      >Speichern & Zum Warenkorb</router-link
+    >
   </div>
 </template>
 
 <script lang="ts">
 import { EventBus } from "@/main";
 import Vue from "vue";
+import { mapGetters, mapState } from "vuex";
 
 export default Vue.extend({
   name: "PostcardLayout",
@@ -80,12 +83,24 @@ export default Vue.extend({
   })
 },
   props: {
-    ImageId: String
-  }
-});
+    ImageId: String,
+  },
+  computed: {...mapState(["currentPicture", "currentBackgroundColor", "currentSticker"])
+}});
 </script>
 
 <style>
+
+.image-wrap{
+  position: relative;
+}
+
+.svg-image{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+}
 .postcard-side {
   position: relative;
   background-color: rgb(255, 255, 255);

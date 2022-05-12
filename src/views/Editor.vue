@@ -56,7 +56,6 @@ export default Vue.extend({
     showSideBar(idSidebar: string) {
       this.sidebar = true;
       this.sidebarContent = idSidebar;
-      console.log(this.id);
     },
     hideSideBar() {
       this.sidebar = !this.sidebar;

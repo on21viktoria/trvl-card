@@ -1,19 +1,21 @@
 <template>
-    <div>
+  <div>
     <p class="tool-title">Hintergrund</p>
     <p>
-      Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus
-      ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur
-      ac, vestibulum at eros.
+      Ihr könnt hier entweder zwischen einem Hintergrundbild oder einer Farbe
+      wählen.
     </p>
-    <b-img
-      src="https://picsum.photos/500/500/?image=54"
-      fluid
-      thumbnail
-    ></b-img>
+    <p class="tool-title subtitle">Hintergrundfarbe</p>
+    <input
+      type="color"
+      id="selection-color"
+      name="color-selection"
+      value="#ffffff"
+      @input="changeColor()"
+    />
     <!-- <p class="tool-title">Suche</p>
-    <v-text-field label="Suche" solo prepend-inner-icon="mdi-magnify"></v-text-field> -->
-    </div>
+    <v-text-field label="Suche" solo prepend-inner-icon="mdi-magnify"></v-text-field>-->
+  </div>
 </template>
 
 <script lang="ts">
@@ -21,14 +23,31 @@ import Vue from "vue";
 
 export default Vue.extend({
   name: "Background",
-  components: {},
-  props: {
+  methods: {
+    changeColor() {
+      let colorselector = document.getElementById(
+        "selection-color"
+      ) as HTMLInputElement;
+      this.$store.dispatch("setBackgroundColor", colorselector.value);
+    },
   },
-  methods: {},
 });
 </script>
 
 <style scoped>
+.Photogrid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+  column-gap: 10px;
+  row-gap: 10px;
+  padding: 10px;
+}
+
+img:hover {
+  opacity: 30%;
+}
+
 .tool-title {
   font-weight: bold;
   font-size: 18px;
@@ -39,4 +58,5 @@ export default Vue.extend({
 .tool-title.subtitle {
   font-size: 16px;
 }
+</style>
 </style>

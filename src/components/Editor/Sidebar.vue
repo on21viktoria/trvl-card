@@ -111,6 +111,8 @@ export default Vue.extend({
 <style scoped>
 div {
   width: 100%;
+  max-height: 800px;
+  overflow: auto;
 }
 
 .tool-title {
