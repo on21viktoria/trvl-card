@@ -3,9 +3,9 @@
     text-align: left;
   }
 
-  .body {
-    min-height: 100%;
-  }
+.body {
+  min-height: 100%;
+}
 
 .socialmedia {
   margin: 5px;
@@ -13,12 +13,12 @@
 
 .firstcontainer {
   background-color: #fff;
-    columns: 12;
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    padding: 20px 40px;
-    z-index: 100;
+  columns: 12;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 20px 40px;
+  z-index: 100;
 }
 .sticky {
   position: fixed;
@@ -32,116 +32,123 @@
 }
 
 .wrapper {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-  }
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .logocontainer {
-    flex-wrap: wrap;
-    align-items: center;
-    margin-bottom: .5rem;
-    color: white;
-    text-decoration: none;
-    margin-right: 20px;
-  
-    transition: transform 0.8s;
-      -moz-transition: transform 0.8s;
-      -webkit-transition: transform 0.8s;
-      -o-transition: transform 0.8s;
-      -ms-transition: transform 0.8s;
-  }
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
 
-  .nav {
-    margin-bottom: .5rem;
-    justify-content: flex-start;
-    list-style: none;
-  }
-  
-  .item {
-      background-color: #fff;
-      color: #707070;
-      font-weight: 600;   
-      padding: 30px;
-      text-decoration: none;
-  }
+  transition: transform 0.8s;
+  -moz-transition: transform 0.8s;
+  -webkit-transition: transform 0.8s;
+  -o-transition: transform 0.8s;
+  -ms-transition: transform 0.8s;
+}
 
-  .item:hover {
-    color: #707070
-  }
+.nav {
+  margin-bottom: 0.5rem;
+  justify-content: flex-start;
+  list-style: none;
+}
 
   .buttons {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
   }
-  
-  .searchbar {
-    border: 0.1px solid #707070;
-    width: 400px;
-    padding: 10px;
-    border-radius: 4px;
-    height: 39px;
-    margin-left: 50px;
-  }
-  
-  .button {
-    height:39px;
-    padding: 10px;
-  }
-  .inputfield:focus {
-    outline: 0;
-  }
 
-  .button-signup {
-    background: #ff4e00;
-    color: #fff !important;
-    border-radius: 4px;
-    font-weight: 500;
-    text-decoration-line: none;
+.button:focus {
+  outline: 0.1px solid #ff4e00 !important;
+}
+
+.item {
+  background-color: #fff;
+  color: #707070;
+  font-weight: 600;
+  padding: 30px;
+  text-decoration: none;
+}
+
+.item:hover {
+  color: #707070;
+}
+
+.searchbar {
+  border: 0.1px solid #707070;
+  width: 600px;
+  padding: 10px;
+  border-radius: 4px;
+  height: 39px;
+  margin-left: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  height: 39px;
+  padding: 10px;
+}
+.inputfield:focus {
+  outline: 0;
+}
+
+.button-signup {
+  background: #ff4e00;
+  color: #fff !important;
+  border-radius: 4px;
+  font-weight: 500;
+  text-decoration-line: none;
+
 }
 
 .button-login {
-    border: none;
-    background-color: transparent;
-    color: #707070;
-    padding: 10px 10px 10px 10px;
-    margin-right: 15px;
-    margin-left: 15px;
+  border: none;
+  background-color: transparent;
+  color: #707070;
+  padding: 10px 10px 10px 10px;
+  margin-right: 15px;
+  margin-left: 15px;
 }
 
-.button-login:hover{
+.button-login:hover {
   cursor: pointer;
   border: 0.5px solid #ff4e00;
   border-radius: 4px;
 }
-  
 
 .carticon {
-    padding: 20px;
-    transition: transform 0.8s;
-      -moz-transition: transform 0.8s;
-      -webkit-transition: transform 0.8s;
-      -o-transition: transform 0.8s;
-      -ms-transition: transform 0.8s;
-  }
+  padding: 20px;
+  transition: transform 0.8s;
+  -moz-transition: transform 0.8s;
+  -webkit-transition: transform 0.8s;
+  -o-transition: transform 0.8s;
+  -ms-transition: transform 0.8s;
+}
 
- .designchoice {
-     display: flex;
-     justify-content: center;
- }
+.designchoice {
+  display: flex;
+  justify-content: center;
+}
 
- .outputfield {
-     margin-top: 20px;
-     display: flex;
-     justify-content: center;
-     font-style: bold;
-     font-size: 30px;
- }
+.outputfield {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  font-style: bold;
+  font-size: 30px;
+}
 
- .help {
+.help {
   display: flex;
   justify-content: flex-end;
   position: fixed;
@@ -151,23 +158,23 @@
   margin: 18px;
 }
 
- .welcome {
-   padding: 20px;
-   margin-top: 100px;
- }
+.welcome {
+  padding: 20px;
+  margin-top: 100px;
+}
 
- h1 {
+h1 {
   font-size: 30px;
 }
 
 .headline {
   padding-left: 450px;
- display: block;
- width: 75%;
+  display: block;
+  width: 75%;
 }
 
 .textanimation {
-  font-size: 15px; 
+  font-size: 15px;
   margin-left: 15px;
   margin-top: 20px;
   animation-name: helpslider;
@@ -176,8 +183,12 @@
 }
 
 @keyframes helpslider {
-  from { opacity: 0% }
-  to { opacity: 100% }
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
 }
 
 .hovereffect {
@@ -185,7 +196,8 @@
   -moz-transition: transform 0.8s;
   -webkit-transition: transform 0.8s;
   -o-transition: transform 0.8s;
-  -ms-transition: transform 0.8s;}
+  -ms-transition: transform 0.8s;
+}
 
 .hovereffect:hover {
   cursor: pointer;
@@ -199,4 +211,19 @@
 .editor-page {
   padding: 20px;
   margin-top: 100px;
+}
+
+.toast-body {
+  background-color: rgba(255, 255, 255, 1) !important;
+  font-size: 15px !important;
+}
+
+.toast-header {
+  background-color: rgba(255, 255, 255, 1) !important;
+  color: #ff4e00 !important;
+  font-size: 15px !important;
+}
+
+.helpanchor:hover {
+  text-decoration: none !important;
 }

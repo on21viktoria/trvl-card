@@ -16,13 +16,12 @@
     </div>
     <div class="postcard-side" id="back">
       <v-container fluid id="container-rückseite-links">
-        <v-textarea
+        <v-textarea id="changed-text"
           solo
           counter
           name="Nachrichten-Textfeld"
           label="Deine persönliche Nachricht..."
           :rules="rules"
-          :value="values"
         >
         </v-textarea>
       </v-container>
@@ -51,15 +50,35 @@
 </template>
 
 <script lang="ts">
+import { EventBus } from "@/main";
 import Vue from "vue";
 
 export default Vue.extend({
   name: "PostcardLayout",
   components: {},
   data: () => ({
-    rules: [(v: string | any[]) => v.length <= 500 || "Maximal 500 characters"],
-    value: "Hello!"
+    rules: [
+      (v: string | any[]) => {
+        if(v){
+        return (v.length <= 500  || "Maximal 500 characters")}
+        else {console.log('error')}
+        }],
   }),
+  created() {
+  EventBus.$on('changeFontColor', (colorId: string) => {
+    const textarea = document.querySelector('#changed-text') as HTMLElement;
+    textarea.style.color =`${colorId}`;
+    console.log("In PostcardLayout", colorId)
+  })
+  EventBus.$on('changeFontSize', (sizeId: string) => {
+    const textarea = document.querySelector('#changed-text') as HTMLElement;
+    textarea.style.fontSize =`${sizeId}`;
+  }),
+  EventBus.$on('changeFont', (fontId: string) => {
+    const textarea = document.querySelector('#changed-text') as HTMLElement;
+    textarea.style.fontFamily = `${fontId}`;
+  })
+},
   props: {
     ImageId: String
   }
@@ -120,7 +139,11 @@ export default Vue.extend({
     rgba(112, 112, 112, 0.1) 4px,
     rgba(112, 112, 112, 0.1) 5px
   );
-  align-content: center;
+}
+
+.codierzone>p{
+  margin: 10px 0 5px;
+  text-align: center;
 }
 
 .frankierzone {
