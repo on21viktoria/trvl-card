@@ -160,11 +160,8 @@ export default Vue.extend({
   let inputPostalcode = document.getElementById('postalcode') as HTMLInputElement;
   let inputCity = document.getElementById('city') as HTMLInputElement;
   let inputCountry = document.getElementById('country') as HTMLInputElement;
-  let randomOrderReferenceId = `order: ${Math.random() * (10000 - 1) + 1}`;
-  let randomCustomerReferenceId = `customer: ${Math.random() * (10000 - 1) + 1}`;
-  if(inputCountry.value !== 'Deutschland'){
-    alert('Sorry, wir liefern bisher nur nach Deutschland!')
-  }
+  let randomOrderReferenceId = `order: ${Math.floor(Math.random() * (10000 - 1) + 1)}`;
+  let randomCustomerReferenceId = `customer: ${Math.floor(Math.random() * (10000 - 1) + 1)}`;
 
   const defaultOrder: Order = {
     orderReferenceId: randomOrderReferenceId,
@@ -221,7 +218,7 @@ const defaultProduct: Product = {
     country: '',
     countryRules: [(v: string) => !!v || 'Bitte gib ein Land ein.',
     ],
-    states: ['Deutschland', 'Österreich', 'Schweiz'],
+    states: ['Deutschland'],
     postalcode: '',
     postalcodeRules: [
     (v: string) => !!v || 'Bitte gib eine Postleitzahl ein.',
