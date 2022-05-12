@@ -1,6 +1,11 @@
 <template>
   <div>
     <p class="tool-title">Sticker</p>
+
+  <img id="emptyImage" src="./../../../assets/platzhalter/leer_mit_strich.png" width="30%"
+      @click="changeSticker('platzhalter/leer.png')"
+    />
+
     <div class="accordion" role="tablist">
       <b-card no-body class="mb-1">
         <b-card-header header-tag="header" class="p-1" role="tab">
@@ -185,4 +190,11 @@ background-color: #e7e7e6;
   padding: 0;
   margin: 0;
 }
+
+#emptyImage {
+  padding: 20px 0;
+  margin-right: 0;
+  justify-items: center;
+}
+
 </style>

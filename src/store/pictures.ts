@@ -9,6 +9,7 @@ export default new Vuex.Store({
     currentPicture: "images-trvl-card/LargeLetterDesign_Berlin.jpg",
     currentBackgroundColor: "#ffffff",
     currentSticker: "",
+    currentTemplate: "",
   },
   mutations: {
     setCurrentPicture(state, payload) {
@@ -22,6 +23,10 @@ export default new Vuex.Store({
     setCurrentSticker(state, payload) {
       state.currentSticker = payload;
     },
+
+    setCurrentTemplate(state, payload) {
+      state.currentTemplate = payload;
+    },
   },
   actions: {
     async setPicture(state, picture) {
@@ -32,6 +37,9 @@ export default new Vuex.Store({
     },
     async setSticker(state, sticker) {
       state.commit("setCurrentSticker", sticker);
+    },
+    async setTemplate(state, template) {
+      state.commit("setCurrentTemplate", template);
     },
   },
   modules: {},
@@ -44,6 +52,9 @@ export default new Vuex.Store({
     },
     getCurrentSticker: (state) => {
       state.currentSticker;
+    },
+    getCurrentTemplate: (state) => {
+      state.currentTemplate;
     },
   },
 });
