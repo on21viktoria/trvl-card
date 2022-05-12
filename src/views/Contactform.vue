@@ -9,17 +9,21 @@
 
       <v-col class="columns" cols="12" md="6"> 
           <v-select
+          id="form-of-address"
           v-model="formOfAddress"
           :items="formsOfAddress"
+          item-text="text"
+          item-value="value"
           :menu-props="{ maxHeight: '400' }"
           label="Anrede"
           single
-        :rules="addressRules"
+        :rules="formOfAddressRules"
         required
           ></v-select>
         </v-col>    
         <v-col class="columns" cols="12" md="6">
           <v-text-field 
+            id="first-name"
             class="textfield"
             v-model="firstname"
             :rules="firstNameRules"
@@ -30,6 +34,7 @@
 
         <v-col class="columns" cols="12" md="6">
           <v-text-field
+            id="last-name"
             v-model="lastname"
             :rules="lastNameRules"
             label="Nachname"
@@ -39,6 +44,7 @@
 
         <v-col class="columns" cols="12" md="6">
           <v-text-field
+            id="email"
             v-model="email"
             :rules="emailRules"
             label="E-Mail"
@@ -48,6 +54,7 @@
 <v-row>
           <v-col cols="12" md="5">
             <v-text-field
+              id="street"
               v-model="street"
               :rules="streetRules"
               label="Straße"
@@ -56,6 +63,7 @@
           </v-col>
           <v-col cols="12" md="5">
             <v-text-field
+              id="housenumber"
               v-model="housenumber"
               :rules="housenumberRules"
               label="Hausnummer"
@@ -66,6 +74,7 @@
         <v-row>
             <v-col cols="12" md="5">
               <v-text-field
+               id="postalcode"
                 v-model="postalcode"
                 :rules="postalcodeRules"
                 label="Postleitzahl"
@@ -74,6 +83,7 @@
             </v-col>
             <v-col cols="12" md="5">
               <v-text-field
+              id="city"
                 v-model="city"
                 :rules="cityRules"
                 label="Stadt"
@@ -84,6 +94,7 @@
         
         <v-col class="columns" cols="12" md="6"> 
           <v-select
+          id="country"
           v-model="country"
           :items="states"
           :menu-props="{ maxHeight: '400' }"
@@ -133,50 +144,65 @@
 </template>
 
 <script lang='ts'>
-import { Order, Product } from '@/services/utils';
+import { Order, Product, Recipient } from '@/services/utils';
 import Vue from 'vue';
 import { placeOrder } from '../services/QuoteRequest';
-import { Recipient } from '../services/utils';
-
-const defaultOrder: Order = {
-    orderReferenceId: "string",
-    customerReferenceId: "string",
-    currenyIsoCode: "string"
-}
-
-const defaultRecipient: Recipient = {
-    countryIsoCode: "string",
-    companyName: "string",
-    firstName: "string",
-    lastName: "string",
-    addressLine1: "string",
-    addressLine2: "string",
-    stateCode: "string",
-    city: "string",
-    postcode: "string",
-    email: "string",
-    phone: "string"
-}
-
-const defaultProduct: Product = {
-    itemReferenceId: "string",
-    productUid: "string",
-    pdfUrl: "string",
-    quantity: 1
-}
 
 export default Vue.extend({
   name: 'Contactform',
   methods: {
   order(){
+  let inputFirstName = document.getElementById('first-name') as HTMLInputElement;
+  let inputLastName = document.getElementById('last-name') as HTMLInputElement;
+  let inputEmail = document.getElementById('email') as HTMLInputElement;
+  let inputStreet = document.getElementById('street') as HTMLInputElement;
+  let inputHousenumber = document.getElementById('housenumber') as HTMLInputElement;
+  let inputPostalcode = document.getElementById('postalcode') as HTMLInputElement;
+  let inputCity = document.getElementById('city') as HTMLInputElement;
+  let inputCountry = document.getElementById('country') as HTMLInputElement;
+  let randomOrderReferenceId = `order: ${Math.random() * (10000 - 1) + 1}`;
+  let randomCustomerReferenceId = `customer: ${Math.random() * (10000 - 1) + 1}`;
+  if(inputCountry.value !== 'Deutschland'){
+    alert('Sorry, wir liefern bisher nur nach Deutschland!')
+  }
+
+  const defaultOrder: Order = {
+    orderReferenceId: randomOrderReferenceId,
+    customerReferenceId: randomCustomerReferenceId,
+    currenyIsoCode: "EUR"
+}
+
+const currentRecipient: Recipient = {
+    countryIsoCode: "DE",
+    companyName: "",
+    firstName: inputFirstName.value,
+    lastName: inputLastName.value,
+    addressLine1: `${inputStreet.value} ${inputHousenumber.value}`,
+    addressLine2: "",
+    stateCode: "",
+    city: inputCity.value,
+    postcode: inputPostalcode.value,
+    email: inputEmail.value,
+    phone: ""
+}
+
+const defaultProduct: Product = {
+    itemReferenceId: "postcard",
+    productUid: "cards_pf_bx_pt_110-lb-cover-uncoated_cl_4-4_hor",
+    pdfUrl: "default",
+    quantity: 1
+}
+
+  console.log(inputFirstName.value);
+
     console.log("in order function")
-    placeOrder(defaultOrder, defaultRecipient, defaultProduct)
+    placeOrder(defaultOrder, currentRecipient, defaultProduct)
   }
   },
   data: () => ({
     valid: false,
-    formOfAddress: [],
-    addressRules: [(v: string) => !!v || 'Bitte gib eine Anrede an.',
+    formOfAddress: '',
+    formOfAddressRules: [(v: string) => !!v || 'Bitte gib eine Anrede an.',
     ],
     formsOfAddress: ['Frau', 'Herr', 'keine Angabe'],
     firstname: '',
@@ -192,7 +218,7 @@ export default Vue.extend({
       (v: string) => !!v || 'Bitte gib eine E-Mail-Adresse ein.',
       (v: string) => /.+@.+/.test(v) || 'E-mail must be valid',
     ],
-    country: [],
+    country: '',
     countryRules: [(v: string) => !!v || 'Bitte gib ein Land ein.',
     ],
     states: ['Deutschland', 'Österreich', 'Schweiz'],

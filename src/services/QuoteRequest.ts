@@ -7,7 +7,6 @@ export let axios = require('axios');
 // const apiKey = "2fa89bee-7e13-4be1-a7cc-ecf1359f4234-ed2828f6-8dc3-4cbd-9d59-332587696d7c:1e8d72b3-e967-4137-b5d7-25c41d95eba5"
 
 export function placeOrder(order: Order, recipient: Recipient, product: Product) {
-    console.log("in placeorder function")
 // === Define headers ===
 let headers = {
     'Content-Type' : 'application/json',
@@ -43,8 +42,10 @@ let quoteJson = {
         "quantity": product.quantity,
     }
 ]
-};
+} 
 
+console.log(quoteJson)
+/* 
 // === Send quote request ===
 axios.post({
     url:        quoteUrl,
@@ -67,5 +68,5 @@ axios.post({
     }, function(error: any, response: any, body: any){
         console.log(body);
     });
-});
-}
+}); */
+} 
