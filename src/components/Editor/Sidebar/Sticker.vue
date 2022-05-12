@@ -109,8 +109,8 @@
         </b-card-header>
         <b-collapse id="accordion-stickerStuttgart" role="tabpanel">
           <b-card-body>
-              <img src="./../../../assets/typo-city_01/Schriftzug_Stuttgart_01.svg" width="100%" @click="changeSticker('typo-city_02/Schriftzug_Wuerzburg_02.svg')"/>
-              <img src="./../../../assets/typo-city_02/Schriftzug_Stuttgart_02.svg" width="100%" @click="changeSticker('typo-city_02/Schriftzug_Wuerzburg_02.svg')"/>
+              <img src="./../../../assets/typo-city_01/Schriftzug_Stuttgart_01.svg" width="100%" @click="changeSticker('typo-city_01/Schriftzug_Stuttgart_01.svg')"/>
+              <img src="./../../../assets/typo-city_02/Schriftzug_Stuttgart_02.svg" width="100%" @click="changeSticker('typo-city_02/Schriftzug_Stuttgart_02.svg')"/>
           </b-card-body>
         </b-collapse>
       </b-card>

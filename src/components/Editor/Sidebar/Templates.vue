@@ -89,14 +89,14 @@
             <img
               src="./../../../assets/templates/templates-heidelberg/Heidelberg_Template_01.jpg"
               @click="
-          changeTemplate('templates/templates-heidelberg/Hamburg_Template_01.jpg')
+          changeTemplate('templates/templates-heidelberg/Heidelberg_Template_01.jpg')
         "
               width="100%"
             />
             <img
               src="./../../../assets/templates/templates-heidelberg/Heidelberg_Template_02.jpg"
               @click="
-          changeTemplate('templates/templates-heidelberg/Hamburg_Template_02.jpg')
+          changeTemplate('templates/templates-heidelberg/Heidelberg_Template_02.jpg')
         "
               width="100%"
             />
@@ -266,14 +266,14 @@
             <img
               src="./../../../assets/templates/templates-stuttgart/Stuttgart_Template_01.jpg"
               @click="
-          changeTemplate('templates/templates-muenchen/Muenchen_Template_01.jpg')
+          changeTemplate('templates/templates-stuttgart/Stuttgart_Template_01.jpg')
         "
               width="100%"
             />
             <img
               src="./../../../assets/templates/templates-stuttgart/Stuttgart_Template_02.jpg"
               @click="
-          changeTemplate('templates/templates-muenchen/Muenchen_Template_02.jpg')
+          changeTemplate('templates/templates-stuttgart/Stuttgart_Template_02.jpg')
         "
               width="100%"
             />
