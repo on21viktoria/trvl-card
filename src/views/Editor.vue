@@ -1,5 +1,6 @@
 <template>
   <div class="editor-page">
+    <EditorHeader></EditorHeader>
     <v-main>
       <v-container fluid id="editor-container">
         <div v-if="!sidebar" class="editor-grid sidebar-hidden">
@@ -36,6 +37,7 @@ import { EventBus } from '../main';
 import Toolbar from './../components/Editor/Toolbar.vue';
 import Sidebar from './../components/Editor/Sidebar.vue';
 import PostcardLayout from '../components/Editor/PostcardLayout.vue';
+import EditorHeader from '../components/Editor/EditorHeader.vue';
 
 export default Vue.extend({
   name: "Editor",
@@ -43,6 +45,7 @@ export default Vue.extend({
     Toolbar,
     Sidebar,
     PostcardLayout,
+    EditorHeader,
   },
   props: {
     id: String

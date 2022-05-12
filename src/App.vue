@@ -10,6 +10,7 @@
 import Vue from "vue";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
+import EditorHeader from "./components/Editor/EditorHeader.vue";
 
 export default Vue.extend({
   name: "App",
@@ -17,6 +18,7 @@ export default Vue.extend({
   components: {
     Header,
     Footer,
+    EditorHeader,
   },
 });
 </script>
