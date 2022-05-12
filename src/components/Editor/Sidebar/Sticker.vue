@@ -193,9 +193,9 @@ background-color: #e7e7e6;
 
 #emptyImage {
   padding: 20px 0;
-  margin-right: 0;
-  justify-items: center;
   background-color: white;
+  display: flex;
+  margin: auto;
 }
 
 </style>

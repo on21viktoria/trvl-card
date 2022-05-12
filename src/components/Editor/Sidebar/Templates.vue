@@ -369,7 +369,8 @@ img:hover {
 
 #emptyImage {
   padding: 20px 0;
-  margin-right: 0;
-  justify-items: center;
+  display: flex;
+  margin: auto;
 }
+
 </style>
