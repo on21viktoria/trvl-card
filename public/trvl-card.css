@@ -164,7 +164,7 @@
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 30px !important;
 }
 
 .headline {
@@ -172,6 +172,11 @@ h1 {
   display: block;
   width: 75%;
 }
+
+.headline > p {
+  font-size: 20px !important;
+}
+
 
 .textanimation {
   font-size: 15px;

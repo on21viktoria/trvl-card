@@ -132,6 +132,7 @@ export default Vue.extend({
   text-align: left;
 }
 
+
 .nav-link {
   margin: 0;
 }
@@ -144,4 +145,7 @@ export default Vue.extend({
   margin-right: 10px;
 }
 
+.flex-column {
+  padding: 0! important;
+}
 </style>
