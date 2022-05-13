@@ -84,7 +84,7 @@
 
 .searchbar {
   border: 0.1px solid #707070;
-  width: 600px;
+  width: 400px;
   padding: 10px;
   border-radius: 4px;
   height: 39px;
@@ -233,7 +233,7 @@ h1 {
   text-decoration: none !important;
 }
 
-input[type="text"]:focus {   
+#newsletter1:focus {   
   border-color: rgba(255,78,0, 0.8);
   box-shadow: 0 1px 1px rgba(255,78,0, 0.075) inset, 0 0 8px rgba(255,78,0, 0.6);
   outline: 0 none;
