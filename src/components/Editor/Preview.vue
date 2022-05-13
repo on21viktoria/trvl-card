@@ -1,146 +1,307 @@
 <template>
-  <transition name="modal-fade">
-    <div class="modal-backdrop">
-      <div class="modal"
-        role="dialog"
-        aria-labelledby="modalTitle"
-        aria-describedby="modalDescription"
+  <div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-header">
+      <h5 class="modal-title">Vorschau</h5>
+      <button
+        type="button"
+        class="btn-close"
+        @click="close"
+        aria-label="Close modal"
       >
-        <header
-          class="modal-header"
-          id="modalTitle"
+        x
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="postcard-layout" id="postcard" @click="showBack()">
+        <div
+          class="front"
+          :style="`background-color:` + currentBackgroundColor"
         >
-          <slot name="header">
-            This is the default tile!
-          </slot>
-          <button
-            type="button"
-            class="btn-close"
-            @click="close"
-            aria-label="Close modal"
-          >
-            x
-          </button>
-        </header>
-
-        <section
-          class="modal-body"
-          id="modalDescription"
-        >
-          <slot name="body">
-            This is the default body!
-          </slot>
-        </section>
-
-        <footer class="modal-footer">
-          <slot name="footer">
-            This is the default footer!
-          </slot>
-          <button
-            type="button"
-            class="btn-green"
-            @click="close"
-            aria-label="Close modal"
-          >
-            Close me!
-          </button>
-        </footer>
+            <img
+              :src="require(`./../../assets/${currentPicture}`)"
+              class="image-front"
+            />
+            <img
+              v-if="currentSticker !== ''"
+              :src="require(`./../../assets/${currentSticker}`)"
+              class="svg-image"
+            />
+        </div>
+        <div class="back">
+          <v-container fluid id="container-rückseite-links">
+            <v-textarea
+              id="changed-text"
+              solo
+              counter
+              name="Nachrichten-Textfeld"
+              label="Deine persönliche Nachricht..."
+              :rules="rules"
+            >
+            </v-textarea>
+          </v-container>
+          <v-container fluid id="container-rückseite-rechts">
+            <div class="frankierzone">
+              <img
+                class="briefmarke"
+                src="./../../assets/Briefmarke.png"
+                alt="trvl-card Briefmarke"
+              />
+            </div>
+            <div class="address-field">
+              <hr class="address-separator" />
+              <hr class="address-separator" />
+              <hr class="address-separator" />
+              <hr class="address-separator" />
+            </div>
+          </v-container>
+          <div class="codierzone">
+            <p>Dieser Platz muss frei bleiben.</p>
+          </div>
+        </div>
       </div>
     </div>
-  </transition>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" @click="showBack()">Karte umdrehen</button>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import { EventBus } from "@/main";
+import { mapState } from "vuex";
 
 export default Vue.extend({
- name: 'Preview',
-    methods: {
-      close() {
-        this.$emit('close');
-      },
-    },
-    mounted() {
-      let body = document.getElementById("modalDescription")
+  name: "Preview",
+  data() {
+    return {
+      front: true
     }
+  },
+  methods: {
+    close() {
+      this.$emit("close");
+    },
+    showBack() {
+      console.log("hello");
+      let postcard = document.getElementById("postcard");
+      if(this.front){
+        postcard?.classList.add("switch");
+        this.front = false;
+      }
+      else{
+        postcard?.classList.remove("switch");
+        this.front = true;
+      }
+    }
+  },
+  computed: {
+    ...mapState([
+      "currentPicture",
+      "currentBackgroundColor",
+      "currentSticker",
+      "currentTemplate",
+    ]),
+  },
 });
 </script>
 
 <style scoped>
-.modal-backdrop {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.modal {
+  background: white;
+  box-shadow: 2px 2px 20px 1px;
+  overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 1000px;
+  height: 600px;
+  top: calc(50% - 300px);
+  left: calc(50% - 500px);
+  opacity: 1 !important;
+  border-radius: 5px;
+  padding: 0;
+}
 
-  .modal {
-    background: white;
-    box-shadow: 2px 2px 20px 1px;
-    overflow-x: auto;
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    z-index: 500;
-    width: 800px;
-    height:400px;
-  }
+.modal-content {
+  width: 100% !important;
+  height: 100% !important;
+}
+.modal-header,
+.modal-footer {
+  padding: 15px;
+  display: flex;
+}
 
-  .modal-header,
-  .modal-footer {
-    padding: 15px;
-    display: flex;
-  }
+.modal-header {
+  position: relative;
+  border-bottom: 1px solid #eeeeee;
+  color: #4aae9b;
+}
 
-  .modal-header {
-    position: relative;
-    border-bottom: 1px solid #eeeeee;
-    color: #4AAE9B;
-    justify-content: space-between;
-  }
+.modal-footer {
+  border-top: 1px solid #eeeeee;
+}
 
-  .modal-footer {
-    border-top: 1px solid #eeeeee;
-    flex-direction: column;
-  }
+.modal-body {
+  position: relative;
+  padding: 20px 10px;
+}
 
-  .modal-body {
-    position: relative;
-    padding: 20px 10px;
-  }
+.modal-content {
+  width: 100%;
+  height: 100%;
+}
 
-  .btn-close {
+.btn-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  font-size: 20px;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #4aae9b;
+  background: transparent;
+}
+
+.btn-green {
+  color: white;
+  background: #4aae9b;
+  border: 1px solid #4aae9b;
+  border-radius: 2px;
+}
+
+.modal-fade-enter,
+.modal-fade-leave-to {
+  opacity: 0;
+}
+
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.image-wrap {
+  position: relative;
+}
+
+.svg-image {
+  z-index: 20;
+  width: 100%;
+}
+#postcard {
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+}
+
+.front, .back {
     position: absolute;
-    top: 0;
-    right: 0;
-    border: none;
-    font-size: 20px;
-    padding: 10px;
-    cursor: pointer;
-    font-weight: bold;
-    color: #4AAE9B;
-    background: transparent;
-  }
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    width: 100%;
+    height: 100%;
+}
 
-  .btn-green {
-    color: white;
-    background: #4AAE9B;
-    border: 1px solid #4AAE9B;
-    border-radius: 2px;
-  }
+.back {
+    transform: rotateY(180deg);
+}
 
-  .modal-fade-enter,
-  .modal-fade-leave-to {
-    opacity: 0;
-  }
+.switch {
+    transform: rotateY(180deg);
+}
 
-  .modal-fade-enter-active,
-  .modal-fade-leave-active {
-    transition: opacity .5s ease;
-  }
+.image-front {
+  width: 600px;
+  height: 420px;
+  border: solid 1px rgb(112, 112, 112);
+  display: block;
+  margin: 10px auto;
+}
+
+.v-input__slot {
+  width: 100% !important;
+  margin-bottom: 1px !important;
+  padding: 0 0 0 12px !important;
+}
+
+.v-textarea textarea {
+  max-width: 100% !important;
+  height: 366px !important;
+  border-right: solid rgb(112, 112, 112) 3px;
+  font-size: 14px;
+  line-height: 1.25 !important;
+}
+
+.v-text-field__details {
+  max-width: 100% !important;
+}
+
+.v-text-field.v-text-field--enclosed .v-text-field__details {
+  margin-bottom: 0px !important;
+}
+
+.theme--light.v-messages {
+  color: rgb(255, 0, 0) !important;
+}
+
+.codierzone {
+  width: 100%;
+  background-color: rgba(112, 112, 112, 0.1);
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 2px,
+    rgba(112, 112, 112, 0.1) 4px,
+    rgba(112, 112, 112, 0.1) 5px
+  );
+}
+
+.codierzone > p {
+  margin: 10px 0 5px;
+  text-align: center;
+}
+
+.frankierzone {
+  height: 166px;
+  width: 100%;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+.briefmarke {
+  width: 65px;
+  right: 0;
+  top: 0;
+  float: right;
+}
+.address-field {
+  height: 210px;
+  width: 100%;
+  padding-top: 25px;
+}
+
+.address-separator {
+  max-width: 100%;
+  text-align: center;
+  height: 1px;
+  border: solid rgb(112, 112, 112) 1px;
+  margin: 30px 15px;
+}
+
+#container-rückseite-links {
+  padding: 0 !important;
+  max-width: 53% !important;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+#container-rückseite-rechts {
+  padding: 0 !important;
+  max-width: 47% !important;
+  margin-right: 0;
+  margin-left: 0;
+}
 </style>
