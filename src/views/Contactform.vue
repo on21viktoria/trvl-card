@@ -159,7 +159,7 @@ export default Vue.extend({
     country: [],
     countryRules: [(v: string) => !!v || 'Bitte gib ein Land ein.',
     ],
-    states: ['Deutschland', 'Österreich', 'Schweiz'],
+    states: ['Deutschland'],
     postalcode: '',
     postalcodeRules: [
     (v: string) => !!v || 'Bitte gib eine Postleitzahl ein.',
