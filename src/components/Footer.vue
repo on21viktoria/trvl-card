@@ -139,6 +139,7 @@ export default Vue.extend({
 
 .roles {
   margin-top: 32px;
+  color: #707070;
 }
 
 #newsletter1 {
@@ -148,4 +149,5 @@ export default Vue.extend({
 .flex-column {
   padding: 0! important;
 }
+
 </style>
