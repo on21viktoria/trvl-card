@@ -50,7 +50,7 @@
               />
               <button class="button button-signup hovereffect" @click="makeToast(message = 'Hier wirst du bald die Möglichkeit haben, dich für den Newsletter anzumelden. Bitte hab noch ein bisschen Geduld.', options = {
           title: 'Hier entsteht ein neues Feature!',
-          autoHideDelay: 5000, appendToast: append})" type="button">Abonnieren</button>
+          autoHideDelay: 5000, appendToast: append, toaster:'b-toaster-bottom-right'})" type="button">Abonnieren</button>
             </div>
           </form>
         </div>
@@ -103,6 +103,7 @@ export default Vue.extend({
   methods: {
       makeToast() {
         this.$bvToast.toast(this.message, this.options)
+
       }
     }
 });
@@ -143,5 +144,6 @@ export default Vue.extend({
 #newsletter1 {
   margin-right: 10px;
 }
+
 
 </style>
