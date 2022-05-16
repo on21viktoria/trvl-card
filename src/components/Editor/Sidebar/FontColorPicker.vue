@@ -7,7 +7,7 @@
         type="color"
         id="fontcolor-picker"
         name="color-selection"
-        value="#ffffff"
+        :value="currentPreSelectedFontColor"
         @input="changeColorNew()"
       />
     </div>
@@ -25,6 +25,7 @@
 <script lang="ts">
 import { EventBus } from "@/main";
 import Vue from "vue";
+import { mapGetters, mapState } from "vuex";
 
 export default Vue.extend({
   name: "FontColorPicker",
@@ -45,16 +46,19 @@ export default Vue.extend({
         "fontcolor-picker"
       ) as HTMLInputElement;
       EventBus.$emit("changeFontColor", fontcolorPicker.value);
+      this.$store.dispatch("setPreSelectedFontColor", fontcolorPicker.value)
     },
     preselectedColor(suggestionId: string){
         for (let choice of this.preselectedColors){
             if(choice.id === suggestionId) {
                 EventBus.$emit("preselectedColor", choice.value);
+                this.$store.dispatch("setPreSelectedFontColor", choice.value)
                 return
             }
         }
     }
   },
+  computed: {...mapState(["currentPreSelectedFontColor"])}
 });
 </script>
 
@@ -75,11 +79,26 @@ export default Vue.extend({
 }
 
 #fontcolor-picker {
-  display: inline-block;
+  /* display: inline-block; */
   margin-top: 5px;
   width: 70px;
   height: 30px;
+  cursor: pointer;
+  border-radius: 5px !important;
+  outline: none;
+  -webkit-appearance: none;
+  border: none;
 }
+
+#fontcolor-picker::-webkit-color-swatch-wrapper {
+padding: 0;
+}
+
+#fontcolor-picker::-webkit-color-swatch {
+border: 0.5px solid grey;
+border-radius: 5px;
+}
+
 
 .fontcolor-suggestions {
   display: flex;
@@ -99,28 +118,33 @@ p {
   background-color: #000000;
   margin-right: 2px;
   cursor: pointer;
+  border-radius: 4px !important;
 }
 
 #grey {
   background-color: #707070;
   margin-right: 2px;
   cursor: pointer;
+  border-radius: 4px !important;
 }
 
 #blue {
   background-color: #0f0f96;
   margin-right: 2px;
   cursor: pointer;
+  border-radius: 4px !important;
 }
 
 #turquoise {
   background-color: #1da2a9;
   margin-right: 2px;
   cursor: pointer;
+  border-radius: 4px !important;
 }
 
 #orange {
   background-color: #ff4e00;
   cursor: pointer;
+  border-radius: 4px !important;
 }
 </style>

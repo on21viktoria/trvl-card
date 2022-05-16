@@ -32,6 +32,8 @@ export default Vue.extend({
 
 <style scoped>
 #textedit-container {
+  width: 100%;
+  max-height: 800px;
   overflow: none !important;
 }
 
