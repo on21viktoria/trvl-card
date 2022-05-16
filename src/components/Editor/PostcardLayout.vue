@@ -32,10 +32,10 @@
           />
         </div>
         <div class="address-field">
-          <input class="address-line" type="text" placeholder="Empfänger">
+          <input class="address-line" type="text" placeholder="Empfänger*in">
           <input class="address-line" type="text" placeholder="Zusatz">
-          <input class="address-line" type="text" placeholder="Straße & Hausnummer">
-          <input class="address-line" type="text" placeholder="Postleitzahl & Stadt">
+          <input class="address-line" type="text" placeholder="Straße und Hausnummer">
+          <input class="address-line" type="text" placeholder="Postleitzahl und Stadt">
           <v-select
            v-model="defaultSelected"
           :items="countries"
@@ -252,6 +252,13 @@ export default Vue.extend({
   margin: 0 !important;
   padding-top: 10 !important;
   padding-bottom: 10 !important;
+  height: 35px !important;
+  width: 200px;
 }
 
+.v-text-field {
+  margin: 0 !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
 </style>
