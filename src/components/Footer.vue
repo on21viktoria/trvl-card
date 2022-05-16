@@ -132,16 +132,29 @@ export default Vue.extend({
   text-align: left;
 }
 
+
 .nav-link {
   margin: 0;
 }
 
 .roles {
   margin-top: 32px;
+  color: #707070;
 }
 
 #newsletter1 {
   margin-right: 10px;
 }
+
+.flex-column {
+  padding: 0! important;
+}
+
+#newsletter1:focus {   
+  border-color: rgba(255,78,0, 0.8);
+  box-shadow: 0 1px 1px rgba(255,78,0, 0.075) inset, 0 0 8px rgba(255,78,0, 0.6);
+  outline: 0 none;
+} 
+
 
 </style>
