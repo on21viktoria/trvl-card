@@ -185,6 +185,7 @@ p {
   width: 20px;
   height: 20px;
   border: 0.5px solid white;
+  cursor: pointer;
 
 }
 </style>
