@@ -95,7 +95,6 @@ export default Vue.extend({
 },
 methods: {
     changeRecipient(){
-      console.log("Die Methode wurde aufgerufen")
       const recipientName = document.getElementById('name') as HTMLInputElement;
       const recipientAddition = document.getElementById('addition') as HTMLInputElement;
       const recipientStreetAndNumber = document.getElementById('street-and-number') as HTMLInputElement;
@@ -106,7 +105,7 @@ methods: {
         addition: recipientAddition.value,
         streetAndNumber: recipientStreetAndNumber.value,
         postalcodeAndCity: recipientPostalcodeAndCity.value,
-        country: ""
+        country: "Deutschland"
       }
       this.$store.dispatch("setRecipient", recipient)
     }
@@ -245,13 +244,6 @@ methods: {
   padding: 5px;
 }
 
-/* 
-.v-select__selection--comma {
-  font-size: 18px !important;
-  color: #707070 !important;
-  font-size: 14px !important;
-} */
-
 </style>
 <style scoped>
 
@@ -260,7 +252,7 @@ methods: {
   height: 35px;
   width: 200px;
   border-bottom: 1px solid #000;
-  font-size: 16px;
+  font-size: 14px;
   color: #000;
 }
 
