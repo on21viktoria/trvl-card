@@ -6,6 +6,7 @@
         <DesignChoice :id="postcard.id" :title="postcard.title" :text="postcard.text" :image="require(`./../assets/images-trvl-card/${postcard.image}`)"></DesignChoice>
       </div>
     </div>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -13,10 +14,11 @@
 import Vue from "vue";
 import DesignChoice from "../components/HomePage/DesignChoice.vue";
 import Welcome from "../components/HomePage/Welcome.vue";
+import Footer from "../components/Footer.vue"
 
 export default Vue.extend({
   name: "Home",
-  components: { DesignChoice, Welcome },
+  components: { DesignChoice, Welcome, Footer },
   data: () => ({
     postcards: [
       {

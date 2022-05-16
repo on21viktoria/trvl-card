@@ -2,23 +2,18 @@
   <div>
     <Header></Header>
     <router-view></router-view>
-    <Footer></Footer>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import Header from "./components/Header.vue";
-import Footer from "./components/Footer.vue";
-import EditorHeader from "./components/Editor/EditorHeader.vue";
 
 export default Vue.extend({
   name: "App",
 
   components: {
-    Header,
-    Footer,
-    EditorHeader,
+    Header
   },
 });
 </script>

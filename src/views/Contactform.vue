@@ -129,14 +129,17 @@
         </div>
         </div>
         </div>
+        <Footer></Footer>
     </div>
 </template>
 
 <script lang='ts'>
 import Vue from 'vue';
+import Footer from "../components/Footer.vue"
 
 export default Vue.extend({
   name: 'Contactform',
+  components: { Footer },
   data: () => ({
     valid: false,
     formOfAddress: [],
