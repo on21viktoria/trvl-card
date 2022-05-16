@@ -2,8 +2,7 @@
   <div>
     <p class="tool-title">Hintergrund</p>
     <p>
-      Ihr könnt hier entweder zwischen einem Hintergrundbild oder einer Farbe
-      wählen.
+      Hier könnt ihr eine Hintergrundfarbe für die Vorderseite der Postkarte wählen.
     </p>
     <p class="tool-title subtitle">Hintergrundfarbe</p>
     <input
