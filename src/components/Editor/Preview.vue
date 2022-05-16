@@ -28,7 +28,7 @@
             />
         </div>
         <div class="back">
-          <v-container fluid id="container-rückseite-links">
+          <v-container fluid id="postcard-left-back">
              <div class="divider-back"></div>
             <div class="text-wrapper">
               <p>Hallo hier muss der Postkartentext stehen was passiert wenn ich noch mehr text schreibe?</p>
@@ -36,7 +36,7 @@
             </div>
            
           </v-container>
-          <v-container fluid id="container-rückseite-rechts">
+          <v-container fluid id="postcard-right-back">
             <div class="frankierzone">
               <img
                 class="briefmarke"
@@ -64,6 +64,7 @@
 </template>
 
 <script lang="ts">
+import { EventBus } from "@/main";
 import Vue from "vue";
 import { mapState } from "vuex";
 
@@ -73,6 +74,19 @@ export default Vue.extend({
     return {
       front: true
     }
+  },
+  created() {
+    let textarea = document.querySelector(".postcard-left-back") as HTMLDivElement;
+    console.log("TextArea :" + textarea);
+    EventBus.$on("changeFontColor", (colorId: string) => {
+      textarea.style.color = `${colorId}`;
+    });
+    EventBus.$on("changeFontSize", (sizeId: string) => {
+      textarea.style.fontSize = `${sizeId}`;
+    }),
+      EventBus.$on("changeFont", (fontId: string) => {
+        textarea.style.fontFamily = `${fontId}`;
+      });
   },
   methods: {
     close() {
@@ -114,15 +128,13 @@ export default Vue.extend({
   overflow-x: auto;
   display: flex;
   flex-direction: column;
-  margin: auto;
   width: 1200px;
   height: calc(100vh - 60px);
-  /* top: calc(50% - 400px); */
   left: calc(50% - 600px);
   opacity: 1 !important;
   border-radius: 5px;
   padding: 0;
-  margin: 30px 0;
+  margin: 30px auto;
 }
 
 .modal-content {
@@ -149,12 +161,6 @@ export default Vue.extend({
   position: relative;
   padding: 20px 10px;
 }
-
-/*TODO Achtung doppelt! */
-/* .modal-content {
-  width: 100%;
-  height: 100%;
-} */
 
 .btn-close {
   position: absolute;
@@ -212,6 +218,7 @@ export default Vue.extend({
 
 .back {
     transform: rotateY(180deg);
+    background-color: white;
 }
 
 .switch {
@@ -298,7 +305,7 @@ export default Vue.extend({
   margin: 30px 15px;
 }
 
-#container-rückseite-links {
+#postcard-left-back {
   position: relative;
   float: left;
   padding: 0 !important;
@@ -308,7 +315,7 @@ export default Vue.extend({
   margin-left: 0;
 }
 
-#container-rückseite-rechts {
+#postcard-right-back {
   float: right;
   padding: 0 !important;
   max-width: 47% !important;

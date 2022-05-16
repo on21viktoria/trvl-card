@@ -1,20 +1,26 @@
 <template>
   <div class="postcard-layout">
-    <div class="postcard-side" id="front" :style="`background-color:` + currentBackgroundColor">
-      <div class="image-wrap"
-      >
+    <div
+      class="postcard-side"
+      id="front"
+      :style="`background-color:` + currentBackgroundColor"
+    >
+      <div class="image-wrap">
         <img
-          :src="
-            require(`./../../assets/${currentPicture}`)
-          "
+          :src="require(`./../../assets/${currentPicture}`)"
           class="image-front"
         />
-        <img v-if="currentSticker !==''" :src="require(`./../../assets/${currentSticker}`)" class="svg-image"/>
+        <img
+          v-if="currentSticker !== ''"
+          :src="require(`./../../assets/${currentSticker}`)"
+          class="svg-image"
+        />
       </div>
     </div>
     <div class="postcard-side" id="back">
       <v-container fluid id="container-rückseite-links">
-        <v-textarea id="changed-text"
+        <v-textarea
+          id="changed-text"
           solo
           counter
           name="Nachrichten-Textfeld"
@@ -50,7 +56,7 @@
 <script lang="ts">
 import { EventBus } from "@/main";
 import Vue from "vue";
-import { mapGetters, mapState } from "vuex";
+import { mapState } from "vuex";
 
 export default Vue.extend({
   name: "PostcardLayout",
@@ -58,46 +64,55 @@ export default Vue.extend({
   data: () => ({
     rules: [
       (v: string | any[]) => {
-        if(v){
-        return (v.length <= 500  || "Maximal 500 characters")}
-        else {console.log('error')}
-        }],
+        if (v) {
+          return v.length <= 500 || "Maximal 500 characters";
+        } else {
+          console.log("error");
+        }
+      },
+    ],
   }),
   created() {
-  EventBus.$on('changeFontColor', (colorId: string) => {
-    const textarea = document.querySelector('#changed-text') as HTMLElement;
-    textarea.style.color =`${colorId}`;
-    console.log("In PostcardLayout", colorId)
-  })
-  EventBus.$on('changeFontSize', (sizeId: string) => {
-    const textarea = document.querySelector('#changed-text') as HTMLElement;
-    textarea.style.fontSize =`${sizeId}`;
-  }),
-  EventBus.$on('changeFont', (fontId: string) => {
-    const textarea = document.querySelector('#changed-text') as HTMLElement;
-    textarea.style.fontFamily = `${fontId}`;
-  })
-},
-methods:{
-  checkText(e: any) {
-    let textValue = e
-    // this.$store.dispatch("setText", textValue);
-  }
-},
+    EventBus.$on("changeFontColor", (colorId: string) => {
+      const textarea = document.querySelector("#changed-text") as HTMLElement;
+      textarea.style.color = `${colorId}`;
+      console.log("In PostcardLayout", colorId);
+    });
+    EventBus.$on("changeFontSize", (sizeId: string) => {
+      const textarea = document.querySelector("#changed-text") as HTMLElement;
+      textarea.style.fontSize = `${sizeId}`;
+    }),
+      EventBus.$on("changeFont", (fontId: string) => {
+        const textarea = document.querySelector("#changed-text") as HTMLElement;
+        textarea.style.fontFamily = `${fontId}`;
+      });
+  },
+  methods: {
+    checkText(e: any) {
+      let textValue = e;
+      this.$store.dispatch("setText", textValue);
+    },
+  },
   props: {
     ImageId: String,
   },
-  computed: {...mapState(["currentPicture", "currentBackgroundColor", "currentSticker", "currentTemplate"])
-}});
+  computed: {
+    ...mapState([
+      "currentPicture",
+      "currentBackgroundColor",
+      "currentSticker",
+      "currentTemplate",
+    ]),
+  },
+});
 </script>
 
 <style>
-
-.image-wrap{
+.image-wrap {
   position: relative;
 }
 
-.svg-image{
+.svg-image {
   position: absolute;
   top: 0;
   left: 0;
@@ -158,7 +173,7 @@ methods:{
   );
 }
 
-.codierzone>p{
+.codierzone > p {
   margin: 10px 0 5px;
   text-align: center;
 }
