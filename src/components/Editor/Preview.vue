@@ -28,12 +28,12 @@
             />
         </div>
         <div class="back">
-          <v-container fluid id="container-rückseite-links">
-            <div>
+          <v-container fluid class="postcard-left-back">
+            <div class="postcard-left-back">
               {{currentText}}
             </div>
           </v-container>
-          <v-container fluid id="container-rückseite-rechts">
+          <v-container fluid id="postcard-right-back">
             <div class="frankierzone">
               <img
                 class="briefmarke"
@@ -61,6 +61,7 @@
 </template>
 
 <script lang="ts">
+import { EventBus } from "@/main";
 import Vue from "vue";
 import { mapState } from "vuex";
 
@@ -70,6 +71,19 @@ export default Vue.extend({
     return {
       front: true
     }
+  },
+  created() {
+    let textarea = document.querySelector(".postcard-left-back") as HTMLDivElement;
+    console.log("TextArea :" + textarea);
+    EventBus.$on("changeFontColor", (colorId: string) => {
+      textarea.style.color = `${colorId}`;
+    });
+    EventBus.$on("changeFontSize", (sizeId: string) => {
+      textarea.style.fontSize = `${sizeId}`;
+    }),
+      EventBus.$on("changeFont", (fontId: string) => {
+        textarea.style.fontFamily = `${fontId}`;
+      });
   },
   methods: {
     close() {
@@ -112,8 +126,8 @@ export default Vue.extend({
   display: flex;
   flex-direction: column;
   margin: auto;
-  width: 1200px;
-  height: 800px;
+  width: 70vw;
+  height: 80vh;
   top: calc(50% - 400px);
   left: calc(50% - 600px);
   opacity: 1 !important;
@@ -207,6 +221,7 @@ export default Vue.extend({
 
 .back {
     transform: rotateY(180deg);
+    background-color: white;
 }
 
 .switch {
@@ -290,14 +305,14 @@ export default Vue.extend({
   margin: 30px 15px;
 }
 
-#container-rückseite-links {
+.postcard-left-back {
   padding: 0 !important;
   max-width: 53% !important;
   margin-right: 0;
   margin-left: 0;
 }
 
-#container-rückseite-rechts {
+.postcard-right-back {
   padding: 0 !important;
   max-width: 47% !important;
   margin-right: 0;
