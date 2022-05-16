@@ -35,6 +35,7 @@
 
 <script lang="ts">
 /* eslint-disable */
+import { EventBus } from '@/main';
 import Vue from 'vue';
 
 export default Vue.extend({
@@ -50,7 +51,7 @@ export default Vue.extend({
         this.$bvToast.toast(this.message, this.options)
       },
       onClick() {
-        this.$emit('changeRecipient')
+        EventBus.$emit('changeRecipient');
       }
     }
 });
