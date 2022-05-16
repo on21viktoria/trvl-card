@@ -219,7 +219,7 @@ export default Vue.extend({
 }
 
 .address-line {
-  height: 30px;
+  height: 35px;
   width: 200px;
   border-bottom: 1px solid #000;
   font-family: Dancing Script, serif !important;
@@ -242,12 +242,16 @@ export default Vue.extend({
 
 .v-select__selections {
   padding: 0 !important;
-  line-height: 15px !important;
 }
 
 .v-input__slot {
   padding: 0 !important;
 }
 
+.v-select {
+  margin: 0 !important;
+  padding-top: 10 !important;
+  padding-bottom: 10 !important;
+}
 
 </style>
