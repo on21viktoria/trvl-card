@@ -81,7 +81,7 @@ export default Vue.extend({
 methods:{
   checkText(e: any) {
     let textValue = e
-    this.$store.dispatch("setText", textValue);
+    // this.$store.dispatch("setText", textValue);
   }
 },
   props: {

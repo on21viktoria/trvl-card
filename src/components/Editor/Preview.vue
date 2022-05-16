@@ -29,9 +29,12 @@
         </div>
         <div class="back">
           <v-container fluid id="container-rückseite-links">
-            <div>
+             <div class="divider-back"></div>
+            <div class="text-wrapper">
+              <p>Hallo hier muss der Postkartentext stehen was passiert wenn ich noch mehr text schreibe?</p>
               {{currentText}}
             </div>
+           
           </v-container>
           <v-container fluid id="container-rückseite-rechts">
             <div class="frankierzone">
@@ -113,12 +116,13 @@ export default Vue.extend({
   flex-direction: column;
   margin: auto;
   width: 1200px;
-  height: 800px;
-  top: calc(50% - 400px);
+  height: calc(100vh - 60px);
+  /* top: calc(50% - 400px); */
   left: calc(50% - 600px);
   opacity: 1 !important;
   border-radius: 5px;
   padding: 0;
+  margin: 30px 0;
 }
 
 .modal-content {
@@ -146,10 +150,11 @@ export default Vue.extend({
   padding: 20px 10px;
 }
 
-.modal-content {
+/*TODO Achtung doppelt! */
+/* .modal-content {
   width: 100%;
   height: 100%;
-}
+} */
 
 .btn-close {
   position: absolute;
@@ -190,8 +195,8 @@ export default Vue.extend({
   perspective: 1000px;
   transform-style: preserve-3d;
   transition: transform 0.8s;
-  width: 800px;
-  height: 567px;
+  width: 672px;
+  height: 492px;
   border: solid 1px grey;
   margin: auto;
 }
@@ -247,7 +252,9 @@ export default Vue.extend({
 }
 
 .codierzone {
-  width: 100%;
+  width: calc(100% - 20px);
+  position: absolute;
+  bottom: 10px;
   background-color: rgba(112, 112, 112, 0.1);
   background-image: repeating-linear-gradient(
     45deg,
@@ -256,6 +263,7 @@ export default Vue.extend({
     rgba(112, 112, 112, 0.1) 4px,
     rgba(112, 112, 112, 0.1) 5px
   );
+  margin-top: 5px;
 }
 
 .codierzone > p {
@@ -264,14 +272,14 @@ export default Vue.extend({
 }
 
 .frankierzone {
-  height: 166px;
+  height: 220px;
   width: 100%;
   padding-top: 10px;
   padding-right: 10px;
 }
 
 .briefmarke {
-  width: 65px;
+  width: 80px;
   right: 0;
   top: 0;
   float: right;
@@ -291,16 +299,41 @@ export default Vue.extend({
 }
 
 #container-rückseite-links {
+  position: relative;
+  float: left;
   padding: 0 !important;
   max-width: 53% !important;
+  height: calc(492px - 20px - 40px - 5px);
   margin-right: 0;
   margin-left: 0;
 }
 
 #container-rückseite-rechts {
+  float: right;
   padding: 0 !important;
   max-width: 47% !important;
   margin-right: 0;
   margin-left: 0;
+}
+
+.divider-back {
+  position: absolute;
+  width: 100%;
+  height: 380px;
+  /* background-color: red; */
+  border-right: solid rgb(112, 112, 112) 3px;
+  margin-top: calc((432px - 380px) /2);
+}
+
+.text-wrapper {
+  max-width: 100% !important;
+  padding: 5px;
+  height: calc(492px - 20px - 40px - 5px);
+  z-index: 100;
+  position: relative;
+}
+
+.text-wrapper > p {
+  margin-top: 0;
 }
 </style>
