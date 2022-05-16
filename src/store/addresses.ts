@@ -33,7 +33,7 @@ export default new Vuex.Store({
       state.currentCountry = payload;
     },
   }, */
-}, actions: {
+},actions: {
     async setRecipient(state, recipient) {
         state.commit("setCurrentRecipient", recipient);
       }/* ,
@@ -50,4 +50,5 @@ export default new Vuex.Store({
     state.commit("setCurrentCountry", country); */
 },
   modules: {},
-});
+}
+);

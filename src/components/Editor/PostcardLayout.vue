@@ -106,6 +106,7 @@ methods: {
         country: ""
       }
       this.$store.dispatch("setRecipient", recipient)
+      console.log(this.$store)
     }
   },
   props: {
@@ -191,6 +192,7 @@ methods: {
 .codierzone>p{
   margin: 10px 0 5px;
   text-align: center;
+   font-family: Montserrat, sans-serif !important;
 }
 
 .frankierzone {
@@ -198,6 +200,7 @@ methods: {
   width: 100%;
   padding-top: 10px;
   padding-right: 10px;
+ 
 }
 
 .briefmarke {
@@ -242,6 +245,9 @@ methods: {
   padding: 5px;
 }
 
+</style>
+<style scoped>
+
 .address-line {
   height: 35px;
   width: 200px;
@@ -260,8 +266,13 @@ methods: {
   color: #707070 !important;
 }
 
+.v-input__control {
+  font-family: Dancing Script, serif !important;
+}
+
 .v-select__selections {
   padding: 0 !important;
+  font-family: Dancing Script, serif !important;
 }
 
 .v-select {
@@ -269,6 +280,7 @@ methods: {
   padding-top: 10 !important;
   padding-bottom: 10 !important;
   width: 200px;
+  font-family: Dancing Script, serif !important;
 }
 
 .v-text-field {
@@ -283,4 +295,5 @@ methods: {
   margin: 0px !important;
   height: 35px !important;
 }
+
 </style>
