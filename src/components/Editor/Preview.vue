@@ -19,7 +19,7 @@
         >
             <img
               :src="require(`./../../assets/${currentPicture}`)"
-              class="image-front"
+              class="image-front-preview"
             />
             <img
               v-if="currentSticker !== ''"
@@ -29,15 +29,9 @@
         </div>
         <div class="back">
           <v-container fluid id="container-rückseite-links">
-            <v-textarea
-              id="changed-text"
-              solo
-              counter
-              name="Nachrichten-Textfeld"
-              label="Deine persönliche Nachricht..."
-              :rules="rules"
-            >
-            </v-textarea>
+            <div>
+              {{currentText}}
+            </div>
           </v-container>
           <v-container fluid id="container-rückseite-rechts">
             <div class="frankierzone">
@@ -68,7 +62,6 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { EventBus } from "@/main";
 import { mapState } from "vuex";
 
 export default Vue.extend({
@@ -80,10 +73,14 @@ export default Vue.extend({
   },
   methods: {
     close() {
+       if(!this.front){
+        let postcard = document.getElementById("postcard");
+        postcard?.classList.remove("switch");
+        this.front = false;
+      }
       this.$emit("close");
     },
     showBack() {
-      console.log("hello");
       let postcard = document.getElementById("postcard");
       if(this.front){
         postcard?.classList.add("switch");
@@ -101,6 +98,7 @@ export default Vue.extend({
       "currentBackgroundColor",
       "currentSticker",
       "currentTemplate",
+      "currentText"
     ]),
   },
 });
@@ -114,10 +112,10 @@ export default Vue.extend({
   display: flex;
   flex-direction: column;
   margin: auto;
-  width: 1000px;
-  height: 600px;
-  top: calc(50% - 300px);
-  left: calc(50% - 500px);
+  width: 1200px;
+  height: 800px;
+  top: calc(50% - 400px);
+  left: calc(50% - 600px);
   opacity: 1 !important;
   border-radius: 5px;
   padding: 0;
@@ -182,9 +180,6 @@ export default Vue.extend({
 .modal-fade-leave-active {
   transition: opacity 0.5s ease;
 }
-.image-wrap {
-  position: relative;
-}
 
 .svg-image {
   z-index: 20;
@@ -195,6 +190,10 @@ export default Vue.extend({
   perspective: 1000px;
   transform-style: preserve-3d;
   transition: transform 0.8s;
+  width: 800px;
+  height: 567px;
+  border: solid 1px grey;
+  margin: auto;
 }
 
 .front, .back {
@@ -203,6 +202,7 @@ export default Vue.extend({
     backface-visibility: hidden;
     width: 100%;
     height: 100%;
+    padding:10px
 }
 
 .back {
@@ -213,12 +213,11 @@ export default Vue.extend({
     transform: rotateY(180deg);
 }
 
-.image-front {
-  width: 600px;
-  height: 420px;
+.image-front-preview {
   border: solid 1px rgb(112, 112, 112);
   display: block;
-  margin: 10px auto;
+  width: 100%;
+  height: 100%;
 }
 
 .v-input__slot {

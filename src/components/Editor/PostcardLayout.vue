@@ -20,6 +20,8 @@
           name="Nachrichten-Textfeld"
           label="Deine persönliche Nachricht..."
           :rules="rules"
+          value=""
+          @input="checkText"
         >
         </v-textarea>
       </v-container>
@@ -75,6 +77,12 @@ export default Vue.extend({
     const textarea = document.querySelector('#changed-text') as HTMLElement;
     textarea.style.fontFamily = `${fontId}`;
   })
+},
+methods:{
+  checkText(e: any) {
+    let textValue = e
+    this.$store.dispatch("setText", textValue);
+  }
 },
   props: {
     ImageId: String,

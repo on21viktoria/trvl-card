@@ -10,6 +10,10 @@ export default new Vuex.Store({
     currentBackgroundColor: "#ffffff",
     currentSticker: "",
     currentTemplate: "",
+    currentText: "",
+    textColor: "black",
+    textFont: "Montserrat",
+    textSize: "12px"
   },
   mutations: {
     setCurrentPicture(state, payload) {
@@ -27,6 +31,9 @@ export default new Vuex.Store({
     setCurrentTemplate(state, payload) {
       state.currentTemplate = payload;
     },
+    setCurrentText(state, payload) {
+      state.currentText = payload;
+    }
   },
   actions: {
     async setPicture(state, picture) {
@@ -41,6 +48,10 @@ export default new Vuex.Store({
     async setTemplate(state, template) {
       state.commit("setCurrentTemplate", template);
     },
+    async setText(state, text) {
+      console.log(text);
+      state.commit("setCurrentText", text);
+    }
   },
   modules: {},
   getters: {
@@ -56,5 +67,8 @@ export default new Vuex.Store({
     getCurrentTemplate: (state) => {
       state.currentTemplate;
     },
+    getCurrentText: (state) => {
+      state.currentText
+    }
   },
 });
