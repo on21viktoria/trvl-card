@@ -37,6 +37,7 @@
           <input class="address-line" type="text" placeholder="Straße und Hausnummer">
           <input class="address-line" type="text" placeholder="Postleitzahl und Stadt">
           <v-select
+          id="country"
            v-model="defaultSelected"
           :items="countries"
           :menu-props="{ maxHeight: '400' }"
@@ -129,6 +130,10 @@ export default Vue.extend({
 .v-input__slot {
   width: 100% !important;
   margin-bottom: 1px !important;
+  padding: 0 !important;
+}
+
+.v-label.theme--light {
   padding: 0 0 0 12px !important;
 }
 
@@ -138,6 +143,7 @@ export default Vue.extend({
   border-right: solid rgb(112, 112, 112) 3px;
   font-size: 14px;
   line-height: 1.25 !important;
+  padding: 0 0 0 12px !important;
 }
 
 .v-text-field__details {
@@ -153,6 +159,7 @@ export default Vue.extend({
 }
 
 .codierzone {
+  margin-top: 18px;
   width: 100%;
   background-color: rgba(112, 112, 112, 0.1);
   background-image: repeating-linear-gradient(
@@ -244,15 +251,10 @@ export default Vue.extend({
   padding: 0 !important;
 }
 
-.v-input__slot {
-  padding: 0 !important;
-}
-
 .v-select {
   margin: 0 !important;
   padding-top: 10 !important;
   padding-bottom: 10 !important;
-  height: 35px !important;
   width: 200px;
 }
 
@@ -260,5 +262,12 @@ export default Vue.extend({
   margin: 0 !important;
   padding-top: 10px !important;
   padding-bottom: 10px !important;
+}
+
+.v-input {
+  padding: 0px !important;
+  padding-top: 3px !important;
+  margin: 0px !important;
+  height: 35px !important;
 }
 </style>
