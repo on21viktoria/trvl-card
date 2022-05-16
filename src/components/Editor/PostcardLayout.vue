@@ -32,10 +32,19 @@
           />
         </div>
         <div class="address-field">
-          <hr class="address-separator" />
-          <hr class="address-separator" />
-          <hr class="address-separator" />
-          <hr class="address-separator" />
+          <input class="address-line" type="text" placeholder="Empfänger">
+          <input class="address-line" type="text" placeholder="Zusatz">
+          <input class="address-line" type="text" placeholder="Straße & Hausnummer">
+          <input class="address-line" type="text" placeholder="Postleitzahl & Stadt">
+          <v-select
+           v-model="defaultSelected"
+          :items="countries"
+          :menu-props="{ maxHeight: '400' }"
+          label=""
+          single
+        :rules="countryRules"
+        required>
+        </v-select>
         </div>
       </v-container>
       <div class="codierzone">
@@ -54,6 +63,11 @@ export default Vue.extend({
   name: "PostcardLayout",
   components: {},
   data: () => ({
+    valid: false,
+    defaultSelected: 'Deutschland',
+    countryRules: [(v: string) => !!v || 'Bitte gib ein Land an.',
+    ],
+    countries: ['Deutschland'],
     rules: [
       (v: string | any[]) => {
         if(v){
@@ -172,6 +186,8 @@ export default Vue.extend({
   height: 210px;
   width: 100%;
   padding-top: 25px;
+  padding-left: 25px;
+  font-family: Dancing Script, serif !important;
 }
 
 .address-separator {
@@ -201,4 +217,37 @@ export default Vue.extend({
   flex-wrap: wrap;
   padding: 5px;
 }
+
+.address-line {
+  height: 30px;
+  width: 200px;
+  border-bottom: 1px solid #000;
+  font-family: Dancing Script, serif !important;
+  font-size: 18px;
+}
+
+.address-line:focus {
+ outline: 0 !important;
+}
+
+.v-list-item__title {
+  font-family: Dancing Script, serif !important;
+}
+
+.v-select__selection--comma {
+  font-family: Dancing Script, serif !important;
+  font-size: 18px !important;
+  color: #707070 !important;
+}
+
+.v-select__selections {
+  padding: 0 !important;
+  line-height: 15px !important;
+}
+
+.v-input__slot {
+  padding: 0 !important;
+}
+
+
 </style>
