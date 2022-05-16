@@ -1,5 +1,6 @@
 <template>
 <div>
+  <Header></Header>
     <h1>CHECKOUT</h1>
   <div class="checkout-body">
     <div class="address">
@@ -136,9 +137,11 @@
 
 <script lang='ts'>
 import Vue from 'vue';
+import Header from '../components/Header.vue'
 
 export default Vue.extend({
   name: 'Contactform',
+  components: {Header},
   data: () => ({
     valid: false,
     formOfAddress: [],
