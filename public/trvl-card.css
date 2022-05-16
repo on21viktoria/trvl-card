@@ -1,5 +1,6 @@
 * {
   font-family: Montserrat, Verdana, Geneva;
+  text-align: left;
 }
 
 .body {
@@ -83,7 +84,7 @@
 
 .searchbar {
   border: 0.1px solid #707070;
-  width: 600px;
+  width: 400px;
   padding: 10px;
   border-radius: 4px;
   height: 39px;
@@ -106,7 +107,7 @@
   color: #fff !important;
   border-radius: 4px;
   font-weight: 500;
-  text-decoration-line: none;
+  text-decoration: none !important;
 
 }
 
@@ -163,7 +164,8 @@
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 30px !important;
+  color: black !important;
 }
 
 .headline {
@@ -171,6 +173,11 @@ h1 {
   display: block;
   width: 75%;
 }
+
+.headline > p {
+  font-size: 20px !important;
+}
+
 
 .textanimation {
   font-size: 15px;
@@ -226,3 +233,9 @@ h1 {
 .helpanchor:hover {
   text-decoration: none !important;
 }
+
+#newsletter1:focus {   
+  border-color: rgba(255,78,0, 0.8);
+  box-shadow: 0 1px 1px rgba(255,78,0, 0.075) inset, 0 0 8px rgba(255,78,0, 0.6);
+  outline: 0 none;
+} 
