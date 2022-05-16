@@ -32,10 +32,10 @@
           />
         </div>
         <div class="address-field">
-          <input class="address-line" type="text" placeholder="Empfänger*in">
-          <input class="address-line" type="text" placeholder="Zusatz">
-          <input class="address-line" type="text" placeholder="Straße und Hausnummer">
-          <input class="address-line" type="text" placeholder="Postleitzahl und Stadt">
+          <input id="name" class="address-line" type="text" placeholder="Empfänger*in">
+          <input id="addition" class="address-line" type="text" placeholder="Zusatz">
+          <input id="street-and-number" class="address-line" type="text" placeholder="Straße und Hausnummer">
+          <input id="postalcode-and-city" class="address-line" type="text" placeholder="Postleitzahl und Stadt">
           <v-select
           id="country"
            v-model="defaultSelected"
@@ -59,6 +59,7 @@
 import { EventBus } from "@/main";
 import Vue from "vue";
 import { mapGetters, mapState } from "vuex";
+import { Recipient } from 'src/interfaces/recipient';
 
 export default Vue.extend({
   name: "PostcardLayout",
@@ -91,6 +92,22 @@ export default Vue.extend({
     textarea.style.fontFamily = `${fontId}`;
   })
 },
+methods: {
+    changeRecipient(recipient: Recipient){
+      const recipientName = document.getElementById('name') as HTMLInputElement;
+      const recipientAddition = document.getElementById('addition') as HTMLInputElement;
+      const recipientStreetAndNumber = document.getElementById('street-and-number') as HTMLInputElement;
+      const recipientPostalcodeAndCity = document.getElementById('postalcode-and-city') as HTMLInputElement;
+      recipient = {
+        name: recipientName.value,
+        addition: recipientAddition.value,
+        streetAndNumber: recipientStreetAndNumber.value,
+        postalcodeAndCity: recipientPostalcodeAndCity.value,
+        country: ""
+      }
+      this.$store.dispatch("setRecipient", recipient)
+    }
+  },
   props: {
     ImageId: String,
   },
@@ -235,10 +252,6 @@ export default Vue.extend({
 
 .address-line:focus {
  outline: 0 !important;
-}
-
-.v-list-item__title {
-  font-family: Dancing Script, serif !important;
 }
 
 .v-select__selection--comma {

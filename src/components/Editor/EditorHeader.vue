@@ -17,7 +17,7 @@
       to="/checkout"
       class="button button-signup hovereffect checkout"
       style="color: #fff"
-      >Speichern & Zum Warenkorb</router-link
+      ><button type="button" @click="onClick()">Speichern & Zum Warenkorb</button></router-link
     >
         <div>
           <v-icon class="account hovereffect" @click="makeToast(message = 'Hier wirst du bald die Möglichkeit haben, in deinen Account zu gelangen. Bitte hab noch ein bisschen Geduld.', options = {
@@ -48,6 +48,9 @@ export default Vue.extend({
   methods: {
       makeToast() {
         this.$bvToast.toast(this.message, this.options)
+      },
+      onClick() {
+        this.$emit('changeRecipient')
       }
     }
 });
