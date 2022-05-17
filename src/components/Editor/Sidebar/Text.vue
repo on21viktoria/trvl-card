@@ -11,18 +11,25 @@
       <input
         id="front-input-field"
         type="text"
-        placeholder="Grüße aus..."
+        placeholder="Grüsse aus..."
         aria-label="Grüße aus..."
         aria-describedby="basic-addon2"
         @input="displayInput()"
       />
       <p id="display-paragraph">Keinen Text:</p>
-      <img class="no-background-img" @click="clearInput()" src="" alt="Platzhalter">
-      <!-- <label for="initial-checkbox" class="custom-checkbox-label">
-      <input type="checkbox" id="initial-checkbox" name="initial-checkbox"> <span id="front-checkbox"></span>
-      </label> -->
+      <img
+        class="no-custom-input"
+        @click="clearInput()"
+        src="../../../assets/platzhalter/no_Background.png"
+        alt="Platzhalter"
+      />
     </div>
-    
+    <p class="effect">3D-Effekt:</p>
+    <label for="initial-checkbox" class="custom-checkbox-label">
+      <input type="checkbox" id="initial-checkbox" name="initial-checlbox" @change="changeEffect()" />
+      <span id="front-checkbox"></span>
+    </label>
+
     <p class="subtitle">Rückseite der Postkarte</p>
     <v-divider id="divider-sidebar"></v-divider>
     <FontChoice></FontChoice>
@@ -41,8 +48,8 @@ import { EventBus } from "@/main";
 export default Vue.extend({
   data() {
     return {
-      customInput: '',
-    }
+      customInput: "Grüsse aus...",
+    };
   },
   name: "Text",
   components: {
@@ -53,15 +60,34 @@ export default Vue.extend({
   props: {},
   methods: {
     displayInput() {
-      const inputElement = document.querySelector("#front-input-field") as HTMLInputElement;
+      const inputElement = document.querySelector(
+        "#front-input-field"
+      ) as HTMLInputElement;
       this.customInput = inputElement.value;
-      if(this.customInput === '') {
-        this.customInput = '';
-        console.log("Input shall not be displayed", this.customInput)
-        EventBus.$emit('displayCustomLargeLetter', this.customInput )
+      if (this.customInput === "") {
+        this.customInput = "";
+        console.log("Input shall not be displayed", this.customInput);
+        EventBus.$emit("displayCustomLargeLetter", this.customInput);
       } else {
-        console.log ("Input shall be shown", this.customInput)
-        EventBus.$emit('displayCustomLargeLetter', this.customInput )
+        inputElement.value = this.customInput;
+        console.log("Input shall be shown", this.customInput);
+        EventBus.$emit("displayCustomLargeLetter", this.customInput);
+      }
+    },
+    clearInput() {
+      const inputElement = document.querySelector(
+        "#front-input-field"
+      ) as HTMLInputElement;
+      inputElement.value = "";
+      this.customInput = "";
+      EventBus.$emit("displayCustomLargeLetter", this.customInput);
+    },
+    changeEffect() {
+      const checkboxEffect = document.querySelector('#initial-checkbox') as HTMLInputElement;
+      if(checkboxEffect.checked) {
+        EventBus.$emit("applyThreeDEffect");
+      } else {
+        EventBus.$emit("clearThreeDEffect")
       }
     }
   },
@@ -108,14 +134,25 @@ export default Vue.extend({
   margin: 0 10px 0 0;
 }
 
+.no-custom-input {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+p.effect {
+  margin: 0 25px 0 0;
+  display: inline-block;
+}
+
 .custom-checkbox-label {
-  display: block;
+  display: inline-block;
   position: relative;
   cursor: pointer;
   font-size: 13px;
-  /* width: 25px;
-  height: 25px;
-  border: 1px red solid; */
+  width: 15px;
+  height: 15px;
+
 }
 
 #initial-checkbox {
@@ -124,7 +161,7 @@ export default Vue.extend({
 
 #front-checkbox {
   position: absolute;
-  top: 7px;
+  top: 2px;
   left: 0;
   width: 15px;
   height: 15px;
@@ -154,8 +191,8 @@ export default Vue.extend({
   border: solid white;
   border-width: 0 4px 4px 0;
   -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 #divider-sidebar {

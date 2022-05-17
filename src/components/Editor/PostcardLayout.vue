@@ -140,27 +140,27 @@ svg > text {
   position: relative;
   width: 100%;
   height: 100%;
-  fill: white;
-  fill-opacity: 0.2;
   text-anchor: start;
-  stroke: black;
-  stroke-width: 3px;
-  font-size: 80px;
+  font-size: 100px;
   font-family: "Luckiest Guy", cursive;
   letter-spacing: 3px;
-  /* text-shadow: 0px 0px 0 rgb(-73,-73,0),
-                 1px 1px 0 rgb(-102,-102,0),
-                 2px 2px 0 rgb(-130,-130,0),
-                 3px 3px 0 rgb(-158,-158,0),
-                 4px 4px 0 rgb(-187,-187,0),
-                 5px 5px 0 rgb(-215,-215,0),
-                 6px 6px 0 rgb(-243,-243,0),
-                 7px 7px 0 rgb(-272,-272,0),
-                 8px 8px 0 rgb(-300,-300,0),
-                 9px 9px  0 rgb(-328,-328,0),
-                 10px 10px 9px rgba(255,255,255,0),
-                 10px 10px 1px rgba(255,255,255,0.5),
-                 0px 0px 9px rgba(255,255,255,.2); */
+}
+
+#text-shadow {
+  text-shadow: 0px 0px 0 rgb(-45, -45, 0), 1px 1px 0 rgb(-45, -45, 0),
+    2px 2px 0 rgb(-45, -45, 0), 3px 3px 0 rgb(-45, -45, 0),
+    4px 4px 0 rgb(-45, -45, 0), 5px 5px 0 rgb(-45, -45, 0),
+    6px 6px 0 rgb(-45, -45, 0), 7px 7px 0 rgb(-45, -45, 0),
+    8px 8px 0 rgb(-45, -45, 0), 9px 9px 0 rgb(-45, -45, 0),
+    10px 10px 9px rgba(255, 255, 255, 0), 10px 10px 1px rgba(255, 255, 255, 0.5),
+    0px 0px 9px rgba(255, 255, 255, 0.2);
+}
+
+#text-top {
+  stroke: black;
+  stroke-width: 1px;
+  fill: white;
+  fill-opacity: 1;
 }
 
 .postcard-side {
