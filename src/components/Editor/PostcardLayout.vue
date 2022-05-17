@@ -17,7 +17,7 @@
         />
       </div>
       <div v-if="applyEffect === false" class="custom-input-wrap">
-        <p class="additional-text" id="ontop">{{ customTextBefore }}</p>
+        <p class="additional-text" id="ontop" :style="`color:` + currentInputColor">{{ customTextBefore }} </p>
         <svg width="100%" id="custom-input-svg">
           <text
             id="text-no-effect"
@@ -25,14 +25,15 @@
             y="100"
             textLength="520"
             lengthAdjust="spacingAndGlyphs"
+            :style="`fill:` + currentInputColor"
           >
             {{ this.customLargeLetter }}
           </text>
         </svg>
-        <p class="additional-text" id="below">{{ customTextBelow }}</p>
+        <p class="additional-text" id="below" :style="`color:` + currentInputColor">{{ customTextBelow }} </p>
       </div>
       <div v-if="applyEffect === true" class="custom-input-wrap">
-        <p class="additional-text" id="ontop">{{ customTextBefore }}</p>
+        <p class="additional-text" id="ontop" :style="`color:` + currentInputColor">{{ customTextBefore }} </p>
         <svg width="100%" id="custom-input-svg">
           <text
             id="text-shadow"
@@ -40,6 +41,7 @@
             y="100"
             textLength="520"
             lengthAdjust="spacingAndGlyphs"
+            :style="`fill:` + currentInputColor"
           >
             {{ this.customLargeLetter }}
           </text>
@@ -49,11 +51,12 @@
             y="100"
             textLength="520"
             lengthAdjust="spacingAndGlyphs"
+            :style="`fill:` + currentInputColor"
           >
             {{ this.customLargeLetter }}
           </text>
         </svg>
-        <p class="additional-text" id="below">{{ customTextBelow }}</p>
+        <p class="additional-text" id="below" :style="`color:` + currentInputColor">{{ customTextBelow }}</p>
       </div>
     </div>
 
@@ -113,6 +116,7 @@ export default Vue.extend({
     customTextBefore: "",
     customTextBelow: "",
     applyEffect: false,
+    currentInputColor: ""
   }),
   created() {
     EventBus.$on("changeFontColor", (colorId: string) => {
@@ -149,6 +153,9 @@ export default Vue.extend({
     EventBus.$on("clearThreeDEffect", () => {
       this.applyEffect = false;
     });
+    EventBus.$on("changeInputColor", (inputColor: string) => {
+      this.currentInputColor = inputColor;
+    });
   },
   props: {
     ImageId: String,
@@ -159,6 +166,7 @@ export default Vue.extend({
       "currentBackgroundColor",
       "currentSticker",
       "currentTemplate",
+      "currentInputColor"
     ]),
   },
 });

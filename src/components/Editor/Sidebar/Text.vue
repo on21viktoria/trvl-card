@@ -4,8 +4,8 @@
     <p class="subtitle">Vorderseite der Postkarte</p>
     <v-divider id="divider-sidebar"></v-divider>
     <p>
-      Du möchtest deine Postkarte individualisieren? <br />Dann gebe hier
-      deinen individuellen Text ein:
+      Du möchtest deine Postkarte individualisieren? <br />Dann gebe hier deinen
+      individuellen Text ein:
     </p>
     <div class="input-container">
       <input
@@ -45,10 +45,52 @@
     </div>
     <p class="effect">3D-Effekt:</p>
     <label for="initial-checkbox" class="custom-checkbox-label">
-      <input type="checkbox" id="initial-checkbox" name="initial-checlbox" @change="changeEffect()" />
+      <input
+        type="checkbox"
+        id="initial-checkbox"
+        name="initial-checlbox"
+        @change="changeEffect()"
+      />
       <span id="front-checkbox"></span>
     </label>
-
+    <div class="inputcolorpicker-container">
+      <p class="inputcolor-choice">Freie Farbwahl:</p>
+      <input
+        type="color"
+        id="inputcolor-picker"
+        name="color-selection"
+        :value="currentPreSelectedFontColor"
+        @input="changeInputColor()"
+      />
+    </div>
+    <p>Unsere trvl card Empfehlungen:</p>
+    <div class="inputcolor-suggestions">
+      <div
+        class="suggestion"
+        id="black"
+        @click="preselectedInputColor('black')"
+      ></div>
+      <div
+        class="suggestion"
+        id="grey"
+        @click="preselectedInputColor('grey')"
+      ></div>
+      <div
+        class="suggestion"
+        id="blue"
+        @click="preselectedInputColor('blue')"
+      ></div>
+      <div
+        class="suggestion"
+        id="turquoise"
+        @click="preselectedInputColor('turquoise')"
+      ></div>
+      <div
+        class="suggestion"
+        id="orange"
+        @click="preselectedInputColor('orange')"
+      ></div>
+    </div>
     <p class="subtitle">Rückseite der Postkarte</p>
     <v-divider id="divider-sidebar"></v-divider>
     <FontChoice></FontChoice>
@@ -70,7 +112,14 @@ export default Vue.extend({
       customInputBefore: "Grüsse aus...",
       customInputCity: "Stadt...",
       customInputBelow: "Land...",
-      applyEffect: false
+      applyEffect: false,
+      preselectedColors: [
+        { value: "#000000", id: "black" },
+        { value: "#707070", id: "grey" },
+        { value: "#0f0f96", id: "blue" },
+        { value: "#1da2a9", id: "turquoise" },
+        { value: "#ff4e00", id: "orange" },
+      ],
     };
   },
   name: "Text",
@@ -82,7 +131,9 @@ export default Vue.extend({
   props: {},
   methods: {
     displayInputCity() {
-      const inputCity = document.querySelector("#input-field-city") as HTMLInputElement;
+      const inputCity = document.querySelector(
+        "#input-field-city"
+      ) as HTMLInputElement;
       this.customInputCity = inputCity.value;
       if (this.customInputCity === "") {
         this.customInputCity = "";
@@ -90,11 +141,17 @@ export default Vue.extend({
         inputCity.value = this.customInputCity;
       } else {
         console.log("Input shall be shown", this.customInputCity);
-        EventBus.$emit("displayCustomLargeLetter", this.customInputCity, this.applyEffect);
-    }
+        EventBus.$emit(
+          "displayCustomLargeLetter",
+          this.customInputCity,
+          this.applyEffect
+        );
+      }
     },
     displayInputBefore() {
-      const inputBefore = document.querySelector("#input-field-before") as HTMLInputElement;
+      const inputBefore = document.querySelector(
+        "#input-field-before"
+      ) as HTMLInputElement;
       this.customInputBefore = inputBefore.value;
       if (this.customInputBefore === "") {
         this.customInputBefore = "";
@@ -106,8 +163,10 @@ export default Vue.extend({
       }
     },
     displayInputBelow() {
-      const inputBelow = document.querySelector("#input-field-below") as HTMLInputElement;
-      this. customInputBelow = inputBelow.value;
+      const inputBelow = document.querySelector(
+        "#input-field-below"
+      ) as HTMLInputElement;
+      this.customInputBelow = inputBelow.value;
       if (this.customInputBelow === "") {
         this.customInputBelow = "";
         EventBus.$emit("displayCustomBelow", this.customInputBelow);
@@ -118,28 +177,59 @@ export default Vue.extend({
       }
     },
     clearInput() {
-      const inputCity = document.querySelector("#input-field-city") as HTMLInputElement;
-      const inputBefore = document.querySelector("#input-field-before") as HTMLInputElement;
-      const inputBelow = document.querySelector("#input-field-below") as HTMLInputElement;
+      const inputCity = document.querySelector(
+        "#input-field-city"
+      ) as HTMLInputElement;
+      const inputBefore = document.querySelector(
+        "#input-field-before"
+      ) as HTMLInputElement;
+      const inputBelow = document.querySelector(
+        "#input-field-below"
+      ) as HTMLInputElement;
       inputCity.value = "";
       inputBefore.value = "";
       inputBelow.value = "";
       this.customInputCity = "";
       this.customInputBefore = "";
       this.customInputBelow = "";
-      EventBus.$emit("clearCustomText", this.customInputCity, this.customInputBefore, this.customInputBelow);
+      EventBus.$emit(
+        "clearCustomText",
+        this.customInputCity,
+        this.customInputBefore,
+        this.customInputBelow
+      );
     },
     changeEffect() {
-      const checkboxEffect = document.querySelector('#initial-checkbox') as HTMLInputElement;
-      if(checkboxEffect.checked) {
+      const checkboxEffect = document.querySelector(
+        "#initial-checkbox"
+      ) as HTMLInputElement;
+      if (checkboxEffect.checked) {
         this.applyEffect = true;
         EventBus.$emit("applyThreeDEffect");
-        return this.applyEffect
+        return this.applyEffect;
       } else {
-        EventBus.$emit("clearThreeDEffect")
-        return this.applyEffect = false
+        EventBus.$emit("clearThreeDEffect");
+        return (this.applyEffect = false);
       }
-    }
+    },
+    changeInputColor() {
+      let inputcolorPicker = document.getElementById(
+        "inputcolor-picker"
+      ) as HTMLInputElement;
+      EventBus.$emit("changeInputColor", inputcolorPicker.value);
+      this.$store.dispatch("setInputColor", inputcolorPicker.value);
+    },
+    preselectedInputColor(colorId: string) {
+      console.log("in preselectedInputcolor")
+      for (let choice of this.preselectedColors) {
+        if (choice.id === colorId) {
+          EventBus.$emit("preselectedInputColor", choice.value);
+          this.$store.dispatch("setInputColor", choice.value);
+          console.log(choice.value)
+          return;
+        }
+      }
+    },
   },
 });
 </script>
@@ -202,7 +292,6 @@ p.effect {
   font-size: 13px;
   width: 15px;
   height: 15px;
-
 }
 
 #initial-checkbox {
@@ -220,7 +309,7 @@ p.effect {
 }
 
 .custom-checkbox-label #initial-checkbox:checked ~ #front-checkbox {
-  background-color:#ff4e00 !important;
+  background-color: #ff4e00 !important;
 }
 
 #front-checkbox:after {
@@ -248,5 +337,89 @@ p.effect {
 #divider-sidebar {
   margin-top: 12px;
   margin-bottom: 16px;
+}
+
+.inputcolorpicker-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+}
+
+.inputcolor-choice {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+  line-height: 30px;
+}
+
+#inputcolor-picker {
+  /* display: inline-block; */
+  margin-top: 5px;
+  width: 70px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 5px !important;
+  outline: none;
+  -webkit-appearance: none;
+  border: none;
+}
+
+#inputcolor-picker::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+#inputcolor-picker::-webkit-color-swatch {
+  border: 0.5px solid grey;
+  border-radius: 5px;
+}
+
+.inputcolor-suggestions {
+  display: flex;
+}
+
+p {
+  margin: 5px;
+}
+
+.suggestion {
+  width: 20px;
+  height: 20px;
+  border: 0.5px solid white;
+}
+
+#black {
+  background-color: #000000;
+  margin-right: 2px;
+  cursor: pointer;
+  border-radius: 4px !important;
+}
+
+#grey {
+  background-color: #707070;
+  margin-right: 2px;
+  cursor: pointer;
+  border-radius: 4px !important;
+}
+
+#blue {
+  background-color: #0f0f96;
+  margin-right: 2px;
+  cursor: pointer;
+  border-radius: 4px !important;
+}
+
+#turquoise {
+  background-color: #1da2a9;
+  margin-right: 2px;
+  cursor: pointer;
+  border-radius: 4px !important;
+}
+
+#orange {
+  background-color: #ff4e00;
+  cursor: pointer;
+  border-radius: 4px !important;
 }
 </style>

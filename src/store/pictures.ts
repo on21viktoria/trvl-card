@@ -10,6 +10,7 @@ export default new Vuex.Store({
     currentBackgroundColor: "#ffffff",
     currentSticker: "",
     currentTemplate: "",
+    currentInputColor: "",
   },
   mutations: {
     setCurrentPicture(state, payload) {
@@ -27,6 +28,9 @@ export default new Vuex.Store({
     setCurrentTemplate(state, payload) {
       state.currentTemplate = payload;
     },
+    setCurrentInputColor(state, payload) {
+      state.currentInputColor = payload
+    }
   },
   actions: {
     async setPicture(state, picture) {
@@ -41,6 +45,9 @@ export default new Vuex.Store({
     async setTemplate(state, template) {
       state.commit("setCurrentTemplate", template);
     },
+    async setInputColor(state, inputColor) {
+      state.commit("setCurrentInputColor", inputColor)
+    }
   },
   modules: {},
   getters: {
