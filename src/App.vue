@@ -1,8 +1,7 @@
 <template>
-  <div>
-    <Header></Header>
+  <v-app>
     <router-view></router-view>
-  </div>
+  </v-app>
 </template>
 
 <script lang="ts">

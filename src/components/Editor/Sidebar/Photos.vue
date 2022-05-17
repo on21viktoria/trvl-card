@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="photo-div">
     <p class="tool-title">Fotos</p>
     <p class="tool-title subtitle">Bildauswahl</p>
 
@@ -491,6 +491,11 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+.photo-div {
+  width: 100%;
+  max-height: 800px;
+  overflow: auto;
+}
 .card-body {
   display: grid !important;
   grid-template-columns: 50% 50% !important;

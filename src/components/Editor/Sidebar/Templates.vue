@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="template-div">
     <p class="tool-title">Vorlagen</p>
     <p class="tool-title subtitle">Vorlagenauswahl</p>
 
@@ -324,6 +324,11 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+.template-div {
+  width: 100%;
+  max-height: 800px;
+  overflow: auto;
+}
 .card-body {
   display: grid !important;
   grid-template-columns: 50% 50% !important;
