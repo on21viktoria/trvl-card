@@ -17,9 +17,10 @@
         @input="displayInput()"
       />
       <p id="display-paragraph">Keinen Text:</p>
-      <label for="initial-checkbox" class="custom-checkbox-label">
+      <img class="no-background-img" @click="clearInput()" src="" alt="Platzhalter">
+      <!-- <label for="initial-checkbox" class="custom-checkbox-label">
       <input type="checkbox" id="initial-checkbox" name="initial-checkbox"> <span id="front-checkbox"></span>
-      </label>
+      </label> -->
     </div>
     
     <p class="subtitle">Rückseite der Postkarte</p>
