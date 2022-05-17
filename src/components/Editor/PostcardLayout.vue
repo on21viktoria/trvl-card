@@ -1,6 +1,6 @@
 <template>
   <div class="postcard-layout">
-    <div class="postcard-side" id="front" :style="`background-color:` + currentBackgroundColor">
+    <div droppable=true class="postcard-side" id="front" :style="`background-color:` + currentBackgroundColor">
       <div class="image-wrap"
       >
         <img
@@ -9,7 +9,8 @@
           "
           class="image-front"
         />
-        <img v-if="currentSticker !==''" :src="require(`./../../assets/${currentSticker}`)" class="svg-image"/>
+        <img v-if="currentSticker !==''" :src="require(`./../../assets/${currentSticker}`)" class="svg-image"
+        draggable=true/>
       </div>
     </div>
     <div class="postcard-side" id="back">
@@ -79,6 +80,10 @@ export default Vue.extend({
   EventBus.$on('changeFont', (fontId: string) => {
     const textarea = document.querySelector('#changed-text') as HTMLElement;
     textarea.style.fontFamily = `${fontId}`;
+  }),
+  EventBus.$on('changeStickerSize', (stickerSizeId: string) => {
+    const sticker = document.querySelector('.svg-image') as HTMLImageElement;
+    sticker.style.width = `${stickerSizeId}`;
   })
 },
   props: {
@@ -92,6 +97,9 @@ export default Vue.extend({
 
 .image-wrap{
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .svg-image{
