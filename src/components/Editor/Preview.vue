@@ -94,12 +94,13 @@ export default Vue.extend({
       if (!this.front) {
         let postcard = document.getElementById("postcard");
         postcard?.classList.remove("switch");
-        this.front = false;
+        this.front = true;
       }
       this.$emit("close");
     },
     showBack() {
       let postcard = document.getElementById("postcard");
+      console.log(this.front);
       if (this.front) {
         postcard?.classList.add("switch");
         this.front = false;
