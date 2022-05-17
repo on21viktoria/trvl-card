@@ -90,6 +90,12 @@ export default Vue.extend({
     textarea.style.fontFamily = `${fontId}`;
   })
 },
+methods: {
+  checkText(e: any) {
+    let textvalue = e;
+    this.$store.dispatch("setText", textvalue)
+  }
+},
   props: {
     ImageId: String,
   },

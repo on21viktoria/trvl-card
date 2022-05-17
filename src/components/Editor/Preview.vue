@@ -55,7 +55,11 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="button button-signup button-flip" @click="showBack()">
+        <button
+          type="button"
+          class="button button-signup button-flip"
+          @click="showBack()"
+        >
           Karte umdrehen
         </button>
       </div>
@@ -84,10 +88,11 @@ export default Vue.extend({
     });
     EventBus.$on("changeFontSize", (sizeId: string) => {
       textarea.style.fontSize = `${sizeId}`;
-    }),
-      EventBus.$on("changeFont", (fontId: string) => {
-        textarea.style.fontFamily = `${fontId}`;
-      });
+    });
+    EventBus.$on("changeFont", (fontId: string) => {
+      console.log(fontId);
+      textarea.style.fontFamily = `${fontId}`;
+    });
   },
   methods: {
     close() {
@@ -129,9 +134,9 @@ export default Vue.extend({
   overflow-x: auto;
   display: flex;
   flex-direction: column;
-  width: 80vw;
+  width: 60vw;
   height: 80vh;
-  left: calc(50% - 40vw);
+  left: calc(50% - 30vw);
   opacity: 1 !important;
   border-radius: 5px;
   padding: 0;
@@ -299,7 +304,7 @@ export default Vue.extend({
   width: 50%;
   height: 80%;
   border-right: solid rgb(112, 112, 112) 3px;
-  margin-top: calc((100% - 80%)/ 6);;
+  margin-top: calc((100% - 80%) / 6);
 }
 
 .text-wrapper {
