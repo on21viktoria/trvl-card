@@ -120,8 +120,6 @@ methods: {
 </script>
 
 <style>
-
-
 .image-wrap{
   position: relative;
 }
@@ -176,7 +174,7 @@ methods: {
 }
 
 .codierzone {
-  margin-top: 25px;
+  margin-top: 15px;
   width: 100%;
   background-color: rgba(112, 112, 112, 0.1);
   background-image: repeating-linear-gradient(
@@ -274,11 +272,9 @@ methods: {
 
 .v-text-field {
   margin: 0 !important;
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
 }
 
-.v-input {
+.v-input theme--light v-text-field v-text-field--is-booted v-select {
   padding: 0px !important;
   padding-top: 3px !important;
   margin: 10px 0px 0px 0px !important;
