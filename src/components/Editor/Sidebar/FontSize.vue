@@ -66,10 +66,6 @@ export default Vue.extend({
   border-radius: 50%;
 }
 
-p {
-  font-weight: 600;
-}
-
 #rangeValue {
   margin-top: 15px;
 }
