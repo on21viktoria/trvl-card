@@ -14,13 +14,12 @@
         placeholder="Grüße aus..."
         aria-label="Grüße aus..."
         aria-describedby="basic-addon2"
+        @input="displayInput()"
       />
-      <!-- <div class="checkbox-container"> -->
-      <p id="display-paragraph">Auf Postkarte anzeigen:</p>
-      <label class="custom-checkbox-label">
-      <input type="checkbox" checked="checked" id="initial-checkbox"> <span id="front-checkbox"></span>
+      <p id="display-paragraph">Keinen Text:</p>
+      <label for="initial-checkbox" class="custom-checkbox-label">
+      <input type="checkbox" id="initial-checkbox" name="initial-checkbox"> <span id="front-checkbox"></span>
       </label>
-      <!-- </div> -->
     </div>
     
     <p class="subtitle">Rückseite der Postkarte</p>
@@ -36,9 +35,14 @@ import Vue from "vue";
 import FontSize from "./FontSize.vue";
 import FontChoice from "./FontChoice.vue";
 import FontColor from "./temp.vue";
+import { EventBus } from "@/main";
 
 export default Vue.extend({
-  data: () => ({}),
+  data() {
+    return {
+      customInput: '',
+    }
+  },
   name: "Text",
   components: {
     FontSize,
@@ -46,7 +50,20 @@ export default Vue.extend({
     FontColor,
   },
   props: {},
-  methods: {},
+  methods: {
+    displayInput() {
+      const inputElement = document.querySelector("#front-input-field") as HTMLInputElement;
+      this.customInput = inputElement.value;
+      if(this.customInput === '') {
+        this.customInput = '';
+        console.log("Input shall not be displayed", this.customInput)
+        EventBus.$emit('displayCustomLargeLetter', this.customInput )
+      } else {
+        console.log ("Input shall be shown", this.customInput)
+        EventBus.$emit('displayCustomLargeLetter', this.customInput )
+      }
+    }
+  },
 });
 </script>
 

@@ -1,22 +1,37 @@
 <template>
   <div class="postcard-layout">
-    <div class="postcard-side" id="front" :style="`background-color:` + currentBackgroundColor">
-      <div class="image-wrap"
-      >
+    <div
+      class="postcard-side"
+      id="front"
+      :style="`background-color:` + currentBackgroundColor"
+    >
+      <div class="image-wrap">
         <img
-          :src="
-            require(`./../../assets/${currentPicture}`)
-          "
+          :src="require(`./../../assets/${currentPicture}`)"
           class="image-front"
         />
-        <img v-if="currentSticker !==''" :src="require(`./../../assets/${currentSticker}`)" class="svg-image"/>
+        <img
+          v-if="currentSticker !== ''"
+          :src="require(`./../../assets/${currentSticker}`)"
+          class="svg-image"
+        />
       </div>
-      <div class="custom-input-wrap"></div>
+      <div class="custom-input-wrap">
+        <svg width="100%" height="100%">
+          <text id="text-shadow" x="50" y="100">
+            {{ this.customLargeLetter }}
+          </text>
+          <text id="text-top" x="50" y="100">
+            {{ this.customLargeLetter }}
+          </text>
+        </svg>
+      </div>
     </div>
-    
+
     <div class="postcard-side" id="back">
       <v-container fluid id="container-rückseite-links">
-        <v-textarea id="changed-text"
+        <v-textarea
+          id="changed-text"
           solo
           counter
           name="Nachrichten-Textfeld"
@@ -58,54 +73,94 @@ export default Vue.extend({
   data: () => ({
     rules: [
       (v: string | any[]) => {
-        if(v){
-        return (v.length <= 500  || "Maximal 500 characters")}
-        else {console.log('error')}
-        }],
+        if (v) {
+          return v.length <= 500 || "Maximal 500 characters";
+        } else {
+          console.log("error");
+        }
+      },
+    ],
+    customLargeLetter: "Hannover",
   }),
   created() {
-  EventBus.$on('changeFontColor', (colorId: string) => {
-    const textarea = document.querySelector('#changed-text') as HTMLElement;
-    textarea.style.color =`${colorId}`;
-    console.log("In PostcardLayout", colorId)
-  })
-  EventBus.$on('changeFontSize', (sizeId: string) => {
-    const textarea = document.querySelector('#changed-text') as HTMLElement;
-    textarea.style.fontSize =`${sizeId}`;
-  }),
-  EventBus.$on('changeFont', (fontId: string) => {
-    const textarea = document.querySelector('#changed-text') as HTMLElement;
-    textarea.style.fontFamily = `${fontId}`;
-  })
-},
+    EventBus.$on("changeFontColor", (colorId: string) => {
+      const textarea = document.querySelector("#changed-text") as HTMLElement;
+      textarea.style.color = `${colorId}`;
+      console.log("In PostcardLayout", colorId);
+    });
+    EventBus.$on("changeFontSize", (sizeId: string) => {
+      const textarea = document.querySelector("#changed-text") as HTMLElement;
+      textarea.style.fontSize = `${sizeId}`;
+    }),
+      EventBus.$on("changeFont", (fontId: string) => {
+        const textarea = document.querySelector("#changed-text") as HTMLElement;
+        textarea.style.fontFamily = `${fontId}`;
+      }),
+      EventBus.$on("displayCustomLargeLetter", (customInput: string) => {
+        this.customLargeLetter = customInput;
+      });
+  },
   props: {
     ImageId: String,
   },
-  computed: {...mapState(["currentPicture", "currentBackgroundColor", "currentSticker", "currentTemplate"])
-}});
+  computed: {
+    ...mapState([
+      "currentPicture",
+      "currentBackgroundColor",
+      "currentSticker",
+      "currentTemplate",
+    ]),
+  },
+});
 </script>
 
 <style>
-
-.image-wrap{
+.image-wrap {
   position: relative;
 }
 
-.svg-image{
-  position: absolute;
-  top: 0;
-  left: 0;
+.svg-image {
+  position: relative;
   z-index: 20;
 }
 
 .custom-input-wrap {
-  /* position: absolute; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 10px 10px;
   width: 600px;
   height: 420px;
   display: block;
-  margin: 10px auto;
-  background-color: aqua;
-  z-index: 1;
+  background-color: transparent;
+  z-index: 100;
+}
+
+svg > text {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  fill: white;
+  fill-opacity: 0.2;
+  text-anchor: start;
+  stroke: black;
+  stroke-width: 3px;
+  font-size: 80px;
+  font-family: "Luckiest Guy", cursive;
+  letter-spacing: 3px;
+  /* text-shadow: 0px 0px 0 rgb(-73,-73,0),
+                 1px 1px 0 rgb(-102,-102,0),
+                 2px 2px 0 rgb(-130,-130,0),
+                 3px 3px 0 rgb(-158,-158,0),
+                 4px 4px 0 rgb(-187,-187,0),
+                 5px 5px 0 rgb(-215,-215,0),
+                 6px 6px 0 rgb(-243,-243,0),
+                 7px 7px 0 rgb(-272,-272,0),
+                 8px 8px 0 rgb(-300,-300,0),
+                 9px 9px  0 rgb(-328,-328,0),
+                 10px 10px 9px rgba(255,255,255,0),
+                 10px 10px 1px rgba(255,255,255,0.5),
+                 0px 0px 9px rgba(255,255,255,.2); */
 }
 
 .postcard-side {
@@ -118,10 +173,10 @@ export default Vue.extend({
 }
 
 .image-front {
-  position: absolute;
+  /* position: absolute;
   top: 0;
-  left: 0;
-  z-index: 100;
+  left: 0; */
+  z-index: 1;
   width: 600px;
   height: 420px;
   border: solid 1px rgb(112, 112, 112);
@@ -167,7 +222,7 @@ export default Vue.extend({
   );
 }
 
-.codierzone>p{
+.codierzone > p {
   margin: 10px 0 5px;
   text-align: center;
 }
