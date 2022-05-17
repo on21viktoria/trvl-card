@@ -49,7 +49,6 @@ export default new Vuex.Store({
       state.commit("setCurrentTemplate", template);
     },
     async setText(state, text) {
-      console.log(text);
       state.commit("setCurrentText", text);
     }
   },

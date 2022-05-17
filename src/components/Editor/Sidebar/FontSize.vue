@@ -32,7 +32,6 @@ export default Vue.extend({
     methods: {
     changeFontSize() {
     this.sizeId = `${this.selected}`;
-    console.log("Size has been selected", this.sizeId, this.selected);
     EventBus.$emit('changeFontSize', this.sizeId);
     },
       }

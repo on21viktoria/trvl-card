@@ -17,20 +17,20 @@
           class="front"
           :style="`background-color:` + currentBackgroundColor"
         >
-            <img
-              :src="require(`./../../assets/${currentPicture}`)"
-              class="image-front-preview"
-            />
-            <img
-              v-if="currentSticker !== ''"
-              :src="require(`./../../assets/${currentSticker}`)"
-              class="svg-image"
-            />
+          <img
+            :src="require(`./../../assets/${currentPicture}`)"
+            class="image-front-preview"
+          />
+          <img
+            v-if="currentSticker !== ''"
+            :src="require(`./../../assets/${currentSticker}`)"
+            class="svg-image"
+          />
         </div>
         <div class="back">
           <v-container fluid class="postcard-left-back">
-            <div class="postcard-left-back">
-              {{currentText}}
+            <div class="postcard-left-back-text">
+              {{ currentText }}
             </div>
           </v-container>
           <v-container fluid id="postcard-right-back">
@@ -55,7 +55,9 @@
       </div>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-primary" @click="showBack()">Karte umdrehen</button>
+      <button type="button" class="btn btn-primary" @click="showBack()">
+        Karte umdrehen
+      </button>
     </div>
   </div>
 </template>
@@ -69,12 +71,13 @@ export default Vue.extend({
   name: "Preview",
   data() {
     return {
-      front: true
-    }
+      front: true,
+    };
   },
-  created() {
-    let textarea = document.querySelector(".postcard-left-back") as HTMLDivElement;
-    console.log("TextArea :" + textarea);
+  mounted() {
+    let textarea = document.querySelector(
+      ".postcard-left-back-text"
+    ) as HTMLDivElement;
     EventBus.$on("changeFontColor", (colorId: string) => {
       textarea.style.color = `${colorId}`;
     });
@@ -87,7 +90,7 @@ export default Vue.extend({
   },
   methods: {
     close() {
-       if(!this.front){
+      if (!this.front) {
         let postcard = document.getElementById("postcard");
         postcard?.classList.remove("switch");
         this.front = false;
@@ -96,15 +99,14 @@ export default Vue.extend({
     },
     showBack() {
       let postcard = document.getElementById("postcard");
-      if(this.front){
+      if (this.front) {
         postcard?.classList.add("switch");
         this.front = false;
-      }
-      else{
+      } else {
         postcard?.classList.remove("switch");
         this.front = true;
       }
-    }
+    },
   },
   computed: {
     ...mapState([
@@ -112,7 +114,7 @@ export default Vue.extend({
       "currentBackgroundColor",
       "currentSticker",
       "currentTemplate",
-      "currentText"
+      "currentText",
     ]),
   },
 });
@@ -210,22 +212,23 @@ export default Vue.extend({
   margin: auto;
 }
 
-.front, .back {
-    position: absolute;
-    -webkit-backface-visibility: hidden; /* Safari */
-    backface-visibility: hidden;
-    width: 100%;
-    height: 100%;
-    padding:10px
+.front,
+.back {
+  position: absolute;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
 }
 
 .back {
-    transform: rotateY(180deg);
-    background-color: white;
+  transform: rotateY(180deg);
+  background-color: white;
 }
 
 .switch {
-    transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 .image-front-preview {
