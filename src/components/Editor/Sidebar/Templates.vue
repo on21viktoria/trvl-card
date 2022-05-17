@@ -361,6 +361,10 @@ img:hover {
   background-color: #ff4e00;
 }
 
+.btn:focus {
+  box-shadow: none;
+}
+
 .card {
   border: none;
   padding: 0;
