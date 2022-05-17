@@ -16,7 +16,14 @@
           class="svg-image"
         />
       </div>
-      <div class="custom-input-wrap">
+      <div v-if="applyEffect === false" class="custom-input-wrap">
+        <svg width="100%" height="100%">
+          <text id="text-no-effect" x="50" y="100">
+            {{ this.customLargeLetter }}
+          </text>
+        </svg>
+      </div>
+      <div v-if="applyEffect === true" class="custom-input-wrap">
         <svg width="100%" height="100%">
           <text id="text-shadow" x="50" y="100">
             {{ this.customLargeLetter }}
@@ -81,6 +88,7 @@ export default Vue.extend({
       },
     ],
     customLargeLetter: "Hannover",
+    applyEffect: false,
   }),
   created() {
     EventBus.$on("changeFontColor", (colorId: string) => {
@@ -92,13 +100,19 @@ export default Vue.extend({
       const textarea = document.querySelector("#changed-text") as HTMLElement;
       textarea.style.fontSize = `${sizeId}`;
     }),
-      EventBus.$on("changeFont", (fontId: string) => {
+    EventBus.$on("changeFont", (fontId: string) => {
         const textarea = document.querySelector("#changed-text") as HTMLElement;
         textarea.style.fontFamily = `${fontId}`;
       }),
-      EventBus.$on("displayCustomLargeLetter", (customInput: string) => {
+    EventBus.$on("displayCustomLargeLetter", (customInput: string) => {
         this.customLargeLetter = customInput;
       });
+    EventBus.$on("applyThreeDEffect", () => {
+      this.applyEffect = true;
+    })
+    EventBus.$on("clearThreeDEffect", () => {
+      this.applyEffect = false;
+    })
   },
   props: {
     ImageId: String,
@@ -161,6 +175,13 @@ svg > text {
   stroke-width: 1px;
   fill: white;
   fill-opacity: 1;
+}
+
+#text-no-effect {
+  stroke: black;
+  stroke-width: 3px;
+  fill: white;
+  fill-opacity: 0.8;
 }
 
 .postcard-side {
