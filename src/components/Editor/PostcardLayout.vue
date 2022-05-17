@@ -128,7 +128,8 @@ export default Vue.extend({
         const textarea = document.querySelector("#changed-text") as HTMLElement;
         textarea.style.fontFamily = `${fontId}`;
       }),
-      EventBus.$on("displayCustomLargeLetter", (customInputCity: string) => {
+      EventBus.$on("displayCustomLargeLetter", (customInputCity: string, applyEffect: boolean) => {
+        this.applyEffect = applyEffect;
         this.customLargeLetter = customInputCity;
       });
     EventBus.$on("displayCustomBefore", (customInputBefore: string) => {

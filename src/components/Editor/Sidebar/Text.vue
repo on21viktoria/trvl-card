@@ -70,6 +70,7 @@ export default Vue.extend({
       customInputBefore: "Grüsse aus...",
       customInputCity: "Stadt...",
       customInputBelow: "Land...",
+      applyEffect: false
     };
   },
   name: "Text",
@@ -89,7 +90,7 @@ export default Vue.extend({
         inputCity.value = this.customInputCity;
       } else {
         console.log("Input shall be shown", this.customInputCity);
-        EventBus.$emit("displayCustomLargeLetter", this.customInputCity,);
+        EventBus.$emit("displayCustomLargeLetter", this.customInputCity, this.applyEffect);
     }
     },
     displayInputBefore() {
@@ -131,9 +132,12 @@ export default Vue.extend({
     changeEffect() {
       const checkboxEffect = document.querySelector('#initial-checkbox') as HTMLInputElement;
       if(checkboxEffect.checked) {
+        this.applyEffect = true;
         EventBus.$emit("applyThreeDEffect");
+        return this.applyEffect
       } else {
         EventBus.$emit("clearThreeDEffect")
+        return this.applyEffect = false
       }
     }
   },
