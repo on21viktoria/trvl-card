@@ -1,5 +1,6 @@
 <template>
 <div>
+  <Header></Header>
     <h1>CHECKOUT</h1>
   <div class="checkout-body">
     <div class="address">
@@ -96,8 +97,10 @@
       </v-container>
     </v-form>
     <div class="saveaddress">
-    <input type="checkbox" name="Addresse speichern" value="saveaddress" class="checkbox">
-    <label for="saveaddress">Addresse speichern</label>
+    <input class="form-check-input" type="checkbox" value="Addresse speichern" id="flexCheckDefault">
+   <label class="form-check-label" for="flexCheckDefault">
+    Addresse speichern
+  </label>
     </div>
     <div class="checkoutbuttons">
         <button type="button" class="hovereffect" id="save">SICHERN & ZURÜCK</button>
@@ -134,9 +137,11 @@
 
 <script lang='ts'>
 import Vue from 'vue';
+import Header from '../components/Header.vue'
 
 export default Vue.extend({
   name: 'Contactform',
+  components: {Header},
   data: () => ({
     valid: false,
     formOfAddress: [],
@@ -159,7 +164,7 @@ export default Vue.extend({
     country: [],
     countryRules: [(v: string) => !!v || 'Bitte gib ein Land ein.',
     ],
-    states: ['Deutschland', 'Österreich', 'Schweiz'],
+    states: ['Deutschland'],
     postalcode: '',
     postalcodeRules: [
     (v: string) => !!v || 'Bitte gib eine Postleitzahl ein.',
@@ -283,6 +288,10 @@ h2 {
     margin: 20px;
     }
 
+.saveaddress {
+  padding-left: 25px;
+}
+
 .checkoutbuttons > button {
     margin: 20px 80px 0 0;
     padding: 15px 30px 15px 30px;
@@ -297,10 +306,6 @@ h2 {
 #pay {
     background-color: black;
     color: #fff;
-}
-
-.checkbox {
-    margin: 4px 10px 4px 0px;
 }
 
 </style>

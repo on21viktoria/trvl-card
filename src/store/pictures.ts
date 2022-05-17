@@ -13,8 +13,10 @@ export default new Vuex.Store({
     currentText: "",
     textColor: "black",
     textFont: "Montserrat",
-    textSize: "12px"
+    textSize: "12px",
+    currentPreSelectedFontColor: "#ffffff",
   },
+
   mutations: {
     setCurrentPicture(state, payload) {
       state.currentPicture = payload;
@@ -33,6 +35,9 @@ export default new Vuex.Store({
     },
     setCurrentText(state, payload) {
       state.currentText = payload;
+    },
+    setCurrentPreSelectedFontColor(state, fontcolor) {
+      state.currentPreSelectedFontColor = fontcolor;
     }
   },
   actions: {
@@ -50,6 +55,9 @@ export default new Vuex.Store({
     },
     async setText(state, text) {
       state.commit("setCurrentText", text);
+    },
+    async setPreSelectedFontColor(state, fontcolor) {
+      state.commit("setCurrentPreSelectedFontColor", fontcolor);
     }
   },
   modules: {},
@@ -68,6 +76,9 @@ export default new Vuex.Store({
     },
     getCurrentText: (state) => {
       state.currentText
+    },
+    getCurrentPreSelectedFontColor: (state) => {
+      state.currentPreSelectedFontColor;
     }
   },
 });

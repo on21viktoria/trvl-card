@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Header></Header>
     <Welcome></Welcome>
     <div class="designchoice">
       <div v-for="postcard in postcards" :key="postcard.id">
@@ -13,10 +14,11 @@
 import Vue from "vue";
 import DesignChoice from "../components/HomePage/DesignChoice.vue";
 import Welcome from "../components/HomePage/Welcome.vue";
+import Header from '../components/Header.vue'
 
 export default Vue.extend({
   name: "Home",
-  components: { DesignChoice, Welcome },
+  components: { DesignChoice, Welcome, Header },
   data: () => ({
     postcards: [
       {

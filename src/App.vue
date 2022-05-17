@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <Header></Header>
+  <v-app>
     <router-view></router-view>
      <button
       type="button"
@@ -15,7 +14,7 @@
       @close="closeModal"
     />
     <Footer></Footer>
-  </div>
+  </v-app>
 </template>
 
 <script lang="ts">

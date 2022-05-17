@@ -109,12 +109,6 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-div {
-  width: 100%;
-  max-height: 800px;
-  overflow: auto;
-}
-
 .tool-title {
   font-weight: bold;
   color: #ff4e00;

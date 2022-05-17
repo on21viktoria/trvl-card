@@ -73,25 +73,23 @@ export default Vue.extend({
     ],
   }),
   created() {
-    EventBus.$on("changeFontColor", (colorId: string) => {
-      const textarea = document.querySelector("#changed-text") as HTMLElement;
-      textarea.style.color = `${colorId}`;
-    });
-    EventBus.$on("changeFontSize", (sizeId: string) => {
-      const textarea = document.querySelector("#changed-text") as HTMLElement;
-      textarea.style.fontSize = `${sizeId}`;
-    }),
-      EventBus.$on("changeFont", (fontId: string) => {
-        const textarea = document.querySelector("#changed-text") as HTMLElement;
-        textarea.style.fontFamily = `${fontId}`;
-      });
-  },
-  methods: {
-    checkText(e: any) {
-      let textValue = e;
-      this.$store.dispatch("setText", textValue);
-    },
-  },
+  EventBus.$on('changeFontColor', (colorId: string) => {
+    const textarea = document.querySelector('#changed-text') as HTMLElement;
+    textarea.style.color =`${colorId}`;
+  })
+  EventBus.$on('preselectedColor', (colorId: string) => {
+    const textarea = document.querySelector('#changed-text') as HTMLElement;
+    textarea.style.color =`${colorId}`;
+  })
+  EventBus.$on('changeFontSize', (sizeId: string) => {
+    const textarea = document.querySelector('#changed-text') as HTMLElement;
+    textarea.style.fontSize =`${sizeId}`;
+  }),
+  EventBus.$on('changeFont', (fontId: string) => {
+    const textarea = document.querySelector('#changed-text') as HTMLElement;
+    textarea.style.fontFamily = `${fontId}`;
+  })
+},
   props: {
     ImageId: String,
   },
