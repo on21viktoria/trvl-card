@@ -104,7 +104,10 @@
     </div>
     <div class="checkoutbuttons">
         <button type="button" class="hovereffect" id="save">SICHERN & ZURÜCK</button>
-        <button type="button" class="hovereffect" id="pay">ZUR ZAHLUNG</button>    
+        <b-button v-b-modal.modal-1>ZUR ZAHLUNG</b-button>  
+          <b-modal id="modal-1" title="Vielen Dank für deine Bestellung!">
+          <p class="my-4">Hello from modal!</p>
+        </b-modal>    
     </div>
     </div>
     <div class="order">
