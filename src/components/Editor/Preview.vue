@@ -28,13 +28,13 @@
           />
         </div>
         <div class="back">
-          <v-container fluid class="postcard-left-back">
+          <div class="postcard-left-back">
             <div class="divider-back"></div>
             <div class="text-wrapper">
-              <p class="postcard-left-back-text">{{currentText}}</p>
+              <p class="postcard-left-back-text">{{ currentText }}</p>
             </div>
-          </v-container>
-          <v-container fluid id="postcard-right-back">
+          </div>
+          <div class="postcard-right-back">
             <div class="frankierzone">
               <img
                 class="briefmarke"
@@ -48,17 +48,17 @@
               <hr class="address-separator" />
               <hr class="address-separator" />
             </div>
-          </v-container>
+          </div>
           <div class="codierzone">
             <p>Dieser Platz muss frei bleiben.</p>
           </div>
         </div>
       </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-primary" @click="showBack()">
-        Karte umdrehen
-      </button>
+      <div class="modal-footer">
+        <button type="button" class="button button-signup button-flip" @click="showBack()">
+          Karte umdrehen
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -128,9 +128,9 @@ export default Vue.extend({
   overflow-x: auto;
   display: flex;
   flex-direction: column;
-  width: 1200px;
-  height: calc(100vh - 60px);
-  left: calc(50% - 600px);
+  width: 80vw;
+  height: 80vh;
+  left: calc(50% - 40vw);
   opacity: 1 !important;
   border-radius: 5px;
   padding: 0;
@@ -155,6 +155,7 @@ export default Vue.extend({
 
 .modal-footer {
   border-top: 1px solid #eeeeee;
+  margin-top: 10px;
 }
 
 .modal-body {
@@ -175,11 +176,8 @@ export default Vue.extend({
   background: transparent;
 }
 
-.btn-green {
-  color: white;
-  background: #4aae9b;
-  border: 1px solid #4aae9b;
-  border-radius: 2px;
+.button-flip {
+  margin: auto;
 }
 
 .modal-fade-enter,
@@ -220,6 +218,7 @@ export default Vue.extend({
 .back {
   transform: rotateY(180deg);
   background-color: white;
+  display: flex;
 }
 
 .switch {
@@ -231,32 +230,6 @@ export default Vue.extend({
   display: block;
   width: 100%;
   height: 100%;
-}
-
-.v-input__slot {
-  width: 100% !important;
-  margin-bottom: 1px !important;
-  padding: 0 0 0 12px !important;
-}
-
-.v-textarea textarea {
-  max-width: 100% !important;
-  height: 366px !important;
-  border-right: solid rgb(112, 112, 112) 3px;
-  font-size: 14px;
-  line-height: 1.25 !important;
-}
-
-.v-text-field__details {
-  max-width: 100% !important;
-}
-
-.v-text-field.v-text-field--enclosed .v-text-field__details {
-  margin-bottom: 0px !important;
-}
-
-.theme--light.v-messages {
-  color: rgb(255, 0, 0) !important;
 }
 
 .codierzone {
@@ -290,7 +263,6 @@ export default Vue.extend({
   width: 80px;
   right: 0;
   top: 0;
-  float: right;
 }
 .address-field {
   height: 210px;
@@ -306,36 +278,32 @@ export default Vue.extend({
   margin: 30px 15px;
 }
 
-#postcard-left-back {
-  position: relative;
-  float: left;
+.postcard-left-back {
   padding: 0 !important;
-  max-width: 53% !important;
+  width: 53% !important;
   height: calc(492px - 20px - 40px - 5px);
   margin-right: 0;
   margin-left: 0;
 }
 
-#postcard-right-back {
-  float: right;
+.postcard-right-back {
   padding: 0 !important;
-  max-width: 47% !important;
+  width: 47% !important;
   margin-right: 0;
   margin-left: 0;
 }
 
 .divider-back {
   position: absolute;
-  width: 100%;
-  height: 380px;
-  /* background-color: red; */
+  width: 50%;
+  height: 80%;
   border-right: solid rgb(112, 112, 112) 3px;
-  margin-top: calc((432px - 380px) /2);
+  margin-top: calc((100% - 80%)/ 6);;
 }
 
 .text-wrapper {
   max-width: 100% !important;
-  padding: 5px;
+  padding: 5px 15px 5px 5px;
   height: calc(492px - 20px - 40px - 5px);
   z-index: 100;
   position: relative;
