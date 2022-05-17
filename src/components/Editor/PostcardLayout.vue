@@ -38,10 +38,10 @@
           <input id="postalcode-and-city" class="address-line" type="text" placeholder="Postleitzahl und Stadt">
           <v-select
           id="country"
-           v-model="defaultSelected"
+           v-model="selected"
           :items="countries"
           :menu-props="{ maxHeight: '400' }"
-          label=""
+          label="Land"
           single
         :rules="countryRules"
         required>
@@ -60,13 +60,14 @@ import { EventBus } from "@/main";
 import Vue from "vue";
 import { mapGetters, mapState } from "vuex";
 import { Recipient } from 'src/interfaces/recipient';
+import Vuetify from "vuetify/lib";
 
 export default Vue.extend({
   name: "PostcardLayout",
   components: {},
   data: () => ({
     valid: false,
-    defaultSelected: 'Deutschland',
+    selected: '',
     countryRules: [(v: string) => !!v || 'Bitte gib ein Land an.',
     ],
     countries: ['Deutschland'],
@@ -105,7 +106,7 @@ methods: {
         addition: recipientAddition.value,
         streetAndNumber: recipientStreetAndNumber.value,
         postalcodeAndCity: recipientPostalcodeAndCity.value,
-        country: "Deutschland"
+        country: this.selected
       }
       this.$store.dispatch("setRecipient", recipient)
     }
@@ -118,6 +119,7 @@ methods: {
 </script>
 
 <style>
+
 
 .image-wrap{
   position: relative;
@@ -149,12 +151,8 @@ methods: {
 .v-input__slot {
   width: 100% !important;
   margin-bottom: 1px !important;
-  padding: 0 !important;
 }
 
-.v-label.theme--light {
-  padding: 0 0 0 12px !important;
-}
 
 .v-textarea textarea {
   max-width: 100% !important;
@@ -162,7 +160,6 @@ methods: {
   border-right: solid rgb(112, 112, 112) 3px;
   font-size: 14px;
   line-height: 1.25 !important;
-  padding: 0 0 0 12px !important;
 }
 
 .v-text-field__details {
@@ -178,7 +175,7 @@ methods: {
 }
 
 .codierzone {
-  margin-top: 18px;
+  margin-top: 25px;
   width: 100%;
   background-color: rgba(112, 112, 112, 0.1);
   background-image: repeating-linear-gradient(
@@ -191,7 +188,7 @@ methods: {
 }
 
 .codierzone>p{
-  margin: 10px 0 5px;
+  margin: 5px 0 5px;
   text-align: center;
 }
 
@@ -247,13 +244,16 @@ methods: {
 </style>
 <style scoped>
 
-
 .address-line {
   height: 35px;
-  width: 200px;
+  width: 220px;
   border-bottom: 1px solid #000;
-  font-size: 14px;
+  font-size: 16px;
   color: #000;
+}
+
+.address-line::placeholder {
+  color: #707070;
 }
 
 .address-line:focus {
@@ -268,7 +268,7 @@ methods: {
   margin: 0 !important;
   padding-top: 10 !important;
   padding-bottom: 10 !important;
-  width: 200px;
+  width: 220px;
 }
 
 .v-text-field {
@@ -280,7 +280,7 @@ methods: {
 .v-input {
   padding: 0px !important;
   padding-top: 3px !important;
-  margin: 0px !important;
+  margin: 10px 0px 0px 0px !important;
   height: 35px !important;
 }
 

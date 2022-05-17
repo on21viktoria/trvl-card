@@ -13,11 +13,11 @@
             height="60"
           /> 
         </a>
+        <div class="buttons-editor-header">
         <router-link
+        class="editor-header-router-link"
       to="/checkout"
-      class="button button-signup hovereffect checkout"
-      style="color: #fff"
-      ><button type="button" @click="onClick()">Speichern & Zum Warenkorb</button></router-link
+      ><button class="button button-signup hovereffect checkout" type="button" @click="onClick()">Speichern & Zum Warenkorb</button></router-link
     >
         <div>
           <v-icon class="account hovereffect" @click="makeToast(message = 'Hier wirst du bald die Möglichkeit haben, in deinen Account zu gelangen. Bitte hab noch ein bisschen Geduld.', options = {
@@ -29,6 +29,7 @@
           <a class="helpanchor hovereffect" href="https://docs.google.com/document/d/1wn9SLNurX8Eh4nTQ9y6VwFonR0hPe_QoJ0DXVWa6SGs/edit"><v-icon>mdi-help-circle-outline</v-icon></a> 
         </div>
       </div>
+    </div>
     </div>
   </header>
 </template>
@@ -57,11 +58,21 @@ export default Vue.extend({
 });
 </script>
 
-<style>
+<style scoped>
+
+.buttons-editor-header {
+  display: flex !important;
+  justify-content: flex-end !important;
+}
 .checkout {
- float: right;
  position: relative;
  margin-right: 20px;
  margin-left: auto;
 }
+
+.editor-header-router-link {
+  padding: 0px;
+  margin: 0px;
+}
+
 </style>
