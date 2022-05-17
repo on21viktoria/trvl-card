@@ -12,10 +12,10 @@ export default new Vuex.Store({
     currentTemplate: "",
     currentRecipient: {
       name: "",
-  addition: "",
-  streetAndNumber: "",
-  postalcodeAndCity: "",
-  country: ""
+      addition: "",
+      streetAndNumber: "",
+      postalcodeAndCity: "",
+      country: ""
   }
   },
   mutations: {
@@ -53,25 +53,24 @@ export default new Vuex.Store({
     },
     async setRecipient(state, recipient) {
       state.commit("setCurrentRecipient", recipient);
-      console.log(recipient)
     }
   },
   modules: {},
   getters: {
     getCurrentPicture: (state) => {
-      state.currentPicture;
+      return state.currentPicture;
     },
     getCurrentBackgroundColor: (state) => {
-      state.currentBackgroundColor;
+      return state.currentBackgroundColor;
     },
     getCurrentSticker: (state) => {
-      state.currentSticker;
+      return state.currentSticker;
     },
     getCurrentTemplate: (state) => {
-      state.currentTemplate;
+      return state.currentTemplate;
     },
     getCurrentRecipient: (state) => {
-      state.currentRecipient;
+      return state.currentRecipient;
     },
   },
 });

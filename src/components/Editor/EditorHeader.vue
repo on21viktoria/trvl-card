@@ -14,14 +14,14 @@
           /> 
         </a>
         <div class="buttons-editor-header">
+          <button type="button" class="button button-login hovereffect address" @click="onClick()">Empfängeradresse speichern</button>
         <router-link
         class="editor-header-router-link"
       to="/checkout"
-      event
-      @click.native.capture="handleClick()"
-      ><button class="button button-signup hovereffect checkout" type="button" @click="onClick();makeToast(message = 'Bitte gib eine Empfängeraddresse an, damit deine Postkarte auch ankommt.', options = {
-          title: 'Du hast keine Empfängeradresse eingegeben!',
-          autoHideDelay: 5000, appendToast: append})">Speichern & Zum Warenkorb</button></router-link
+      v-bind:class="{disabled: isActive}"
+      >
+      
+      <button class="button button-signup hovereffect checkout" type="button">Zum Warenkorb</button></router-link
     >
         <div>
           <v-icon class="account hovereffect" @click="makeToast(message = 'Hier wirst du bald die Möglichkeit haben, in deinen Account zu gelangen. Bitte hab noch ein bisschen Geduld.', options = {
@@ -42,36 +42,39 @@
 /* eslint-disable */
 import { EventBus } from '@/main';
 import Vue from 'vue';
-import { mapState, mapGetters } from 'vuex';
 
 export default Vue.extend({
   name: 'EditorHeader',
   data() {
     return {
+      isActive: true,
       message: '',
       options: {}
     }
   },
   methods: {
-    handleClick(event: Event) {
-      console.log("In this method")
-      console.log(this.$store.getters.getCurrentRecipient)
-      if (this.$store.getters.getCurrentRecipient === undefined) {
-        event.stopPropagation()
-        } else { console.log("Somethings in the recipient") };
-    },
+    async handleClick() {
+      let currentRecipient = this.$store.getters.getCurrentRecipient;
+      if (currentRecipient.name === ""
+      || currentRecipient.streetAndNumber === "" || currentRecipient.postalcodeAndCity === "" || currentRecipient.country === "") {
+        this.isActive = true;
+        this.$bvToast.toast(this.message = 'Oder deine Empfängeradresse ist nicht vollständig. Bitte gib eine Empfängeraddresse an, damit deine Postkarte auch ankommt.', this.options = {
+          title: 'Du hast keine Empfängeradresse eingegeben!',
+          autoHideDelay: 5000})
+        } else { 
+          this.isActive = false
+    }},
       makeToast() {
         this.$bvToast.toast(this.message, this.options)
       },
       onClick() {
         EventBus.$emit('changeRecipient');
+        this.handleClick();
       },
     },
-    created() {
-      EventBus.$on('changeRecipient', async () => {await this.handleClick})
-    },
-    computed: {...mapState(["currentRecipient"]), ...mapGetters(['getCurrentRecipient'])
-    }
+    /* created() {
+      EventBus.$on('checkAddress', () => {this.handleClick()})
+    }, */
 });
 </script>
 
@@ -94,4 +97,12 @@ a.editor-header-router-link {
   width: auto;
 }
 
+.address {
+  margin-top: 12px !important;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
 </style>

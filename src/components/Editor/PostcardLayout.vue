@@ -44,7 +44,8 @@
           label="Land"
           single
         :rules="countryRules"
-        required>
+        required
+        >
         </v-select>
         </div>
       </v-container>
