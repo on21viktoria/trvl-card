@@ -17,21 +17,43 @@
         />
       </div>
       <div v-if="applyEffect === false" class="custom-input-wrap">
-        <svg width="100%" height="100%">
-          <text id="text-no-effect" x="20" y="100" textLength="520" lengthAdjust="spacingAndGlyphs">
+        <p class="additional-text" id="ontop">{{ customTextBefore }}</p>
+        <svg width="100%" id="custom-input-svg">
+          <text
+            id="text-no-effect"
+            x="20"
+            y="100"
+            textLength="520"
+            lengthAdjust="spacingAndGlyphs"
+          >
             {{ this.customLargeLetter }}
           </text>
         </svg>
+        <p class="additional-text" id="below">{{ customTextBelow }}</p>
       </div>
       <div v-if="applyEffect === true" class="custom-input-wrap">
-        <svg width="100%" height="100%">
-          <text id="text-shadow" x="20" y="100" textLength="520" lengthAdjust="spacingAndGlyphs">
+        <p class="additional-text" id="ontop">{{ customTextBefore }}</p>
+        <svg width="100%" id="custom-input-svg">
+          <text
+            id="text-shadow"
+            x="20"
+            y="100"
+            textLength="520"
+            lengthAdjust="spacingAndGlyphs"
+          >
             {{ this.customLargeLetter }}
           </text>
-          <text id="text-top" x="20" y="100" textLength="520" lengthAdjust="spacingAndGlyphs">
+          <text
+            id="text-top"
+            x="20"
+            y="100"
+            textLength="520"
+            lengthAdjust="spacingAndGlyphs"
+          >
             {{ this.customLargeLetter }}
           </text>
         </svg>
+        <p class="additional-text" id="below">{{ customTextBelow }}</p>
       </div>
     </div>
 
@@ -87,7 +109,9 @@ export default Vue.extend({
         }
       },
     ],
-    customLargeLetter: "Hannover",
+    customLargeLetter: "",
+    customTextBefore: "",
+    customTextBelow: "",
     applyEffect: false,
   }),
   created() {
@@ -100,19 +124,30 @@ export default Vue.extend({
       const textarea = document.querySelector("#changed-text") as HTMLElement;
       textarea.style.fontSize = `${sizeId}`;
     }),
-    EventBus.$on("changeFont", (fontId: string) => {
+      EventBus.$on("changeFont", (fontId: string) => {
         const textarea = document.querySelector("#changed-text") as HTMLElement;
         textarea.style.fontFamily = `${fontId}`;
       }),
-    EventBus.$on("displayCustomLargeLetter", (customInput: string) => {
-        this.customLargeLetter = customInput;
+      EventBus.$on("displayCustomLargeLetter", (customInputCity: string) => {
+        this.customLargeLetter = customInputCity;
       });
+    EventBus.$on("displayCustomBefore", (customInputBefore: string) => {
+      this.customTextBefore = customInputBefore;
+    });
+    EventBus.$on("displayCustomBelow", (customInputBelow: string) => {
+      this.customTextBelow = customInputBelow;
+    });
+    EventBus.$on("clearCustomText", (customInputCity: string, customInputBefore: string, customInputBelow:string) => {
+      this.customLargeLetter = customInputCity;
+      this.customTextBefore = customInputBefore;
+      this.customTextBelow = customInputBelow;
+    })
     EventBus.$on("applyThreeDEffect", () => {
       this.applyEffect = true;
-    })
+    });
     EventBus.$on("clearThreeDEffect", () => {
       this.applyEffect = false;
-    })
+    });
   },
   props: {
     ImageId: String,
@@ -145,12 +180,18 @@ export default Vue.extend({
   top: 0;
   left: 0;
   margin: 10px 10px;
-  padding: 150px 20px 150px 20px;
+  /* padding: 100px 20px 100px 20px; */
   width: 600px;
   height: 420px;
   display: block;
   background-color: transparent;
-  z-index: 100; ;
+  z-index: 100;
+}
+
+#custom-input-svg {
+  position: absolute;
+  top: 150px;
+  left: 20px;
 }
 
 svg > text {
@@ -185,6 +226,28 @@ svg > text {
   stroke-width: 3px;
   fill: white;
   fill-opacity: 0.8;
+}
+
+.additional-text {
+  margin: 0 !important;
+  font-size: 25px;
+  font-family: "Permanent Marker";
+}
+
+.additional-text#ontop {
+  content: "";
+  position: absolute;
+  top: 135px;
+  left: 20px;
+  margin-bottom: 20px;
+}
+
+.additional-text#below {
+  content: "";
+  position: absolute;
+  top: 255px;
+  right: 20px;
+  margin-bottom: 20px;
 }
 
 .postcard-side {

@@ -4,17 +4,36 @@
     <p class="subtitle">Vorderseite der Postkarte</p>
     <v-divider id="divider-sidebar"></v-divider>
     <p>
-      Dein Urlaubsort ist nicht in unserer Sammlung dabei? <br />Dann gebe hier
-      deinen Ort ein:
+      Du möchtest deine Postkarte individualisieren? <br />Dann gebe hier
+      deinen individuellen Text ein:
     </p>
     <div class="input-container">
       <input
-        id="front-input-field"
+        class="front-input-field"
+        id="input-field-before"
         type="text"
         placeholder="Grüsse aus..."
         aria-label="Grüße aus..."
         aria-describedby="basic-addon2"
-        @input="displayInput()"
+        @input="displayInputBefore()"
+      />
+      <input
+        class="front-input-field"
+        id="input-field-city"
+        type="text"
+        placeholder="Stadt..."
+        aria-label="Stadt..."
+        aria-describedby="basic-addon2"
+        @input="displayInputCity()"
+      />
+      <input
+        class="front-input-field"
+        id="input-field-below"
+        type="text"
+        placeholder="Land..."
+        aria-label="Land..."
+        aria-describedby="basic-addon2"
+        @input="displayInputBelow()"
       />
       <p id="display-paragraph">Keinen Text:</p>
       <img
@@ -48,7 +67,9 @@ import { EventBus } from "@/main";
 export default Vue.extend({
   data() {
     return {
-      customInput: "Grüsse aus...",
+      customInputBefore: "Grüsse aus...",
+      customInputCity: "Stadt...",
+      customInputBelow: "Land...",
     };
   },
   name: "Text",
@@ -59,28 +80,53 @@ export default Vue.extend({
   },
   props: {},
   methods: {
-    displayInput() {
-      const inputElement = document.querySelector(
-        "#front-input-field"
-      ) as HTMLInputElement;
-      this.customInput = inputElement.value;
-      if (this.customInput === "") {
-        this.customInput = "";
-        console.log("Input shall not be displayed", this.customInput);
-        EventBus.$emit("displayCustomLargeLetter", this.customInput);
+    displayInputCity() {
+      const inputCity = document.querySelector("#input-field-city") as HTMLInputElement;
+      this.customInputCity = inputCity.value;
+      if (this.customInputCity === "") {
+        this.customInputCity = "";
+        EventBus.$emit("displayCustomLargeLetter", this.customInputCity);
+        inputCity.value = this.customInputCity;
       } else {
-        inputElement.value = this.customInput;
-        console.log("Input shall be shown", this.customInput);
-        EventBus.$emit("displayCustomLargeLetter", this.customInput);
+        console.log("Input shall be shown", this.customInputCity);
+        EventBus.$emit("displayCustomLargeLetter", this.customInputCity,);
+    }
+    },
+    displayInputBefore() {
+      const inputBefore = document.querySelector("#input-field-before") as HTMLInputElement;
+      this.customInputBefore = inputBefore.value;
+      if (this.customInputBefore === "") {
+        this.customInputBefore = "";
+        EventBus.$emit("displayCustomBefore", this.customInputBefore);
+        inputBefore.value = this.customInputBefore;
+      } else {
+        console.log("Input shall be shown", this.customInputCity);
+        EventBus.$emit("displayCustomBefore", this.customInputBefore);
+      }
+    },
+    displayInputBelow() {
+      const inputBelow = document.querySelector("#input-field-below") as HTMLInputElement;
+      this. customInputBelow = inputBelow.value;
+      if (this.customInputBelow === "") {
+        this.customInputBelow = "";
+        EventBus.$emit("displayCustomBelow", this.customInputBelow);
+        inputBelow.value = this.customInputBelow;
+      } else {
+        console.log("Input shall be shown", this.customInputBelow);
+        EventBus.$emit("displayCustomBelow", this.customInputBelow);
       }
     },
     clearInput() {
-      const inputElement = document.querySelector(
-        "#front-input-field"
-      ) as HTMLInputElement;
-      inputElement.value = "";
-      this.customInput = "";
-      EventBus.$emit("displayCustomLargeLetter", this.customInput);
+      const inputCity = document.querySelector("#input-field-city") as HTMLInputElement;
+      const inputBefore = document.querySelector("#input-field-before") as HTMLInputElement;
+      const inputBelow = document.querySelector("#input-field-below") as HTMLInputElement;
+      inputCity.value = "";
+      inputBefore.value = "";
+      inputBelow.value = "";
+      this.customInputCity = "";
+      this.customInputBefore = "";
+      this.customInputBelow = "";
+      EventBus.$emit("clearCustomText", this.customInputCity, this.customInputBefore, this.customInputBelow);
     },
     changeEffect() {
       const checkboxEffect = document.querySelector('#initial-checkbox') as HTMLInputElement;
@@ -114,9 +160,9 @@ export default Vue.extend({
   flex-wrap: wrap;
 }
 
-#front-input-field {
+.front-input-field {
   width: 100%;
-  margin: 0 8px 5px 0;
+  margin: 0 8px 10px 0;
   padding: 6px 28px 6px 12px;
   font-family: "Montserrat", sans-serif;
   font-size: 13px;
@@ -126,7 +172,7 @@ export default Vue.extend({
     0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
 }
 
-#front-input-field:focus-visible {
+.front-input-field:focus-visible {
   outline: none;
 }
 
