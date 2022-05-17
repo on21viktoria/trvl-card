@@ -70,5 +70,8 @@ export default new Vuex.Store({
     getCurrentTemplate: (state) => {
       state.currentTemplate;
     },
+    getCurrentRecipient: (state) => {
+      state.currentRecipient;
+    },
   },
 });

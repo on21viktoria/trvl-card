@@ -17,7 +17,11 @@
         <router-link
         class="editor-header-router-link"
       to="/checkout"
-      ><button class="button button-signup hovereffect checkout" type="button" @click="onClick()">Speichern & Zum Warenkorb</button></router-link
+      event
+      @click.native.capture="handleClick()"
+      ><button class="button button-signup hovereffect checkout" type="button" @click="onClick();makeToast(message = 'Bitte gib eine Empfängeraddresse an, damit deine Postkarte auch ankommt.', options = {
+          title: 'Du hast keine Empfängeradresse eingegeben!',
+          autoHideDelay: 5000, appendToast: append})">Speichern & Zum Warenkorb</button></router-link
     >
         <div>
           <v-icon class="account hovereffect" @click="makeToast(message = 'Hier wirst du bald die Möglichkeit haben, in deinen Account zu gelangen. Bitte hab noch ein bisschen Geduld.', options = {
@@ -38,6 +42,7 @@
 /* eslint-disable */
 import { EventBus } from '@/main';
 import Vue from 'vue';
+import { mapState, mapGetters } from 'vuex';
 
 export default Vue.extend({
   name: 'EditorHeader',
@@ -48,12 +53,24 @@ export default Vue.extend({
     }
   },
   methods: {
+    handleClick(event: Event) {
+      console.log("In this method")
+      console.log(this.$store.getters.getCurrentRecipient)
+      if (this.$store.getters.getCurrentRecipient === undefined) {
+        event.stopPropagation()
+        } else { console.log("Somethings in the recipient") };
+    },
       makeToast() {
         this.$bvToast.toast(this.message, this.options)
       },
       onClick() {
         EventBus.$emit('changeRecipient');
-      }
+      },
+    },
+    created() {
+      EventBus.$on('changeRecipient', async () => {await this.handleClick})
+    },
+    computed: {...mapState(["currentRecipient"]), ...mapGetters(['getCurrentRecipient'])
     }
 });
 </script>
@@ -70,9 +87,11 @@ export default Vue.extend({
  margin-left: auto;
 }
 
-.editor-header-router-link {
+a.editor-header-router-link {
   padding: 0px;
-  margin: 0px;
+  margin-top: 12px;
+  height: fit-content;
+  width: auto;
 }
 
 </style>
