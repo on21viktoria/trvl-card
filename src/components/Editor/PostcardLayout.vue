@@ -18,17 +18,17 @@
       </div>
       <div v-if="applyEffect === false" class="custom-input-wrap">
         <svg width="100%" height="100%">
-          <text id="text-no-effect" x="50" y="100">
+          <text id="text-no-effect" x="20" y="100" textLength="520" lengthAdjust="spacingAndGlyphs">
             {{ this.customLargeLetter }}
           </text>
         </svg>
       </div>
       <div v-if="applyEffect === true" class="custom-input-wrap">
         <svg width="100%" height="100%">
-          <text id="text-shadow" x="50" y="100">
+          <text id="text-shadow" x="20" y="100" textLength="520" lengthAdjust="spacingAndGlyphs">
             {{ this.customLargeLetter }}
           </text>
-          <text id="text-top" x="50" y="100">
+          <text id="text-top" x="20" y="100" textLength="520" lengthAdjust="spacingAndGlyphs">
             {{ this.customLargeLetter }}
           </text>
         </svg>
@@ -134,8 +134,10 @@ export default Vue.extend({
 }
 
 .svg-image {
-  position: relative;
-  z-index: 20;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 200;
 }
 
 .custom-input-wrap {
@@ -143,11 +145,12 @@ export default Vue.extend({
   top: 0;
   left: 0;
   margin: 10px 10px;
+  padding: 150px 20px 150px 20px;
   width: 600px;
   height: 420px;
   display: block;
   background-color: transparent;
-  z-index: 100;
+  z-index: 100; ;
 }
 
 svg > text {
