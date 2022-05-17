@@ -90,6 +90,7 @@
         id="orange"
         @click="preselectedInputColor('orange')"
       ></div>
+      <img class="no-background-img" @click="preselectedInputColor('transparent')" src="../../../assets/platzhalter/no_Background.png" alt="Platzhalter">
     </div>
     <p class="subtitle">Rückseite der Postkarte</p>
     <v-divider id="divider-sidebar"></v-divider>
@@ -119,6 +120,7 @@ export default Vue.extend({
         { value: "#0f0f96", id: "blue" },
         { value: "#1da2a9", id: "turquoise" },
         { value: "#ff4e00", id: "orange" },
+        { value: "transparent", id: "transparent" }
       ],
     };
   },
