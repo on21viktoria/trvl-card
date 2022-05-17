@@ -104,10 +104,21 @@
     </div>
     <div class="checkoutbuttons">
         <button type="button" class="hovereffect" id="save">SICHERN & ZURÜCK</button>
-        <b-button v-b-modal.modal-1>ZUR ZAHLUNG</b-button>  
-          <b-modal id="modal-1" title="Vielen Dank für deine Bestellung!">
-          <p class="my-4">Hello from modal!</p>
-        </b-modal>    
+          <b-button class="hovereffect" v-b-modal.modal-center id="finish" ok-only>BESTELLUNG ABSENDEN</b-button>
+          <b-modal id="modal-center" centered title="Vielen Dank für deine Bestellung!">
+          <p class="my-4">Dein Auftrag ist bei uns eingegangen und wird umgehend bearbeitet. Der Versand dauert aktuell im Durchschnitt 2-3 Werktage.</p>
+                <template #modal-footer>
+                  <div class="w-100">
+                  <b-button
+                    variant="primary"
+                    size="sm"
+                    class="float-left"
+                    @click="show=false"
+                  > Schließen & zur Startseite
+                  </b-button>
+                  </div>
+      </template>
+          </b-modal>
     </div>
     </div>
     <div class="order">
@@ -306,9 +317,21 @@ h2 {
    border: 1px solid black; 
 }
 
+#finish {
+  background-color: black;
+}
+
 #pay {
     background-color: black;
     color: #fff;
+}
+
+.modal-title {
+  text-align: center;
+}
+
+.modal-header {
+  justify-content: center;
 }
 
 </style>
