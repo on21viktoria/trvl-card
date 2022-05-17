@@ -11,7 +11,9 @@
         />
         <img v-if="currentSticker !==''" :src="require(`./../../assets/${currentSticker}`)" class="svg-image"/>
       </div>
+      <div class="custom-input-wrap"></div>
     </div>
+    
     <div class="postcard-side" id="back">
       <v-container fluid id="container-rückseite-links">
         <v-textarea id="changed-text"
@@ -95,6 +97,17 @@ export default Vue.extend({
   left: 0;
   z-index: 20;
 }
+
+.custom-input-wrap {
+  /* position: absolute; */
+  width: 600px;
+  height: 420px;
+  display: block;
+  margin: 10px auto;
+  background-color: aqua;
+  z-index: 1;
+}
+
 .postcard-side {
   position: relative;
   background-color: rgb(255, 255, 255);
@@ -105,11 +118,15 @@ export default Vue.extend({
 }
 
 .image-front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
   width: 600px;
   height: 420px;
   border: solid 1px rgb(112, 112, 112);
   display: block;
-  margin: 10px auto;
+  margin: 10px 10px;
 }
 
 .v-input__slot {
