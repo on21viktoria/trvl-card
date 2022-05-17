@@ -85,6 +85,11 @@ export default Vue.extend({
     textarea.style.color =`${colorId}`;
     console.log("In PostcardLayout", colorId)
   })
+  EventBus.$on('preselectedColor', (colorId: string) => {
+    const textarea = document.querySelector('#changed-text') as HTMLElement;
+    textarea.style.color =`${colorId}`;
+    console.log("In PostcardLayout", colorId)
+  })
   EventBus.$on('changeFontSize', (sizeId: string) => {
     const textarea = document.querySelector('#changed-text') as HTMLElement;
     textarea.style.fontSize =`${sizeId}`;
@@ -174,7 +179,7 @@ methods: {
 }
 
 .codierzone {
-  margin-top: 15px;
+  margin-top: 5px;
   width: 100%;
   background-color: rgba(112, 112, 112, 0.1);
   background-image: repeating-linear-gradient(

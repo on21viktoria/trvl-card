@@ -16,8 +16,10 @@ export default new Vuex.Store({
       streetAndNumber: "",
       postalcodeAndCity: "",
       country: ""
-  }
   },
+    currentPreSelectedFontColor: "#ffffff",
+  },
+
   mutations: {
     setCurrentPicture(state, payload) {
       state.currentPicture = payload;
@@ -37,6 +39,9 @@ export default new Vuex.Store({
     setCurrentRecipient(state, payload) {
       state.currentRecipient = payload;
     },
+    setCurrentPreSelectedFontColor(state, fontcolor) {
+      state.currentPreSelectedFontColor = fontcolor;
+    }
   },
   actions: {
     async setPicture(state, picture) {
@@ -53,6 +58,9 @@ export default new Vuex.Store({
     },
     async setRecipient(state, recipient) {
       state.commit("setCurrentRecipient", recipient);
+    },
+    async setPreSelectedFontColor(state, fontcolor) {
+      state.commit("setCurrentPreSelectedFontColor", fontcolor);
     }
   },
   modules: {},
@@ -72,5 +80,8 @@ export default new Vuex.Store({
     getCurrentRecipient: (state) => {
       return state.currentRecipient;
     },
+    getCurrentPreSelectedFontColor: (state) => {
+      state.currentPreSelectedFontColor;
+    }
   },
 });

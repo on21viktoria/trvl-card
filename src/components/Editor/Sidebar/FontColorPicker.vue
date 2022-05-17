@@ -1,37 +1,34 @@
 <template>
-  <div id="background-div">
-    <p class="tool-title">Hintergrund</p>
-     <p class="background-title">Hintergrundfarbe wählen</p>
-    <div class="backgroundcolorpicker-container">
-      <p class="backgroundcolor-choice">Freie Farbwahl:</p>
+  <div class="fontcolor-container">
+    <p class="fontcolor-title">Schriftfarbe wählen</p>
+    <div class="fontcolorpicker-container">
+      <p class="fontcolor-choice">Freie Farbwahl:</p>
       <input
         type="color"
-        id="selection-color"
+        id="fontcolor-picker"
         name="color-selection"
-        :value="currentBackgroundColor"
-        @input="changeColor()"
+        :value="currentPreSelectedFontColor"
+        @input="changeColorNew()"
       />
     </div>
     <p>Unsere trvl card Empfehlungen:</p>
-    <div class="backgroundcolor-suggestions">
+    <div class="fontcolor-suggestions">
       <div class="suggestion" id="black" @click="preselectedColor('black')"></div>
       <div class="suggestion" id="grey" @click="preselectedColor('grey')"></div>
       <div class="suggestion" id="blue" @click="preselectedColor('blue')"></div>
       <div class="suggestion" id="turquoise" @click="preselectedColor('turquoise')"></div>
       <div class="suggestion" id="orange" @click="preselectedColor('orange')"></div>
-        <img class="no-background-img" @click="preselectedColor('transparent')" src="../../../assets/platzhalter/no_Background.png" alt="Platzhalter">
     </div>
-    <!-- <p class="tool-title">Suche</p>
-    <v-text-field label="Suche" solo prepend-inner-icon="mdi-magnify"></v-text-field>-->
   </div>
 </template>
 
 <script lang="ts">
+import { EventBus } from "@/main";
 import Vue from "vue";
-import { mapState } from "vuex";
+import { mapGetters, mapState } from "vuex";
 
 export default Vue.extend({
-  name: "Background",
+  name: "FontColorPicker",
   data() {
     return {
       preselectedColors: [
@@ -40,62 +37,33 @@ export default Vue.extend({
         { value: "#0f0f96", id: "blue" },
         { value: "#1da2a9", id: "turquoise" },
         { value: "#ff4e00", id: "orange" },
-        { value: "#ffffff", id: "transparent" },
       ],
-    }
+    };
   },
   methods: {
-    changeColor() {
-      let colorselector = document.getElementById(
-        "selection-color"
+    changeColorNew() {
+      let fontcolorPicker = document.getElementById(
+        "fontcolor-picker"
       ) as HTMLInputElement;
-      this.$store.dispatch("setBackgroundColor", colorselector.value);
+      EventBus.$emit("changeFontColor", fontcolorPicker.value);
+      this.$store.dispatch("setPreSelectedFontColor", fontcolorPicker.value)
     },
     preselectedColor(suggestionId: string){
         for (let choice of this.preselectedColors){
             if(choice.id === suggestionId) {
-                this.$store.dispatch("setBackgroundColor", choice.value)
-                console.log("in preselected function", choice.value)
+                EventBus.$emit("preselectedColor", choice.value);
+                this.$store.dispatch("setPreSelectedFontColor", choice.value)
                 return
             }
         }
     }
   },
-  computed: {...mapState(["currentBackgroundColor"])}
+  computed: {...mapState(["currentPreSelectedFontColor"])}
 });
 </script>
 
 <style scoped>
-#background-div {
-  width: 100%;
-  max-height: 800px;
-  overflow: none !important;
-}
-.Photogrid {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: auto;
-  column-gap: 10px;
-  row-gap: 10px;
-  padding: 10px;
-}
-
-img:hover {
-  opacity: 30%;
-}
-
-.tool-title {
-  font-weight: bold;
-  font-size: 18px;
-  color: #ff4e00;
-  margin-bottom: 8px;
-  text-align: center;
-}
-.tool-title.subtitle {
-  font-size: 16px;
-}
-
-.backgroundcolorpicker-container {
+.fontcolorpicker-container {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -103,14 +71,14 @@ img:hover {
   height: 40px;
 }
 
-.backgroundcolor-choice {
+.fontcolor-choice {
   position: relative;
   display: inline-block;
   margin-right: 10px;
   line-height: 30px;
 }
 
-#selection-color {
+#fontcolor-picker {
   /* display: inline-block; */
   margin-top: 5px;
   width: 70px;
@@ -122,16 +90,17 @@ img:hover {
   border: none;
 }
 
-#selection-color::-webkit-color-swatch-wrapper {
+#fontcolor-picker::-webkit-color-swatch-wrapper {
 padding: 0;
 }
 
-#selection-color::-webkit-color-swatch {
+#fontcolor-picker::-webkit-color-swatch {
 border: 0.5px solid grey;
 border-radius: 5px;
 }
 
-.backgroundcolor-suggestions {
+
+.fontcolor-suggestions {
   display: flex;
 }
 
@@ -175,18 +144,7 @@ p {
 
 #orange {
   background-color: #ff4e00;
-  margin-right: 2px;
   cursor: pointer;
   border-radius: 4px !important;
 }
-
-.no-background-img {
-  position: relative;
-  width: 20px;
-  height: 20px;
-  border: 0.5px solid white;
-  cursor: pointer;
-
-}
-</style>
 </style>

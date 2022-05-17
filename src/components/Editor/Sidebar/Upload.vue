@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="upload-div">
     <p class="tool-title">Upload</p>
     <p>
       Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus
@@ -29,6 +29,11 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+.upload-div {
+  width: 100%;
+  max-height: 800px;
+  overflow: auto;
+}
 .tool-title {
   font-weight: bold;
   font-size: 18px;
