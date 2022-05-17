@@ -185,6 +185,10 @@ background-color: #e7e7e6;
   background-color: #ff4e00;
 }
 
+.btn:focus {
+ box-shadow: none;
+}
+
 .card{
   border: none;
   padding: 0;
