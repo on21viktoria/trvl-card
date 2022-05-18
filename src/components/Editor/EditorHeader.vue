@@ -19,7 +19,7 @@
             to="/checkout"
             class="button button-signup hovereffect checkout"
             style="color: #fff"
-            >Speichern & Zum Warenkorb</router-link
+            ><button type="button" @click="savePostcard">Speichern & Zum Warenkorb</button></router-link
           >
           <div>
             <v-icon
@@ -69,6 +69,7 @@
 /* eslint-disable */
 import Vue from "vue";
 import Preview from "./Preview.vue";
+import { EventBus } from "@/main";
 
 export default Vue.extend({
   name: "EditorHeader",
@@ -90,6 +91,9 @@ export default Vue.extend({
     closeModal() {
       this.isModalVisible = false;
     },
+    savePostcard() {
+      EventBus.$emit('savePostcard');
+    }
   },
 });
 </script>

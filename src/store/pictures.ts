@@ -15,6 +15,7 @@ export default new Vuex.Store({
     textFont: "Montserrat",
     textSize: "12px",
     currentPreSelectedFontColor: "#ffffff",
+    currentPostcard: '',
   },
 
   mutations: {
@@ -38,6 +39,9 @@ export default new Vuex.Store({
     },
     setCurrentPreSelectedFontColor(state, fontcolor) {
       state.currentPreSelectedFontColor = fontcolor;
+    },
+    setCurrentPostcard(state, postcard) {
+      state.currentPostcard = postcard;
     }
   },
   actions: {
@@ -58,6 +62,9 @@ export default new Vuex.Store({
     },
     async setPreSelectedFontColor(state, fontcolor) {
       state.commit("setCurrentPreSelectedFontColor", fontcolor);
+    },
+    async setPostcard (state, postcard) {
+      state.commit("setCurrentPostcard", postcard);
     }
   },
   modules: {},

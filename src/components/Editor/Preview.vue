@@ -67,10 +67,13 @@
   </div>
 </template>
 
+
+<script src="Scripts/html2canvas.js" type="text/javascript"></script>
 <script lang="ts">
 import { EventBus } from "@/main";
 import Vue from "vue";
 import { mapState } from "vuex";
+import html2canvas from 'html2canvas';
 
 export default Vue.extend({
   name: "Preview",
@@ -114,7 +117,17 @@ export default Vue.extend({
         this.front = true;
       }
     },
-  },
+    saveImage() {
+      console.log("I'm called")
+      let postcard;
+      // const postcard = document.querySelector('modal-body') as HTMLDivElement;
+	    html2canvas(document.body).then(function(canvas) {
+      document.body.appendChild(canvas); 
+      console.log(canvas);
+      postcard = canvas;
+})
+this.$store.dispatch("setPostcard", postcard);},
+ },
   computed: {
     ...mapState([
       "currentPicture",
@@ -124,7 +137,9 @@ export default Vue.extend({
       "currentText",
     ]),
   },
-});
+  created() {
+  EventBus.$on('savePostcard', () => { this.saveImage() })
+}})
 </script>
 
 <style scoped>

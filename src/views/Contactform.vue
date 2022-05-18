@@ -129,6 +129,7 @@
             <li>0,80€</li>
             <li id="totalprice">4,30€</li>
         </ul>
+        <div id="test"></div>
         </div>
         </div>
         </div>
