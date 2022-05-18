@@ -13,11 +13,15 @@
             height="60"
           /> 
         </a>
+        <div class="buttons-editor-header">
+          <button type="button" class="button button-login hovereffect address" @click="onClick()">Empfängeradresse speichern</button>
         <router-link
+        class="editor-header-router-link"
       to="/checkout"
-      class="button button-signup hovereffect checkout"
-      style="color: #fff"
-      >Speichern & Zum Warenkorb</router-link
+      v-bind:class="{disabled: isActive}"
+      >
+      
+      <button class="button button-signup hovereffect checkout" type="button">Zum Warenkorb</button></router-link
     >
         <div>
           <v-icon class="account hovereffect" @click="makeToast(message = 'Hier wirst du bald die Möglichkeit haben, in deinen Account zu gelangen. Bitte hab noch ein bisschen Geduld.', options = {
@@ -30,34 +34,75 @@
         </div>
       </div>
     </div>
+    </div>
   </header>
 </template>
 
 <script lang="ts">
 /* eslint-disable */
+import { EventBus } from '@/main';
 import Vue from 'vue';
 
 export default Vue.extend({
   name: 'EditorHeader',
   data() {
     return {
+      isActive: true,
       message: '',
       options: {}
     }
   },
   methods: {
+    async handleClick() {
+      let currentRecipient = this.$store.getters.getCurrentRecipient;
+      if (currentRecipient.name === ""
+      || currentRecipient.streetAndNumber === "" || currentRecipient.postalcodeAndCity === "" || currentRecipient.country === "") {
+        this.isActive = true;
+        this.$bvToast.toast(this.message = 'Oder deine Empfängeradresse ist nicht vollständig. Bitte gib eine Empfängeraddresse an, damit deine Postkarte auch ankommt.', this.options = {
+          title: 'Du hast keine Empfängeradresse eingegeben!',
+          autoHideDelay: 5000})
+        } else { 
+          this.isActive = false
+    }},
       makeToast() {
         this.$bvToast.toast(this.message, this.options)
-      }
-    }
+      },
+      onClick() {
+        EventBus.$emit('changeRecipient');
+        this.handleClick();
+      },
+    },
+    /* created() {
+      EventBus.$on('checkAddress', () => {this.handleClick()})
+    }, */
 });
 </script>
 
-<style>
+<style scoped>
+
+.buttons-editor-header {
+  display: flex !important;
+  justify-content: flex-end !important;
+}
 .checkout {
- float: right;
  position: relative;
  margin-right: 20px;
  margin-left: auto;
+}
+
+a.editor-header-router-link {
+  padding: 0px;
+  margin-top: 12px;
+  height: fit-content;
+  width: auto;
+}
+
+.address {
+  margin-top: 12px !important;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.6;
 }
 </style>

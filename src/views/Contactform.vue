@@ -4,7 +4,7 @@
     <h1>CHECKOUT</h1>
   <div class="checkout-body">
     <div class="address">
-    <h2>Empfängeradresse eingeben</h2>
+    <h2>Absenderadresse</h2>
     <v-form v-model="valid">
       <v-container class="formcontainer">
 
@@ -197,7 +197,7 @@ export default Vue.extend({
 
 <style scoped>
 * {
-    font-family: Montserrat, sans-serif;
+    font-family: Montserrat, sans-serif !important;
 }
 
 .checkout-body {
