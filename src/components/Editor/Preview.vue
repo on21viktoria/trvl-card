@@ -67,8 +67,6 @@
   </div>
 </template>
 
-
-<script src="Scripts/html2canvas.js" type="text/javascript"></script>
 <script lang="ts">
 import { EventBus } from "@/main";
 import Vue from "vue";

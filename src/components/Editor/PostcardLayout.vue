@@ -58,6 +58,7 @@ import { EventBus } from "@/main";
 import Vue from "vue";
 import { mapState } from "vuex";
 import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 
 export default Vue.extend({
   name: "PostcardLayout",
@@ -99,13 +100,15 @@ methods: {
   },
   saveImage() {
       console.log("I'm called")
-      const postcard = document.querySelector('#postcard-snapshot') as HTMLElement;
-      const test = document.getElementById('test') as HTMLDivElement;
       let newPostcard;
+      const postcard = document.querySelector('#postcard-snapshot') as HTMLElement;
 	    html2canvas(postcard).then(function(canvas) {
-      console.log(canvas);
-      document.body.appendChild(canvas);
-      newPostcard = canvas;
+        console.log(canvas)
+      let postcardImg = canvas.toDataURL('postcard/jpeg', 1.0);
+      newPostcard = postcardImg;
+      let pdf = new jsPDF('portrait', 'px', [628.5, 502]);
+      pdf.addImage(postcardImg, 'JPEG', 0, 0, 628.5, 502);
+      pdf.save("a4.pdf")
 })
 this.$store.dispatch("setPostcard", newPostcard);
 console.log("State:" + this.$store.getters.getCurrentPostcard)},

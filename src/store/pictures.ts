@@ -15,7 +15,7 @@ export default new Vuex.Store({
     textFont: "Montserrat",
     textSize: "12px",
     currentPreSelectedFontColor: "#ffffff",
-    currentPostcard: '',
+    currentPostcard: "",
   },
 
   mutations: {

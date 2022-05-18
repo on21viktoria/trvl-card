@@ -182,16 +182,7 @@ export default Vue.extend({
     (v: string) => !!v || 'Bitte gib eine Hausnummer ein.', 
     ]
   }),
-  /* methods: {
-    async appendPostcard() {
-      let currentPostcard = document.createElement('canvas');
-      const test = document.getElementById('test') as HTMLDivElement;
-      currentPostcard.outerHTML = this.$store.getters.getCurrentPostcard;
-      test?.appendChild(currentPostcard);
-  }, created() {
-    EventBus.$on('savePostcard', () => { this.appendPostcard() } )
-  }
-} */})
+  })
 </script>
 
 <style scoped>
