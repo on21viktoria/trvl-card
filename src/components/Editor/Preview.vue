@@ -135,7 +135,8 @@ export default Vue.extend({
   display: flex;
   flex-direction: column;
   width: 60vw;
-  height: 80vh;
+  max-height: 70vh;
+  top: calc(50% - 45vh);
   left: calc(50% - 30vw);
   opacity: 1 !important;
   border-radius: 5px;
