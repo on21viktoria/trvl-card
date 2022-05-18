@@ -33,7 +33,7 @@ export default Vue.extend({
     }, */
     {
         id: "large-letter",
-        title: "Zum Postkarteneditor",
+        title: "Zum Postkarten-Editor",
         text: "Starte jetzt mit der Gestaltung deiner invididuellen Postkarte.",
         image: "LargeLetterDesign_Berlin.jpg"
     }
