@@ -36,7 +36,7 @@ export default Vue.extend({
 
 <style scoped>
 .slidercontainer {
-  margin: 50px 0px 50px 0px;
+  margin: 10px 0px 10px 0px;
 }
 
 #slider {
