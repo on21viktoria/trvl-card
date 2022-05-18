@@ -16,6 +16,9 @@
         <div class="buttons">
           <form class="searchbar">
           <input
+          @focus="makeToast(message = 'Aber wir arbeiten für dich schon an diesem Feature.', options = {
+          title: 'Unsere Seite hat leider noch keine Suchfunktion!',
+          autoHideDelay: 5000, appendToast: append})"
             type="search"
             class="inputfield"
             placeholder="Suche..."
