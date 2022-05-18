@@ -240,7 +240,7 @@ methods: {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 200;
+  z-index: 20;
 }
 
 .custom-input-wrap {
