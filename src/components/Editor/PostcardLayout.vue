@@ -57,8 +57,8 @@
 import { EventBus } from "@/main";
 import Vue from "vue";
 import { mapState } from "vuex";
-import html2canvas from 'html2canvas';
-import { jsPDF } from 'jspdf';
+import html2canvas from "html2canvas";
+import { jsPDF } from "jspdf";
 
 export default Vue.extend({
   name: "PostcardLayout",
@@ -75,44 +75,48 @@ export default Vue.extend({
     ],
   }),
   created() {
-  EventBus.$on('changeFontColor', (colorId: string) => {
-    const textarea = document.querySelector('#changed-text') as HTMLElement;
-    textarea.style.color =`${colorId}`;
-  })
-  EventBus.$on('preselectedColor', (colorId: string) => {
-    const textarea = document.querySelector('#changed-text') as HTMLElement;
-    textarea.style.color =`${colorId}`;
-  })
-  EventBus.$on('changeFontSize', (sizeId: string) => {
-    const textarea = document.querySelector('#changed-text') as HTMLElement;
-    textarea.style.fontSize =`${sizeId}`;
-  }),
-  EventBus.$on('changeFont', (fontId: string) => {
-    const textarea = document.querySelector('#changed-text') as HTMLElement;
-    textarea.style.fontFamily = `${fontId}`;
-  }),
-   EventBus.$on('savePostcard', () => { this.saveImage() })
-},
-methods: {
-  checkText(e: any) {
-    let textvalue = e;
-    this.$store.dispatch("setText", textvalue)
+    EventBus.$on("changeFontColor", (colorId: string) => {
+      const textarea = document.querySelector("#changed-text") as HTMLElement;
+      textarea.style.color = `${colorId}`;
+    });
+    EventBus.$on("preselectedColor", (colorId: string) => {
+      const textarea = document.querySelector("#changed-text") as HTMLElement;
+      textarea.style.color = `${colorId}`;
+    });
+    EventBus.$on("changeFontSize", (sizeId: string) => {
+      const textarea = document.querySelector("#changed-text") as HTMLElement;
+      textarea.style.fontSize = `${sizeId}`;
+    }),
+      EventBus.$on("changeFont", (fontId: string) => {
+        const textarea = document.querySelector("#changed-text") as HTMLElement;
+        textarea.style.fontFamily = `${fontId}`;
+      }),
+      EventBus.$on("savePostcard", () => {
+        this.saveImage();
+      });
   },
-  saveImage() {
-      console.log("I'm called")
-      let newPostcard;
-      const postcard = document.querySelector('#postcard-snapshot') as HTMLElement;
-	    html2canvas(postcard).then(function(canvas) {
-        console.log(canvas)
-      let postcardImg = canvas.toDataURL('postcard/jpeg', 1.0);
-      newPostcard = postcardImg;
-      let pdf = new jsPDF('portrait', 'px', [628.5, 502]);
-      pdf.addImage(postcardImg, 'JPEG', 0, 0, 628.5, 502);
-      pdf.save("a4.pdf")
-})
-this.$store.dispatch("setPostcard", newPostcard);
-console.log("State:" + this.$store.getters.getCurrentPostcard)},
-},
+  methods: {
+    checkText(e: any) {
+      let textvalue = e;
+      this.$store.dispatch("setText", textvalue);
+    },
+    saveImage() {
+      console.log("I'm called");
+      const postcard = document.querySelector(
+        "#postcard-snapshot"
+      ) as HTMLElement;
+      let postcardImg: string;
+      html2canvas(postcard)
+        .then(function (canvas) {
+          console.log(canvas);
+          postcardImg = canvas.toDataURL("postcard/jpeg", 1.0);
+        })
+        .then(() => {
+          this.$store.dispatch("setPostcard", postcardImg);
+          console.log("State:" + this.$store.getters.getCurrentPostcard);
+        });
+    },
+  },
   props: {
     ImageId: String,
   },

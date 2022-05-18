@@ -104,7 +104,8 @@
     </div>
     <div class="checkoutbuttons">
         <button type="button" class="hovereffect" id="save">SICHERN & ZURÜCK</button>
-        <button type="button" class="hovereffect" id="pay">ZUR ZAHLUNG</button>    
+        <button type="button" class="hovereffect" id="pay">ZUR ZAHLUNG</button> 
+        <button type="button" @click="convertPostcard">Bestellung absenden</button>   
     </div>
     </div>
     <div class="order">
@@ -140,6 +141,7 @@
 import Vue from 'vue';
 import Header from '../components/Header.vue';
 import { EventBus}  from '@/main';
+import { jsPDF } from 'jspdf';
 
 export default Vue.extend({
   name: 'Contactform',
@@ -182,6 +184,14 @@ export default Vue.extend({
     (v: string) => !!v || 'Bitte gib eine Hausnummer ein.', 
     ]
   }),
+  methods: {
+    convertPostcard() {
+      let currentImageData = this.$store.getters.getCurrentPostcard
+      let pdf = new jsPDF('portrait', 'px', [628.5, 502]);
+      pdf.addImage(currentImageData, 'JPEG', 0, 0, 628.5, 502);
+      pdf.save("a4.pdf")
+    }
+  }
   })
 </script>
 
