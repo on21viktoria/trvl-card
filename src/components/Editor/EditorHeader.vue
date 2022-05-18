@@ -105,4 +105,8 @@ a.editor-header-router-link {
   pointer-events: none;
   opacity: 0.6;
 }
+
+.header {
+  z-index: 900;
+}
 </style>
