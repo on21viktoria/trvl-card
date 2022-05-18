@@ -166,7 +166,6 @@ export default Vue.extend({
       "currentBackgroundColor",
       "currentSticker",
       "currentTemplate",
-      "currentInputColor"
     ]),
   },
 });

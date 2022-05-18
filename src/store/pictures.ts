@@ -11,6 +11,9 @@ export default new Vuex.Store({
     currentSticker: "",
     currentTemplate: "",
     currentInputColor: "",
+    currentCustomInputCity: "",
+    currentCustomInputBefore: "",
+    currentCustomInputBelow: "",
   },
   mutations: {
     setCurrentPicture(state, payload) {
@@ -30,7 +33,16 @@ export default new Vuex.Store({
     },
     setCurrentInputColor(state, payload) {
       state.currentInputColor = payload
-    }
+    },
+    setCustomInputCity (state, payload) {
+      state.currentCustomInputCity = payload
+    },
+    setCustomInputBefore (state, payload) {
+      state.currentCustomInputBefore = payload
+    },
+    setCustomInputBelow (state, payload) {
+      state.currentCustomInputBelow = payload
+    },
   },
   actions: {
     async setPicture(state, picture) {
@@ -47,6 +59,15 @@ export default new Vuex.Store({
     },
     async setInputColor(state, inputColor) {
       state.commit("setCurrentInputColor", inputColor)
+    },
+    async displayCustomLargeLetter(state, customInputCity) {
+      state.commit("setCurrentCustomInputCity", customInputCity)
+    },
+    async displayCustomBefore(state, customInputBefore) {
+      state.commit("setCurrentCustomInputBefore", customInputBefore)
+    },
+    async displayCustomBelow(state, customInputBelow) {
+      state.commit("setCurrentCustomInputBelow", customInputBelow)
     }
   },
   modules: {},

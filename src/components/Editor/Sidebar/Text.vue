@@ -138,14 +138,12 @@ export default Vue.extend({
       if (this.customInputCity === "") {
         this.customInputCity = "";
         EventBus.$emit("displayCustomLargeLetter", this.customInputCity);
+        this.$store.dispatch("displayCustomLargeLetter", this.customInputCity)
         inputCity.value = this.customInputCity;
       } else {
         console.log("Input shall be shown", this.customInputCity);
-        EventBus.$emit(
-          "displayCustomLargeLetter",
-          this.customInputCity,
-          this.applyEffect
-        );
+        EventBus.$emit("displayCustomLargeLetter", this.customInputCity,this.applyEffect);
+        this.$store.dispatch("displayCustomLargeLetter", this.customInputCity)
       }
     },
     displayInputBefore() {
@@ -156,10 +154,12 @@ export default Vue.extend({
       if (this.customInputBefore === "") {
         this.customInputBefore = "";
         EventBus.$emit("displayCustomBefore", this.customInputBefore);
+        this.$store.dispatch("displayCustomBefore", this.customInputBefore)
         inputBefore.value = this.customInputBefore;
       } else {
         console.log("Input shall be shown", this.customInputCity);
         EventBus.$emit("displayCustomBefore", this.customInputBefore);
+        this.$store.dispatch("displayCustomBefore", this.customInputBefore)
       }
     },
     displayInputBelow() {
@@ -170,10 +170,12 @@ export default Vue.extend({
       if (this.customInputBelow === "") {
         this.customInputBelow = "";
         EventBus.$emit("displayCustomBelow", this.customInputBelow);
+        this.$store.dispatch("displayCustomBelow", this.customInputBelow);
         inputBelow.value = this.customInputBelow;
       } else {
         console.log("Input shall be shown", this.customInputBelow);
         EventBus.$emit("displayCustomBelow", this.customInputBelow);
+        this.$store.dispatch("displayCustomBelow", this.customInputBelow);
       }
     },
     clearInput() {
@@ -217,7 +219,7 @@ export default Vue.extend({
         "inputcolor-picker"
       ) as HTMLInputElement;
       EventBus.$emit("changeInputColor", inputcolorPicker.value);
-      this.$store.dispatch("setInputColor", inputcolorPicker.value);
+      // this.$store.dispatch("setInputColor", inputcolorPicker.value);
     },
     preselectedInputColor(colorId: string) {
       console.log("in preselectedInputcolor")
