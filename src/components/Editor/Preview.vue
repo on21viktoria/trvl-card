@@ -43,10 +43,11 @@
               />
             </div>
             <div class="address-field">
-              <hr class="address-separator" />
-              <hr class="address-separator" />
-              <hr class="address-separator" />
-              <hr class="address-separator" />
+              <p>{{ recipient.name }}</p>
+              <p>{{ recipient.addition }}</p>
+              <p>{{ recipient.streetAndNumber }}</p>
+              <p>{{ recipient.postalcodeAndCity }}</p>
+              <p>{{ recipient.country }}</p>
             </div>
           </div>
           <div class="codierzone">
@@ -71,12 +72,14 @@
 import { EventBus } from "@/main";
 import Vue from "vue";
 import { mapState } from "vuex";
+import { Recipient } from "./../../interfaces/recipient";
 
 export default Vue.extend({
   name: "Preview",
   data() {
     return {
       front: true,
+      recipient: {},
     };
   },
   mounted() {
@@ -93,6 +96,12 @@ export default Vue.extend({
       console.log(fontId);
       textarea.style.fontFamily = `${fontId}`;
     });
+    console.log("Hello");
+    this.recipient = this.$store.getters.getCurrentRecipient;
+    console.log(this.recipient);
+  },
+  unmounted() {
+
   },
   methods: {
     close() {
@@ -105,7 +114,6 @@ export default Vue.extend({
     },
     showBack() {
       let postcard = document.getElementById("postcard");
-      console.log(this.front);
       if (this.front) {
         postcard?.classList.add("switch");
         this.front = false;
@@ -122,6 +130,7 @@ export default Vue.extend({
       "currentSticker",
       "currentTemplate",
       "currentText",
+      "currentRecipient"
     ]),
   },
 });
@@ -316,6 +325,11 @@ export default Vue.extend({
   position: relative;
 }
 
+.address-field > p {
+  margin: 0 30px 10px 0;
+  border-bottom: solid 1px black;
+  padding-left: 5px;
+}
 .text-wrapper > p {
   margin-top: 0;
 }
