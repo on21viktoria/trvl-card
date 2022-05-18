@@ -14,6 +14,13 @@ export default new Vuex.Store({
     textColor: "black",
     textFont: "Montserrat",
     textSize: "12px",
+    currentRecipient: {
+      name: "",
+      addition: "",
+      streetAndNumber: "",
+      postalcodeAndCity: "",
+      country: ""
+  },
     currentPreSelectedFontColor: "#ffffff",
   },
 
@@ -36,6 +43,9 @@ export default new Vuex.Store({
     setCurrentText(state, payload) {
       state.currentText = payload;
     },
+    setCurrentRecipient(state, payload) {
+      state.currentRecipient = payload;
+    },
     setCurrentPreSelectedFontColor(state, fontcolor) {
       state.currentPreSelectedFontColor = fontcolor;
     }
@@ -56,6 +66,9 @@ export default new Vuex.Store({
     async setText(state, text) {
       state.commit("setCurrentText", text);
     },
+    async setRecipient(state, recipient) {
+      state.commit("setCurrentRecipient", recipient);
+    },
     async setPreSelectedFontColor(state, fontcolor) {
       state.commit("setCurrentPreSelectedFontColor", fontcolor);
     }
@@ -63,16 +76,19 @@ export default new Vuex.Store({
   modules: {},
   getters: {
     getCurrentPicture: (state) => {
-      state.currentPicture;
+      return state.currentPicture;
     },
     getCurrentBackgroundColor: (state) => {
-      state.currentBackgroundColor;
+      return state.currentBackgroundColor;
     },
     getCurrentSticker: (state) => {
-      state.currentSticker;
+      return state.currentSticker;
     },
     getCurrentTemplate: (state) => {
-      state.currentTemplate;
+      return state.currentTemplate;
+    },
+    getCurrentRecipient: (state) => {
+      return state.currentRecipient;
     },
     getCurrentText: (state) => {
       state.currentText

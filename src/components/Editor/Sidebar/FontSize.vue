@@ -1,56 +1,72 @@
 <template>
-<div class="fontcolor-selection-container">
-<b-form-select
- id="fontcolor-selection"
- v-model="selected" 
- :options="options" 
- @change="changeFontSize()">
-</b-form-select>
-</div>
+    <div class="slidercontainer">
+      <p>Schriftgröße wählen:</p>
+      <b-form-input
+        id="slider"
+        type="range"
+        min="12"
+        max="24"
+        v-model="sliderValue"
+        @change="changeFontSize()"
+      ></b-form-input>
+      <div id="rangeValue">Ausgewählte Schriftgröße: {{ sliderValue }}pt</div>
+    </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import {EventBus} from "@/main";
+import { EventBus } from "@/main";
 
 export default Vue.extend({
   name: "FontSize",
   data() {
-      return {
-        selected: null,
-        options: [
-          { value: null, text: 'Bitte wähle eine Schriftgröße.' },
-          { value: '12px', text: '12px' },
-          { value: '14px', text: '14px' },
-          { value: '18px', text: '18px' },
-          { value: '20px', text: '20px' },
-          { value: '24px', text: '24px' },
-        ],
-        sizeId: '',
-        }
-    },
-    methods: {
+    return {
+      sliderValue: 12,
+    };
+  },
+  methods: {
     changeFontSize() {
-    this.sizeId = `${this.selected}`;
-    EventBus.$emit('changeFontSize', this.sizeId);
+      const fontSize = this.sliderValue + "pt";
+      console.log("Size has been selected", fontSize);
+      EventBus.$emit("changeFontSize", fontSize);
     },
-      }
-    }
-);
+  },
+});
 </script>
 
 <style scoped>
-#fontcolor-selection {
-    position: relative;
-    width: 100%;
-    background-color:rgba(112, 112, 112, 0.1) ;
-    font-family: 'Montserrat', sans-serif;
-    border-radius: 5px !important;
-    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-    font-size: 13px;
+.slidercontainer {
+  margin: 50px 0px 50px 0px;
 }
 
-.fontcolor-selection-container {
-  margin-bottom: 15px;
+#slider {
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  height: 10px;
+  background: #d3d3d3;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  border-radius: 2px;
+  width: 100%;
+}
+
+#slider:hover {
+  opacity: 1;
+}
+
+#slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 17px;
+  height: 17px;
+  background: #ff4e00;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+#rangeValue {
+  margin-top: 15px;
 }
 </style>

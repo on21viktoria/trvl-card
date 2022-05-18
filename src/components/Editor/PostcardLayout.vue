@@ -40,10 +40,41 @@
           />
         </div>
         <div class="address-field">
-          <hr class="address-separator" />
-          <hr class="address-separator" />
-          <hr class="address-separator" />
-          <hr class="address-separator" />
+          <input
+            id="name"
+            class="address-line"
+            type="text"
+            placeholder="Empfänger*in"
+          />
+          <input
+            id="addition"
+            class="address-line"
+            type="text"
+            placeholder="Zusatz"
+          />
+          <input
+            id="street-and-number"
+            class="address-line"
+            type="text"
+            placeholder="Straße und Hausnummer"
+          />
+          <input
+            id="postalcode-and-city"
+            class="address-line"
+            type="text"
+            placeholder="Postleitzahl und Stadt"
+          />
+          <v-select
+            id="country"
+            v-model="selected"
+            :items="countries"
+            :menu-props="{ maxHeight: '400' }"
+            label="Land"
+            single
+            :rules="countryRules"
+            required
+          >
+          </v-select>
         </div>
       </v-container>
       <div class="codierzone">
@@ -56,12 +87,18 @@
 <script lang="ts">
 import { EventBus } from "@/main";
 import Vue from "vue";
-import { mapState } from "vuex";
+import { mapGetters, mapState } from "vuex";
+import { Recipient } from "src/interfaces/recipient";
+import Vuetify from "vuetify/lib";
 
 export default Vue.extend({
   name: "PostcardLayout",
   components: {},
   data: () => ({
+    valid: false,
+    selected: "",
+    countryRules: [(v: string) => !!v || "Bitte gib ein Land an."],
+    countries: ["Deutschland"],
     rules: [
       (v: string | any[]) => {
         if (v) {
@@ -73,29 +110,54 @@ export default Vue.extend({
     ],
   }),
   created() {
-  EventBus.$on('changeFontColor', (colorId: string) => {
-    const textarea = document.querySelector('#changed-text') as HTMLElement;
-    textarea.style.color =`${colorId}`;
-  })
-  EventBus.$on('preselectedColor', (colorId: string) => {
-    const textarea = document.querySelector('#changed-text') as HTMLElement;
-    textarea.style.color =`${colorId}`;
-  })
-  EventBus.$on('changeFontSize', (sizeId: string) => {
-    const textarea = document.querySelector('#changed-text') as HTMLElement;
-    textarea.style.fontSize =`${sizeId}`;
-  }),
-  EventBus.$on('changeFont', (fontId: string) => {
-    const textarea = document.querySelector('#changed-text') as HTMLElement;
-    textarea.style.fontFamily = `${fontId}`;
-  })
-},
-methods: {
-  checkText(e: any) {
-    let textvalue = e;
-    this.$store.dispatch("setText", textvalue)
-  }
-},
+    EventBus.$on("changeFontColor", (colorId: string) => {
+      const textarea = document.querySelector("#changed-text") as HTMLElement;
+      textarea.style.color = `${colorId}`;
+    });
+    EventBus.$on("preselectedColor", (colorId: string) => {
+      const textarea = document.querySelector("#changed-text") as HTMLElement;
+      textarea.style.color = `${colorId}`;
+    });
+    EventBus.$on("changeFontSize", (sizeId: string) => {
+      const textarea = document.querySelector("#changed-text") as HTMLElement;
+      textarea.style.fontSize = `${sizeId}`;
+    }),
+      EventBus.$on("changeFont", (fontId: string) => {
+        const textarea = document.querySelector("#changed-text") as HTMLElement;
+        textarea.style.fontFamily = `${fontId}`;
+      }),
+      EventBus.$on("changeRecipient", () => {
+        this.changeRecipient();
+      });
+  },
+  methods: {
+    checkText(e: any) {
+      let textvalue = e;
+      this.$store.dispatch("setText", textvalue);
+    },
+
+    changeRecipient() {
+      const recipientName = document.getElementById("name") as HTMLInputElement;
+      const recipientAddition = document.getElementById(
+        "addition"
+      ) as HTMLInputElement;
+      const recipientStreetAndNumber = document.getElementById(
+        "street-and-number"
+      ) as HTMLInputElement;
+      const recipientPostalcodeAndCity = document.getElementById(
+        "postalcode-and-city"
+      ) as HTMLInputElement;
+      let recipient: Recipient;
+      recipient = {
+        name: recipientName.value,
+        addition: recipientAddition.value,
+        streetAndNumber: recipientStreetAndNumber.value,
+        postalcodeAndCity: recipientPostalcodeAndCity.value,
+        country: this.selected,
+      };
+      this.$store.dispatch("setRecipient", recipient);
+    },
+  },
   props: {
     ImageId: String,
   },
@@ -105,6 +167,7 @@ methods: {
       "currentBackgroundColor",
       "currentSticker",
       "currentTemplate",
+      "currentRecipient",
     ]),
   },
 });
@@ -141,7 +204,6 @@ methods: {
 .v-input__slot {
   width: 100% !important;
   margin-bottom: 1px !important;
-  padding: 0 0 0 12px !important;
 }
 
 .v-textarea textarea {
@@ -165,6 +227,7 @@ methods: {
 }
 
 .codierzone {
+  margin-top: 5px;
   width: 100%;
   background-color: rgba(112, 112, 112, 0.1);
   background-image: repeating-linear-gradient(
@@ -177,7 +240,7 @@ methods: {
 }
 
 .codierzone > p {
-  margin: 10px 0 5px;
+  margin: 5px 0 5px;
   text-align: center;
 }
 
@@ -198,6 +261,7 @@ methods: {
   height: 210px;
   width: 100%;
   padding-top: 25px;
+  padding-left: 25px;
 }
 
 .address-separator {
@@ -226,5 +290,44 @@ methods: {
   display: flex;
   flex-wrap: wrap;
   padding: 5px;
+}
+</style>
+<style scoped>
+.address-line {
+  height: 35px;
+  width: 220px;
+  border-bottom: 1px solid #000;
+  font-size: 16px;
+  color: #000;
+}
+
+.address-line::placeholder {
+  color: #707070;
+}
+
+.address-line:focus {
+  outline: 0 !important;
+}
+
+.v-select__selections {
+  padding: 0 !important;
+}
+
+.v-select {
+  margin: 0 !important;
+  padding-top: 10 !important;
+  padding-bottom: 10 !important;
+  width: 220px;
+}
+
+.v-text-field {
+  margin: 0 !important;
+}
+
+.v-input theme--light v-text-field v-text-field--is-booted v-select {
+  padding: 0px !important;
+  padding-top: 3px !important;
+  margin: 10px 0px 0px 0px !important;
+  height: 35px !important;
 }
 </style>
