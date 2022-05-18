@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="textedit-container">
     <p class="tool-title">Text</p>
     <p class="subtitle">Vorderseite der Postkarte</p>
     <v-divider id="divider-sidebar"></v-divider>
@@ -91,11 +91,13 @@
         @click="preselectedInputColor('orange')"
       ></div>
     </div>
-    <p class="subtitle">Rückseite der Postkarte</p>
+    <p class="subtitle" id="subtitle-back">Rückseite der Postkarte</p>
     <v-divider id="divider-sidebar"></v-divider>
     <FontChoice></FontChoice>
+        <v-divider id="divider-sidebar"></v-divider>
     <FontSize></FontSize>
-    <FontColor></FontColor>
+        <v-divider id="divider-sidebar"></v-divider>
+    <FontColorPicker></FontColorPicker>
   </div>
 </template>
 
@@ -103,8 +105,9 @@
 import Vue from "vue";
 import FontSize from "./FontSize.vue";
 import FontChoice from "./FontChoice.vue";
-import FontColor from "./temp.vue";
+// import FontColor from "./temp.vue";
 import { EventBus } from "@/main";
+import FontColorPicker from "./FontColorPicker.vue"
 
 export default Vue.extend({
   data() {
@@ -126,7 +129,7 @@ export default Vue.extend({
   components: {
     FontSize,
     FontChoice,
-    FontColor,
+    FontColorPicker
   },
   props: {},
   methods: {
@@ -237,6 +240,12 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+#textedit-container {
+  width: 100%;
+  max-height: 800px;
+  overflow: none !important;
+}
+
 .tool-title {
   font-weight: bold;
   font-size: 18px;
@@ -248,6 +257,12 @@ export default Vue.extend({
   font-size: 15px;
   text-align: center;
   margin-bottom: 0;
+  color: #ff4e00;
+  font-weight: bold;
+}
+
+#subtitle-back {
+  margin-top: 20px;
 }
 
 .input-container {

@@ -14,7 +14,16 @@ export default new Vuex.Store({
     currentCustomInputCity: "",
     currentCustomInputBefore: "",
     currentCustomInputBelow: "",
+    currentRecipient: {
+      name: "",
+      addition: "",
+      streetAndNumber: "",
+      postalcodeAndCity: "",
+      country: ""
   },
+    currentPreSelectedFontColor: "#ffffff",
+  },
+
   mutations: {
     setCurrentPicture(state, payload) {
       state.currentPicture = payload;
@@ -43,6 +52,12 @@ export default new Vuex.Store({
     setCustomInputBelow (state, payload) {
       state.currentCustomInputBelow = payload
     },
+    setCurrentRecipient(state, payload) {
+      state.currentRecipient = payload;
+    },
+    // setCurrentPreSelectedFontColor(state, fontcolor) {
+    //   state.currentPreSelectedFontColor = fontcolor;
+    // }
   },
   actions: {
     async setPicture(state, picture) {
@@ -68,21 +83,33 @@ export default new Vuex.Store({
     },
     async displayCustomBelow(state, customInputBelow) {
       state.commit("setCurrentCustomInputBelow", customInputBelow)
-    }
+    },
+    async setRecipient(state, recipient) {
+      state.commit("setCurrentRecipient", recipient);
+    },
+    // async setPreSelectedFontColor(state, fontcolor) {
+    //   state.commit("setCurrentPreSelectedFontColor", fontcolor);
+    // }
   },
   modules: {},
   getters: {
     getCurrentPicture: (state) => {
-      state.currentPicture;
+      return state.currentPicture;
     },
     getCurrentBackgroundColor: (state) => {
-      state.currentBackgroundColor;
+      return state.currentBackgroundColor;
     },
     getCurrentSticker: (state) => {
-      state.currentSticker;
+      return state.currentSticker;
     },
     getCurrentTemplate: (state) => {
-      state.currentTemplate;
+      return state.currentTemplate;
     },
+    getCurrentRecipient: (state) => {
+      return state.currentRecipient;
+    },
+    // getCurrentPreSelectedFontColor: (state) => {
+    //   state.currentPreSelectedFontColor;
+    // }
   },
 });

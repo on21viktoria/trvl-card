@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="photo-div">
     <p class="tool-title">Fotos</p>
     <p class="tool-title subtitle">Bildauswahl</p>
 
@@ -10,7 +10,7 @@
     <div class="accordion" role="tablist">
       <b-card no-body class="mb-1">
         <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-button block v-b-toggle.accordion-berlin variant="info"
+          <b-button block v-b-toggle.accordion-berlin variant="info" 
             >Berlin</b-button
           >
         </b-card-header>
@@ -135,7 +135,7 @@
 
       <b-card no-body class="mb-1">
         <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-button block v-b-toggle.accordion-heidelberg variant="info"
+          <b-button block v-b-toggle.accordion-heidelberg variant="info" id="buttonChange"
             >Heidelberg</b-button
           >
         </b-card-header>
@@ -222,7 +222,7 @@
 
       <b-card no-body class="mb-1">
         <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-button block v-b-toggle.accordion-koeln variant="info"
+          <b-button block v-b-toggle.accordion-koeln variant="info" id="buttonChange"
             >Köln</b-button
           >
         </b-card-header>
@@ -491,6 +491,11 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+.photo-div {
+  width: 100%;
+  max-height: 800px;
+  overflow: auto;
+}
 .card-body {
   display: grid !important;
   grid-template-columns: 50% 50% !important;
@@ -526,6 +531,10 @@ img:hover {
 
 .btn:hover {
   background-color: #ff4e00;
+}
+
+.btn:focus {
+  box-shadow: none;
 }
 
 .card {

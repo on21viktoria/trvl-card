@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="sticker-div">
     <p class="tool-title">Sticker</p>
 
   <img id="emptyImage" src="./../../../assets/platzhalter/leer_mit_strich.png" width="30%"
@@ -144,6 +144,11 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+.sticker-div {
+  width: 100%;
+  max-height: 800px;
+  overflow: auto;
+}
 .card-body{
   display: grid !important;
   grid-template-columns: 50% 50% !important;
@@ -183,6 +188,10 @@ background-color: #e7e7e6;
 
 .btn:hover {
   background-color: #ff4e00;
+}
+
+.btn:focus {
+ box-shadow: none;
 }
 
 .card{

@@ -4,7 +4,7 @@
     <h1>CHECKOUT</h1>
   <div class="checkout-body">
     <div class="address">
-    <h2>Empfängeradresse eingeben</h2>
+    <h2>Absenderadresse</h2>
     <v-form v-model="valid">
       <v-container class="formcontainer">
 
@@ -104,7 +104,19 @@
     </div>
     <div class="checkoutbuttons">
         <button type="button" class="hovereffect" id="save">SICHERN & ZURÜCK</button>
-        <button type="button" class="hovereffect" id="pay">ZUR ZAHLUNG</button>    
+          <button type="button" class="hovereffect" v-b-modal.modal-center id="finish" ok-only>BESTELLUNG ABSENDEN</button>
+          <b-modal id="modal-center" centered title="Vielen Dank für deine Bestellung!">
+          <p class="my-4">Dein Auftrag ist bei uns eingegangen und wird umgehend bearbeitet. Der Versand dauert aktuell im Durchschnitt 2-3 Werktage.</p>
+                <template #modal-footer>
+                  <div class="w-100">
+                  <b-button id="saveAndBack"
+                    size="sm"
+                    href="/"
+                  > Schließen & zur Startseite
+                  </b-button>
+                  </div>
+      </template>
+          </b-modal>
     </div>
     </div>
     <div class="order">
@@ -132,16 +144,18 @@
         </div>
         </div>
         </div>
+        <Footer></Footer>
     </div>
 </template>
 
 <script lang='ts'>
 import Vue from 'vue';
+import Footer from "../components/Footer.vue"
 import Header from '../components/Header.vue'
 
 export default Vue.extend({
   name: 'Contactform',
-  components: {Header},
+  components: {Header, Footer},
   data: () => ({
     valid: false,
     formOfAddress: [],
@@ -185,7 +199,7 @@ export default Vue.extend({
 
 <style scoped>
 * {
-    font-family: Montserrat, sans-serif;
+    font-family: Montserrat, sans-serif !important;
 }
 
 .checkout-body {
@@ -303,9 +317,23 @@ h2 {
    border: 1px solid black; 
 }
 
+#finish {
+  background-color: black;
+  color: white;
+}
+
 #pay {
     background-color: black;
     color: #fff;
+}
+
+#saveAndBack {
+  background-color: #ff4e00!important;
+  border-color: #ff4e00;
+}
+
+.container.formcontainer {
+  margin-left: 0px !important;
 }
 
 </style>
