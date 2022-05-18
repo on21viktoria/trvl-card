@@ -1,5 +1,5 @@
 <template>
-  <div class="card" style="width: 30rem">
+  <div class="card">
     <img :src="image" class="card-img-top" alt="..." />
     <div class="card-body">
       <h5 class="card-title">{{ title }}</h5>
@@ -23,3 +23,12 @@ export default Vue.extend({
   }
 });
 </script>
+
+<style scoped>
+
+.card {
+  width: 25rem;
+  height: auto;
+}
+
+</style>

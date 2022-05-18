@@ -116,6 +116,10 @@ export default Vue.extend({
   bottom: 0;
   width: 100%;
   font-size: 12px;
+  border-top: 1px solid #dee2e6 !important;
+    border-top-width: 1px !important;
+    border-top-style: solid !important;
+    border-top-color: rgb(222, 226, 230) !important;
 }
 
 .btn-primary {
