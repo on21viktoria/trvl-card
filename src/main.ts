@@ -8,7 +8,8 @@ import VueRouter from "vue-router";
 import Home from "./views/Home.vue";
 import Editor from "./views/Editor.vue";
 import Contactform from "./views/Contactform.vue";
-import store from './store/pictures'
+import store from './store/pictures';
+
 
 Vue.config.productionTip = false;
 export const EventBus = new Vue();
@@ -30,3 +31,4 @@ new Vue({
   store,
   render: (h) => h(App),
 }).$mount("#app");
+
