@@ -179,6 +179,9 @@ export default Vue.extend({
     EventBus.$on("changeInputColor", (inputColor: string) => {
       this.currentInputColor = inputColor;
     });
+    EventBus.$on("preselectedInputColor", (inputColor: string) => {
+      this.currentInputColor = inputColor;
+    });
     EventBus.$on('changeRecipient', () => { this.changeRecipient() })
 },
   // EventBus.$on('changeFontColor', (colorId: string) => {
