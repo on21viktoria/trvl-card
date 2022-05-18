@@ -86,6 +86,9 @@ export default new Vuex.Store({
     },
     getCurrentPreSelectedFontColor: (state) => {
       state.currentPreSelectedFontColor;
+    },
+    getCurrentPostcard: (state) => {
+      return state.currentPostcard;
     }
   },
 });

@@ -129,8 +129,8 @@
             <li>0,80€</li>
             <li id="totalprice">4,30€</li>
         </ul>
-        <div id="test"></div>
         </div>
+        <div id="test"></div>
         </div>
         </div>
     </div>
@@ -138,7 +138,8 @@
 
 <script lang='ts'>
 import Vue from 'vue';
-import Header from '../components/Header.vue'
+import Header from '../components/Header.vue';
+import { EventBus}  from '@/main';
 
 export default Vue.extend({
   name: 'Contactform',
@@ -181,7 +182,16 @@ export default Vue.extend({
     (v: string) => !!v || 'Bitte gib eine Hausnummer ein.', 
     ]
   }),
-});
+  /* methods: {
+    async appendPostcard() {
+      let currentPostcard = document.createElement('canvas');
+      const test = document.getElementById('test') as HTMLDivElement;
+      currentPostcard.outerHTML = this.$store.getters.getCurrentPostcard;
+      test?.appendChild(currentPostcard);
+  }, created() {
+    EventBus.$on('savePostcard', () => { this.appendPostcard() } )
+  }
+} */})
 </script>
 
 <style scoped>

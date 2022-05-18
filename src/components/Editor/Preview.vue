@@ -73,7 +73,7 @@
 import { EventBus } from "@/main";
 import Vue from "vue";
 import { mapState } from "vuex";
-import html2canvas from 'html2canvas';
+// import html2canvas from 'html2canvas';
 
 export default Vue.extend({
   name: "Preview",
@@ -117,16 +117,18 @@ export default Vue.extend({
         this.front = true;
       }
     },
-    saveImage() {
+    /* saveImage() {
       console.log("I'm called")
-      let postcard;
-      // const postcard = document.querySelector('modal-body') as HTMLDivElement;
-	    html2canvas(document.body).then(function(canvas) {
-      document.body.appendChild(canvas); 
+      const postcard = document.querySelector('#postcard') as HTMLElement;
+      const test = document.getElementById('test');
+      let newPostcard;
+	    html2canvas(postcard).then(function(canvas) {
       console.log(canvas);
-      postcard = canvas;
+      document.body.appendChild(canvas);
+      newPostcard = canvas;
 })
-this.$store.dispatch("setPostcard", postcard);},
+this.$store.dispatch("setPostcard", newPostcard);
+console.log("State:" + this.$store.getters.getCurrentPostcard)}, */
  },
   computed: {
     ...mapState([
@@ -136,10 +138,10 @@ this.$store.dispatch("setPostcard", postcard);},
       "currentTemplate",
       "currentText",
     ]),
-  },
+  }/* ,
   created() {
   EventBus.$on('savePostcard', () => { this.saveImage() })
-}})
+} */})
 </script>
 
 <style scoped>

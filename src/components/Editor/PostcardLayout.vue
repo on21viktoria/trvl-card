@@ -1,5 +1,5 @@
 <template>
-  <div class="postcard-layout">
+  <div class="postcard-layout" id="postcard-snapshot">
     <div
       class="postcard-side"
       id="front"
@@ -57,6 +57,7 @@
 import { EventBus } from "@/main";
 import Vue from "vue";
 import { mapState } from "vuex";
+import html2canvas from 'html2canvas';
 
 export default Vue.extend({
   name: "PostcardLayout",
@@ -88,13 +89,26 @@ export default Vue.extend({
   EventBus.$on('changeFont', (fontId: string) => {
     const textarea = document.querySelector('#changed-text') as HTMLElement;
     textarea.style.fontFamily = `${fontId}`;
-  })
+  }),
+   EventBus.$on('savePostcard', () => { this.saveImage() })
 },
 methods: {
   checkText(e: any) {
     let textvalue = e;
     this.$store.dispatch("setText", textvalue)
-  }
+  },
+  saveImage() {
+      console.log("I'm called")
+      const postcard = document.querySelector('#postcard-snapshot') as HTMLElement;
+      const test = document.getElementById('test') as HTMLDivElement;
+      let newPostcard;
+	    html2canvas(postcard).then(function(canvas) {
+      console.log(canvas);
+      document.body.appendChild(canvas);
+      newPostcard = canvas;
+})
+this.$store.dispatch("setPostcard", newPostcard);
+console.log("State:" + this.$store.getters.getCurrentPostcard)},
 },
   props: {
     ImageId: String,
