@@ -104,7 +104,7 @@ h1 {
 
 .editor-grid.sidebar-shown {
   display: grid;
-  grid-auto-columns: auto 1fr 60%;
+  grid-auto-columns: auto 1fr 65%;
   justify-content: start;
 }
 

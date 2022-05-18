@@ -144,16 +144,18 @@
         </div>
         </div>
         </div>
+        <Footer></Footer>
     </div>
 </template>
 
 <script lang='ts'>
 import Vue from 'vue';
+import Footer from "../components/Footer.vue"
 import Header from '../components/Header.vue'
 
 export default Vue.extend({
   name: 'Contactform',
-  components: {Header},
+  components: {Header, Footer},
   data: () => ({
     valid: false,
     formOfAddress: [],
