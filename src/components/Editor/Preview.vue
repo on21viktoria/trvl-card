@@ -67,6 +67,7 @@
   </div>
 </template>
 
+
 <script lang="ts">
 import { EventBus } from "@/main";
 import Vue from "vue";

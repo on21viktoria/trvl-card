@@ -140,7 +140,6 @@
 <script lang='ts'>
 import Vue from 'vue';
 import Header from '../components/Header.vue';
-import { EventBus}  from '@/main';
 import { jsPDF } from 'jspdf';
 
 export default Vue.extend({
@@ -188,8 +187,8 @@ export default Vue.extend({
     convertPostcard() {
       let currentImageData = this.$store.getters.getCurrentPostcard
       let pdf = new jsPDF('portrait', 'px', [988, 1004]);
-      pdf.addImage(currentImageData, 'JPEG', 0, 0, 988, 1004);
-      pdf.save("a4.pdf")
+      pdf.addImage(currentImageData, 'JPEG', 0, 0, 628.5, 1004);
+      pdf.save("Postkarte.pdf");
     }
   }
   })

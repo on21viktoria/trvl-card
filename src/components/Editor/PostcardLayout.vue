@@ -58,7 +58,6 @@ import { EventBus } from "@/main";
 import Vue from "vue";
 import { mapState } from "vuex";
 import html2canvas from "html2canvas";
-import { jsPDF } from "jspdf";
 
 export default Vue.extend({
   name: "PostcardLayout",
@@ -106,7 +105,7 @@ export default Vue.extend({
         "#postcard-snapshot"
       ) as HTMLElement;
       let postcardImg: string;
-      html2canvas(postcard)
+      html2canvas(postcard) 
         .then(function (canvas) {
           console.log(canvas);
           postcardImg = canvas.toDataURL("postcard/jpeg", 1.0);
@@ -140,7 +139,7 @@ export default Vue.extend({
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 20;
+  z-index: 200;
 }
 .postcard-side {
   position: relative;
@@ -156,7 +155,8 @@ export default Vue.extend({
   height: 420px;
   border: solid 1px rgb(112, 112, 112);
   display: block;
-  margin: 10px auto;
+  margin: 10px 10px;
+  z-index: 1;
 }
 
 .v-input__slot {
