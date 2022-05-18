@@ -187,8 +187,8 @@ export default Vue.extend({
   methods: {
     convertPostcard() {
       let currentImageData = this.$store.getters.getCurrentPostcard
-      let pdf = new jsPDF('portrait', 'px', [628.5, 502]);
-      pdf.addImage(currentImageData, 'JPEG', 0, 0, 628.5, 502);
+      let pdf = new jsPDF('portrait', 'px', [988, 1004]);
+      pdf.addImage(currentImageData, 'JPEG', 0, 0, 988, 1004);
       pdf.save("a4.pdf")
     }
   }
