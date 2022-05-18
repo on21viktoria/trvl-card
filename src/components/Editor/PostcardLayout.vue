@@ -253,7 +253,7 @@ methods: {
   height: 420px;
   display: block;
   background-color: transparent;
-  z-index: 100;
+  z-index: 25;
 }
 
 #custom-input-svg {
