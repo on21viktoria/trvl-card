@@ -43,13 +43,13 @@ export default new Vuex.Store({
     setCurrentInputColor(state, payload) {
       state.currentInputColor = payload
     },
-    setCustomInputCity (state, payload) {
+    setCurrentCustomInputCity (state, payload) {
       state.currentCustomInputCity = payload
     },
-    setCustomInputBefore (state, payload) {
+    setCurrentCustomInputBefore (state, payload) {
       state.currentCustomInputBefore = payload
     },
-    setCustomInputBelow (state, payload) {
+    setCurrentCustomInputBelow (state, payload) {
       state.currentCustomInputBelow = payload
     },
     setCurrentRecipient(state, payload) {
