@@ -318,5 +318,6 @@ export default Vue.extend({
 }
 .text-wrapper > p {
   margin-top: 0;
+  overflow-wrap: break-word;
 }
 </style>
