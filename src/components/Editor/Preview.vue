@@ -100,9 +100,6 @@ export default Vue.extend({
     this.recipient = this.$store.getters.getCurrentRecipient;
     console.log(this.recipient);
   },
-  unmounted() {
-
-  },
   methods: {
     close() {
       if (!this.front) {
@@ -133,6 +130,9 @@ export default Vue.extend({
       "currentRecipient"
     ]),
   },
+  destroyed(){
+    console.log("getting destroyed");
+  }
 });
 </script>
 
