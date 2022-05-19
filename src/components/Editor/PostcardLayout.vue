@@ -269,6 +269,7 @@ export default Vue.extend({
       "currentCustomInputBefore",
       "currentCustomInputBelow",
       "current3DEffect",
+      "currentText"
     ]),
   },
 });
