@@ -65,7 +65,6 @@ export default new Vuex.Store({
       state.currentText = payload;
     },
     setCurrentTextFont(state, payload) {
-      console.log("Current Font: ", payload)
       state.textFont = payload;
     },
     setCurrentTextColor(state, payload) {
@@ -92,7 +91,6 @@ export default new Vuex.Store({
       state.currentCustomInputCity = payload
     },
     setCurrentCustomInputBefore (state, payload) {
-      console.log("Before: ", payload);
       state.currentCustomInputBefore = payload
     },
     setCurrentCustomInputBelow (state, payload) {
