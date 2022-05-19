@@ -1,47 +1,93 @@
 <template>
-    <div class="upload-div">
-    <p class="tool-title">Upload</p>
-    <p>
-      Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus
-      ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur
-      ac, vestibulum at eros.
-    </p>
-    <b-img
-      src="https://picsum.photos/500/500/?image=54"
-      fluid
-      thumbnail
-    ></b-img>
-    <!-- <p class="tool-title subtitle">Suche</p>
-    <v-text-field label="Suche" solo prepend-inner-icon="mdi-magnify"></v-text-field> -->
-    </div>
+  <div>
+    <input
+      type="file"
+      id="image"
+      accept="image/*"
+      @input="handleChange()"
+      ref="input"
+    />
+    <button @click="handleUpload()">Upload to Firebase</button>
+    <button @click="showImages()">Show Images</button>
+  </div>
 </template>
 
-<script lang="ts">
-import Vue from "vue";
 
-export default Vue.extend({
+<script>
+import storage from "./../../../main"
+import { ref, uploadBytesResumable, listAll, getDownloadURL } from "firebase/storage"
+
+export default {
   name: "Upload",
-  components: {},
-  props: {
+  data() {
+    return {
+      file: "",
+      images: []
+    }
   },
-  methods: {},
-});
+  methods: {
+    handleChange(event) {
+      this.file = this.$refs.input.files[0];
+
+    },
+    handleUpload() {
+      if (!this.file) {
+        alert("Please choose a file first!")
+      }
+
+      const storageRef = ref(storage, `/files/${this.file.name}`)
+      const uploadTask = uploadBytesResumable(storageRef, this.file);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const percent = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+
+          // update progress
+          setPercent(percent);
+        },
+        (err) => console.log(err),
+        () => {
+          // download url
+          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+            console.log(url);
+          });
+        }
+      );
+      uploadTask.then()
+      listAll(storageRef)
+        .then((res) => {
+          console.log("Res: ", res)
+          res.items.forEach((imageRef) => {
+            console.log("ImgRef: ", imageRef)
+            this.displayImage(imageRef);
+          });
+        }).catch((error) => {
+          console.log(error)
+        });
+    },
+
+    displayImage(imageRef) {
+      console.log("jeööp")
+      imageRef.getDownloadURL().then((url) => {
+        console.log("Hello: ", url);
+        this.images.push(url);
+        console.log(url)
+      })
+    }
+  }
+}
 </script>
 
-<style scoped>
-.upload-div {
-  width: 100%;
-  max-height: 800px;
-  overflow: auto;
+<style>
+.image-div {
+  display: flex;
+  margin: 25px;
 }
-.tool-title {
-  font-weight: bold;
-  font-size: 18px;
-  color: #ff4e00;
-  margin-bottom: 8px;
-  text-align: center;
-}
-.tool-title.subtitle {
-  font-size: 16px;
+.image {
+  max-width: 250px;
+  margin: 15px;
 }
 </style>
