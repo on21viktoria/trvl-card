@@ -80,6 +80,7 @@ h1 {
 }
 
 .editor-grid.sidebar-hidden {
+  height: 100%;
   display: grid;
   grid-auto-columns: auto 1fr;
   justify-content: start;
@@ -95,7 +96,7 @@ h1 {
 #postcard {
   border: solid rgba(112, 112, 112, 0.5) 1px;
   background-color: rgba(112, 112, 112, 0.1);
-  height: 100%;
+  height: calc(100vh - 12px - 68px - 40px);
   grid-column: 2;
   display: flex;
   justify-content: space-around;
@@ -103,6 +104,7 @@ h1 {
 }
 
 .editor-grid.sidebar-shown {
+  height: 100%;
   display: grid;
   grid-auto-columns: auto 1fr 65%;
   justify-content: start;
@@ -138,6 +140,8 @@ h1 {
 }
 
 #editor-container {
+  padding: 12px 0 0 12px !important;
+  height: calc(100vh - 12px - 68px - 40px);
   background-color: white;
   align-self: stretch;
 }

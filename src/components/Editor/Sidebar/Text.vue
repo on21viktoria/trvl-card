@@ -243,7 +243,8 @@ export default Vue.extend({
 #textedit-container {
   width: 100%;
   max-height: 800px;
-  overflow: none !important;
+  overflow: auto;
+  margin-bottom: 20px;
 }
 
 .tool-title {

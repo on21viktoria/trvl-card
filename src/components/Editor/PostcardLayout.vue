@@ -290,7 +290,6 @@ export default Vue.extend({
       this.$store.dispatch("setRecipient", recipient);
     },
     showBack() {
-      let postcard = document.querySelector(".postcard-layout");
       let postcardFront = document.querySelector('#front') as HTMLElement;
       let postcardBack = document.querySelector('#back') as HTMLElement;
       if(postcardFront.style.display === "block") {
@@ -428,17 +427,9 @@ svg > text {
   border: solid rgba(112, 112, 112, 0.5) 1px;
   width: 100%;
   height: 100%;
-  /* width: 622px;
-  height: 442px; */
-  /* margin: 40px auto; */
-  /* -webkit-backface-visibility: hidden;
-  backface-visibility: hidden; */
 }
 
 .image-front {
-  /* position: absolute;
-  top: 0;
-  left: 0; */
   width: 600px;
   height: 420px;
   border: solid 1px rgb(112, 112, 112);
