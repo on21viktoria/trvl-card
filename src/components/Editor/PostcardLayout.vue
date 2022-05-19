@@ -113,30 +113,6 @@ export default Vue.extend({
 
   },
   mounted() {
-    const textarea = document.querySelector("#changed-text") as HTMLElement;
-
-    /* console.log(this.$store.getters.getCurrentTextFont);
-    textarea.style.color = this.$store.getters.getCurrentTextColor;
-    textarea.style.fontSize = this.$store.getters.getCurrentTextSize;
-    textarea.style.fontFamily = this.$store.getters.getCurrentTextFont;
- */
-    console.log(textarea.style.fontFamily);
-    // EventBus.$on("changeFontColor", (colorId: string) => {
-    //   const textarea = document.querySelector("#changed-text") as HTMLElement;
-    //   textarea.style.color = `${colorId}`;
-    // });
-    EventBus.$on("preselectedColor", (colorId: string) => {
-      const textarea = document.querySelector("#changed-text") as HTMLElement;
-      textarea.style.color = `${colorId}`;
-    });
-    // EventBus.$on("changeFontSize", (sizeId: string) => {
-    //   const textarea = document.querySelector("#changed-text") as HTMLElement;
-    //   textarea.style.fontSize = `${sizeId}`;
-    // }),
-    //   EventBus.$on("changeFont", (fontId: string) => {
-    //     const textarea = document.querySelector("#changed-text") as HTMLElement;
-    //     textarea.style.fontFamily = `${fontId}`;
-    //   }),
     EventBus.$on("changeRecipient", () => {
       this.changeRecipient();
     });

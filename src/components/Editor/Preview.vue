@@ -31,7 +31,12 @@
           <div class="postcard-left-back">
             <div class="divider-back"></div>
             <div class="text-wrapper">
-              <p class="postcard-left-back-text">{{ currentText }}</p>
+              <p
+                class="postcard-left-back-text"
+                :style="`color:${textColor} !important; font-family:${textFont} !important; font-size:${textSize} !important`"
+              >
+                {{ currentText }}
+              </p>
             </div>
           </div>
           <div class="postcard-right-back">
@@ -43,11 +48,11 @@
               />
             </div>
             <div class="address-field">
-              <p>{{ recipient.name }}</p>
-              <p>{{ recipient.addition }}</p>
-              <p>{{ recipient.streetAndNumber }}</p>
-              <p>{{ recipient.postalcodeAndCity }}</p>
-              <p>{{ recipient.country }}</p>
+              <p>{{ currentRecipient.name }}</p>
+              <p>{{ currentRecipient.addition }}</p>
+              <p>{{ currentRecipient.streetAndNumber }}</p>
+              <p>{{ currentRecipient.postalcodeAndCity }}</p>
+              <p>{{ currentRecipient.country }}</p>
             </div>
           </div>
           <div class="codierzone">
@@ -69,10 +74,8 @@
 </template>
 
 <script lang="ts">
-import { EventBus } from "@/main";
 import Vue from "vue";
 import { mapState } from "vuex";
-import { Recipient } from "./../../interfaces/recipient";
 
 export default Vue.extend({
   name: "Preview",
@@ -81,24 +84,6 @@ export default Vue.extend({
       front: true,
       recipient: {},
     };
-  },
-  mounted() {
-    let textarea = document.querySelector(
-      ".postcard-left-back-text"
-    ) as HTMLDivElement;
-    EventBus.$on("changeFontColor", (colorId: string) => {
-      textarea.style.color = `${colorId}`;
-    });
-    EventBus.$on("changeFontSize", (sizeId: string) => {
-      textarea.style.fontSize = `${sizeId}`;
-    });
-    EventBus.$on("changeFont", (fontId: string) => {
-      console.log(fontId);
-      textarea.style.fontFamily = `${fontId}`;
-    });
-    console.log("Hello");
-    this.recipient = this.$store.getters.getCurrentRecipient;
-    console.log(this.recipient);
   },
   methods: {
     close() {
@@ -127,12 +112,12 @@ export default Vue.extend({
       "currentSticker",
       "currentTemplate",
       "currentText",
-      "currentRecipient"
+      "currentRecipient",
+      "textFont",
+      "textColor",
+      "textSize",
     ]),
   },
-  destroyed(){
-    console.log("getting destroyed");
-  }
 });
 </script>
 
@@ -329,6 +314,7 @@ export default Vue.extend({
   margin: 0 30px 10px 0;
   border-bottom: solid 1px black;
   padding-left: 5px;
+  min-height: 25px;
 }
 .text-wrapper > p {
   margin-top: 0;

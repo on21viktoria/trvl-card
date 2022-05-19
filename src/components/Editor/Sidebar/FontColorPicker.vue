@@ -23,9 +23,8 @@
 </template>
 
 <script lang="ts">
-import { EventBus } from "@/main";
 import Vue from "vue";
-import { mapGetters, mapState } from "vuex";
+import { mapState } from "vuex";
 
 export default Vue.extend({
   name: "FontColorPicker",
