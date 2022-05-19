@@ -352,7 +352,6 @@ export default Vue.extend({
   top: 0;
   left: 0;
   margin: 10px 10px;
-  /* padding: 100px 20px 100px 20px; */
   width: 600px;
   height: 420px;
   display: block;
@@ -534,7 +533,7 @@ svg > text {
 }
 
 .flip-button {
-  margin-top: 50px;
+  margin-top: 40px;
   display: flex;
   border-top: 1px solid #eeeeee;
   justify-content: center;

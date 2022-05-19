@@ -80,6 +80,7 @@ h1 {
 }
 
 .editor-grid.sidebar-hidden {
+  position: reltive;
   height: 100%;
   display: grid;
   grid-auto-columns: auto 1fr;
@@ -100,11 +101,12 @@ h1 {
   grid-column: 2;
   display: flex;
   justify-content: space-around;
-  flex-direction: column-reverse;
+  /* flex-direction: column-reverse; */
 }
 
 .editor-grid.sidebar-shown {
-  height: 100%;
+  position: reltive;
+  height: calc(100vh - 12px - 68px - 40px);
   display: grid;
   grid-auto-columns: auto 1fr 65%;
   justify-content: start;
@@ -122,7 +124,9 @@ h1 {
   width: 100%;
   font-size: 14px !important;
   grid-column: 2;
-  box-shadow: 4px 3px 8px 1px rgba(112,112,112, 0.5)
+  box-shadow: 4px 3px 8px 1px rgba(112,112,112, 0.5);
+  overflow: none;
+  
 }
 
 #postcard-with-sidebar {
@@ -132,7 +136,6 @@ h1 {
   grid-column: 3;
   display: flex;
   justify-content: space-around;
-  flex-direction: column-reverse;
 }
 
 #app-bar {
