@@ -291,15 +291,15 @@ export default Vue.extend({
     },
     showBack() {
       let postcard = document.querySelector(".postcard-layout");
-      // if(this.front){
-      //   postcard?.classList.add("switch");
-      //   this.front = false;
-      // }
-      // else{
-      //   postcard?.classList.remove("switch");
-      //   this.front = true;
-      // }
-      postcard?.classList.toggle("switch");
+      let postcardFront = document.querySelector('#front') as HTMLElement;
+      let postcardBack = document.querySelector('#back') as HTMLElement;
+      if(postcardFront.style.display === "block") {
+      postcardFront.style.display = "none";
+      postcardBack.style.display = "flex";
+      } else {
+      postcardFront.style.display = "block";
+      postcardBack.style.display = "none";
+      }
     },
   },
   props: {
@@ -358,7 +358,6 @@ export default Vue.extend({
   height: 420px;
   display: block;
   background-color: transparent;
-
 }
 
 #custom-input-svg {
@@ -432,8 +431,8 @@ svg > text {
   /* width: 622px;
   height: 442px; */
   /* margin: 40px auto; */
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+  /* -webkit-backface-visibility: hidden;
+  backface-visibility: hidden; */
 }
 
 .image-front {
@@ -532,15 +531,22 @@ svg > text {
   margin-left: 0;
 }
 
+#front {
+  display: block;
+}
+
 #back {
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   padding: 5px;
-  transform: rotateY(180deg);
+
 }
 
 .flip-button {
+  margin-top: 50px;
+  display: flex;
   border-top: 1px solid #eeeeee;
+  justify-content: center;
 }
 </style>
 
