@@ -16,13 +16,13 @@
           class="svg-image"
         />
       </div>
-      <div v-if="applyEffect === false" class="custom-input-wrap">
+      <div v-if="current3DEffect === false" class="custom-input-wrap">
         <p
           class="additional-text"
           id="ontop"
           :style="`color:` + currentInputColor"
         >
-          {{ customTextBefore }}
+          {{ currentCustomInputBefore }}
         </p>
         <svg width="100%" id="custom-input-svg">
           <text
@@ -33,7 +33,7 @@
             lengthAdjust="spacingAndGlyphs"
             :style="`fill:` + currentInputColor"
           >
-            {{ this.customLargeLetter }}
+            {{ currentCustomInputCity }}
           </text>
         </svg>
         <p
@@ -41,16 +41,16 @@
           id="below"
           :style="`color:` + currentInputColor"
         >
-          {{ customTextBelow }}
+          {{ currentCustomInputBelow }}
         </p>
       </div>
-      <div v-if="applyEffect === true" class="custom-input-wrap">
+      <div v-if="current3DEffect === true" class="custom-input-wrap">
         <p
           class="additional-text"
           id="ontop"
           :style="`color:` + currentInputColor"
         >
-          {{ customTextBefore }}
+          {{ currentCustomInputBefore }}
         </p>
         <svg width="100%" id="custom-input-svg">
           <text
@@ -61,7 +61,7 @@
             lengthAdjust="spacingAndGlyphs"
             :style="`fill:` + currentInputColor"
           >
-            {{ this.customLargeLetter }}
+            {{ currentCustomInputCity }}
           </text>
           <text
             id="text-top"
@@ -71,7 +71,7 @@
             lengthAdjust="spacingAndGlyphs"
             :style="`fill:` + currentInputColor"
           >
-            {{ this.customLargeLetter }}
+            {{ currentCustomInputCity }}
           </text>
         </svg>
         <p
@@ -79,7 +79,7 @@
           id="below"
           :style="`color:` + currentInputColor"
         >
-          {{ customTextBelow }}
+          {{ currentCustomInputBelow }}
         </p>
       </div>
     </div>
@@ -164,11 +164,6 @@ export default Vue.extend({
   data: () => ({
     valid: false,
     selected: "",
-    customLargeLetter: "",
-    customTextBefore: "",
-    customTextBelow: "",
-    applyEffect: false,
-    currentInputColor: "",
     countryRules: [(v: string) => !!v || "Bitte gib ein Land an."],
     countries: ["Deutschland"],
     rules: [
@@ -215,7 +210,7 @@ export default Vue.extend({
     },
   },
   created() {
-    EventBus.$on(
+    /* EventBus.$on(
       "displayCustomLargeLetter",
       (customInputCity: string, applyEffect: boolean) => {
         this.applyEffect = applyEffect;
@@ -251,7 +246,7 @@ export default Vue.extend({
     });
     EventBus.$on("preselectedInputColor", (inputColor: string) => {
       this.currentInputColor = inputColor;
-    });
+    }); */
     EventBus.$on("changeRecipient", () => {
       this.changeRecipient();
     });
@@ -268,7 +263,13 @@ export default Vue.extend({
       "currentRecipient",
       "textColor",
       "textFont",
-      "textSize"
+      "textSize",
+      "currentInputColor",
+      "currentCustomInputCity",
+      "currentCustomInputBefore",
+      "currentCustomInputBelow",
+      "current3DEffect",
+      "currentText"
     ]),
   },
 });

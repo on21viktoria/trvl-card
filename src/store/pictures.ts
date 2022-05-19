@@ -22,11 +22,14 @@ export default new Vuex.Store({
     textFont: "Montserrat",
     textSize: "12pt",
 
-    //Empfänger
+    //Text
     currentInputColor: "",
     currentCustomInputCity: "",
     currentCustomInputBefore: "",
     currentCustomInputBelow: "",
+    current3DEffect: false,
+
+    //Empfänger
     currentRecipient: {
       name: "",
       addition: "",
@@ -89,11 +92,15 @@ export default new Vuex.Store({
       state.currentCustomInputCity = payload
     },
     setCurrentCustomInputBefore (state, payload) {
+      console.log("Before: ", payload);
       state.currentCustomInputBefore = payload
     },
     setCurrentCustomInputBelow (state, payload) {
       state.currentCustomInputBelow = payload
     },
+    setCurrent3DEffect (state, payload) {
+      state.current3DEffect = payload
+    }
   },
   actions: {
     //Background + Fotos
@@ -152,6 +159,9 @@ export default new Vuex.Store({
     async displayCustomBelow(state, customInputBelow) {
       state.commit("setCurrentCustomInputBelow", customInputBelow)
     },
+    async display3DEffect(state, threedEffect) {
+      state.commit("setCurrent3DEffect", threedEffect)
+    }
   },
   modules: {},
   getters: {
