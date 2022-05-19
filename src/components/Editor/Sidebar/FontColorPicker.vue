@@ -7,7 +7,7 @@
         type="color"
         id="fontcolor-picker"
         name="color-selection"
-        :value="currentPreSelectedFontColor"
+        :value="textColor"
         @input="changeColorNew()"
       />
     </div>
@@ -45,20 +45,19 @@ export default Vue.extend({
       let fontcolorPicker = document.getElementById(
         "fontcolor-picker"
       ) as HTMLInputElement;
-      EventBus.$emit("changeFontColor", fontcolorPicker.value);
-      this.$store.dispatch("setPreSelectedFontColor", fontcolorPicker.value)
+      //EventBus.$emit("changeFontColor", fontcolorPicker.value);
+      this.$store.dispatch("setTextColor", fontcolorPicker.value)
     },
     preselectedColor(suggestionId: string){
         for (let choice of this.preselectedColors){
             if(choice.id === suggestionId) {
-                EventBus.$emit("preselectedColor", choice.value);
-                this.$store.dispatch("setPreSelectedFontColor", choice.value)
+                this.$store.dispatch("setTextColor", choice.value)
                 return
             }
         }
     }
   },
-  computed: {...mapState(["currentPreSelectedFontColor"])}
+  computed: {...mapState(["textColor"])}
 });
 </script>
 

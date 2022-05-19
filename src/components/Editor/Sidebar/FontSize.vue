@@ -28,7 +28,8 @@ export default Vue.extend({
     changeFontSize() {
       const fontSize = this.sliderValue + "pt";
       console.log("Size has been selected", fontSize);
-      EventBus.$emit("changeFontSize", fontSize);
+      this.$store.dispatch("setTextSize", fontSize)
+      //EventBus.$emit("changeFontSize", fontSize);
     },
   },
 });

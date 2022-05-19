@@ -28,7 +28,8 @@ export default Vue.extend ({
     methods: {
     changeColor() {
     this.colorId = `${this.selected}`;
-    EventBus.$emit('changeFontColor', this.colorId);
+    this.$store.dispatch("setTextColor", this.colorId)
+    //EventBus.$emit('changeFontColor', this.colorId);
     },
   },
 });
