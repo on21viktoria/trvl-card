@@ -12,7 +12,7 @@
             />
           </a>
           <div class="buttons-editor-header">
-            <button class="button button-signup hovereffect" @click="showModal">
+            <button class="button button-signup hovereffect preview-button" @click="showModal">
               Vorschau
             </button>
             <button
@@ -163,5 +163,9 @@ a.editor-header-router-link {
 .disabled {
   pointer-events: none;
   opacity: 0.6;
+}
+
+.preview-button {
+  margin-top: 12px !important;
 }
 </style>
