@@ -23,6 +23,10 @@ export default new Vuex.Store({
     textSize: "12pt",
 
     //Empfänger
+    currentInputColor: "",
+    currentCustomInputCity: "",
+    currentCustomInputBefore: "",
+    currentCustomInputBelow: "",
     currentRecipient: {
       name: "",
       addition: "",
@@ -76,6 +80,20 @@ export default new Vuex.Store({
     setCurrentPreSelectedFontColor(state, fontcolor) {
       state.currentPreSelectedFontColor = fontcolor;
     },
+    
+    //Eigener Text
+    setCurrentInputColor(state, payload) {
+      state.currentInputColor = payload
+    },
+    setCurrentCustomInputCity (state, payload) {
+      state.currentCustomInputCity = payload
+    },
+    setCurrentCustomInputBefore (state, payload) {
+      state.currentCustomInputBefore = payload
+    },
+    setCurrentCustomInputBelow (state, payload) {
+      state.currentCustomInputBelow = payload
+    },
   },
   actions: {
     //Background + Fotos
@@ -117,8 +135,22 @@ export default new Vuex.Store({
     async setRecipient(state, recipient) {
       state.commit("setCurrentRecipient", recipient);
     },
+
+    //Eigener Text
     async setPreSelectedFontColor(state, fontcolor) {
       state.commit("setCurrentPreSelectedFontColor", fontcolor);
+    },
+    async setInputColor(state, inputColor) {
+      state.commit("setCurrentInputColor", inputColor)
+    },
+    async displayCustomLargeLetter(state, customInputCity) {
+      state.commit("setCurrentCustomInputCity", customInputCity)
+    },
+    async displayCustomBefore(state, customInputBefore) {
+      state.commit("setCurrentCustomInputBefore", customInputBefore)
+    },
+    async displayCustomBelow(state, customInputBelow) {
+      state.commit("setCurrentCustomInputBelow", customInputBelow)
     },
   },
   modules: {},
@@ -159,6 +191,8 @@ export default new Vuex.Store({
     getCurrentRecipient: (state) => {
       return state.currentRecipient;
     },
+
+
     getCurrentPreSelectedFontColor: (state) => {
       state.currentPreSelectedFontColor;
     },

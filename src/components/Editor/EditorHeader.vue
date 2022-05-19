@@ -168,4 +168,7 @@ a.editor-header-router-link {
 .preview-button {
   margin-top: 12px !important;
 }
+.header {
+  z-index: 900;
+}
 </style>
