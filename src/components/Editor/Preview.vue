@@ -26,6 +26,72 @@
             :src="require(`./../../assets/${currentSticker}`)"
             class="svg-image"
           />
+          <div v-if="current3DEffect === false" class="custom-input-wrap">
+        <p
+          class="additional-text"
+          id="ontopPreview"
+          :style="`color:` + currentInputColor"
+        >
+          {{ currentCustomInputBefore }}
+        </p>
+        <svg width="100%" id="custom-input-svgPreview">
+          <text
+            id="text-no-effect-preview"
+            x="20"
+            y="100"
+            textLength="520"
+            lengthAdjust="spacingAndGlyphs"
+            :style="`fill:` + currentInputColor"
+          >
+            {{ currentCustomInputCity }}
+          </text>
+        </svg>
+        <p
+          class="additional-text"
+          id="belowPreview"
+          :style="`color:` + currentInputColor"
+        >
+          {{ currentCustomInputBelow }}
+        </p>
+      </div>
+      <div v-if="current3DEffect === true" class="custom-input-wrap">
+        <p
+          class="additional-text"
+          id="ontopPreview"
+          :style="`color:` + currentInputColor"
+        >
+          {{ currentCustomInputBefore }}
+        </p>
+        <svg width="100%" id="custom-input-svgPreview">
+          <text
+            id="text-shadowPreview"
+            x="20"
+            y="100"
+            textLength="520"
+            lengthAdjust="spacingAndGlyphs"
+            :style="`fill:` + currentInputColor"
+          >
+            {{ currentCustomInputCity }}
+          </text>
+          <text
+            id="text-topPreview"
+            x="20"
+            y="100"
+            textLength="520"
+            lengthAdjust="spacingAndGlyphs"
+            :style="`fill:` + currentInputColor"
+          >
+            {{ currentCustomInputCity }}
+          </text>
+        </svg>
+        <p
+          class="additional-text"
+          id="belowPreview"
+          :style="`color:` + currentInputColor"
+        >
+          {{ currentCustomInputBelow }}
+        </p>
+      </div>
         </div>
         <div class="back">
           <div class="postcard-left-back">
@@ -116,6 +182,11 @@ export default Vue.extend({
       "textFont",
       "textColor",
       "textSize",
+      "currentInputColor",
+      "currentCustomInputCity",
+      "currentCustomInputBefore",
+      "currentCustomInputBelow",
+      "current3DEffect",
     ]),
   },
 });
@@ -320,4 +391,80 @@ export default Vue.extend({
   margin-top: 0;
   overflow-wrap: break-word;
 }
+
+.custom-input-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 10px 10px;
+  /* padding: 100px 20px 100px 20px; */
+  width: 670px;
+  height: 490px;
+  display: block;
+  background-color: transparent;
+  z-index: 25;
+}
+
+#custom-input-svgPreview {
+  position: absolute;
+  top: 170px;
+  left: 40px;
+}
+
+#text-shadowPreview {
+  text-shadow: 0px 0px 0 rgb(-45, -45, 0), 1px 1px 0 rgb(-45, -45, 0),
+    2px 2px 0 rgb(-45, -45, 0), 3px 3px 0 rgb(-45, -45, 0),
+    4px 4px 0 rgb(-45, -45, 0), 5px 5px 0 rgb(-45, -45, 0),
+    6px 6px 0 rgb(-45, -45, 0), 7px 7px 0 rgb(-45, -45, 0),
+    8px 8px 0 rgb(-45, -45, 0), 9px 9px 0 rgb(-45, -45, 0),
+    10px 10px 9px rgba(255, 255, 255, 0), 10px 10px 1px rgba(255, 255, 255, 0.5),
+    0px 0px 9px rgba(255, 255, 255, 0.2);
+}
+
+#text-topPreview {
+  stroke: black;
+  stroke-width: 1px;
+  fill: white;
+  fill-opacity: 1;
+}
+
+#text-no-effect-preview {
+  stroke: black;
+  stroke-width: 3px;
+  fill: white;
+  fill-opacity: 0.8;
+}
+
+.additional-text {
+  margin: 0 !important;
+  font-size: 25px;
+  font-family: "Permanent Marker";
+}
+
+.additional-text#ontopPreview {
+  content: "";
+  position: absolute;
+  top: 150px;
+  left: 40px;
+  margin-bottom: 20px;
+}
+
+.additional-text#belowPreview {
+  content: "";
+  position: absolute;
+  top: 285px;
+  right: 45px;
+  margin-bottom: 20px;
+}
+
+svg > text {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-anchor: start;
+  font-size: 100px;
+  font-family: "Luckiest Guy", cursive;
+  letter-spacing: 3px;
+}
+
 </style>
