@@ -1,11 +1,13 @@
 <template>
   <div>
     <Header></Header>
+    <div class="home">
     <Welcome></Welcome>
     <div class="designchoice">
       <div v-for="postcard in postcards" :key="postcard.id">
         <DesignChoice :id="postcard.id" :title="postcard.title" :text="postcard.text" :image="require(`./../assets/images-trvl-card/${postcard.image}`)"></DesignChoice>
       </div>
+    </div>
     </div>
     <Footer></Footer>
   </div>
@@ -23,19 +25,31 @@ export default Vue.extend({
   components: { DesignChoice, Welcome, Header, Footer },
   data: () => ({
     postcards: [
-      {
+    /*   {
         id: "blanko",
         title: "Blanko-Postkarte",
         text: "Starte ohne Vorlage mit einer Blanko-Postkarte.",
         image: "BlankoPostkarte.jpg"
-    },
+    }, */
     {
         id: "large-letter",
-        title: "Large-Letter-Design",
-        text: "Starte mit dem Large-Letter-Design.",
+        title: "Zum Postkarten-Editor",
+        text: "Starte jetzt mit der Gestaltung deiner invididuellen Postkarte.",
         image: "LargeLetterDesign_Berlin.jpg"
     }
     ]
   })
 });
 </script>
+
+<style scoped>
+.home {
+  display: flex;
+  justify-content: center;
+  margin-top: 150px;
+  margin-left: 50px;
+  margin-right: 120px;
+  margin-bottom: 50px;
+}
+
+</style>

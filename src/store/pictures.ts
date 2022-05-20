@@ -10,6 +10,10 @@ export default new Vuex.Store({
     currentBackgroundColor: "#ffffff",
     currentSticker: "",
     currentTemplate: "",
+    currentInputColor: "",
+    currentCustomInputCity: "",
+    currentCustomInputBefore: "",
+    currentCustomInputBelow: "",
     currentRecipient: {
       name: "",
       addition: "",
@@ -35,12 +39,24 @@ export default new Vuex.Store({
     setCurrentTemplate(state, payload) {
       state.currentTemplate = payload;
     },
+    setCurrentInputColor(state, payload) {
+      state.currentInputColor = payload
+    },
+    setCurrentCustomInputCity (state, payload) {
+      state.currentCustomInputCity = payload
+    },
+    setCurrentCustomInputBefore (state, payload) {
+      state.currentCustomInputBefore = payload
+    },
+    setCurrentCustomInputBelow (state, payload) {
+      state.currentCustomInputBelow = payload
+    },
     setCurrentRecipient(state, payload) {
       state.currentRecipient = payload;
     },
-    setCurrentPreSelectedFontColor(state, fontcolor) {
-      state.currentPreSelectedFontColor = fontcolor;
-    }
+    // setCurrentPreSelectedFontColor(state, fontcolor) {
+    //   state.currentPreSelectedFontColor = fontcolor;
+    // }
   },
   actions: {
     async setPicture(state, picture) {
@@ -55,12 +71,24 @@ export default new Vuex.Store({
     async setTemplate(state, template) {
       state.commit("setCurrentTemplate", template);
     },
+    async setInputColor(state, inputColor) {
+      state.commit("setCurrentInputColor", inputColor)
+    },
+    async displayCustomLargeLetter(state, customInputCity) {
+      state.commit("setCurrentCustomInputCity", customInputCity)
+    },
+    async displayCustomBefore(state, customInputBefore) {
+      state.commit("setCurrentCustomInputBefore", customInputBefore)
+    },
+    async displayCustomBelow(state, customInputBelow) {
+      state.commit("setCurrentCustomInputBelow", customInputBelow)
+    },
     async setRecipient(state, recipient) {
       state.commit("setCurrentRecipient", recipient);
     },
-    async setPreSelectedFontColor(state, fontcolor) {
-      state.commit("setCurrentPreSelectedFontColor", fontcolor);
-    },
+    // async setPreSelectedFontColor(state, fontcolor) {
+    //   state.commit("setCurrentPreSelectedFontColor", fontcolor);
+    // }
   },
   modules: {},
   getters: {
@@ -79,8 +107,8 @@ export default new Vuex.Store({
     getCurrentRecipient: (state) => {
       return state.currentRecipient;
     },
-    getCurrentPreSelectedFontColor: (state) => {
-      state.currentPreSelectedFontColor;
-    }
+    // getCurrentPreSelectedFontColor: (state) => {
+    //   state.currentPreSelectedFontColor;
+    // }
   },
 });
