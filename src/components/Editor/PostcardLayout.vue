@@ -4,9 +4,8 @@
       <div class="image-wrap"
       >
         <img
-          :src="
-            require(`./../../assets/${currentPicture}`)
-          "
+          :src=
+          currentPicture
           class="image-front"
         />
         <img v-if="currentSticker !==''" :src="require(`./../../assets/${currentSticker}`)" class="svg-image"/>

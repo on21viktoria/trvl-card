@@ -1,5 +1,10 @@
 <template>
   <div>
+    <p class="tool-title">Upload</p>
+    <p class="tool-title subtitle">Lade hier dein eigenes Bild hoch</p>
+    <div class="wrapper">
+      <img src="">
+    </div>
     <input
       type="file"
       id="image"
@@ -7,22 +12,21 @@
       @input="handleChange()"
       ref="input"
     />
-    <button @click="handleUpload()">Upload to Firebase</button>
-    <button @click="showImages()">Show Images</button>
+    <button @click="handleUpload()" class="button button-signup button-choose">Bild auswählen</button>
   </div>
 </template>
 
 
 <script>
 import storage from "./../../../main"
-import { ref, uploadBytesResumable, listAll, getDownloadURL } from "firebase/storage"
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 
 export default {
   name: "Upload",
   data() {
     return {
       file: "",
-      images: []
+      url: ""
     }
   },
   methods: {
@@ -44,50 +48,57 @@ export default {
           const percent = Math.round(
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100
           );
-
-          // update progress
-          setPercent(percent);
         },
         (err) => console.log(err),
         () => {
           // download url
           getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-            console.log(url);
+            this.url = url 
+            this.displayImage();
           });
         }
       );
-      uploadTask.then()
-      listAll(storageRef)
-        .then((res) => {
-          console.log("Res: ", res)
-          res.items.forEach((imageRef) => {
-            console.log("ImgRef: ", imageRef)
-            this.displayImage(imageRef);
-          });
-        }).catch((error) => {
-          console.log(error)
-        });
     },
 
-    displayImage(imageRef) {
-      console.log("jeööp")
-      imageRef.getDownloadURL().then((url) => {
-        console.log("Hello: ", url);
-        this.images.push(url);
-        console.log(url)
-      })
+    displayImage(){
+      this.$store.dispatch("setPicture", this.url)
     }
   }
 }
 </script>
 
-<style>
+<style scoped>
 .image-div {
   display: flex;
   margin: 25px;
 }
 .image {
-  max-width: 250px;
   margin: 15px;
+
+}
+input#file-upload-button{
+  height: 39px !important;
+  padding: 10px !important;
+  background: #ff4e00 !important;
+  color: #fff !important;
+  border-radius: 4px !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+}
+
+.button-choose {
+  margin-top: 10px;
+}
+.tool-title {
+  font-weight: bold;
+  font-size: 18px;
+  color: #ff4e00;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.subtitle {
+  font-size: 15px;
+  text-align: center;
+  margin-bottom: 0;
 }
 </style>
