@@ -72,10 +72,14 @@ export default {
   display: flex;
   margin: 25px;
 }
-.image {
+#image {
   margin: 15px;
-
 }
+
+.wrapper {
+  margin-top: 20px;
+}
+
 input#file-upload-button{
   height: 39px !important;
   padding: 10px !important;
@@ -88,6 +92,7 @@ input#file-upload-button{
 
 .button-choose {
   margin-top: 10px;
+  margin-left: 15px;
 }
 .tool-title {
   font-weight: bold;
