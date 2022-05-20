@@ -140,12 +140,9 @@ export default Vue.extend({
       this.customInputCity = inputCity.value;
       if (this.customInputCity === "") {
         this.customInputCity = "";
-        EventBus.$emit("displayCustomLargeLetter", this.customInputCity);
         this.$store.dispatch("displayCustomLargeLetter", this.customInputCity)
         inputCity.value = this.customInputCity;
       } else {
-        console.log("Input shall be shown", this.customInputCity);
-        EventBus.$emit("displayCustomLargeLetter", this.customInputCity,this.applyEffect);
         this.$store.dispatch("displayCustomLargeLetter", this.customInputCity)
       }
     },
@@ -156,12 +153,9 @@ export default Vue.extend({
       this.customInputBefore = inputBefore.value;
       if (this.customInputBefore === "") {
         this.customInputBefore = "";
-        EventBus.$emit("displayCustomBefore", this.customInputBefore);
         this.$store.dispatch("displayCustomBefore", this.customInputBefore)
         inputBefore.value = this.customInputBefore;
       } else {
-        console.log("Input shall be shown", this.customInputCity);
-        EventBus.$emit("displayCustomBefore", this.customInputBefore);
         this.$store.dispatch("displayCustomBefore", this.customInputBefore)
       }
     },
@@ -172,12 +166,9 @@ export default Vue.extend({
       this.customInputBelow = inputBelow.value;
       if (this.customInputBelow === "") {
         this.customInputBelow = "";
-        EventBus.$emit("displayCustomBelow", this.customInputBelow);
         this.$store.dispatch("displayCustomBelow", this.customInputBelow);
         inputBelow.value = this.customInputBelow;
       } else {
-        console.log("Input shall be shown", this.customInputBelow);
-        EventBus.$emit("displayCustomBelow", this.customInputBelow);
         this.$store.dispatch("displayCustomBelow", this.customInputBelow);
       }
     },
@@ -197,12 +188,11 @@ export default Vue.extend({
       this.customInputCity = "";
       this.customInputBefore = "";
       this.customInputBelow = "";
-      EventBus.$emit(
-        "clearCustomText",
-        this.customInputCity,
-        this.customInputBefore,
-        this.customInputBelow
-      );
+
+      this.$store.dispatch("displayCustomLargeLetter", this.customInputCity)
+      this.$store.dispatch("displayCustomBefore", this.customInputBefore)
+      this.$store.dispatch("displayCustomBelow", this.customInputBelow);
+
     },
     changeEffect() {
       const checkboxEffect = document.querySelector(
@@ -210,10 +200,11 @@ export default Vue.extend({
       ) as HTMLInputElement;
       if (checkboxEffect.checked) {
         this.applyEffect = true;
-        EventBus.$emit("applyThreeDEffect");
+        this.$store.dispatch("display3DEffect", this.applyEffect)
         return this.applyEffect;
       } else {
-        EventBus.$emit("clearThreeDEffect");
+        this.applyEffect = false;
+        this.$store.dispatch("display3DEffect", this.applyEffect)
         return (this.applyEffect = false);
       }
     },
@@ -221,16 +212,12 @@ export default Vue.extend({
       let inputcolorPicker = document.getElementById(
         "inputcolor-picker"
       ) as HTMLInputElement;
-      EventBus.$emit("changeInputColor", inputcolorPicker.value);
-      // this.$store.dispatch("setInputColor", inputcolorPicker.value);
+      this.$store.dispatch("setInputColor", inputcolorPicker.value);
     },
     preselectedInputColor(colorId: string) {
-      console.log("in preselectedInputcolor")
       for (let choice of this.preselectedColors) {
         if (choice.id === colorId) {
-          EventBus.$emit("preselectedInputColor", choice.value);
           this.$store.dispatch("setInputColor", choice.value);
-          console.log(choice.value)
           return;
         }
       }

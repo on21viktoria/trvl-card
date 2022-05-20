@@ -17,13 +17,13 @@
             class="svg-image"
           />
         </div>
-        <div v-if="applyEffect === false" class="custom-input-wrap">
+        <div v-if="current3DEffect === false" class="custom-input-wrap">
           <p
             class="additional-text"
             id="ontop"
             :style="`color:` + currentInputColor"
           >
-            {{ customTextBefore }}
+            {{ currentCustomInputBefore }}
           </p>
           <svg width="100%" id="custom-input-svg">
             <text
@@ -34,7 +34,7 @@
               lengthAdjust="spacingAndGlyphs"
               :style="`fill:` + currentInputColor"
             >
-              {{ this.customLargeLetter }}
+              {{ currentCustomInputCity }}
             </text>
           </svg>
           <p
@@ -42,16 +42,16 @@
             id="below"
             :style="`color:` + currentInputColor"
           >
-            {{ customTextBelow }}
+            {{ currentCustomInputBelow }}
           </p>
         </div>
-        <div v-if="applyEffect === true" class="custom-input-wrap">
+        <div v-if="current3DEffect === true" class="custom-input-wrap">
           <p
             class="additional-text"
             id="ontop"
             :style="`color:` + currentInputColor"
           >
-            {{ customTextBefore }}
+            {{ currentCustomInputBefore }}
           </p>
           <svg width="100%" id="custom-input-svg">
             <text
@@ -62,7 +62,7 @@
               lengthAdjust="spacingAndGlyphs"
               :style="`fill:` + currentInputColor"
             >
-              {{ this.customLargeLetter }}
+              {{ currentCustomInputCity }}
             </text>
             <text
               id="text-top"
@@ -72,7 +72,7 @@
               lengthAdjust="spacingAndGlyphs"
               :style="`fill:` + currentInputColor"
             >
-              {{ this.customLargeLetter }}
+              {{ currentCustomInputCity }}
             </text>
           </svg>
           <p
@@ -80,7 +80,7 @@
             id="below"
             :style="`color:` + currentInputColor"
           >
-            {{ customTextBelow }}
+            {{ currentCustomInputBelow }}
           </p>
         </div>
       </div>
@@ -94,6 +94,9 @@
             name="Nachrichten-Textfeld"
             label="Deine persönliche Nachricht..."
             :rules="rules"
+            :value="currentText"
+            @input="checkText"
+            :style="`color:${textColor} !important; font-family:${textFont} !important; font-size:${textSize} !important`"
           >
           </v-textarea>
         </v-container>
@@ -147,26 +150,24 @@
           <p>Dieser Platz muss frei bleiben.</p>
         </div>
       </div>
-
     </div>
-          <div class="flip-button">
-        <button
-          class="button button-signup hovereffect checkout"
-          @click="showBack()"
-          type="button"
-        >
-          Karte drehen
-        </button>
-      </div>
+    <div class="flip-button">
+      <button
+        class="button button-signup hovereffect checkout"
+        @click="showBack()"
+        type="button"
+      >
+        Karte drehen
+      </button>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { EventBus } from "@/main";
 import Vue from "vue";
-import { mapGetters, mapState } from "vuex";
+import { mapState } from "vuex";
 import { Recipient } from "src/interfaces/recipient";
-import Vuetify from "vuetify/lib";
 
 export default Vue.extend({
   name: "PostcardLayout",
@@ -185,33 +186,52 @@ export default Vue.extend({
         }
       },
     ],
-    customLargeLetter: "",
-    customTextBefore: "",
-    customTextBelow: "",
-    applyEffect: false,
-    currentInputColor: "",
-    front: true,
   }),
+  mounted() {
+    EventBus.$on("changeRecipient", () => {
+      this.changeRecipient();
+    });
+  },
+  methods: {
+    checkText(e: any) {
+      let textvalue = e;
+      this.$store.dispatch("setText", textvalue);
+    },
+    changeRecipient() {
+      const recipientName = document.getElementById("name") as HTMLInputElement;
+      const recipientAddition = document.getElementById(
+        "addition"
+      ) as HTMLInputElement;
+      const recipientStreetAndNumber = document.getElementById(
+        "street-and-number"
+      ) as HTMLInputElement;
+      const recipientPostalcodeAndCity = document.getElementById(
+        "postalcode-and-city"
+      ) as HTMLInputElement;
+      let recipient: Recipient;
+      recipient = {
+        name: recipientName.value,
+        addition: recipientAddition.value,
+        streetAndNumber: recipientStreetAndNumber.value,
+        postalcodeAndCity: recipientPostalcodeAndCity.value,
+        country: this.selected,
+      };
+      this.$store.dispatch("setRecipient", recipient);
+    },
+    showBack() {
+      let postcardFront = document.querySelector("#front") as HTMLElement;
+      let postcardBack = document.querySelector("#back") as HTMLElement;
+      if (postcardFront.style.display === "block") {
+        postcardFront.style.display = "none";
+        postcardBack.style.display = "flex";
+      } else {
+        postcardFront.style.display = "block";
+        postcardBack.style.display = "none";
+      }
+    },
+  },
   created() {
-    EventBus.$on("changeFontColor", (colorId: string) => {
-      const textarea = document.querySelector("#changed-text") as HTMLElement;
-      textarea.style.color = `${colorId}`;
-      console.log("In PostcardLayout", colorId);
-    });
-    EventBus.$on("preselectedColor", (colorId: string) => {
-      const textarea = document.querySelector("#changed-text") as HTMLElement;
-      textarea.style.color = `${colorId}`;
-      console.log("In PostcardLayout", colorId);
-    });
-    EventBus.$on("changeFontSize", (sizeId: string) => {
-      const textarea = document.querySelector("#changed-text") as HTMLElement;
-      textarea.style.fontSize = `${sizeId}`;
-    });
-    EventBus.$on("changeFont", (fontId: string) => {
-      const textarea = document.querySelector("#changed-text") as HTMLElement;
-      textarea.style.fontFamily = `${fontId}`;
-    });
-    EventBus.$on(
+    /* EventBus.$on(
       "displayCustomLargeLetter",
       (customInputCity: string, applyEffect: boolean) => {
         this.applyEffect = applyEffect;
@@ -250,56 +270,10 @@ export default Vue.extend({
     });
     EventBus.$on("changeRecipient", () => {
       this.changeRecipient();
+    });*/
+    EventBus.$on("changeRecipient", () => {
+      this.changeRecipient();
     });
-  },
-  // EventBus.$on('changeFontColor', (colorId: string) => {
-  //   const textarea = document.querySelector('#changed-text') as HTMLElement;
-  //   textarea.style.color =`${colorId}`;
-  //   console.log("In PostcardLayout", colorId)
-  // })
-
-  // EventBus.$on('changeFontSize', (sizeId: string) => {
-  //   const textarea = document.querySelector('#changed-text') as HTMLElement;
-  //   textarea.style.fontSize =`${sizeId}`;
-  // }),
-  // EventBus.$on('changeFont', (fontId: string) => {
-  //   const textarea = document.querySelector('#changed-text') as HTMLElement;
-  //   textarea.style.fontFamily = `${fontId}`;
-  // }),
-
-  methods: {
-    changeRecipient() {
-      const recipientName = document.getElementById("name") as HTMLInputElement;
-      const recipientAddition = document.getElementById(
-        "addition"
-      ) as HTMLInputElement;
-      const recipientStreetAndNumber = document.getElementById(
-        "street-and-number"
-      ) as HTMLInputElement;
-      const recipientPostalcodeAndCity = document.getElementById(
-        "postalcode-and-city"
-      ) as HTMLInputElement;
-      let recipient: Recipient;
-      recipient = {
-        name: recipientName.value,
-        addition: recipientAddition.value,
-        streetAndNumber: recipientStreetAndNumber.value,
-        postalcodeAndCity: recipientPostalcodeAndCity.value,
-        country: this.selected,
-      };
-      this.$store.dispatch("setRecipient", recipient);
-    },
-    showBack() {
-      let postcardFront = document.querySelector('#front') as HTMLElement;
-      let postcardBack = document.querySelector('#back') as HTMLElement;
-      if(postcardFront.style.display === "block") {
-      postcardFront.style.display = "none";
-      postcardBack.style.display = "flex";
-      } else {
-      postcardFront.style.display = "block";
-      postcardBack.style.display = "none";
-      }
-    },
   },
   props: {
     ImageId: String,
@@ -311,6 +285,15 @@ export default Vue.extend({
       "currentSticker",
       "currentTemplate",
       "currentRecipient",
+      "textColor",
+      "textFont",
+      "textSize",
+      "currentInputColor",
+      "currentCustomInputCity",
+      "currentCustomInputBefore",
+      "currentCustomInputBelow",
+      "current3DEffect",
+      "currentText",
     ]),
   },
 });
@@ -439,18 +422,30 @@ svg > text {
 .v-input__slot {
   width: 100% !important;
   margin-bottom: 1px !important;
+  font-family: inherit !important;
+}
+
+.v-text-field__slot {
+  font-family: inherit !important;
+}
+
+.v-input__control {
+  font-family: inherit !important;
 }
 
 .v-textarea textarea {
   max-width: 100% !important;
   height: 366px !important;
   border-right: solid rgb(112, 112, 112) 3px;
-  font-size: 14px;
   line-height: 1.25 !important;
+  color: inherit !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
 }
 
 .v-text-field__details {
   max-width: 100% !important;
+  font-family: inherit !important;
 }
 
 .v-text-field.v-text-field--enclosed .v-text-field__details {
@@ -460,7 +455,6 @@ svg > text {
 .theme--light.v-messages {
   color: rgb(255, 0, 0) !important;
 }
-
 .codierzone {
   margin-top: 5px;
   width: 100%;
@@ -529,7 +523,6 @@ svg > text {
   display: none;
   flex-wrap: wrap;
   padding: 5px;
-
 }
 
 .flip-button {
