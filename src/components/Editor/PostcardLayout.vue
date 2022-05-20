@@ -1,153 +1,164 @@
 <template>
-  <div class="postcard-layout">
-    <div
-      class="postcard-side"
-      id="front"
-      :style="`background-color:` + currentBackgroundColor"
-    >
-      <div class="image-wrap">
-        <img
-          :src="require(`./../../assets/${currentPicture}`)"
-          class="image-front"
-        />
-        <img
-          v-if="currentSticker !== ''"
-          :src="require(`./../../assets/${currentSticker}`)"
-          class="svg-image"
-        />
+  <div class="postcard-outer-container">
+    <div class="postcard-layout">
+      <div
+        class="postcard-side"
+        id="front"
+        :style="`background-color:` + currentBackgroundColor"
+      >
+        <div class="image-wrap">
+          <img
+            :src="require(`./../../assets/${currentPicture}`)"
+            class="image-front"
+          />
+          <img
+            v-if="currentSticker !== ''"
+            :src="require(`./../../assets/${currentSticker}`)"
+            class="svg-image"
+          />
+        </div>
+        <div v-if="current3DEffect === false" class="custom-input-wrap">
+          <p
+            class="additional-text"
+            id="ontop"
+            :style="`color:` + currentInputColor"
+          >
+            {{ currentCustomInputBefore }}
+          </p>
+          <svg width="100%" id="custom-input-svg">
+            <text
+              id="text-no-effect"
+              x="20"
+              y="100"
+              textLength="520"
+              lengthAdjust="spacingAndGlyphs"
+              :style="`fill:` + currentInputColor"
+            >
+              {{ currentCustomInputCity }}
+            </text>
+          </svg>
+          <p
+            class="additional-text"
+            id="below"
+            :style="`color:` + currentInputColor"
+          >
+            {{ currentCustomInputBelow }}
+          </p>
+        </div>
+        <div v-if="current3DEffect === true" class="custom-input-wrap">
+          <p
+            class="additional-text"
+            id="ontop"
+            :style="`color:` + currentInputColor"
+          >
+            {{ currentCustomInputBefore }}
+          </p>
+          <svg width="100%" id="custom-input-svg">
+            <text
+              id="text-shadow"
+              x="20"
+              y="100"
+              textLength="520"
+              lengthAdjust="spacingAndGlyphs"
+              :style="`fill:` + currentInputColor"
+            >
+              {{ currentCustomInputCity }}
+            </text>
+            <text
+              id="text-top"
+              x="20"
+              y="100"
+              textLength="520"
+              lengthAdjust="spacingAndGlyphs"
+              :style="`fill:` + currentInputColor"
+            >
+              {{ currentCustomInputCity }}
+            </text>
+          </svg>
+          <p
+            class="additional-text"
+            id="below"
+            :style="`color:` + currentInputColor"
+          >
+            {{ currentCustomInputBelow }}
+          </p>
+        </div>
       </div>
-      <div v-if="current3DEffect === false" class="custom-input-wrap">
-        <p
-          class="additional-text"
-          id="ontop"
-          :style="`color:` + currentInputColor"
-        >
-          {{ currentCustomInputBefore }}
-        </p>
-        <svg width="100%" id="custom-input-svg">
-          <text
-            id="text-no-effect"
-            x="20"
-            y="100"
-            textLength="520"
-            lengthAdjust="spacingAndGlyphs"
-            :style="`fill:` + currentInputColor"
+
+      <div class="postcard-side" id="back">
+        <v-container fluid id="container-rückseite-links">
+          <v-textarea
+            id="changed-text"
+            solo
+            counter
+            name="Nachrichten-Textfeld"
+            label="Deine persönliche Nachricht..."
+            :rules="rules"
+            :value="currentText"
+            @input="checkText"
+            :style="`color:${textColor} !important; font-family:${textFont} !important; font-size:${textSize} !important`"
           >
-            {{ currentCustomInputCity }}
-          </text>
-        </svg>
-        <p
-          class="additional-text"
-          id="below"
-          :style="`color:` + currentInputColor"
-        >
-          {{ currentCustomInputBelow }}
-        </p>
-      </div>
-      <div v-if="current3DEffect === true" class="custom-input-wrap">
-        <p
-          class="additional-text"
-          id="ontop"
-          :style="`color:` + currentInputColor"
-        >
-          {{ currentCustomInputBefore }}
-        </p>
-        <svg width="100%" id="custom-input-svg">
-          <text
-            id="text-shadow"
-            x="20"
-            y="100"
-            textLength="520"
-            lengthAdjust="spacingAndGlyphs"
-            :style="`fill:` + currentInputColor"
-          >
-            {{ currentCustomInputCity }}
-          </text>
-          <text
-            id="text-top"
-            x="20"
-            y="100"
-            textLength="520"
-            lengthAdjust="spacingAndGlyphs"
-            :style="`fill:` + currentInputColor"
-          >
-            {{ currentCustomInputCity }}
-          </text>
-        </svg>
-        <p
-          class="additional-text"
-          id="below"
-          :style="`color:` + currentInputColor"
-        >
-          {{ currentCustomInputBelow }}
-        </p>
+          </v-textarea>
+        </v-container>
+        <v-container fluid id="container-rückseite-rechts">
+          <div class="frankierzone">
+            <img
+              class="briefmarke"
+              src="./../../assets/Briefmarke.png"
+              alt="trvl-card Briefmarke"
+            />
+          </div>
+          <div class="address-field">
+            <input
+              id="name"
+              class="address-line"
+              type="text"
+              placeholder="Empfänger*in"
+            />
+            <input
+              id="addition"
+              class="address-line"
+              type="text"
+              placeholder="Zusatz"
+            />
+            <input
+              id="street-and-number"
+              class="address-line"
+              type="text"
+              placeholder="Straße und Hausnummer"
+            />
+            <input
+              id="postalcode-and-city"
+              class="address-line"
+              type="text"
+              placeholder="Postleitzahl und Stadt"
+            />
+            <v-select
+              id="country"
+              v-model="selected"
+              :items="countries"
+              :menu-props="{ maxHeight: '400' }"
+              label="Land"
+              single
+              :rules="countryRules"
+              required
+            >
+            </v-select>
+          </div>
+        </v-container>
+        <div class="codierzone">
+          <p>Dieser Platz muss frei bleiben.</p>
+        </div>
       </div>
     </div>
-
-    <div class="postcard-side" id="back">
-      <v-container fluid id="container-rückseite-links">
-        <v-textarea
-          id="changed-text"
-          solo
-          counter
-          name="Nachrichten-Textfeld"
-          label="Deine persönliche Nachricht..."
-          :rules="rules"
-          :value="currentText"
-          @input="checkText"
-          :style="`color:${textColor} !important; font-family:${textFont} !important; font-size:${textSize} !important`"
-        >
-        </v-textarea>
-      </v-container>
-      <v-container fluid id="container-rückseite-rechts">
-        <div class="frankierzone">
-          <img
-            class="briefmarke"
-            src="./../../assets/Briefmarke.png"
-            alt="trvl-card Briefmarke"
-          />
-        </div>
-        <div class="address-field">
-          <input
-            id="name"
-            class="address-line"
-            type="text"
-            placeholder="Empfänger*in"
-          />
-          <input
-            id="addition"
-            class="address-line"
-            type="text"
-            placeholder="Zusatz"
-          />
-          <input
-            id="street-and-number"
-            class="address-line"
-            type="text"
-            placeholder="Straße und Hausnummer"
-          />
-          <input
-            id="postalcode-and-city"
-            class="address-line"
-            type="text"
-            placeholder="Postleitzahl und Stadt"
-          />
-          <v-select
-            id="country"
-            v-model="selected"
-            :items="countries"
-            :menu-props="{ maxHeight: '400' }"
-            label="Land"
-            single
-            :rules="countryRules"
-            required
-          >
-          </v-select>
-        </div>
-      </v-container>
-      <div class="codierzone">
-        <p>Dieser Platz muss frei bleiben.</p>
-      </div>
+    <div class="flip-button">
+      <button
+        class="button button-signup hovereffect checkout"
+        @click="showBack()"
+        type="button"
+      >
+        Karte drehen
+      </button>
     </div>
   </div>
 </template>
@@ -186,7 +197,6 @@ export default Vue.extend({
       let textvalue = e;
       this.$store.dispatch("setText", textvalue);
     },
-
     changeRecipient() {
       const recipientName = document.getElementById("name") as HTMLInputElement;
       const recipientAddition = document.getElementById(
@@ -207,6 +217,17 @@ export default Vue.extend({
         country: this.selected,
       };
       this.$store.dispatch("setRecipient", recipient);
+    },
+    showBack() {
+      let postcardFront = document.querySelector("#front") as HTMLElement;
+      let postcardBack = document.querySelector("#back") as HTMLElement;
+      if (postcardFront.style.display === "block") {
+        postcardFront.style.display = "none";
+        postcardBack.style.display = "flex";
+      } else {
+        postcardFront.style.display = "block";
+        postcardBack.style.display = "none";
+      }
     },
   },
   created() {
@@ -246,7 +267,10 @@ export default Vue.extend({
     });
     EventBus.$on("preselectedInputColor", (inputColor: string) => {
       this.currentInputColor = inputColor;
-    }); */
+    });
+    EventBus.$on("changeRecipient", () => {
+      this.changeRecipient();
+    });*/
     EventBus.$on("changeRecipient", () => {
       this.changeRecipient();
     });
@@ -269,13 +293,33 @@ export default Vue.extend({
       "currentCustomInputBefore",
       "currentCustomInputBelow",
       "current3DEffect",
-      "currentText"
+      "currentText",
     ]),
   },
 });
 </script>
 
 <style>
+.postcard-outer-container {
+  position: relative;
+  perspective: 1000px;
+  width: 622px;
+  height: 442px;
+  margin: 40px auto;
+}
+
+.postcard-layout {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.postcard-layout.switch {
+  transform: rotateY(180deg);
+}
+
 .image-wrap {
   position: relative;
 }
@@ -284,7 +328,6 @@ export default Vue.extend({
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 20;
 }
 
 .custom-input-wrap {
@@ -292,12 +335,10 @@ export default Vue.extend({
   top: 0;
   left: 0;
   margin: 10px 10px;
-  /* padding: 100px 20px 100px 20px; */
   width: 600px;
   height: 420px;
   display: block;
   background-color: transparent;
-  z-index: 25;
 }
 
 #custom-input-svg {
@@ -363,19 +404,14 @@ svg > text {
 }
 
 .postcard-side {
-  position: relative;
+  position: absolute;
   background-color: rgb(255, 255, 255);
   border: solid rgba(112, 112, 112, 0.5) 1px;
-  width: 622px;
-  height: 442px;
-  margin: 40px auto;
+  width: 100%;
+  height: 100%;
 }
 
 .image-front {
-  /* position: absolute;
-  top: 0;
-  left: 0; */
-  z-index: 1;
   width: 600px;
   height: 420px;
   border: solid 1px rgb(112, 112, 112);
@@ -479,12 +515,24 @@ svg > text {
   margin-left: 0;
 }
 
+#front {
+  display: block;
+}
+
 #back {
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   padding: 5px;
 }
+
+.flip-button {
+  margin-top: 40px;
+  display: flex;
+  border-top: 1px solid #eeeeee;
+  justify-content: center;
+}
 </style>
+
 <style scoped>
 .address-line {
   height: 35px;

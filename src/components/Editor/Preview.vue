@@ -199,10 +199,10 @@ export default Vue.extend({
   overflow-x: auto;
   display: flex;
   flex-direction: column;
-  width: 60vw;
-  max-height: 70vh;
-  top: calc(50% - 45vh);
-  left: calc(50% - 30vw);
+  width: 80vw;
+  max-height: 90vh;
+  top: calc(50% - 50vh);
+  left: calc(50% - 40vw);
   opacity: 1 !important;
   border-radius: 5px;
   padding: 0;
@@ -226,8 +226,12 @@ export default Vue.extend({
 }
 
 .modal-footer {
+  width: calc(100% - 20px);
+  display: flex;
+  position: absolute;
   border-top: 1px solid #eeeeee;
   margin-top: 10px;
+  bottom: 0;
 }
 
 .modal-body {

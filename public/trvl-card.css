@@ -162,6 +162,8 @@
 .welcome {
   padding: 20px;
   margin-top: 20px;
+  width: 55%;
+  margin-right: 100px;
 }
 
 h1 {
@@ -171,7 +173,6 @@ h1 {
 
 .headline {
   display: block;
-  width: 75%;
 }
 
 .headline > p {

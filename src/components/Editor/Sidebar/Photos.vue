@@ -495,6 +495,7 @@ export default Vue.extend({
   width: 100%;
   max-height: 800px;
   overflow: auto;
+  margin-bottom: 20px;
 }
 .card-body {
   display: grid !important;
