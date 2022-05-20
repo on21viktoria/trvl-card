@@ -116,6 +116,10 @@
                     href="/"
                   > Schließen & zur Startseite
                   </b-button>
+                  <a id="showPostCard"
+                    size="sm"
+                    href="http://localhost:8080/#/postcard" target="_blank"
+                  > Postkarte anzeigen</a>
                   </div>
       </template>
           </b-modal>
@@ -346,4 +350,8 @@ h2 {
   margin-left: 0px !important;
 }
 
+#showPostCard {
+  margin-left: 80px;
+  color: #1da2a9;
+}
 </style>
