@@ -7,6 +7,7 @@
     <h2>Absenderadresse</h2>
     <v-form v-model="valid">
       <v-container class="formcontainer">
+        <div class="form-width">
 
       <v-col class="columns" cols="12" md="6"> 
           <v-select
@@ -47,7 +48,7 @@
           ></v-text-field>
         </v-col>
 <v-row>
-          <v-col cols="12" md="5">
+          <v-col cols="12" md="4">
             <v-text-field
               v-model="street"
               :rules="streetRules"
@@ -55,7 +56,7 @@
               required
             ></v-text-field>
           </v-col>
-          <v-col cols="12" md="5">
+          <v-col cols="12" md="2" id="housenumber">
             <v-text-field
               v-model="housenumber"
               :rules="housenumberRules"
@@ -65,7 +66,7 @@
           </v-col>
         </v-row>
         <v-row>
-            <v-col cols="12" md="5">
+            <v-col cols="12" md="2" id="postalcode">
               <v-text-field
                 v-model="postalcode"
                 :rules="postalcodeRules"
@@ -73,7 +74,7 @@
                 required
               ></v-text-field>
             </v-col>
-            <v-col cols="12" md="5">
+            <v-col cols="9" md="4">
               <v-text-field
                 v-model="city"
                 :rules="cityRules"
@@ -94,6 +95,7 @@
         required
           ></v-select>
         </v-col>
+         </div>
       </v-container>
     </v-form>
     <div class="saveaddress">
@@ -330,6 +332,14 @@ h2 {
 #saveAndBack {
   background-color: #ff4e00!important;
   border-color: #ff4e00;
+}
+
+#postalcode {
+  margin-right: 10px !important;
+}
+
+#housenumber {
+  margin-left: 10px !important;
 }
 
 .container.formcontainer {

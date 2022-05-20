@@ -35,7 +35,8 @@ fontId: '',
 methods: {
     changeFont() {
         this.fontId = `${this.selected}`;
-        EventBus.$emit('changeFont', this.fontId);
+        this.$store.dispatch("setTextFont", this.fontId)
+        //EventBus.$emit('changeFont', this.fontId);
         const p = document.querySelector("#show-font") as HTMLElement;
         switch (this.fontId){
             case "Dancing Script":

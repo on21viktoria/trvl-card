@@ -16,8 +16,14 @@
           class="svg-image"
         />
       </div>
-      <div v-if="applyEffect === false" class="custom-input-wrap">
-        <p class="additional-text" id="ontop" :style="`color:` + currentInputColor">{{ customTextBefore }} </p>
+      <div v-if="current3DEffect === false" class="custom-input-wrap">
+        <p
+          class="additional-text"
+          id="ontop"
+          :style="`color:` + currentInputColor"
+        >
+          {{ currentCustomInputBefore }}
+        </p>
         <svg width="100%" id="custom-input-svg">
           <text
             id="text-no-effect"
@@ -27,13 +33,25 @@
             lengthAdjust="spacingAndGlyphs"
             :style="`fill:` + currentInputColor"
           >
-            {{ this.customLargeLetter }}
+            {{ currentCustomInputCity }}
           </text>
         </svg>
-        <p class="additional-text" id="below" :style="`color:` + currentInputColor">{{ customTextBelow }} </p>
+        <p
+          class="additional-text"
+          id="below"
+          :style="`color:` + currentInputColor"
+        >
+          {{ currentCustomInputBelow }}
+        </p>
       </div>
-      <div v-if="applyEffect === true" class="custom-input-wrap">
-        <p class="additional-text" id="ontop" :style="`color:` + currentInputColor">{{ customTextBefore }} </p>
+      <div v-if="current3DEffect === true" class="custom-input-wrap">
+        <p
+          class="additional-text"
+          id="ontop"
+          :style="`color:` + currentInputColor"
+        >
+          {{ currentCustomInputBefore }}
+        </p>
         <svg width="100%" id="custom-input-svg">
           <text
             id="text-shadow"
@@ -43,7 +61,7 @@
             lengthAdjust="spacingAndGlyphs"
             :style="`fill:` + currentInputColor"
           >
-            {{ this.customLargeLetter }}
+            {{ currentCustomInputCity }}
           </text>
           <text
             id="text-top"
@@ -53,10 +71,16 @@
             lengthAdjust="spacingAndGlyphs"
             :style="`fill:` + currentInputColor"
           >
-            {{ this.customLargeLetter }}
+            {{ currentCustomInputCity }}
           </text>
         </svg>
-        <p class="additional-text" id="below" :style="`color:` + currentInputColor">{{ customTextBelow }}</p>
+        <p
+          class="additional-text"
+          id="below"
+          :style="`color:` + currentInputColor"
+        >
+          {{ currentCustomInputBelow }}
+        </p>
       </div>
     </div>
 
@@ -69,6 +93,9 @@
           name="Nachrichten-Textfeld"
           label="Deine persönliche Nachricht..."
           :rules="rules"
+          :value="currentText"
+          @input="checkText"
+          :style="`color:${textColor} !important; font-family:${textFont} !important; font-size:${textSize} !important`"
         >
         </v-textarea>
       </v-container>
@@ -81,21 +108,41 @@
           />
         </div>
         <div class="address-field">
-          <input id="name" class="address-line" type="text" placeholder="Empfänger*in">
-          <input id="addition" class="address-line" type="text" placeholder="Zusatz">
-          <input id="street-and-number" class="address-line" type="text" placeholder="Straße und Hausnummer">
-          <input id="postalcode-and-city" class="address-line" type="text" placeholder="Postleitzahl und Stadt">
+          <input
+            id="name"
+            class="address-line"
+            type="text"
+            placeholder="Empfänger*in"
+          />
+          <input
+            id="addition"
+            class="address-line"
+            type="text"
+            placeholder="Zusatz"
+          />
+          <input
+            id="street-and-number"
+            class="address-line"
+            type="text"
+            placeholder="Straße und Hausnummer"
+          />
+          <input
+            id="postalcode-and-city"
+            class="address-line"
+            type="text"
+            placeholder="Postleitzahl und Stadt"
+          />
           <v-select
-          id="country"
-           v-model="selected"
-          :items="countries"
-          :menu-props="{ maxHeight: '400' }"
-          label="Land"
-          single
-        :rules="countryRules"
-        required
-        >
-        </v-select>
+            id="country"
+            v-model="selected"
+            :items="countries"
+            :menu-props="{ maxHeight: '400' }"
+            label="Land"
+            single
+            :rules="countryRules"
+            required
+          >
+          </v-select>
         </div>
       </v-container>
       <div class="codierzone">
@@ -108,19 +155,17 @@
 <script lang="ts">
 import { EventBus } from "@/main";
 import Vue from "vue";
-import { mapGetters, mapState } from "vuex";
-import { Recipient } from 'src/interfaces/recipient';
-import Vuetify from "vuetify/lib";
+import { mapState } from "vuex";
+import { Recipient } from "src/interfaces/recipient";
 
 export default Vue.extend({
   name: "PostcardLayout",
   components: {},
   data: () => ({
     valid: false,
-    selected: '',
-    countryRules: [(v: string) => !!v || 'Bitte gib ein Land an.',
-    ],
-    countries: ['Deutschland'],
+    selected: "",
+    countryRules: [(v: string) => !!v || "Bitte gib ein Land an."],
+    countries: ["Deutschland"],
     rules: [
       (v: string | any[]) => {
         if (v) {
@@ -130,46 +175,66 @@ export default Vue.extend({
         }
       },
     ],
-    customLargeLetter: "",
-    customTextBefore: "",
-    customTextBelow: "",
-    applyEffect: false,
-    currentInputColor: ""
   }),
-  created() {
-    EventBus.$on("changeFontColor", (colorId: string) => {
-      const textarea = document.querySelector("#changed-text") as HTMLElement;
-      textarea.style.color = `${colorId}`;
-      console.log("In PostcardLayout", colorId);
+  mounted() {
+    EventBus.$on("changeRecipient", () => {
+      this.changeRecipient();
     });
-    EventBus.$on('preselectedColor', (colorId: string) => {
-    const textarea = document.querySelector('#changed-text') as HTMLElement;
-    textarea.style.color =`${colorId}`;
-    console.log("In PostcardLayout", colorId)
-  });
-    EventBus.$on("changeFontSize", (sizeId: string) => {
-      const textarea = document.querySelector("#changed-text") as HTMLElement;
-      textarea.style.fontSize = `${sizeId}`;
-    }),
-      EventBus.$on("changeFont", (fontId: string) => {
-        const textarea = document.querySelector("#changed-text") as HTMLElement;
-        textarea.style.fontFamily = `${fontId}`;
-      }),
-      EventBus.$on("displayCustomLargeLetter", (customInputCity: string, applyEffect: boolean) => {
+  },
+  methods: {
+    checkText(e: any) {
+      let textvalue = e;
+      this.$store.dispatch("setText", textvalue);
+    },
+
+    changeRecipient() {
+      const recipientName = document.getElementById("name") as HTMLInputElement;
+      const recipientAddition = document.getElementById(
+        "addition"
+      ) as HTMLInputElement;
+      const recipientStreetAndNumber = document.getElementById(
+        "street-and-number"
+      ) as HTMLInputElement;
+      const recipientPostalcodeAndCity = document.getElementById(
+        "postalcode-and-city"
+      ) as HTMLInputElement;
+      let recipient: Recipient;
+      recipient = {
+        name: recipientName.value,
+        addition: recipientAddition.value,
+        streetAndNumber: recipientStreetAndNumber.value,
+        postalcodeAndCity: recipientPostalcodeAndCity.value,
+        country: this.selected,
+      };
+      this.$store.dispatch("setRecipient", recipient);
+    },
+  },
+  created() {
+    /* EventBus.$on(
+      "displayCustomLargeLetter",
+      (customInputCity: string, applyEffect: boolean) => {
         this.applyEffect = applyEffect;
         this.customLargeLetter = customInputCity;
-      });
+      }
+    );
     EventBus.$on("displayCustomBefore", (customInputBefore: string) => {
       this.customTextBefore = customInputBefore;
     });
     EventBus.$on("displayCustomBelow", (customInputBelow: string) => {
       this.customTextBelow = customInputBelow;
     });
-    EventBus.$on("clearCustomText", (customInputCity: string, customInputBefore: string, customInputBelow:string) => {
-      this.customLargeLetter = customInputCity;
-      this.customTextBefore = customInputBefore;
-      this.customTextBelow = customInputBelow;
-    })
+    EventBus.$on(
+      "clearCustomText",
+      (
+        customInputCity: string,
+        customInputBefore: string,
+        customInputBelow: string
+      ) => {
+        this.customLargeLetter = customInputCity;
+        this.customTextBefore = customInputBefore;
+        this.customTextBelow = customInputBelow;
+      }
+    );
     EventBus.$on("applyThreeDEffect", () => {
       this.applyEffect = true;
     });
@@ -181,40 +246,10 @@ export default Vue.extend({
     });
     EventBus.$on("preselectedInputColor", (inputColor: string) => {
       this.currentInputColor = inputColor;
+    }); */
+    EventBus.$on("changeRecipient", () => {
+      this.changeRecipient();
     });
-    EventBus.$on('changeRecipient', () => { this.changeRecipient() })
-},
-  // EventBus.$on('changeFontColor', (colorId: string) => {
-  //   const textarea = document.querySelector('#changed-text') as HTMLElement;
-  //   textarea.style.color =`${colorId}`;
-  //   console.log("In PostcardLayout", colorId)
-  // })
-  
-  // EventBus.$on('changeFontSize', (sizeId: string) => {
-  //   const textarea = document.querySelector('#changed-text') as HTMLElement;
-  //   textarea.style.fontSize =`${sizeId}`;
-  // }),
-  // EventBus.$on('changeFont', (fontId: string) => {
-  //   const textarea = document.querySelector('#changed-text') as HTMLElement;
-  //   textarea.style.fontFamily = `${fontId}`;
-  // }),
-  
-methods: {
-    changeRecipient(){
-      const recipientName = document.getElementById('name') as HTMLInputElement;
-      const recipientAddition = document.getElementById('addition') as HTMLInputElement;
-      const recipientStreetAndNumber = document.getElementById('street-and-number') as HTMLInputElement;
-      const recipientPostalcodeAndCity = document.getElementById('postalcode-and-city') as HTMLInputElement;
-      let recipient: Recipient;
-      recipient = {
-        name: recipientName.value,
-        addition: recipientAddition.value,
-        streetAndNumber: recipientStreetAndNumber.value,
-        postalcodeAndCity: recipientPostalcodeAndCity.value,
-        country: this.selected
-      }
-      this.$store.dispatch("setRecipient", recipient)
-    }
   },
   props: {
     ImageId: String,
@@ -226,13 +261,22 @@ methods: {
       "currentSticker",
       "currentTemplate",
       "currentRecipient",
+      "textColor",
+      "textFont",
+      "textSize",
+      "currentInputColor",
+      "currentCustomInputCity",
+      "currentCustomInputBefore",
+      "currentCustomInputBelow",
+      "current3DEffect",
+      "currentText"
     ]),
   },
 });
 </script>
 
 <style>
-.image-wrap{
+.image-wrap {
   position: relative;
 }
 
@@ -342,19 +386,30 @@ svg > text {
 .v-input__slot {
   width: 100% !important;
   margin-bottom: 1px !important;
+  font-family: inherit !important;
 }
 
+.v-text-field__slot {
+  font-family: inherit !important;
+}
+
+.v-input__control {
+  font-family: inherit !important;
+}
 
 .v-textarea textarea {
   max-width: 100% !important;
   height: 366px !important;
   border-right: solid rgb(112, 112, 112) 3px;
-  font-size: 14px;
   line-height: 1.25 !important;
+  color: inherit !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
 }
 
 .v-text-field__details {
   max-width: 100% !important;
+  font-family: inherit !important;
 }
 
 .v-text-field.v-text-field--enclosed .v-text-field__details {
@@ -364,7 +419,6 @@ svg > text {
 .theme--light.v-messages {
   color: rgb(255, 0, 0) !important;
 }
-
 .codierzone {
   margin-top: 5px;
   width: 100%;
@@ -380,7 +434,7 @@ svg > text {
 
 /* .codierzone > p {
   margin: 10px 0 5px; */
-.codierzone>p{
+.codierzone > p {
   margin: 5px 0 5px;
   text-align: center;
 }
@@ -390,7 +444,6 @@ svg > text {
   width: 100%;
   padding-top: 10px;
   padding-right: 10px;
- 
 }
 
 .briefmarke {
@@ -433,10 +486,8 @@ svg > text {
   flex-wrap: wrap;
   padding: 5px;
 }
-
 </style>
 <style scoped>
-
 .address-line {
   height: 35px;
   width: 220px;
@@ -450,7 +501,7 @@ svg > text {
 }
 
 .address-line:focus {
- outline: 0 !important;
+  outline: 0 !important;
 }
 
 .v-select__selections {
@@ -474,5 +525,4 @@ svg > text {
   margin: 10px 0px 0px 0px !important;
   height: 35px !important;
 }
-
 </style>
