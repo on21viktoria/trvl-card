@@ -6,10 +6,7 @@
       :style="`background-color:` + currentBackgroundColor"
     >
       <div class="image-wrap">
-        <img
-          :src="require(`./../assets/${currentPicture}`)"
-          class="image-front"
-        />
+        <img :src=currentPicture class="image-front" />
         <img
           v-if="currentSticker !== ''"
           :src="require(`./../assets/${currentSticker}`)"
@@ -129,7 +126,7 @@ export default Vue.extend({
     ImageId: String,
   },
   mounted() {
-    window.print()
+    window.print();
   },
   computed: {
     ...mapState([

@@ -17,81 +17,78 @@
           class="front"
           :style="`background-color:` + currentBackgroundColor"
         >
-          <img
-            :src="require(`./../../assets/${currentPicture}`)"
-            class="image-front-preview"
-          />
+          <img :src=currentPicture class="image-front-preview" />
           <img
             v-if="currentSticker !== ''"
             :src="require(`./../../assets/${currentSticker}`)"
             class="svg-image"
           />
           <div v-if="current3DEffect === false" class="custom-input-wrap">
-        <p
-          class="additional-text"
-          id="ontopPreview"
-          :style="`color:` + currentInputColor"
-        >
-          {{ currentCustomInputBefore }}
-        </p>
-        <svg width="100%" id="custom-input-svgPreview">
-          <text
-            id="text-no-effect-preview"
-            x="20"
-            y="100"
-            textLength="520"
-            lengthAdjust="spacingAndGlyphs"
-            :style="`fill:` + currentInputColor"
-          >
-            {{ currentCustomInputCity }}
-          </text>
-        </svg>
-        <p
-          class="additional-text"
-          id="belowPreview"
-          :style="`color:` + currentInputColor"
-        >
-          {{ currentCustomInputBelow }}
-        </p>
-      </div>
-      <div v-if="current3DEffect === true" class="custom-input-wrap">
-        <p
-          class="additional-text"
-          id="ontopPreview"
-          :style="`color:` + currentInputColor"
-        >
-          {{ currentCustomInputBefore }}
-        </p>
-        <svg width="100%" id="custom-input-svgPreview">
-          <text
-            id="text-shadowPreview"
-            x="20"
-            y="100"
-            textLength="520"
-            lengthAdjust="spacingAndGlyphs"
-            :style="`fill:` + currentInputColor"
-          >
-            {{ currentCustomInputCity }}
-          </text>
-          <text
-            id="text-topPreview"
-            x="20"
-            y="100"
-            textLength="520"
-            lengthAdjust="spacingAndGlyphs"
-            :style="`fill:` + currentInputColor"
-          >
-            {{ currentCustomInputCity }}
-          </text>
-        </svg>
-        <p
-          class="additional-text"
-          id="belowPreview"
-          :style="`color:` + currentInputColor"
-        >
-          {{ currentCustomInputBelow }}
-        </p>
-      </div>
+            <p
+              class="additional-text"
+              id="ontopPreview"
+              :style="`color:` + currentInputColor"
+            >
+              {{ currentCustomInputBefore }}
+            </p>
+            <svg width="100%" id="custom-input-svgPreview">
+              <text
+                id="text-no-effect-preview"
+                x="20"
+                y="100"
+                textLength="520"
+                lengthAdjust="spacingAndGlyphs"
+                :style="`fill:` + currentInputColor"
+              >
+                {{ currentCustomInputCity }}
+              </text>
+            </svg>
+            <p
+              class="additional-text"
+              id="belowPreview"
+              :style="`color:` + currentInputColor"
+            >
+              {{ currentCustomInputBelow }}
+            </p>
+          </div>
+          <div v-if="current3DEffect === true" class="custom-input-wrap">
+            <p
+              class="additional-text"
+              id="ontopPreview"
+              :style="`color:` + currentInputColor"
+            >
+              {{ currentCustomInputBefore }}
+            </p>
+            <svg width="100%" id="custom-input-svgPreview">
+              <text
+                id="text-shadowPreview"
+                x="20"
+                y="100"
+                textLength="520"
+                lengthAdjust="spacingAndGlyphs"
+                :style="`fill:` + currentInputColor"
+              >
+                {{ currentCustomInputCity }}
+              </text>
+              <text
+                id="text-topPreview"
+                x="20"
+                y="100"
+                textLength="520"
+                lengthAdjust="spacingAndGlyphs"
+                :style="`fill:` + currentInputColor"
+              >
+                {{ currentCustomInputCity }}
+              </text>
+            </svg>
+            <p
+              class="additional-text"
+              id="belowPreview"
+              :style="`color:` + currentInputColor"
+            >
+              {{ currentCustomInputBelow }}
+            </p>
+          </div>
         </div>
         <div class="back">
           <div class="postcard-left-back">
@@ -470,5 +467,4 @@ svg > text {
   font-family: "Luckiest Guy", cursive;
   letter-spacing: 3px;
 }
-
 </style>

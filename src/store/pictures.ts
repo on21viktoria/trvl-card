@@ -6,8 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    //Background + picture
-    currentPicture: "images-trvl-card/LargeLetterDesign_Berlin.jpg",
+    currentPicture: "https://firebasestorage.googleapis.com/v0/b/trvl-card-4b9a2.appspot.com/o/files%2FBerlin_Template_03.jpg?alt=media&token=1e02c447-2a98-417d-81e6-55c937438650",
     currentBackgroundColor: "#ffffff",
 
     //Sticker

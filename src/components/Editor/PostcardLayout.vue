@@ -7,10 +7,7 @@
         :style="`background-color:` + currentBackgroundColor"
       >
         <div class="image-wrap">
-          <img
-            :src="require(`./../../assets/${currentPicture}`)"
-            class="image-front"
-          />
+          <img :src=currentPicture class="image-front" />
           <img
             v-if="currentSticker !== ''"
             :src="require(`./../../assets/${currentSticker}`)"
@@ -91,6 +88,7 @@
             id="changed-text"
             solo
             counter
+            auto-grow="false"
             name="Nachrichten-Textfeld"
             label="Deine persönliche Nachricht..."
             :rules="rules"
@@ -231,46 +229,6 @@ export default Vue.extend({
     },
   },
   created() {
-    /* EventBus.$on(
-      "displayCustomLargeLetter",
-      (customInputCity: string, applyEffect: boolean) => {
-        this.applyEffect = applyEffect;
-        this.customLargeLetter = customInputCity;
-      }
-    );
-    EventBus.$on("displayCustomBefore", (customInputBefore: string) => {
-      this.customTextBefore = customInputBefore;
-    });
-    EventBus.$on("displayCustomBelow", (customInputBelow: string) => {
-      this.customTextBelow = customInputBelow;
-    });
-    EventBus.$on(
-      "clearCustomText",
-      (
-        customInputCity: string,
-        customInputBefore: string,
-        customInputBelow: string
-      ) => {
-        this.customLargeLetter = customInputCity;
-        this.customTextBefore = customInputBefore;
-        this.customTextBelow = customInputBelow;
-      }
-    );
-    EventBus.$on("applyThreeDEffect", () => {
-      this.applyEffect = true;
-    });
-    EventBus.$on("clearThreeDEffect", () => {
-      this.applyEffect = false;
-    });
-    EventBus.$on("changeInputColor", (inputColor: string) => {
-      this.currentInputColor = inputColor;
-    });
-    EventBus.$on("preselectedInputColor", (inputColor: string) => {
-      this.currentInputColor = inputColor;
-    });
-    EventBus.$on("changeRecipient", () => {
-      this.changeRecipient();
-    });*/
     EventBus.$on("changeRecipient", () => {
       this.changeRecipient();
     });
