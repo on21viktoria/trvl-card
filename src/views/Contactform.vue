@@ -116,10 +116,10 @@
                     href="/"
                   > Schließen & zur Startseite
                   </b-button>
-                  <a id="showPostCard"
+                  <router-link id="showPostCard"
                     size="sm"
-                    href="http://localhost:8080/#/postcard" target="_blank"
-                  > Postkarte anzeigen</a>
+                    to="/postcard"
+                  > Postkarte anzeigen</router-link>
                   </div>
       </template>
           </b-modal>

@@ -125,11 +125,11 @@ import { mapState } from "vuex";
 
 export default Vue.extend({
   name: "Postcard",
-  mounted() {
-    window.print();
-  },
   props: {
     ImageId: String,
+  },
+  mounted() {
+    window.print()
   },
   computed: {
     ...mapState([
