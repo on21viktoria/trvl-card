@@ -8,6 +8,7 @@ import VueRouter from "vue-router";
 import Home from "./views/Home.vue";
 import Editor from "./views/Editor.vue";
 import Contactform from "./views/Contactform.vue";
+import Postcard from "./views/Postcard.vue";
 import store from './store/pictures'
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
@@ -42,6 +43,7 @@ const routes = [
   { path: "/", component: Home },
   { path: "/editor/:id", component: Editor },
   { path: "/checkout", component: Contactform },
+  { path: "/postcard", component: Postcard}
 ];
 const router = new VueRouter({
   routes,

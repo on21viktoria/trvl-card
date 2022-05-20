@@ -1,107 +1,162 @@
 <template>
-  <div class="postcard-layout">
-    <div
-      class="postcard-side"
-      id="front"
-      :style="`background-color:` + currentBackgroundColor"
-    >
-      <div class="image-wrap">
-        <img
-          :src=
-          currentPicture
-          class="image-front"
-        />
-        <img
-          v-if="currentSticker !== ''"
-          :src="require(`./../../assets/${currentSticker}`)"
-          class="svg-image"
-        />
-      </div>
-      <div v-if="applyEffect === false" class="custom-input-wrap">
-        <p class="additional-text" id="ontop" :style="`color:` + currentInputColor">{{ customTextBefore }} </p>
-        <svg width="100%" id="custom-input-svg">
-          <text
-            id="text-no-effect"
-            x="20"
-            y="100"
-            textLength="520"
-            lengthAdjust="spacingAndGlyphs"
-            :style="`fill:` + currentInputColor"
-          >
-            {{ this.customLargeLetter }}
-          </text>
-        </svg>
-        <p class="additional-text" id="below" :style="`color:` + currentInputColor">{{ customTextBelow }} </p>
-      </div>
-      <div v-if="applyEffect === true" class="custom-input-wrap">
-        <p class="additional-text" id="ontop" :style="`color:` + currentInputColor">{{ customTextBefore }} </p>
-        <svg width="100%" id="custom-input-svg">
-          <text
-            id="text-shadow"
-            x="20"
-            y="100"
-            textLength="520"
-            lengthAdjust="spacingAndGlyphs"
-            :style="`fill:` + currentInputColor"
-          >
-            {{ this.customLargeLetter }}
-          </text>
-          <text
-            id="text-top"
-            x="20"
-            y="100"
-            textLength="520"
-            lengthAdjust="spacingAndGlyphs"
-            :style="`fill:` + currentInputColor"
-          >
-            {{ this.customLargeLetter }}
-          </text>
-        </svg>
-        <p class="additional-text" id="below" :style="`color:` + currentInputColor">{{ customTextBelow }}</p>
-      </div>
-    </div>
-
-    <div class="postcard-side" id="back">
-      <v-container fluid id="container-rückseite-links">
-        <v-textarea
-          id="changed-text"
-          solo
-          counter
-          name="Nachrichten-Textfeld"
-          label="Deine persönliche Nachricht..."
-          :rules="rules"
-        >
-        </v-textarea>
-      </v-container>
-      <v-container fluid id="container-rückseite-rechts">
-        <div class="frankierzone">
+  <div class="postcard-outer-container">
+    <div class="postcard-layout">
+      <div
+        class="postcard-side"
+        id="front"
+        :style="`background-color:` + currentBackgroundColor"
+      >
+        <div class="image-wrap">
+          <img :src=currentPicture class="image-front" />
           <img
-            class="briefmarke"
-            src="./../../assets/Briefmarke.png"
-            alt="trvl-card Briefmarke"
+            v-if="currentSticker !== ''"
+            :src="require(`./../../assets/${currentSticker}`)"
+            class="svg-image"
           />
         </div>
-        <div class="address-field">
-          <input id="name" class="address-line" type="text" placeholder="Empfänger*in">
-          <input id="addition" class="address-line" type="text" placeholder="Zusatz">
-          <input id="street-and-number" class="address-line" type="text" placeholder="Straße und Hausnummer">
-          <input id="postalcode-and-city" class="address-line" type="text" placeholder="Postleitzahl und Stadt">
-          <v-select
-          id="country"
-           v-model="selected"
-          :items="countries"
-          :menu-props="{ maxHeight: '400' }"
-          label="Land"
-          single
-        :rules="countryRules"
-        required
-        >
-        </v-select>
+        <div v-if="current3DEffect === false" class="custom-input-wrap">
+          <p
+            class="additional-text"
+            id="ontop"
+            :style="`color:` + currentInputColor"
+          >
+            {{ currentCustomInputBefore }}
+          </p>
+          <svg width="100%" id="custom-input-svg">
+            <text
+              id="text-no-effect"
+              x="20"
+              y="100"
+              textLength="520"
+              lengthAdjust="spacingAndGlyphs"
+              :style="`fill:` + currentInputColor"
+            >
+              {{ currentCustomInputCity }}
+            </text>
+          </svg>
+          <p
+            class="additional-text"
+            id="below"
+            :style="`color:` + currentInputColor"
+          >
+            {{ currentCustomInputBelow }}
+          </p>
         </div>
-      </v-container>
-      <div class="codierzone">
-        <p>Dieser Platz muss frei bleiben.</p>
+        <div v-if="current3DEffect === true" class="custom-input-wrap">
+          <p
+            class="additional-text"
+            id="ontop"
+            :style="`color:` + currentInputColor"
+          >
+            {{ currentCustomInputBefore }}
+          </p>
+          <svg width="100%" id="custom-input-svg">
+            <text
+              id="text-shadow"
+              x="20"
+              y="100"
+              textLength="520"
+              lengthAdjust="spacingAndGlyphs"
+              :style="`fill:` + currentInputColor"
+            >
+              {{ currentCustomInputCity }}
+            </text>
+            <text
+              id="text-top"
+              x="20"
+              y="100"
+              textLength="520"
+              lengthAdjust="spacingAndGlyphs"
+              :style="`fill:` + currentInputColor"
+            >
+              {{ currentCustomInputCity }}
+            </text>
+          </svg>
+          <p
+            class="additional-text"
+            id="below"
+            :style="`color:` + currentInputColor"
+          >
+            {{ currentCustomInputBelow }}
+          </p>
+        </div>
       </div>
+
+      <div class="postcard-side" id="back">
+        <v-container fluid id="container-rückseite-links">
+          <v-textarea
+            id="changed-text"
+            solo
+            counter
+            auto-grow="false"
+            name="Nachrichten-Textfeld"
+            label="Deine persönliche Nachricht..."
+            :rules="rules"
+            :value="currentText"
+            @input="checkText"
+            :style="`color:${textColor} !important; font-family:${textFont} !important; font-size:${textSize} !important`"
+          >
+          </v-textarea>
+        </v-container>
+        <v-container fluid id="container-rückseite-rechts">
+          <div class="frankierzone">
+            <img
+              class="briefmarke"
+              src="./../../assets/Briefmarke.png"
+              alt="trvl-card Briefmarke"
+            />
+          </div>
+          <div class="address-field">
+            <input
+              id="name"
+              class="address-line"
+              type="text"
+              placeholder="Empfänger*in"
+            />
+            <input
+              id="addition"
+              class="address-line"
+              type="text"
+              placeholder="Zusatz"
+            />
+            <input
+              id="street-and-number"
+              class="address-line"
+              type="text"
+              placeholder="Straße und Hausnummer"
+            />
+            <input
+              id="postalcode-and-city"
+              class="address-line"
+              type="text"
+              placeholder="Postleitzahl und Stadt"
+            />
+            <v-select
+              id="country"
+              v-model="selected"
+              :items="countries"
+              :menu-props="{ maxHeight: '400' }"
+              label="Land"
+              single
+              :rules="countryRules"
+              required
+            >
+            </v-select>
+          </div>
+        </v-container>
+        <div class="codierzone">
+          <p>Dieser Platz muss frei bleiben.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip-button">
+      <button
+        class="button button-signup hovereffect checkout"
+        @click="showBack()"
+        type="button"
+      >
+        Karte drehen
+      </button>
     </div>
   </div>
 </template>
@@ -109,19 +164,17 @@
 <script lang="ts">
 import { EventBus } from "@/main";
 import Vue from "vue";
-import { mapGetters, mapState } from "vuex";
-import { Recipient } from 'src/interfaces/recipient';
-import Vuetify from "vuetify/lib";
+import { mapState } from "vuex";
+import { Recipient } from "src/interfaces/recipient";
 
 export default Vue.extend({
   name: "PostcardLayout",
   components: {},
   data: () => ({
     valid: false,
-    selected: '',
-    countryRules: [(v: string) => !!v || 'Bitte gib ein Land an.',
-    ],
-    countries: ['Deutschland'],
+    selected: "",
+    countryRules: [(v: string) => !!v || "Bitte gib ein Land an."],
+    countries: ["Deutschland"],
     rules: [
       (v: string | any[]) => {
         if (v) {
@@ -131,91 +184,54 @@ export default Vue.extend({
         }
       },
     ],
-    customLargeLetter: "",
-    customTextBefore: "",
-    customTextBelow: "",
-    applyEffect: false,
-    currentInputColor: ""
   }),
-  created() {
-    EventBus.$on("changeFontColor", (colorId: string) => {
-      const textarea = document.querySelector("#changed-text") as HTMLElement;
-      textarea.style.color = `${colorId}`;
-      console.log("In PostcardLayout", colorId);
+  mounted() {
+    EventBus.$on("changeRecipient", () => {
+      this.changeRecipient();
     });
-    EventBus.$on('preselectedColor', (colorId: string) => {
-    const textarea = document.querySelector('#changed-text') as HTMLElement;
-    textarea.style.color =`${colorId}`;
-    console.log("In PostcardLayout", colorId)
-  });
-    EventBus.$on("changeFontSize", (sizeId: string) => {
-      const textarea = document.querySelector("#changed-text") as HTMLElement;
-      textarea.style.fontSize = `${sizeId}`;
-    }),
-      EventBus.$on("changeFont", (fontId: string) => {
-        const textarea = document.querySelector("#changed-text") as HTMLElement;
-        textarea.style.fontFamily = `${fontId}`;
-      }),
-      EventBus.$on("displayCustomLargeLetter", (customInputCity: string, applyEffect: boolean) => {
-        this.applyEffect = applyEffect;
-        this.customLargeLetter = customInputCity;
-      });
-    EventBus.$on("displayCustomBefore", (customInputBefore: string) => {
-      this.customTextBefore = customInputBefore;
-    });
-    EventBus.$on("displayCustomBelow", (customInputBelow: string) => {
-      this.customTextBelow = customInputBelow;
-    });
-    EventBus.$on("clearCustomText", (customInputCity: string, customInputBefore: string, customInputBelow:string) => {
-      this.customLargeLetter = customInputCity;
-      this.customTextBefore = customInputBefore;
-      this.customTextBelow = customInputBelow;
-    })
-    EventBus.$on("applyThreeDEffect", () => {
-      this.applyEffect = true;
-    });
-    EventBus.$on("clearThreeDEffect", () => {
-      this.applyEffect = false;
-    });
-    EventBus.$on("changeInputColor", (inputColor: string) => {
-      this.currentInputColor = inputColor;
-    });
-    EventBus.$on("preselectedInputColor", (inputColor: string) => {
-      this.currentInputColor = inputColor;
-    });
-    EventBus.$on('changeRecipient', () => { this.changeRecipient() })
-},
-  // EventBus.$on('changeFontColor', (colorId: string) => {
-  //   const textarea = document.querySelector('#changed-text') as HTMLElement;
-  //   textarea.style.color =`${colorId}`;
-  //   console.log("In PostcardLayout", colorId)
-  // })
-  
-  // EventBus.$on('changeFontSize', (sizeId: string) => {
-  //   const textarea = document.querySelector('#changed-text') as HTMLElement;
-  //   textarea.style.fontSize =`${sizeId}`;
-  // }),
-  // EventBus.$on('changeFont', (fontId: string) => {
-  //   const textarea = document.querySelector('#changed-text') as HTMLElement;
-  //   textarea.style.fontFamily = `${fontId}`;
-  // }),
-  
-methods: {
-    changeRecipient(){
-      const recipientName = document.getElementById('name') as HTMLInputElement;
-      const recipientAddition = document.getElementById('addition') as HTMLInputElement;
-      const recipientStreetAndNumber = document.getElementById('street-and-number') as HTMLInputElement;
-      const recipientPostalcodeAndCity = document.getElementById('postalcode-and-city') as HTMLInputElement;
+  },
+  methods: {
+    checkText(e: any) {
+      let textvalue = e;
+      this.$store.dispatch("setText", textvalue);
+    },
+    changeRecipient() {
+      const recipientName = document.getElementById("name") as HTMLInputElement;
+      const recipientAddition = document.getElementById(
+        "addition"
+      ) as HTMLInputElement;
+      const recipientStreetAndNumber = document.getElementById(
+        "street-and-number"
+      ) as HTMLInputElement;
+      const recipientPostalcodeAndCity = document.getElementById(
+        "postalcode-and-city"
+      ) as HTMLInputElement;
       let recipient: Recipient;
       recipient = {
         name: recipientName.value,
         addition: recipientAddition.value,
         streetAndNumber: recipientStreetAndNumber.value,
         postalcodeAndCity: recipientPostalcodeAndCity.value,
-        country: this.selected
+        country: this.selected,
+      };
+      this.$store.dispatch("setRecipient", recipient);
+    },
+    showBack() {
+      let postcardFront = document.querySelector("#front") as HTMLElement;
+      let postcardBack = document.querySelector("#back") as HTMLElement;
+      if (postcardFront.style.display === "block") {
+        postcardFront.style.display = "none";
+        postcardBack.style.display = "flex";
+      } else {
+        postcardFront.style.display = "block";
+        postcardBack.style.display = "none";
       }
-      this.$store.dispatch("setRecipient", recipient)
-    }
+    },
+  },
+  created() {
+    EventBus.$on("changeRecipient", () => {
+      this.changeRecipient();
+    });
   },
   props: {
     ImageId: String,
@@ -227,13 +243,42 @@ methods: {
       "currentSticker",
       "currentTemplate",
       "currentRecipient",
+      "textColor",
+      "textFont",
+      "textSize",
+      "currentInputColor",
+      "currentCustomInputCity",
+      "currentCustomInputBefore",
+      "currentCustomInputBelow",
+      "current3DEffect",
+      "currentText",
     ]),
   },
 });
 </script>
 
 <style>
-.image-wrap{
+.postcard-outer-container {
+  position: relative;
+  perspective: 1000px;
+  width: 622px;
+  height: 442px;
+  margin: 40px auto;
+}
+
+.postcard-layout {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.postcard-layout.switch {
+  transform: rotateY(180deg);
+}
+
+.image-wrap {
   position: relative;
 }
 
@@ -241,7 +286,6 @@ methods: {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 20;
 }
 
 .custom-input-wrap {
@@ -249,12 +293,10 @@ methods: {
   top: 0;
   left: 0;
   margin: 10px 10px;
-  /* padding: 100px 20px 100px 20px; */
   width: 600px;
   height: 420px;
   display: block;
   background-color: transparent;
-  z-index: 25;
 }
 
 #custom-input-svg {
@@ -320,19 +362,14 @@ svg > text {
 }
 
 .postcard-side {
-  position: relative;
+  position: absolute;
   background-color: rgb(255, 255, 255);
   border: solid rgba(112, 112, 112, 0.5) 1px;
-  width: 622px;
-  height: 442px;
-  margin: 40px auto;
+  width: 100%;
+  height: 100%;
 }
 
 .image-front {
-  /* position: absolute;
-  top: 0;
-  left: 0; */
-  z-index: 1;
   width: 600px;
   height: 420px;
   border: solid 1px rgb(112, 112, 112);
@@ -343,19 +380,30 @@ svg > text {
 .v-input__slot {
   width: 100% !important;
   margin-bottom: 1px !important;
+  font-family: inherit !important;
 }
 
+.v-text-field__slot {
+  font-family: inherit !important;
+}
+
+.v-input__control {
+  font-family: inherit !important;
+}
 
 .v-textarea textarea {
   max-width: 100% !important;
   height: 366px !important;
   border-right: solid rgb(112, 112, 112) 3px;
-  font-size: 14px;
   line-height: 1.25 !important;
+  color: inherit !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
 }
 
 .v-text-field__details {
   max-width: 100% !important;
+  font-family: inherit !important;
 }
 
 .v-text-field.v-text-field--enclosed .v-text-field__details {
@@ -365,7 +413,6 @@ svg > text {
 .theme--light.v-messages {
   color: rgb(255, 0, 0) !important;
 }
-
 .codierzone {
   margin-top: 5px;
   width: 100%;
@@ -379,9 +426,7 @@ svg > text {
   );
 }
 
-/* .codierzone > p {
-  margin: 10px 0 5px; */
-.codierzone>p{
+.codierzone > p {
   margin: 5px 0 5px;
   text-align: center;
 }
@@ -391,7 +436,6 @@ svg > text {
   width: 100%;
   padding-top: 10px;
   padding-right: 10px;
- 
 }
 
 .briefmarke {
@@ -429,15 +473,25 @@ svg > text {
   margin-left: 0;
 }
 
+#front {
+  display: block;
+}
+
 #back {
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   padding: 5px;
 }
 
+.flip-button {
+  margin-top: 40px;
+  display: flex;
+  border-top: 1px solid #eeeeee;
+  justify-content: center;
+}
 </style>
-<style scoped>
 
+<style scoped>
 .address-line {
   height: 35px;
   width: 220px;
@@ -451,7 +505,7 @@ svg > text {
 }
 
 .address-line:focus {
- outline: 0 !important;
+  outline: 0 !important;
 }
 
 .v-select__selections {
@@ -475,5 +529,4 @@ svg > text {
   margin: 10px 0px 0px 0px !important;
   height: 35px !important;
 }
-
 </style>

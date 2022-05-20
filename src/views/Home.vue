@@ -34,7 +34,7 @@ export default Vue.extend({
     {
         id: "large-letter",
         title: "Zum Postkarten-Editor",
-        text: "Starte jetzt mit der Gestaltung deiner invididuellen Postkarte.",
+        text: "Starte jetzt mit der Gestaltung deiner individuellen Postkarte.",
         image: "LargeLetterDesign_Berlin.jpg"
     }
     ]
@@ -47,7 +47,7 @@ export default Vue.extend({
   display: flex;
   justify-content: center;
   margin-top: 150px;
-  margin-left: 50px;
+  margin-left: 90px;
   margin-right: 120px;
   margin-bottom: 50px;
 }

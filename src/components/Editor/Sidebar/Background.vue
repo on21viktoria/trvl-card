@@ -55,7 +55,6 @@ export default Vue.extend({
         for (let choice of this.preselectedColors){
             if(choice.id === suggestionId) {
                 this.$store.dispatch("setBackgroundColor", choice.value)
-                console.log("in preselected function", choice.value)
                 return
             }
         }
