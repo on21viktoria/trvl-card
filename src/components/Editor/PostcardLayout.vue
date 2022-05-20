@@ -432,8 +432,6 @@ svg > text {
   );
 }
 
-/* .codierzone > p {
-  margin: 10px 0 5px; */
 .codierzone > p {
   margin: 5px 0 5px;
   text-align: center;
