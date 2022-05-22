@@ -132,7 +132,7 @@
         <img src="./../assets/images-trvl-card/LargeLetterDesign_Berlin.jpg" width=150px/>
         </div>
         <ul class="ordersumup">
-        <li class="ordertext">Postkarte Big Letter Design "California"</li>
+        <li class="ordertext">Deine personalisierte Postkarte</li>
         <li class="price">3,50€</li>
         </ul>
         </div>
