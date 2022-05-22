@@ -132,9 +132,6 @@ export default Vue.extend({
       this.isModalVisible = false;
     },
   },
-  /* created() {
-      EventBus.$on('checkAddress', () => {this.handleClick()})
-    }, */
 });
 </script>
 
