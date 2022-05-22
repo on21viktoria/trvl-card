@@ -57,7 +57,7 @@
       </div>
 
       <div class="d-flex justify-content-between py-2 my-2 border-top">
-        <p>&copy; 2021 trvl card, Inc. All rights reserved.</p>
+        <p>&copy; 2022 trvl card, Inc. All rights reserved.</p>
         <ul class="list-unstyled d-flex">
           <li class="ms-3">
             <a class="link-dark" href="#"
