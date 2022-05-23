@@ -97,7 +97,7 @@ export default Vue.extend({
     };
   },
   methods: {
-    // Ruft die aktuell auf der Postkarte eingegebene Empfänger-Adresse aus dem store ab.
+    // Ruft die aktuell auf der Postkarte eingegebene Empfängeradresse aus dem store ab.
     // Prüft die Addresse auf Vollständigkeit.
     // Ist eines des Felder, außer dem Feld "Zusatz", leer, bleibt der Button "Zum Warenkorb" deaktiviert und der Nutzer erhält eine Benachrichtigung.
     // Ist die Addresse vollständig, wird der Button "Zum Warenkorb" aktiviert, sodass der Nutzer zum Checkout fortschreiten kann.

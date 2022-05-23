@@ -57,7 +57,7 @@ export default Vue.extend({
         }
     }
   },
-  // Generiert getter-Funktionen für den aufgeführten state im store. 
+  // Generiert eine getter-Funktion für den aufgeführten state im store. 
   computed: {...mapState(["textColor"])}
 });
 </script>

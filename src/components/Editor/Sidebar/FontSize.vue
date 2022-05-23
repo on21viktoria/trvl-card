@@ -15,7 +15,6 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { EventBus } from "@/main";
 
 export default Vue.extend({
   name: "FontSize",
