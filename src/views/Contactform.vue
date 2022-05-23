@@ -9,7 +9,7 @@
       <v-container class="formcontainer">
         <div class="form-width">
 
-          //Input Types Added
+        //Input Types Added
       <v-col class="columns" cols="12" md="6"> 
           <v-select
           v-model="formOfAddress"
