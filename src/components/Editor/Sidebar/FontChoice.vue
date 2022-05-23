@@ -33,10 +33,11 @@ fontId: '',
 }
 },
 methods: {
+    // Speichert die im Drop-Down ausgewählte Schriftart als Wert für die Schriftart des Texts auf der Rückseite im store. 
+    // Wendet die ausgewählte Schriftart auf einen Beispieltext an, indem die aktuelle CSS-Klasse durch eine neue Klasse ersetzt wird. 
     changeFont() {
         this.fontId = `${this.selected}`;
         this.$store.dispatch("setTextFont", this.fontId)
-        //EventBus.$emit('changeFont', this.fontId);
         const p = document.querySelector("#show-font") as HTMLElement;
         switch (this.fontId){
             case "Dancing Script":
