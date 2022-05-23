@@ -321,7 +321,6 @@ export default Vue.extend({
 }
 
 .active {
-  /* color: rgb(29, 162, 169) !important; */
   color: rgb(255, 78, 0) !important;
   font-weight: bold !important;
 }

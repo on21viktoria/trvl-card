@@ -97,6 +97,10 @@ export default Vue.extend({
     };
   },
   methods: {
+    // Ruft die aktuell auf der Postkarte eingegebene Empfänger-Adresse aus dem store ab.
+    // Prüft die Addresse auf Vollständigkeit.
+    // Ist eines des Felder, außer dem Feld "Zusatz", leer, bleibt der Button "Zum Warenkorb" deaktiviert und der Nutzer erhält eine Benachrichtigung.
+    // Ist die Addresse vollständig, wird der Button "Zum Warenkorb" aktiviert, sodass der Nutzer zum Checkout fortschreiten kann.
     async handleClick() {
       let currentRecipient = this.$store.getters.getCurrentRecipient;
       if (
@@ -118,16 +122,21 @@ export default Vue.extend({
         this.isActive = false;
       }
     },
+    // Generiert eine kurze Benachrichtigung mit personalisierter Nachricht und personalisierter Formatierung. 
     makeToast() {
       this.$bvToast.toast(this.message, this.options);
     },
+    // Wirft das Event changeRecipient aus, auf das die Komponente PostcardLayout hört.
+    // Ruft die Methode handleClick auf, die die Empfängeradresse prüft. 
     onClick() {
       EventBus.$emit("changeRecipient");
       this.handleClick();
     },
+    // Macht das im Template eingebundene, unsichtbare Modal sichtbar, in dem eine Vorschau der aktuellen Postkarte generiert wird. 
     showModal() {
       this.isModalVisible = true;
     },
+    // Schließt das Modal mit der Vorschau der aktuellen Postkarte wieder. 
     closeModal() {
       this.isModalVisible = false;
     },
