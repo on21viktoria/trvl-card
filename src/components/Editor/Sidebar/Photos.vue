@@ -3,11 +3,10 @@
     <p class="tool-title">Fotos</p>
     <p class="tool-title subtitle">Bildauswahl</p>
 
-  // Leeres Platzhalterfoto zum "entfernen" der Auswahl
   <img id="emptyImage" src="https://firebasestorage.googleapis.com/v0/b/trvl-card-4b9a2.appspot.com/o/files%2Fleer_mit_strich.png?alt=media&token=22e13ea0-be57-4572-ae3e-9e4be3a58d33" width="30%"
       @click="changeBackgroundPicture('https://firebasestorage.googleapis.com/v0/b/trvl-card-4b9a2.appspot.com/o/files%2Fleer.png?alt=media&token=22d8b56e-e1da-4bee-8a77-b2b4a52a7747')"
     />
-  // Einbinden der Städtebilder als Accordion, geordnet nach Stadt
+
     <div class="accordion" role="tablist">
       <b-card no-body class="mb-1">
         <b-card-header header-tag="header" class="p-1" role="tab">

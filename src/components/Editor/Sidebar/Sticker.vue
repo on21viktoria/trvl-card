@@ -2,12 +2,10 @@
   <div class="sticker-div">
     <p class="tool-title">Sticker</p>
 
-    // Leeres Platzhalterfoto zum "entfernen" der Auswahl
   <img id="emptyImage" src="./../../../assets/platzhalter/leer_mit_strich.png" width="30%"
       @click="changeSticker('platzhalter/leer.png')"
     />
 
-    // Einbinden der Sticker als Accordion, geordnet nach Stadt
     <div class="accordion" role="tablist">
       <b-card no-body class="mb-1">
         <b-card-header header-tag="header" class="p-1" role="tab">

@@ -148,10 +148,15 @@ import { EventBus } from './../../main';
 export default Vue.extend({
   data() {
     return {
+      // benötigt für die Vuetify, um Toolbar verkleinern zu können 
       drawer: true,
       mini: false,
+      // Variable, die angibt, welches Tool der Toolbar ausgewählt wurde
+      // wird über den Editor als Property an die Sidebar übergeben
       idSidebar: '',
       selected: false,
+      // Variablen für die DOM-Manipulation
+      // über diese kann das ausgewählte Tool in der Toolbar hervorgehoben werden
       currentToolIcon: undefined as any,
       currentToolTitle: undefined as any,
     };
@@ -159,23 +164,31 @@ export default Vue.extend({
   name: 'Toolbar',
   components: {},
   props: {},
+  // EventListener
+  // beim Aufruf des Events closeSidebar im Editor wird die interne Methode clearSelected() aufgerufen
   created() {
     EventBus.$on('closeSideBar', () => {
       this.clearSelected();
     });
   },
   methods: {
+    // beim Klick auf ein Tool in der Toolbar (v-list-item)
+    // wird die Variable mit dem übergebenen Parameter initialisiert
+    // das Event wird dann an die Editor-Komponente mit der idSidebar emitted
     onClick(id: string) {
       this.idSidebar = id;
       this.$emit('showSideBar', this.idSidebar, this.clearSelected);
     },
+    // Methode wird beim Klick auf ein Tool in der Toolbar ausgeführt
+    // bewirkt, dass das ausgewähle Tool orangefarben hinterlegt wird
     setId(selected: boolean, id: string) {
       let selectedId = id;
-      // this.clearSelected();
       if (
+        // prüft, ob zuvor ein anderes Tools ausgewählt wurde
         this.currentToolIcon != undefined &&
         this.currentToolTitle != undefined
       ) {
+        // Hervorhebung vom zuvor ausgewählten Tool wird wieder rückgängig gemacht
         this.clearSelected();
         switch (selectedId) {
           case 'Vorlagen':
@@ -239,6 +252,7 @@ export default Vue.extend({
             this.currentToolTitle?.classList.add('active');
             break;
         }
+        // falls,  noch kein Tool zuvor ausgewählt wurde
       } else {
         switch (selectedId) {
           case 'Vorlagen':
@@ -304,7 +318,7 @@ export default Vue.extend({
         }
       }
     },
-
+    // Methode, um die orangefarbene Hervorhebung der v-list-items zurückzusetzen
     clearSelected() {
       this.currentToolIcon.classList.remove("active");
       this.currentToolIcon = undefined;

@@ -11,16 +11,6 @@
         <component :is="dynamicComponent"></component>
       </div>
     </div>
-    <!-- <p>
-      Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus
-      ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur
-      ac, vestibulum at eros.
-    </p>
-    <b-img
-      src="https://picsum.photos/500/500/?image=54"
-      fluid
-      thumbnail
-    ></b-img> -->
   </div>
 </template>
 
@@ -34,6 +24,8 @@ import Background from "./Sidebar/Background.vue";
 import Sticker from "./Sidebar/Sticker.vue";
 
 export default Vue.extend({
+  // items dienen als key für die v-for-Schleife im Template
+  // geben an, welche Bearbeitungskomponente geladen werden soll
   data() {
     return {
       items: [
@@ -59,6 +51,7 @@ export default Vue.extend({
     };
   },
   name: "Sidebar",
+  // Registrierung der möglichen Bearbeitungskomponenten, um Sidebar dynamisch zu befüllen
   components: {
     Templates,
     Photos,
@@ -67,9 +60,13 @@ export default Vue.extend({
     Background,
     Sticker
   },
+  // Property, die in der Editor-Komponente der Sidebar übergeben wird
+  // gibt, an auf welches Bearbeitungstool der Nutzer/die Nutzerin in der Toolbar geklickt hat
   props: {
     idSidebar: String,
   },
+  // Methode, um die Sidebar dynamisch zu befüllen
+  // es wird mit einem Swith-Case-Statement geprüft, welche Komponente im Template geladen werden soll
   computed: {
   dynamicComponent() {
     switch(this.idSidebar) {
@@ -100,6 +97,8 @@ export default Vue.extend({
     }
   }
   },
+  // onClick Methode, die das Klick-Event mithilfe eines Event-Emitters 
+  // and die Parent-Komponente (Editor) weitergibt
   methods: {
     onClick() {
       this.$emit("hideSideBar");
