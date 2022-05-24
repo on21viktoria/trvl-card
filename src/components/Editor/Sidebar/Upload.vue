@@ -34,6 +34,7 @@ export default {
       this.file = this.$refs.input.files[0];
 
     },
+    // Hinweis, falls keine Datei ausgewählt wurde
     handleUpload() {
       if (!this.file) {
         alert("Please choose a file first!")
@@ -51,7 +52,7 @@ export default {
         },
         (err) => console.log(err),
         () => {
-          // download url
+          // Download URL
           getDownloadURL(uploadTask.snapshot.ref).then((url) => {
             this.url = url 
             this.displayImage();
@@ -59,7 +60,7 @@ export default {
         }
       );
     },
-
+    // Bild wird platziert
     displayImage(){
       this.$store.dispatch("setPicture", this.url)
     }

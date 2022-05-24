@@ -15,7 +15,6 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { EventBus } from "@/main";
 
 export default Vue.extend({
   name: "FontSize",
@@ -25,10 +24,10 @@ export default Vue.extend({
     };
   },
   methods: {
+    // Speichert den Wert, auf den das HTML-Input-Element des Typs slider gesetzt wird, als Wert für die Schriftgröße des Texts auf der Rückseite im store. 
     changeFontSize() {
       const fontSize = this.sliderValue + "pt";
       this.$store.dispatch("setTextSize", fontSize)
-      //EventBus.$emit("changeFontSize", fontSize);
     },
   },
 });

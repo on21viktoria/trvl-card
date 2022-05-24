@@ -9,7 +9,6 @@
       <v-container class="formcontainer">
         <div class="form-width">
 
-          //Input Types Added
       <v-col class="columns" cols="12" md="6"> 
           <v-select
           v-model="formOfAddress"
@@ -100,7 +99,6 @@
       </v-container>
     </v-form>
 
-    //Addresse speichern
     <div class="saveaddress">
     <input class="form-check-input" type="checkbox" value="Addresse speichern" id="flexCheckDefault">
    <label class="form-check-label" for="flexCheckDefault">
@@ -110,7 +108,6 @@
         <button type="button" class="hovereffect" id="save">SICHERN & ZURÜCK</button>
           <button type="button" class="hovereffect" v-b-modal.modal-center id="finish" ok-only>BESTELLUNG ABSENDEN</button>
 
-          // final checkout, order confimation pop-up modal
           <b-modal id="modal-center" centered title="Vielen Dank für deine Bestellung!">
           <p class="my-4">Dein Auftrag ist bei uns eingegangen und wird umgehend bearbeitet. Der Versand dauert aktuell im Durchschnitt 2-3 Werktage.</p>
                 <template #modal-footer>
@@ -130,7 +127,6 @@
     </div>
     </div>
 
-    //Sidebard with Order-Details
     <div class="order">
         <h2>Deine Bestellung</h2>
         <div class="orderwrapper">

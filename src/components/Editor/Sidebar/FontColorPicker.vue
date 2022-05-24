@@ -40,13 +40,14 @@ export default Vue.extend({
     };
   },
   methods: {
+    // Speichert den ausgewählten Farbwert des HTML-Input-Elements des Typs color als Wert für die Schriftfarbe des Texts auf der Rückseite im store. 
     changeColorNew() {
       let fontcolorPicker = document.getElementById(
         "fontcolor-picker"
       ) as HTMLInputElement;
-      //EventBus.$emit("changeFontColor", fontcolorPicker.value);
       this.$store.dispatch("setTextColor", fontcolorPicker.value)
     },
+    // Speichert den aus den vorgeschlagenen Farbwerten ausgewählten Farbwert als Wert für die Schriftfarbe des Texts auf der Rückseite im store. 
     preselectedColor(suggestionId: string){
         for (let choice of this.preselectedColors){
             if(choice.id === suggestionId) {
@@ -56,6 +57,7 @@ export default Vue.extend({
         }
     }
   },
+  // Generiert eine getter-Funktion für den aufgeführten state im store. 
   computed: {...mapState(["textColor"])}
 });
 </script>
@@ -77,7 +79,6 @@ export default Vue.extend({
 }
 
 #fontcolor-picker {
-  /* display: inline-block; */
   margin-top: 5px;
   width: 70px;
   height: 30px;

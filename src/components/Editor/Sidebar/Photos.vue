@@ -483,6 +483,7 @@ import Vue from "vue";
 export default Vue.extend({
   name: "Photos",
   methods: {
+    // Platziertes Bild wird ersetzt. Geklicktes Foto wird in die Vorschau übergeben
     changeBackgroundPicture(picture: string) {
       this.$store.dispatch("setPicture", picture);
     },

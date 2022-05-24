@@ -21,8 +21,6 @@
       <div class="suggestion" id="orange" @click="preselectedColor('orange')"></div>
         <img class="no-background-img" @click="preselectedColor('transparent')" src="../../../assets/platzhalter/no_Background.png" alt="Platzhalter">
     </div>
-    <!-- <p class="tool-title">Suche</p>
-    <v-text-field label="Suche" solo prepend-inner-icon="mdi-magnify"></v-text-field>-->
   </div>
 </template>
 
@@ -34,6 +32,8 @@ export default Vue.extend({
   name: "Background",
   data() {
     return {
+
+      // Vorausgewählte Farben, die zur Verfügung stehen
       preselectedColors: [
         { value: "#000000", id: "black" },
         { value: "#707070", id: "grey" },
@@ -45,6 +45,9 @@ export default Vue.extend({
     }
   },
   methods: {
+
+    // Hintergrundfarbe wird ausgewechselt. 
+    // Auswahl möglich zwischen freier Farbwahl (selection-color) oder vorausgewählten Farben (preselectedColor).
     changeColor() {
       let colorselector = document.getElementById(
         "selection-color"

@@ -136,6 +136,7 @@ import Vue from "vue";
 export default Vue.extend({
   name: "Sticker",
   methods: {
+    // Platzierter Sticker wird ersetzt. Geklickter Sticker wird in die Vorschau übergeben und als oberste Ebene definiert.
     changeSticker(sticker: string){
       this.$store.dispatch("setSticker", sticker)
     }

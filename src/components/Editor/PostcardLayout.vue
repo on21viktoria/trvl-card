@@ -185,16 +185,20 @@ export default Vue.extend({
       },
     ],
   }),
+  // Hört auf das Event changeRecipient, das in der Komponente EditorHeader mit Klick auf den Button "Empfängeradresse speichern" ausgeworfen wird.
+  // Ruft dann die Methode changeRecipient auf, die die aktuelle Empfängeradresse im store speichert. 
   mounted() {
     EventBus.$on("changeRecipient", () => {
       this.changeRecipient();
     });
   },
   methods: {
+    // Speichert den Text auf der Rückseite der Postkarte als Wert im store. 
     checkText(e: any) {
       let textvalue = e;
       this.$store.dispatch("setText", textvalue);
     },
+    // Speichert die Empfängeradresse, die in das Addressfeld auf der Rückseite der Postkarte eingegeben wird, als Wert im store.
     changeRecipient() {
       const recipientName = document.getElementById("name") as HTMLInputElement;
       const recipientAddition = document.getElementById(
@@ -216,6 +220,7 @@ export default Vue.extend({
       };
       this.$store.dispatch("setRecipient", recipient);
     },
+    // Setzt je nachdem, ob gerade die Vorder- oder Rückseite der Postkarte zu sehen ist, die andere Seite auf sichtbar. 
     showBack() {
       let postcardFront = document.querySelector("#front") as HTMLElement;
       let postcardBack = document.querySelector("#back") as HTMLElement;
@@ -236,6 +241,7 @@ export default Vue.extend({
   props: {
     ImageId: String,
   },
+   // Generiert getter-Funktionen für die aufgeführten states im store. 
   computed: {
     ...mapState([
       "currentPicture",

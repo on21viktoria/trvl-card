@@ -105,8 +105,6 @@
 import Vue from "vue";
 import FontSize from "./FontSize.vue";
 import FontChoice from "./FontChoice.vue";
-// import FontColor from "./temp.vue";
-import { EventBus } from "@/main";
 import FontColorPicker from "./FontColorPicker.vue"
 
 export default Vue.extend({
@@ -133,6 +131,8 @@ export default Vue.extend({
   },
   props: {},
   methods: {
+    // Speichert den im Feld "Stadt..." eingegebenen Text des Nutzers als Wert im store.
+    // Gibt der Nutzer keinen personalisierten Text ein, wird wieder der Standardwert des Felds im store gespeichert.  
     displayInputCity() {
       const inputCity = document.querySelector(
         "#input-field-city"
@@ -146,6 +146,8 @@ export default Vue.extend({
         this.$store.dispatch("displayCustomLargeLetter", this.customInputCity)
       }
     },
+    // Speichert den im Feld "Grüsse aus..." eingegebenen Text des Nutzers als Wert im store. 
+    // Gibt der Nutzer keinen personalisierten Text ein, wird wieder der Standardwert des Felds im store gespeichert. 
     displayInputBefore() {
       const inputBefore = document.querySelector(
         "#input-field-before"
@@ -159,6 +161,8 @@ export default Vue.extend({
         this.$store.dispatch("displayCustomBefore", this.customInputBefore)
       }
     },
+    // Speichert den im Feld "Land..." eingegebenen Text des Nutzers als Wert im Store. 
+    // Gibt der Nutzer keinen personalisierten Text ein, wird wieder der Standardwert des Felds im store gespeichert. 
     displayInputBelow() {
       const inputBelow = document.querySelector(
         "#input-field-below"
@@ -172,6 +176,7 @@ export default Vue.extend({
         this.$store.dispatch("displayCustomBelow", this.customInputBelow);
       }
     },
+    // Setzt den vom Nutzer eingegebenen Text für die Felder "Stadt...", "Grüsse aus..." und "Land..." zurück. 
     clearInput() {
       const inputCity = document.querySelector(
         "#input-field-city"
@@ -194,6 +199,9 @@ export default Vue.extend({
       this.$store.dispatch("displayCustomBelow", this.customInputBelow);
 
     },
+    // Speichert bei Anklicken der Checkbox "3D-Effekt" den Wert des Booleans applyEffect im store.
+    // Dieser Wert ist true, wenn die Checkbox checked ist.
+    // Der Wert ist false, wenn die Checkbox unchecked ist. 
     changeEffect() {
       const checkboxEffect = document.querySelector(
         "#initial-checkbox"
@@ -208,12 +216,14 @@ export default Vue.extend({
         return (this.applyEffect = false);
       }
     },
+    // Speichert den Wert des HTML-Input-Elements des Typs color als Schriftfarbe des Texts für die Vorderseite im store. 
     changeInputColor() {
       let inputcolorPicker = document.getElementById(
         "inputcolor-picker"
       ) as HTMLInputElement;
       this.$store.dispatch("setInputColor", inputcolorPicker.value);
     },
+    // Speichert bei Auswahl einer der vorgeschlagenen Textfarben diesen Wert als Schriftfarbe für die Vorderseite im store. 
     preselectedInputColor(colorId: string) {
       for (let choice of this.preselectedColors) {
         if (choice.id === colorId) {

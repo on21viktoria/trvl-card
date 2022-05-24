@@ -316,6 +316,7 @@ import Vue from "vue";
 export default Vue.extend({
   name: "Templates",
   methods: {
+    // Platzierte Vorlage/Vorhandenes Foto wird ersetzt. Geklickter Vorlage wird in die Vorschau übergeben und angezeigt
     changeTemplate(template: string) {
       this.$store.dispatch("setPicture", template);
     },
