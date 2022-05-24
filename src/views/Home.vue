@@ -5,6 +5,7 @@
     <Welcome></Welcome>
     <div class="designchoice">
       <div v-for="postcard in postcards" :key="postcard.id">
+        <!-- Bootstrap card -->
         <DesignChoice :id="postcard.id" :title="postcard.title" :text="postcard.text" :image="require(`./../assets/images-trvl-card/${postcard.image}`)"></DesignChoice>
       </div>
     </div>
@@ -24,13 +25,8 @@ export default Vue.extend({
   name: "Home",
   components: { DesignChoice, Welcome, Header, Footer },
   data: () => ({
+    /* Bootstrap card Eigenschaften */
     postcards: [
-    /*   {
-        id: "blanko",
-        title: "Blanko-Postkarte",
-        text: "Starte ohne Vorlage mit einer Blanko-Postkarte.",
-        image: "BlankoPostkarte.jpg"
-    }, */
     {
         id: "large-letter",
         title: "Zum Postkarten-Editor",

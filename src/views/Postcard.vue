@@ -1,10 +1,12 @@
 <template>
   <div class="postcard-layout" id="postCard-print">
+    <!-- Vorderseite Hintergrundfarbe -->
     <div
       class="postcard-side"
       id="front-Print"
       :style="`background-color:` + currentBackgroundColor"
     >
+    <!-- Vorderseite Bild -->
       <div class="image-wrap">
         <img :src=currentPicture class="image-front" />
         <img
@@ -13,6 +15,7 @@
           class="svg-image"
         />
       </div>
+      <!-- Vorderseite (falls) 3D Effekt -->
       <div v-if="current3DEffect === false" class="custom-input-wrap">
         <p
           class="additional-textPrint"
@@ -21,6 +24,7 @@
         >
           {{ currentCustomInputBefore }}
         </p>
+        <!-- Vorderseite SVG Schrift -->
         <svg width="100%" id="custom-input-svg-print">
           <text
             id="text-no-effect-print"
@@ -33,6 +37,7 @@
             {{ currentCustomInputCity }}
           </text>
         </svg>
+        <!-- Vorderseite Farbe Zusatztext SVG Schrift -->
         <p
           class="additional-textPrint"
           id="belowPrint"
@@ -41,6 +46,7 @@
           {{ currentCustomInputBelow }}
         </p>
       </div>
+      <!-- Vorderseite Farbe SVG Schrift -->
       <div v-if="current3DEffect === true" class="custom-input-wrap">
         <p
           class="additional-textPrint"
@@ -80,11 +86,12 @@
         </p>
       </div>
     </div>
-
+    <!-- Rückseite Postkarte -->
     <div class="postcard-side" id="back-print">
       <div class="postcard-left-back">
         <div class="divider-back"></div>
         <div class="text-wrapper">
+          <!-- Text Rückseite Postkarte -->
           <p
             class="postcard-left-back-text"
             :style="`color:${textColor} !important; font-family:${textFont} !important; font-size:${textSize} !important`"
@@ -93,6 +100,7 @@
           </p>
         </div>
       </div>
+      <!-- Rechte Seite Rückseite Postkarte -->
       <div class="postcard-right-back">
         <div class="frankierzone">
           <img
@@ -101,6 +109,7 @@
             alt="trvl-card Briefmarke"
           />
         </div>
+        <!-- Inputfelder Empfängeradresse Rückseite Postkarte -->
         <div class="address-field">
           <p>{{ currentRecipient.name }}</p>
           <p>{{ currentRecipient.addition }}</p>
@@ -128,6 +137,7 @@ export default Vue.extend({
   mounted() {
     window.print();
   },
+  /* Speicherzustandseigenschaften Postkarte*/ 
   computed: {
     ...mapState([
       "currentPicture",
@@ -164,9 +174,6 @@ export default Vue.extend({
 }
 
 .image-front {
-  /* position: absolute;
-  top: 0;
-  left: 0; */
   z-index: 1;
   width: 600px;
   height: 420px;
@@ -187,7 +194,6 @@ export default Vue.extend({
   top: 0;
   left: 0;
   margin: 10px 10px;
-  /* padding: 100px 20px 100px 20px; */
   width: 600px;
   height: 420px;
   display: block;

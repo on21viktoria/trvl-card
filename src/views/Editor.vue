@@ -55,11 +55,15 @@ export default Vue.extend({
     sidebarContent: '',
     resetSelectedTool: false,
   }),
+
+  /* Sidebar anzeigen durch Prüfung v-if */
   methods: {
     showSideBar(idSidebar: string) {
       this.sidebar = true;
       this.sidebarContent = idSidebar;
     },
+
+  /* Sidebar ausblenden durch Prüfung v-if */
     hideSideBar() {
       this.sidebar = !this.sidebar;
       this.resetSelectedTool = true;
@@ -101,7 +105,6 @@ h1 {
   grid-column: 2;
   display: flex;
   justify-content: space-around;
-  /* flex-direction: column-reverse; */
 }
 
 .editor-grid.sidebar-shown {
