@@ -88,7 +88,6 @@
             id="changed-text"
             solo
             counter
-            auto-grow="false"
             name="Nachrichten-Textfeld"
             label="Deine persönliche Nachricht..."
             :rules="rules"
@@ -292,6 +291,7 @@ export default Vue.extend({
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
 }
 
 .custom-input-wrap {
