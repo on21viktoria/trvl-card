@@ -101,7 +101,7 @@
 
     <div class="saveaddress">
     <input class="form-check-input" type="checkbox" value="Addresse speichern" id="flexCheckDefault">
-   <label class="form-check-label" for="flexCheckDefault">
+   <label class="form-check-label" for="flexCheckDefault">Adresse speichern
   </label>
     </div>
     <div class="checkoutbuttons">
